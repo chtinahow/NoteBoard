@@ -33,26 +33,26 @@
     
     //add date
     SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-325, 455);
+    date.position = CGPointMake(-470, 340);
     [pap addChild:date];
     
     //title of page
     SKLabelNode *up = [self upcoming];
-    up.position = CGPointMake(0, 380);
+    up.position = CGPointMake(0, 230);
     [pap addChild:up];
     
     //assignments title
     SKLabelNode *assign = [self assignmentsTitle];
-    assign.position = CGPointMake(-255, 250);
+    assign.position = CGPointMake(-350, 130);
     [pap addChild:assign];
     
     //due date
     SKLabelNode *due = [self dueDate];
-    due.position = CGPointMake(250, 250);
+    due.position = CGPointMake(350, 130);
     [pap addChild:due];
     
     //add back button
-    SKSpriteNode *bButton = [self backButton];
+    SKLabelNode *bButton = [self backButton];
     bButton.position = CGPointMake(300, 450);
     [pap addChild:bButton];
     
@@ -62,7 +62,7 @@
 #pragma mark
 
 - (SKSpriteNode *)paperNode{
-    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(768, 1024)];
+    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(1024, 768)];
     
     return paper;
 }

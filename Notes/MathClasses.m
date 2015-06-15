@@ -42,36 +42,36 @@
     
     //Calc display
     SKSpriteNode *cButton = [self calcButton];
-    cButton.position = CGPointMake(0, 350);
+    cButton.position = CGPointMake(0, 280);
     [pap addChild:cButton];
     
     SKLabelNode *calc = [self calc];
-    calc.position = CGPointMake(0, 330);
+    calc.position = CGPointMake(0, 260);
     [pap addChild:calc];
     
     //Discrete Display
     SKSpriteNode *dButton = [self discButton];
-    dButton.position = CGPointMake(0, 0);
+    dButton.position = CGPointMake(0, 20);
     [pap addChild:dButton];
     
     SKLabelNode *disc = [self discrete];
-    disc.position = CGPointMake(0, -20);
+    disc.position = CGPointMake(0, 0);
     [pap addChild:disc];
     
     //Physics Display
     SKSpriteNode *pButton = [self physicsButton];
-    pButton.position = CGPointMake(0, -330);
+    pButton.position = CGPointMake(0, -260);
     [pap addChild:pButton];
     
     SKLabelNode *pLabel = [self physics];
-    pLabel.position = CGPointMake(0, -350);
+    pLabel.position = CGPointMake(0, -280);
     [pap addChild:pLabel];
     
     [self addChild:pap];
 }
 
 - (SKSpriteNode *) paperNode{
-    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(768, 1024)];
+    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(1024, 768)];
     
     return paper;
 }
@@ -138,14 +138,14 @@
         SKNode *node = [self nodeAtPoint:location];
         
         if([node.name isEqualToString:@"disc"] || [node.name isEqualToString:@"phys"]){
-            ClassLinks *dd = [[ClassLinks alloc] initWithSize:CGSizeMake(768, 1024)];
+            ClassLinks *dd = [[ClassLinks alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:dd transition:doors];
         }
         
         if([node.name isEqualToString:@"calc"]){
-            CalculusNotes *cn = [[CalculusNotes alloc] initWithSize:CGSizeMake(768, 1024)];
+            CalculusNotes *cn = [[CalculusNotes alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:cn transition:doors];        }

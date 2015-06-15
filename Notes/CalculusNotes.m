@@ -13,6 +13,8 @@
 
 @property BOOL created;
 
+@property BOOL tappedTwice;
+
 @property SKSpriteNode *activeDragNode;
 
 @property SKSpriteNode *outlineDragNode;
@@ -44,7 +46,7 @@
     
     //add date
     SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-180, 235);
+    date.position = CGPointMake(-130, 80);
     
     SKTexture *tex = [self.scene.view textureFromNode:outline];
     SKSpriteNode *newNode = [SKSpriteNode spriteNodeWithTexture:tex];
@@ -80,7 +82,7 @@
 #pragma mark
 
 - (SKSpriteNode *)paperNode{
-    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(400, 500)];
+    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(300, 200)];
     paper.name = @"paper";
     _activeDragNode = nil;
     
@@ -91,13 +93,13 @@
 
 //papers that are not currently clickable
 - (SKSpriteNode *)paperNode2{
-    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(400, 500)];
+    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(300, 200)];
     
     return paper;
 }
 
 - (SKSpriteNode *)outlineNode{
-    SKSpriteNode *outline = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(425, 525)];
+    SKSpriteNode *outline = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(325, 225)];
     outline.name = @"outline";
     
     return outline;
@@ -116,29 +118,25 @@
 
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    _tappedTwice = NO;
     UITouch *touch = [touches anyObject];
     
-    CGPoint scenePosition = [touch locationInNode:self];
-    
-    SKNode *checkNode = [self nodeAtPoint:scenePosition];
-    
-    if(checkNode && ([checkNode.name hasPrefix:@"newNode"] || [checkNode.name hasPrefix:@"newNode2"] || [checkNode.name hasPrefix:@"newNode3"])){
-        _activeDragNode = (SKSpriteNode *)checkNode;
+    if([touch tapCount] == 2){
+        _tappedTwice = YES;
+        notes *nn = [[notes alloc] initWithSize:CGSizeMake(1024, 768)];
+        SKView *view = (SKView *) self.view;
+        SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+        [view presentScene:nn transition:doors];
     }
-    
-    /*for(UITouch *touch in touches){
-        CGPoint location = [touch locationInNode:self];
-        SKNode *node = [self nodeAtPoint:location];
+    else if([touch tapCount] == 1 && !_tappedTwice){
+        CGPoint scenePosition = [touch locationInNode:self];
         
-        if([node.name isEqualToString:@"paper"]){
-            notes *nn = [[notes alloc] initWithSize:CGSizeMake(768, 1024)];
-            SKView *view = (SKView *) self.view;
-            SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
-            [view presentScene:nn transition:doors];
-
-            
+        SKNode *checkNode = [self nodeAtPoint:scenePosition];
+        
+        if(checkNode && ([checkNode.name hasPrefix:@"newNode"] || [checkNode.name hasPrefix:@"newNode2"] || [checkNode.name hasPrefix:@"newNode3"])){
+            _activeDragNode = (SKSpriteNode *)checkNode;
         }
-    }*/
+    }
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -148,9 +146,10 @@
         CGPoint lastPos = [touch previousLocationInNode:self];
     
         CGPoint newLoc = CGPointMake(_activeDragNode.position.x + (scenePosition.x - lastPos.x), _activeDragNode.position.y + (scenePosition.y - lastPos.y));
-    
+        
         _activeDragNode.position = newLoc;
     }
+    
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{

@@ -39,34 +39,34 @@
     
     //add date
     SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-325, 455);
+    date.position = CGPointMake(-470, 340);
     [pap addChild:date];
     
     //due date button
     SKSpriteNode *assignButton = [self assignmentLabel];
-    assignButton.position = CGPointMake(-205, 435);
+    assignButton.position = CGPointMake(-345, 315);
     [pap addChild:assignButton];
     
     //add due date
     SKLabelNode *assign = [self assignmentDue];
-    assign.position = CGPointMake(-205, 425);
+    assign.position = CGPointMake(-350,305);
     [pap addChild:assign];
     
     //basic links on page
     SKSpriteNode *defB = [self linkToDefs];
-    defB.position = CGPointMake(-200, 305);
+    defB.position = CGPointMake(-200, 150);
     [pap addChild:defB];
     
     SKLabelNode *def = [self definition];
-    def.position = CGPointMake(-200, 295);
+    def.position = CGPointMake(-200, 140);
     [pap addChild:def];
     
     SKSpriteNode *formB = [self linkToFormula];
-    formB.position = CGPointMake(-200, 5);
+    formB.position = CGPointMake(-200, -50);
     [pap addChild:formB];
     
     SKLabelNode *form = [self formula];
-    form.position = CGPointMake(-200, -5);
+    form.position = CGPointMake(-200, -60);
     [pap addChild:form];
     
     SKSpriteNode *noteB = [self linkToNotes];
@@ -81,7 +81,7 @@
 }
 
 - (SKSpriteNode *)paperNode{
-    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(768, 1024)];
+    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(1024, 768)];
     
     return paper;
 }
@@ -168,28 +168,28 @@
         SKNode *node = [self nodeAtPoint:location];
         
         if([node.name isEqualToString:@"assign"]){
-            assignments *aa = [[assignments alloc] initWithSize:CGSizeMake(768, 1024)];
+            assignments *aa = [[assignments alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:aa transition:doors];
         }
         
         if([node.name isEqualToString:@"def"]){
-            definitions *dd = [[definitions alloc] initWithSize:CGSizeMake(768, 1024)];
+            definitions *dd = [[definitions alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:dd transition:doors];
         }
         
         if([node.name isEqualToString:@"notes"]){
-            notes *nn = [[notes alloc] initWithSize:CGSizeMake(768, 1024)];
+            notes *nn = [[notes alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:nn transition:doors];
         }
         
         if([node.name isEqualToString:@"form"]){
-            formulas *ff = [[formulas alloc] initWithSize:CGSizeMake(768, 1024)];
+            formulas *ff = [[formulas alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:ff transition:doors];

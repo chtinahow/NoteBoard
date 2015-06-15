@@ -69,11 +69,8 @@
     
     
     //add date
-    
     SKLabelNode *date = [self dateNode];
-    
-    date.position = CGPointMake(-325, 455);
-    
+    date.position = CGPointMake(-470, 340);
     [pap addChild:date];
     
     
@@ -82,7 +79,7 @@
     
     SKLabelNode *example = [self exampleNode];
     
-    example.position = CGPointMake(0, 360);
+    example.position = CGPointMake(0, 230);
     
     [pap addChild:example];
     
@@ -90,33 +87,33 @@
     
     SKNode *e1 = [self ex1];
     
-    e1.position = CGPointMake(-150, 300);
+    e1.position = CGPointMake(-270, 150);
     
     [pap addChild:e1];
     
     SKNode *e2 = [self ex2];
-    e2.position = CGPointMake(-80, 250);
+    e2.position = CGPointMake(-180, 100);
     [pap addChild:e2];
     
     SKNode *e7 = [self ex7];
-    e7.position = CGPointMake(-80, 200);
+    e7.position = CGPointMake(-180, 50);
     [pap addChild:e7];
     
     SKNode *e3 = [self ex4];
-    e3.position = CGPointMake(-80, 150);
+    e3.position = CGPointMake(-180, 0);
     [pap addChild:e3];
     
     
     SKNode *e4 = [self ex3];
-    e4.position = CGPointMake(-110, 100);
+    e4.position = CGPointMake(-60, -50);
     [pap addChild:e4];
     
     SKNode *e5 = [self ex5];
-    e5.position = CGPointMake(-140, 50);
+    e5.position = CGPointMake(-140, -100);
     [pap addChild:e5];
     
     SKNode *e6 = [self ex6];
-    e6.position = CGPointMake(-150, 0);
+    e6.position = CGPointMake(-150, -150);
     [pap addChild:e6];
     
     
@@ -263,7 +260,7 @@
 
 - (SKSpriteNode *)paperNode{
     
-    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(768, 1024)];
+    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(1024, 768)];
     
     
     
