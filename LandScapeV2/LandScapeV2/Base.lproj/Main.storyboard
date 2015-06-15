@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Formulas-->
         <scene sceneID="i8Z-AP-FlA">
             <objects>
                 <viewController id="zmY-sM-vZm" sceneMemberID="viewController">
@@ -25,13 +25,41 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="lm1-53-VoT"/>
+                    <tabBarItem key="tabBarItem" title="Formulas" id="lm1-53-VoT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSf-5d-WxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="292" y="713"/>
         </scene>
-        <!--Item 1-->
+        <!--Definitions-->
+        <scene sceneID="h2P-BN-ZDc">
+            <objects>
+                <viewController id="P36-5E-e70" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="80Y-5X-xsV"/>
+                        <viewControllerLayoutGuide type="bottom" id="fWR-KU-6Sk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Vg-VN-7nF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Third Tab" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGP-EF-c29">
+                                <rect key="frame" x="270" y="294" width="71" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Definitions" id="TmT-PK-gwH"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VQU-hp-INw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-339" y="1338"/>
+        </scene>
+        <!--Notes-->
         <scene sceneID="J0X-Ac-5uJ">
             <objects>
                 <viewController id="VH8-EP-cr8" sceneMemberID="viewController">
@@ -52,7 +80,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="UOA-Q3-taM"/>
+                    <tabBarItem key="tabBarItem" title="Notes" id="UOA-Q3-taM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uk9-gC-6mp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,6 +99,7 @@
                     <connections>
                         <segue destination="VH8-EP-cr8" kind="relationship" relationship="viewControllers" id="Hhv-ZW-Oco"/>
                         <segue destination="zmY-sM-vZm" kind="relationship" relationship="viewControllers" id="rd4-Wy-Y1l"/>
+                        <segue destination="P36-5E-e70" kind="relationship" relationship="viewControllers" id="g7U-Mt-vTv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDG-W1-cem" userLabel="First Responder" sceneMemberID="firstResponder"/>
