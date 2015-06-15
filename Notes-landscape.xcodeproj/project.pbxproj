@@ -1,0 +1,481 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3F2ED9281B2B6A1700C55DFF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED9271B2B6A1700C55DFF /* main.m */; };
+		3F2ED92B1B2B6A1700C55DFF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED92A1B2B6A1700C55DFF /* AppDelegate.m */; };
+		3F2ED92E1B2B6A1700C55DFF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED92D1B2B6A1700C55DFF /* ViewController.m */; };
+		3F2ED9311B2B6A1700C55DFF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F2ED92F1B2B6A1700C55DFF /* Main.storyboard */; };
+		3F2ED9331B2B6A1700C55DFF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F2ED9321B2B6A1700C55DFF /* Images.xcassets */; };
+		3F2ED9361B2B6A1700C55DFF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F2ED9341B2B6A1700C55DFF /* LaunchScreen.xib */; };
+		3F2ED9421B2B6A1700C55DFF /* Notes_landscapeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED9411B2B6A1700C55DFF /* Notes_landscapeTests.m */; };
+		3F2ED95B1B2B6AB200C55DFF /* assignments.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED94C1B2B6AB200C55DFF /* assignments.m */; };
+		3F2ED95C1B2B6AB200C55DFF /* CalculusNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED94E1B2B6AB200C55DFF /* CalculusNotes.m */; };
+		3F2ED95D1B2B6AB200C55DFF /* ClassLinks.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED9501B2B6AB200C55DFF /* ClassLinks.m */; };
+		3F2ED95E1B2B6AB200C55DFF /* definitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED9521B2B6AB200C55DFF /* definitions.m */; };
+		3F2ED95F1B2B6AB200C55DFF /* example.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED9541B2B6AB200C55DFF /* example.m */; };
+		3F2ED9601B2B6AB200C55DFF /* formulas.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED9561B2B6AB200C55DFF /* formulas.m */; };
+		3F2ED9611B2B6AB200C55DFF /* MathClasses.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED9581B2B6AB200C55DFF /* MathClasses.m */; };
+		3F2ED9621B2B6AB200C55DFF /* notes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2ED95A1B2B6AB200C55DFF /* notes.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3F2ED93C1B2B6A1700C55DFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F2ED91A1B2B6A1700C55DFF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F2ED9211B2B6A1700C55DFF;
+			remoteInfo = "Notes-landscape";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3F2ED9221B2B6A1700C55DFF /* Notes-landscape.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notes-landscape.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F2ED9261B2B6A1700C55DFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F2ED9271B2B6A1700C55DFF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3F2ED9291B2B6A1700C55DFF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3F2ED92A1B2B6A1700C55DFF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3F2ED92C1B2B6A1700C55DFF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3F2ED92D1B2B6A1700C55DFF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3F2ED9301B2B6A1700C55DFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3F2ED9321B2B6A1700C55DFF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3F2ED9351B2B6A1700C55DFF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3F2ED93B1B2B6A1700C55DFF /* Notes-landscapeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Notes-landscapeTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F2ED9401B2B6A1700C55DFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F2ED9411B2B6A1700C55DFF /* Notes_landscapeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Notes_landscapeTests.m; sourceTree = "<group>"; };
+		3F2ED94B1B2B6AB200C55DFF /* assignments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = assignments.h; path = ../../Notes/Notes/assignments.h; sourceTree = "<group>"; };
+		3F2ED94C1B2B6AB200C55DFF /* assignments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = assignments.m; path = ../../Notes/Notes/assignments.m; sourceTree = "<group>"; };
+		3F2ED94D1B2B6AB200C55DFF /* CalculusNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculusNotes.h; path = ../../Notes/Notes/CalculusNotes.h; sourceTree = "<group>"; };
+		3F2ED94E1B2B6AB200C55DFF /* CalculusNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculusNotes.m; path = ../../Notes/Notes/CalculusNotes.m; sourceTree = "<group>"; };
+		3F2ED94F1B2B6AB200C55DFF /* ClassLinks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ClassLinks.h; path = ../../Notes/Notes/ClassLinks.h; sourceTree = "<group>"; };
+		3F2ED9501B2B6AB200C55DFF /* ClassLinks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ClassLinks.m; path = ../../Notes/Notes/ClassLinks.m; sourceTree = "<group>"; };
+		3F2ED9511B2B6AB200C55DFF /* definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = definitions.h; path = ../../Notes/Notes/definitions.h; sourceTree = "<group>"; };
+		3F2ED9521B2B6AB200C55DFF /* definitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = definitions.m; path = ../../Notes/Notes/definitions.m; sourceTree = "<group>"; };
+		3F2ED9531B2B6AB200C55DFF /* example.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = example.h; path = ../../Notes/Notes/example.h; sourceTree = "<group>"; };
+		3F2ED9541B2B6AB200C55DFF /* example.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = example.m; path = ../../Notes/Notes/example.m; sourceTree = "<group>"; };
+		3F2ED9551B2B6AB200C55DFF /* formulas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = formulas.h; path = ../../Notes/Notes/formulas.h; sourceTree = "<group>"; };
+		3F2ED9561B2B6AB200C55DFF /* formulas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = formulas.m; path = ../../Notes/Notes/formulas.m; sourceTree = "<group>"; };
+		3F2ED9571B2B6AB200C55DFF /* MathClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MathClasses.h; path = ../../Notes/Notes/MathClasses.h; sourceTree = "<group>"; };
+		3F2ED9581B2B6AB200C55DFF /* MathClasses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MathClasses.m; path = ../../Notes/Notes/MathClasses.m; sourceTree = "<group>"; };
+		3F2ED9591B2B6AB200C55DFF /* notes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = notes.h; path = ../../Notes/Notes/notes.h; sourceTree = "<group>"; };
+		3F2ED95A1B2B6AB200C55DFF /* notes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = notes.m; path = ../../Notes/Notes/notes.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3F2ED91F1B2B6A1700C55DFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F2ED9381B2B6A1700C55DFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3F2ED9191B2B6A1700C55DFF = {
+			isa = PBXGroup;
+			children = (
+				3F2ED9241B2B6A1700C55DFF /* Notes-landscape */,
+				3F2ED93E1B2B6A1700C55DFF /* Notes-landscapeTests */,
+				3F2ED9231B2B6A1700C55DFF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3F2ED9231B2B6A1700C55DFF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3F2ED9221B2B6A1700C55DFF /* Notes-landscape.app */,
+				3F2ED93B1B2B6A1700C55DFF /* Notes-landscapeTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3F2ED9241B2B6A1700C55DFF /* Notes-landscape */ = {
+			isa = PBXGroup;
+			children = (
+				3F2ED94B1B2B6AB200C55DFF /* assignments.h */,
+				3F2ED94C1B2B6AB200C55DFF /* assignments.m */,
+				3F2ED94D1B2B6AB200C55DFF /* CalculusNotes.h */,
+				3F2ED94E1B2B6AB200C55DFF /* CalculusNotes.m */,
+				3F2ED94F1B2B6AB200C55DFF /* ClassLinks.h */,
+				3F2ED9501B2B6AB200C55DFF /* ClassLinks.m */,
+				3F2ED9511B2B6AB200C55DFF /* definitions.h */,
+				3F2ED9521B2B6AB200C55DFF /* definitions.m */,
+				3F2ED9531B2B6AB200C55DFF /* example.h */,
+				3F2ED9541B2B6AB200C55DFF /* example.m */,
+				3F2ED9551B2B6AB200C55DFF /* formulas.h */,
+				3F2ED9561B2B6AB200C55DFF /* formulas.m */,
+				3F2ED9571B2B6AB200C55DFF /* MathClasses.h */,
+				3F2ED9581B2B6AB200C55DFF /* MathClasses.m */,
+				3F2ED9591B2B6AB200C55DFF /* notes.h */,
+				3F2ED95A1B2B6AB200C55DFF /* notes.m */,
+				3F2ED9291B2B6A1700C55DFF /* AppDelegate.h */,
+				3F2ED92A1B2B6A1700C55DFF /* AppDelegate.m */,
+				3F2ED92C1B2B6A1700C55DFF /* ViewController.h */,
+				3F2ED92D1B2B6A1700C55DFF /* ViewController.m */,
+				3F2ED92F1B2B6A1700C55DFF /* Main.storyboard */,
+				3F2ED9321B2B6A1700C55DFF /* Images.xcassets */,
+				3F2ED9341B2B6A1700C55DFF /* LaunchScreen.xib */,
+				3F2ED9251B2B6A1700C55DFF /* Supporting Files */,
+			);
+			path = "Notes-landscape";
+			sourceTree = "<group>";
+		};
+		3F2ED9251B2B6A1700C55DFF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F2ED9261B2B6A1700C55DFF /* Info.plist */,
+				3F2ED9271B2B6A1700C55DFF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F2ED93E1B2B6A1700C55DFF /* Notes-landscapeTests */ = {
+			isa = PBXGroup;
+			children = (
+				3F2ED9411B2B6A1700C55DFF /* Notes_landscapeTests.m */,
+				3F2ED93F1B2B6A1700C55DFF /* Supporting Files */,
+			);
+			path = "Notes-landscapeTests";
+			sourceTree = "<group>";
+		};
+		3F2ED93F1B2B6A1700C55DFF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3F2ED9401B2B6A1700C55DFF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3F2ED9211B2B6A1700C55DFF /* Notes-landscape */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F2ED9451B2B6A1700C55DFF /* Build configuration list for PBXNativeTarget "Notes-landscape" */;
+			buildPhases = (
+				3F2ED91E1B2B6A1700C55DFF /* Sources */,
+				3F2ED91F1B2B6A1700C55DFF /* Frameworks */,
+				3F2ED9201B2B6A1700C55DFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Notes-landscape";
+			productName = "Notes-landscape";
+			productReference = 3F2ED9221B2B6A1700C55DFF /* Notes-landscape.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3F2ED93A1B2B6A1700C55DFF /* Notes-landscapeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3F2ED9481B2B6A1700C55DFF /* Build configuration list for PBXNativeTarget "Notes-landscapeTests" */;
+			buildPhases = (
+				3F2ED9371B2B6A1700C55DFF /* Sources */,
+				3F2ED9381B2B6A1700C55DFF /* Frameworks */,
+				3F2ED9391B2B6A1700C55DFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3F2ED93D1B2B6A1700C55DFF /* PBXTargetDependency */,
+			);
+			name = "Notes-landscapeTests";
+			productName = "Notes-landscapeTests";
+			productReference = 3F2ED93B1B2B6A1700C55DFF /* Notes-landscapeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3F2ED91A1B2B6A1700C55DFF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Student;
+				TargetAttributes = {
+					3F2ED9211B2B6A1700C55DFF = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+					3F2ED93A1B2B6A1700C55DFF = {
+						CreatedOnToolsVersion = 6.3.1;
+						TestTargetID = 3F2ED9211B2B6A1700C55DFF;
+					};
+				};
+			};
+			buildConfigurationList = 3F2ED91D1B2B6A1700C55DFF /* Build configuration list for PBXProject "Notes-landscape" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3F2ED9191B2B6A1700C55DFF;
+			productRefGroup = 3F2ED9231B2B6A1700C55DFF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3F2ED9211B2B6A1700C55DFF /* Notes-landscape */,
+				3F2ED93A1B2B6A1700C55DFF /* Notes-landscapeTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3F2ED9201B2B6A1700C55DFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F2ED9311B2B6A1700C55DFF /* Main.storyboard in Resources */,
+				3F2ED9361B2B6A1700C55DFF /* LaunchScreen.xib in Resources */,
+				3F2ED9331B2B6A1700C55DFF /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F2ED9391B2B6A1700C55DFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3F2ED91E1B2B6A1700C55DFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F2ED95F1B2B6AB200C55DFF /* example.m in Sources */,
+				3F2ED95E1B2B6AB200C55DFF /* definitions.m in Sources */,
+				3F2ED95B1B2B6AB200C55DFF /* assignments.m in Sources */,
+				3F2ED92E1B2B6A1700C55DFF /* ViewController.m in Sources */,
+				3F2ED9621B2B6AB200C55DFF /* notes.m in Sources */,
+				3F2ED9611B2B6AB200C55DFF /* MathClasses.m in Sources */,
+				3F2ED92B1B2B6A1700C55DFF /* AppDelegate.m in Sources */,
+				3F2ED95C1B2B6AB200C55DFF /* CalculusNotes.m in Sources */,
+				3F2ED95D1B2B6AB200C55DFF /* ClassLinks.m in Sources */,
+				3F2ED9601B2B6AB200C55DFF /* formulas.m in Sources */,
+				3F2ED9281B2B6A1700C55DFF /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3F2ED9371B2B6A1700C55DFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3F2ED9421B2B6A1700C55DFF /* Notes_landscapeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3F2ED93D1B2B6A1700C55DFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F2ED9211B2B6A1700C55DFF /* Notes-landscape */;
+			targetProxy = 3F2ED93C1B2B6A1700C55DFF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3F2ED92F1B2B6A1700C55DFF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F2ED9301B2B6A1700C55DFF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3F2ED9341B2B6A1700C55DFF /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3F2ED9351B2B6A1700C55DFF /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3F2ED9431B2B6A1700C55DFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		3F2ED9441B2B6A1700C55DFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3F2ED9461B2B6A1700C55DFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Notes-landscape/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3F2ED9471B2B6A1700C55DFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Notes-landscape/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3F2ED9491B2B6A1700C55DFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Notes-landscapeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes-landscape.app/Notes-landscape";
+			};
+			name = Debug;
+		};
+		3F2ED94A1B2B6A1700C55DFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Notes-landscapeTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notes-landscape.app/Notes-landscape";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3F2ED91D1B2B6A1700C55DFF /* Build configuration list for PBXProject "Notes-landscape" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F2ED9431B2B6A1700C55DFF /* Debug */,
+				3F2ED9441B2B6A1700C55DFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3F2ED9451B2B6A1700C55DFF /* Build configuration list for PBXNativeTarget "Notes-landscape" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F2ED9461B2B6A1700C55DFF /* Debug */,
+				3F2ED9471B2B6A1700C55DFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3F2ED9481B2B6A1700C55DFF /* Build configuration list for PBXNativeTarget "Notes-landscapeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F2ED9491B2B6A1700C55DFF /* Debug */,
+				3F2ED94A1B2B6A1700C55DFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3F2ED91A1B2B6A1700C55DFF /* Project object */;
+}
