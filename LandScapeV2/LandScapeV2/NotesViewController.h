@@ -10,7 +10,7 @@
 
 @interface NotesViewController : SKScene
 
-@property (weak, nonatomic) IBOutlet UIButton *shufflePaper1;
-@property BOOL tappedTwice;
+/*@property (weak, nonatomic) IBOutlet UIButton *shufflePaper1;
+@property BOOL tappedTwice;*/
 
 @end

@@ -10,7 +10,7 @@
 
 @implementation NotesViewController
 
--(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+/*-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
     _tappedTwice = NO;
     
@@ -20,10 +20,16 @@
         SKNode *node = [self nodeAtPoint:location];
     }
     else if([touch tapCount] == 1 && _tappedTwice == NO){
+        CGPoint scenePosition = [touch locationInNode:self];
+        
+        SKNode *checkNode = [self nodeAtPoint:scenePosition];
+        
+        if([checkNode.name hasPrefix:@"paper"]){
+        }
         
     }
     
-}
+}*/
 
 
 @end
