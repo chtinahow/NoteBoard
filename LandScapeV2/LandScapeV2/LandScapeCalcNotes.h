@@ -7,7 +7,9 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "ViewController.h"
 
 @interface LandScapeCalcNotes : SKScene
+
 
 @end

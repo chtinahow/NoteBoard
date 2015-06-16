@@ -267,7 +267,8 @@
                     <navigationItem key="navigationItem" id="9lN-EO-yRN">
                         <barButtonItem key="rightBarButtonItem" title="Notes" id="mbD-dc-04c">
                             <connections>
-                                <segue destination="Vdz-2O-7Qx" kind="presentation" id="Ib7-F4-vhz"/>
+                                <action selector="nodeo:" destination="RX5-bc-Hxh" id="yge-CE-lsT"/>
+                                <segue destination="Vdz-2O-7Qx" kind="presentation" identifier="nodeo" id="Ib7-F4-vhz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

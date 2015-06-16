@@ -45,8 +45,8 @@
 		2693DF781B2F1C3000D2FBB9 /* LandScapeV2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LandScapeV2Tests.m; sourceTree = "<group>"; };
 		3F195EDB1B306C65007232AF /* LandScapeCalcNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandScapeCalcNotes.h; sourceTree = "<group>"; };
 		3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandScapeCalcNotes.m; sourceTree = "<group>"; };
-		3F195EE31B3079BF007232AF /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
-		3F195EE41B3079BF007232AF /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		3F195EE31B3079BF007232AF /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesViewController.h; path = ../LandScapeV2/NotesViewController.h; sourceTree = "<group>"; };
+		3F195EE41B3079BF007232AF /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesViewController.m; path = ../LandScapeV2/NotesViewController.m; sourceTree = "<group>"; };
 		3FC0FA8B1B305DD700B9E5F5 /* CalculusNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculusNotes.h; path = "../../../Notes 8/Notes/CalculusNotes.h"; sourceTree = "<group>"; };
 		3FC0FA8C1B305DD700B9E5F5 /* CalculusNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculusNotes.m; path = "../../../Notes 8/Notes/CalculusNotes.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,8 +102,6 @@
 				2693DF691B2F1C2F00D2FBB9 /* Images.xcassets */,
 				2693DF6B1B2F1C3000D2FBB9 /* LaunchScreen.xib */,
 				2693DF5C1B2F1C2F00D2FBB9 /* Supporting Files */,
-				3F195EE31B3079BF007232AF /* NotesViewController.h */,
-				3F195EE41B3079BF007232AF /* NotesViewController.m */,
 			);
 			path = LandScapeV2;
 			sourceTree = "<group>";
@@ -120,6 +118,8 @@
 		2693DF751B2F1C3000D2FBB9 /* LandScapeV2Tests */ = {
 			isa = PBXGroup;
 			children = (
+				3F195EE31B3079BF007232AF /* NotesViewController.h */,
+				3F195EE41B3079BF007232AF /* NotesViewController.m */,
 				2693DF781B2F1C3000D2FBB9 /* LandScapeV2Tests.m */,
 				2693DF761B2F1C3000D2FBB9 /* Supporting Files */,
 			);

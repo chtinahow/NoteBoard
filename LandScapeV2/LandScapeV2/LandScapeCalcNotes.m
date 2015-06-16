@@ -7,6 +7,7 @@
 //
 
 #import "LandScapeCalcNotes.h"
+#import "ViewController.h"
 
 @interface LandScapeCalcNotes()
 
@@ -17,6 +18,7 @@
 @property SKSpriteNode *activeDragNode;
 
 @property SKSpriteNode *outlineDragNode;
+
 
 @end
 
@@ -122,10 +124,8 @@
     
     if([touch tapCount] == 2){
         _tappedTwice = YES;
-        /*notes *nn = [[notes alloc] initWithSize:CGSizeMake(1024, 768)];
-        SKView *view = (SKView *) self.view;
-        SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
-        [view presentScene:nn transition:doors];*/
+        [self.view.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+
     }
     else if([touch tapCount] == 1 && !_tappedTwice){
         CGPoint scenePosition = [touch locationInNode:self];
