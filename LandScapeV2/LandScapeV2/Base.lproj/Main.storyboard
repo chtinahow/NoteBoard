@@ -49,7 +49,7 @@
         <!--Definitions-->
         <scene sceneID="h2P-BN-ZDc">
             <objects>
-                <viewController id="P36-5E-e70" sceneMemberID="viewController">
+                <viewController id="P36-5E-e70" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="80Y-5X-xsV"/>
                         <viewControllerLayoutGuide type="bottom" id="fWR-KU-6Sk"/>
@@ -228,7 +228,7 @@
         <!--View Controller-->
         <scene sceneID="RlY-eZ-7Jq">
             <objects>
-                <viewController id="RX5-bc-Hxh" sceneMemberID="viewController">
+                <viewController id="RX5-bc-Hxh" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Bf-8W-fVS"/>
                         <viewControllerLayoutGuide type="bottom" id="uyD-yb-nEk"/>
@@ -253,6 +253,8 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="chufflePaper1:" destination="RX5-bc-Hxh" eventType="touchUpInside" id="RLx-PV-PeG"/>
+                                            <action selector="shufflePaper1:" destination="RX5-bc-Hxh" eventType="touchDragEnter" id="lSp-Cv-waa"/>
                                             <segue destination="Vdz-2O-7Qx" kind="presentation" id="gMA-qw-Mhg"/>
                                         </connections>
                                     </button>
@@ -267,6 +269,9 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="9lN-EO-yRN"/>
+                    <connections>
+                        <outlet property="shufflePaper1" destination="YTq-sZ-gun" id="zqB-Cc-J1m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCR-1G-KpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
