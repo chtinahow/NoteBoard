@@ -15,6 +15,7 @@
 		2693DF6D1B2F1C3000D2FBB9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2693DF6B1B2F1C3000D2FBB9 /* LaunchScreen.xib */; };
 		2693DF791B2F1C3000D2FBB9 /* LandScapeV2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2693DF781B2F1C3000D2FBB9 /* LandScapeV2Tests.m */; };
 		3FC0FA8D1B305DD700B9E5F5 /* CalculusNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0FA8C1B305DD700B9E5F5 /* CalculusNotes.m */; };
+		3FC0FA901B305E3300B9E5F5 /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0FA8F1B305E3300B9E5F5 /* NotesViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		2693DF781B2F1C3000D2FBB9 /* LandScapeV2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LandScapeV2Tests.m; sourceTree = "<group>"; };
 		3FC0FA8B1B305DD700B9E5F5 /* CalculusNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculusNotes.h; path = "../../../Notes 8/Notes/CalculusNotes.h"; sourceTree = "<group>"; };
 		3FC0FA8C1B305DD700B9E5F5 /* CalculusNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculusNotes.m; path = "../../../Notes 8/Notes/CalculusNotes.m"; sourceTree = "<group>"; };
+		3FC0FA8E1B305E3300B9E5F5 /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
+		3FC0FA8F1B305E3300B9E5F5 /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +91,8 @@
 				3FC0FA8B1B305DD700B9E5F5 /* CalculusNotes.h */,
 				3FC0FA8C1B305DD700B9E5F5 /* CalculusNotes.m */,
 				2693DF611B2F1C2F00D2FBB9 /* AppDelegate.m */,
+				3FC0FA8E1B305E3300B9E5F5 /* NotesViewController.h */,
+				3FC0FA8F1B305E3300B9E5F5 /* NotesViewController.m */,
 				2693DF631B2F1C2F00D2FBB9 /* ViewController.h */,
 				2693DF641B2F1C2F00D2FBB9 /* ViewController.m */,
 				2693DF661B2F1C2F00D2FBB9 /* Main.storyboard */,
@@ -224,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FC0FA901B305E3300B9E5F5 /* NotesViewController.m in Sources */,
 				2693DF651B2F1C2F00D2FBB9 /* ViewController.m in Sources */,
 				2693DF621B2F1C2F00D2FBB9 /* AppDelegate.m in Sources */,
 				2693DF5F1B2F1C2F00D2FBB9 /* main.m in Sources */,

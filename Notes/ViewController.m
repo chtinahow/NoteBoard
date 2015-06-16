@@ -8,9 +8,6 @@
 
 #import "ViewController.h"
 #import "SpriteKit/SpriteKit.h"
-#import "definitions.h"
-#import "formulas.h"
-#import "notes.h"
 #import "MathClasses.h"
 
 @interface ViewController ()
@@ -29,18 +26,6 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    /*definitions* def = [[definitions alloc] initWithSize:CGSizeMake(768,1024)];
-    SKView *spriteView = (SKView *) self.view;
-    [spriteView presentScene: def];*/
-    
-    /*formulas *form = [[formulas alloc] initWithSize:CGSizeMake(768,1024)];
-    SKView *view = (SKView *) self.view;
-    [view presentScene:form];*/
-    
-    /*notes *n = [[notes alloc] initWithSize:CGSizeMake(768,1024)];
-    SKView *view = (SKView *) self.view;
-    [view presentScene:n];*/
-    
     MathClasses *math = [[MathClasses alloc] initWithSize:CGSizeMake(768, 1024)];
     SKView *view = (SKView *) self.view;
     [view presentScene:math];

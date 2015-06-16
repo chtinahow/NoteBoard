@@ -225,10 +225,10 @@
             </objects>
             <point key="canvasLocation" x="-1914" y="382"/>
         </scene>
-        <!--View Controller-->
+        <!--Notes View Controller-->
         <scene sceneID="RlY-eZ-7Jq">
             <objects>
-                <viewController id="RX5-bc-Hxh" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="RX5-bc-Hxh" customClass="NotesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Bf-8W-fVS"/>
                         <viewControllerLayoutGuide type="bottom" id="uyD-yb-nEk"/>
