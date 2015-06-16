@@ -10,6 +10,7 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @end
 
 @implementation ViewController
@@ -18,6 +19,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
+}
+
+-(IBAction)unwindToList:(UIStoryboardSegue *)segue {
+    
 }
 
 - (void)didReceiveMemoryWarning {

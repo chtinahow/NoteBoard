@@ -92,7 +92,7 @@
         <!--Upcoming Due Dates-->
         <scene sceneID="bL9-Qx-vHT">
             <objects>
-                <viewController id="UVc-iu-Bhb" sceneMemberID="viewController">
+                <viewController id="UVc-iu-Bhb" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yNk-ol-LCz"/>
                         <viewControllerLayoutGuide type="bottom" id="sEb-wh-7Qi"/>
@@ -135,16 +135,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Upcoming Due Dates" id="HFs-dy-lj0">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="WOa-SU-0Ro">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="bqg-Wr-JsL">
                             <connections>
-                                <action selector="goBack" destination="wPl-Oo-6Aa" id="7II-qm-wp1"/>
+                                <segue destination="e5y-5u-ix5" kind="unwind" unwindAction="unwindToList:" id="pWH-ye-xPQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wPl-Oo-6Aa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="e5y-5u-ix5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1196" y="1389"/>
+            <point key="canvasLocation" x="1022" y="1338"/>
         </scene>
         <!--Notes-->
         <scene sceneID="J0X-Ac-5uJ">
@@ -200,28 +201,49 @@
                         <rect key="frame" x="51" y="118" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IGx-F8-sEO">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVj-oo-bOU">
-                                        <rect key="frame" x="321" y="152" width="279" height="60"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                        <state key="normal" title="Calculus II">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <variation key="heightClass=regular" fixedFrame="YES">
-                                            <rect key="frame" x="161" y="169" width="279" height="60"/>
-                                        </variation>
-                                        <connections>
-                                            <segue destination="XmR-QZ-1XD" kind="presentation" id="6c2-cC-eCZ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qu1-H7-VF7">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <state key="normal" title="Calculus II">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="304" y="168" width="159" height="54"/>
+                                </variation>
+                                <connections>
+                                    <segue destination="XmR-QZ-1XD" kind="presentation" id="KuU-Ey-zeR"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Qu1-H7-VF7" secondAttribute="trailing" constant="220" id="Cj5-fh-jaI"/>
+                            <constraint firstItem="Qu1-H7-VF7" firstAttribute="top" secondItem="BEe-Sh-q5y" secondAttribute="bottom" constant="136" id="Q98-8I-2bk"/>
+                            <constraint firstItem="Qu1-H7-VF7" firstAttribute="leading" secondItem="UIL-w3-Ewl" secondAttribute="leading" constant="221" id="fWQ-6U-UCq"/>
+                            <constraint firstItem="Mlx-Cm-J1h" firstAttribute="top" secondItem="Qu1-H7-VF7" secondAttribute="bottom" constant="590" id="oGw-pT-Aed"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Qu1-H7-VF7"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Cj5-fh-jaI"/>
+                                <exclude reference="Q98-8I-2bk"/>
+                                <exclude reference="fWQ-6U-UCq"/>
+                                <exclude reference="oGw-pT-Aed"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="Qu1-H7-VF7"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Cj5-fh-jaI"/>
+                                <include reference="Q98-8I-2bk"/>
+                                <include reference="fWQ-6U-UCq"/>
+                                <include reference="oGw-pT-Aed"/>
+                            </mask>
+                        </variation>
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="768" height="1024"/>
                 </viewController>
@@ -229,48 +251,26 @@
             </objects>
             <point key="canvasLocation" x="-1917" y="382"/>
         </scene>
-        <!--View Controller-->
+        <!--Notes View Controller-->
         <scene sceneID="RlY-eZ-7Jq">
             <objects>
-                <viewController id="RX5-bc-Hxh" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="RX5-bc-Hxh" customClass="NotesViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Bf-8W-fVS"/>
                         <viewControllerLayoutGuide type="bottom" id="uyD-yb-nEk"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="WWM-hw-6xv">
+                    <view key="view" contentMode="scaleToFill" id="WWM-hw-6xv" customClass="SKView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gwl-xf-ng5">
-                                <rect key="frame" x="80" y="109" width="128" height="197"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSP-Xj-SLq">
-                                        <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YTq-sZ-gun">
-                                        <rect key="frame" x="3" y="8" width="125" height="197"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <state key="normal">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="Vdz-2O-7Qx" kind="presentation" id="gMA-qw-Mhg"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <accessibility key="accessibilityConfiguration" label="littlePaper">
-                                    <accessibilityTraits key="traits" none="YES" button="YES"/>
-                                    <bool key="isElement" value="YES"/>
-                                </accessibility>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9lN-EO-yRN"/>
+                    <navigationItem key="navigationItem" id="9lN-EO-yRN">
+                        <barButtonItem key="rightBarButtonItem" title="Notes" id="mbD-dc-04c">
+                            <connections>
+                                <segue destination="Vdz-2O-7Qx" kind="presentation" id="Ib7-F4-vhz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCR-1G-KpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -330,10 +330,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RqB-E4-PuP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="450" y="1338"/>
+            <point key="canvasLocation" x="316" y="1338"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="13l-3X-30f"/>
+        <segue reference="kwB-Gs-6SA"/>
     </inferredMetricsTieBreakers>
 </document>

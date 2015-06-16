@@ -7,8 +7,6 @@
 //
 
 #import "NotesViewController.h"
-#import <SpriteKit/SpriteKit.h>
-#import "LandScapeCalcNotes.h"
 
 @interface NotesViewController ()
 
@@ -18,19 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    SKView *spriteView = (SKView *) self.view;
-    spriteView.showsDrawCount = YES;
-    spriteView.showsNodeCount = YES;
-    spriteView.showsFPS = YES;
+    // Do any additional setup after loading the view from its nib.
 }
-
--(void) viewWillAppear:(BOOL)animated{
-    LandScapeCalcNotes *math = [[LandScapeCalcNotes alloc] initWithSize:CGSizeMake(768, 1024)];
-    SKView *view = (SKView *) self.view;
-    [view presentScene:math];
-}
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -46,7 +33,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (IBAction)paperShuffle:(id)sender {
-}
 
 @end
