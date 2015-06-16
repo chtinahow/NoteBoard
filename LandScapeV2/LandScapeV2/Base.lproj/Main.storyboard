@@ -255,6 +255,7 @@
                                         <connections>
                                             <action selector="chufflePaper1:" destination="RX5-bc-Hxh" eventType="touchUpInside" id="RLx-PV-PeG"/>
                                             <action selector="shufflePaper1:" destination="RX5-bc-Hxh" eventType="touchDragEnter" id="lSp-Cv-waa"/>
+                                            <action selector="shufflePaper:" destination="RX5-bc-Hxh" eventType="touchUpInside" id="WOV-CD-4Iw"/>
                                             <segue destination="Vdz-2O-7Qx" kind="presentation" id="gMA-qw-Mhg"/>
                                         </connections>
                                     </button>
@@ -270,7 +271,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="9lN-EO-yRN"/>
                     <connections>
-                        <outlet property="shufflePaper1" destination="YTq-sZ-gun" id="zqB-Cc-J1m"/>
+                        <outlet property="shufflePaper1" destination="YTq-sZ-gun" id="yyf-mc-biN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCR-1G-KpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

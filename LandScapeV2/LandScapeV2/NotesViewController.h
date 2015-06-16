@@ -6,8 +6,11 @@
 //  Copyright (c) 2015 Student. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <SpriteKit/SpriteKit.h>
 
 @interface NotesViewController : SKScene
+
+@property (weak, nonatomic) IBOutlet UIButton *shufflePaper1;
+@property BOOL tappedTwice;
 
 @end
