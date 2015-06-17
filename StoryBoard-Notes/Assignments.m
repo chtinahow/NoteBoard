@@ -12,6 +12,8 @@
 
 @property BOOL created;
 
+@property UIScrollView *scrollView;
+
 @property UITableView *table;
 
 @end
@@ -19,7 +21,49 @@
 @implementation Assignments
 
 #pragma mark
--(id) initWithSize:(CGSize)size{
+
+- (id)initWithSize:(CGSize)size
+{
+    if (self = [super initWithSize:size]) {
+        CGSize layerSize        = CGSizeMake(768, 200);
+        CGSize tableSize = CGSizeMake(768, 1200);
+        CGPoint layerPosition   = CGPointMake(20, 500);
+        CGPoint tablePosition = CGPointMake(0, 50);
+        CGRect viewFrame = CGRectMake(layerPosition.x, layerPosition.y, layerSize.width-50, layerSize.height);
+        CGRect tableFrame = CGRectMake(tablePosition.x, tablePosition.y, tableSize.width-50, tableSize.height);
+        _scrollView = [[UIScrollView alloc] initWithFrame:viewFrame];
+        _table = [[UITableView alloc] initWithFrame:tableFrame];
+        _scrollView.contentSize                     = CGSizeMake(120, 2000);
+        _scrollView.scrollEnabled                   = YES;
+        _scrollView.showsVerticalScrollIndicator  = YES;
+        _scrollView.backgroundColor                 = [UIColor grayColor];
+        _table.contentSize = CGSizeMake(120, 2000);
+        _table.scrollEnabled = YES;
+        _table.showsVerticalScrollIndicator = YES;
+        _table.backgroundColor = [UIColor blueColor];
+
+    }
+    
+    return self;
+}
+
+- (void) didMoveToView:(SKView *)view{
+    if(!self.created){
+        [self createScene];
+        self.created = YES;
+    }
+    [_scrollView addSubview:_table];
+    [self.view addSubview:_scrollView];
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
+    
+    [_scrollView removeFromSuperview];
+}
+
+/*-(id) initWithSize:(CGSize)size{
     if(self = [super initWithSize:size]){
         CGSize layerSize = CGSizeMake(500, 600);
         CGPoint layerPosition = CGPointMake(20, 500);
@@ -46,7 +90,7 @@
     [super willMoveFromView:view];
     
     [_table removeFromSuperview];
-}
+}*/
 
 - (void)createScene{
     self.backgroundColor = [SKColor grayColor];
