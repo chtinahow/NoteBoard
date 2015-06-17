@@ -12,17 +12,40 @@
 
 @property BOOL created;
 
+@property UITableView *table;
+
 @end
 
 @implementation Assignments
 
 #pragma mark
+-(id) initWithSize:(CGSize)size{
+    if(self = [super initWithSize:size]){
+        CGSize layerSize = CGSizeMake(500, 600);
+        CGPoint layerPosition = CGPointMake(20, 500);
+        CGRect viewFrame = CGRectMake(layerPosition.x, layerPosition.y, layerSize.width, layerSize.height);
+        _table = [[UITableView alloc] initWithFrame:viewFrame];
+        _table.contentSize = CGSizeMake(120, 2000);
+        _table.scrollEnabled = YES;
+        _table.showsVerticalScrollIndicator = YES;
+        _table.backgroundColor = [UIColor grayColor];
+    }
+    return self;
+}
 
 - (void) didMoveToView:(SKView *)view{
     if(!self.created){
         [self createScene];
         self.created = YES;
     }
+    [self.view addSubview:_table];
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
+    
+    [_table removeFromSuperview];
 }
 
 - (void)createScene{
@@ -50,11 +73,6 @@
     SKLabelNode *due = [self dueDate];
     due.position = CGPointMake(350, 130);
     [pap addChild:due];
-    
-    //add back button
-    SKLabelNode *bButton = [self backButton];
-    bButton.position = CGPointMake(300, 450);
-    [pap addChild:bButton];
     
     [self addChild:pap];
 }
@@ -113,13 +131,6 @@
 
 #pragma mark
 
-- (SKLabelNode *) backButton{
-    SKLabelNode *back = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    back.name = @"back";
-    back.text = @"Go Back";
-    back.fontSize = 35;
-    back.fontColor = [SKColor darkGrayColor];
-    return back;
-}
+
 
 @end
