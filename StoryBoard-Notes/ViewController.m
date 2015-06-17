@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "MainPage.h"
-#import "MakeButton.h"
 
 @interface ViewController ()
 
@@ -21,14 +20,19 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+-(void)willLayoutSubviews
+{
+    if(!self.didPresentScene)
+    {
+        // Present scene here
+        self.didPresentScene = YES;
+    }
+}
+
 -(void)viewWillAppear:(BOOL)animated{
     MainPage *math = [[MainPage alloc] initWithSize:CGSizeMake(1024, 768)];
     SKView *view = (SKView *) self.view;
     [view presentScene:math];
-    
-    /*MakeButton *b = [[MakeButton alloc] initWithSize:CGSizeMake(768, 1024)];
-    SKView *view = (SKView *) self.view;
-    [view presentScene:b];*/
 }
 
 - (void)didReceiveMemoryWarning {

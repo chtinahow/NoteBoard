@@ -15,6 +15,8 @@
 
 @property BOOL created;
 
+@property UIScrollView *scrollView;
+
 @end
 
 @implementation NotesSection{
@@ -25,25 +27,37 @@
 
 #pragma mark
 
+- (id)initWithSize:(CGSize)size
+{
+    if (self = [super initWithSize:size]) {
+        CGSize layerSize        = CGSizeMake(768, 200);
+        CGPoint layerPosition   = CGPointMake(20, 500);
+        CGRect viewFrame = CGRectMake(layerPosition.x, layerPosition.y, layerSize.width-50, layerSize.height);
+        _scrollView = [[UIScrollView alloc] initWithFrame:viewFrame];
+        _scrollView.contentSize                     = CGSizeMake(120, 2000);
+        _scrollView.scrollEnabled                   = YES;
+        _scrollView.showsVerticalScrollIndicator  = YES;
+        _scrollView.backgroundColor                 = [UIColor grayColor];
+    }
+    
+    return self;
+}
+
 - (void) didMoveToView:(SKView *)view{
     if(!self.created){
-        UIScrollView *scrollview = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        scrollview.scrollEnabled = YES;
-        scrollview.pagingEnabled = YES;
-        NSInteger viewcount= 4;
-        for(int i = 0; i< viewcount; i++) {
-            
-            CGFloat y = i * self.view.frame.size.height;
-            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, y,self.view.frame.size.width, self .view.frame.size.height)];
-            view.backgroundColor = [UIColor grayColor];
-            [scrollview addSubview:view];
-        }
-        scrollview.contentSize = CGSizeMake(self.view.frame.size.width, self.view.frame.size.height *viewcount);
-        [self.view addSubview:scrollview];
         [self createScene];
         self.created = YES;
     }
+    [self.view addSubview:_scrollView];
 }
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
+    
+    [_scrollView removeFromSuperview];
+}
+
 
 #pragma mark
 
