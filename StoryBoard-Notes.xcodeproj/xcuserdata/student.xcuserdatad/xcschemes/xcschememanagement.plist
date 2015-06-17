@@ -4,12 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>LandScapeV2 2.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
-		<key>LandScapeV2.xcscheme</key>
+		<key>StoryBoard-Notes.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -17,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2693DF581B2F1C2F00D2FBB9</key>
+		<key>3F2858F11B30D29C00CE318E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2693DF711B2F1C3000D2FBB9</key>
+		<key>3F28590A1B30D29C00CE318E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

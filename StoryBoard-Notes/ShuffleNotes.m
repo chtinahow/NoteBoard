@@ -1,16 +1,15 @@
 //
-//  LandScapeCalcNotes.m
-//  LandScapeV2
+//  ShuffleNotes.m
+//  StoryBoard-Notes
 //
 //  Created by Student on 6/16/15.
 //  Copyright (c) 2015 Student. All rights reserved.
 //
 
-#import "LandScapeCalcNotes.h"
-#import "ViewController.h"
-#import "NotesSectionViewController.h"
+#import "ShuffleNotes.h"
+#import "NotesSection.h"
 
-@interface LandScapeCalcNotes()
+@interface ShuffleNotes()
 
 @property BOOL created;
 
@@ -20,10 +19,9 @@
 
 @property SKSpriteNode *outlineDragNode;
 
-
 @end
 
-@implementation LandScapeCalcNotes
+@implementation ShuffleNotes
 
 - (void)didMoveToView: (SKView *) view{
     if (!self.created) {
@@ -81,7 +79,6 @@
     [self addChild:newNode];
 }
 
-
 #pragma mark
 
 - (SKSpriteNode *)paperNode{
@@ -94,7 +91,6 @@
 
 #pragma mark
 
-//papers that are not currently clickable
 - (SKSpriteNode *)paperNode2{
     SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(300, 200)];
     
@@ -123,7 +119,6 @@
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     _tappedTwice = NO;
     UITouch *touch = [touches anyObject];
-    
     CGPoint scenePosition = [touch locationInNode:self];
     
     SKNode *checkNode = [self nodeAtPoint:scenePosition];
@@ -131,11 +126,13 @@
     if(checkNode && ([checkNode.name hasPrefix:@"newNode"] || [checkNode.name hasPrefix:@"newNode2"] || [checkNode.name hasPrefix:@"newNode3"])){
         if([touch tapCount] == 2){
             _tappedTwice = YES;
-            [self.view.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
+            NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
+            SKView *view = (SKView *) self.view;
+            SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+            [view presentScene:nn transition:doors];
         }
         else if([touch tapCount] == 1 && !_tappedTwice){
             _activeDragNode = (SKSpriteNode *)checkNode;
-        
         }
     }
 }
@@ -158,5 +155,3 @@
 }
 
 @end
-
-

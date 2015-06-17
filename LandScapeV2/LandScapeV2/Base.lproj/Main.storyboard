@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MO6-Rq-aUg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MO6-Rq-aUg">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--Formulas-->
@@ -150,7 +150,7 @@
         <!--Notes-->
         <scene sceneID="J0X-Ac-5uJ">
             <objects>
-                <viewController id="VH8-EP-cr8" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="notes" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VH8-EP-cr8" customClass="NotesSectionViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wXe-3M-LaZ"/>
                         <viewControllerLayoutGuide type="bottom" id="G6k-B6-evY"/>
@@ -192,7 +192,7 @@
         <!--View Controller-->
         <scene sceneID="I7E-Mh-5H1">
             <objects>
-                <viewController id="MO6-Rq-aUg" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="mainView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MO6-Rq-aUg" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BEe-Sh-q5y"/>
                         <viewControllerLayoutGuide type="bottom" id="Mlx-Cm-J1h"/>
@@ -207,9 +207,6 @@
                                 <state key="normal" title="Calculus II">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="304" y="168" width="159" height="54"/>
-                                </variation>
                                 <connections>
                                     <segue destination="XmR-QZ-1XD" kind="presentation" id="KuU-Ey-zeR"/>
                                 </connections>
@@ -280,7 +277,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="nZH-Bg-bGe">
             <objects>
-                <tabBarController id="Vdz-2O-7Qx" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabby" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vdz-2O-7Qx" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="LHo-Es-rMH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -335,6 +332,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kwB-Gs-6SA"/>
+        <segue reference="13l-3X-30f"/>
     </inferredMetricsTieBreakers>
 </document>

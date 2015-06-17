@@ -18,6 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view.
     SKView *spriteView = (SKView *) self.view;
     spriteView.showsDrawCount = YES;
@@ -27,6 +28,7 @@
 
 -(void) viewWillAppear:(BOOL)animated{
     LandScapeCalcNotes *math = [[LandScapeCalcNotes alloc] initWithSize:CGSizeMake(768, 1024)];
+    math.notesy = self;
     SKView *view = (SKView *) self.view;
     [view presentScene:math];
 }

@@ -6,17 +6,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LandScapeV2/NotesViewController.h"
-            timestampString = "456183522.8754"
+            filePath = "StoryBoard-Notes/Definitions.m"
+            timestampString = "456250104.376078"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "@interface NotesViewController"
-            landmarkType = "2">
+            startingLineNumber = "284"
+            endingLineNumber = "284"
+            landmarkName = "-touchesBegan:withEvent:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

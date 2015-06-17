@@ -7,9 +7,10 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
-#import "ViewController.h"
+#import "NotesViewController.h"
 
 @interface LandScapeCalcNotes : SKScene
 
+@property (nonatomic, weak) NotesViewController *notesy;
 
 @end

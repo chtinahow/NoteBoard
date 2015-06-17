@@ -16,6 +16,7 @@
 		2693DF791B2F1C3000D2FBB9 /* LandScapeV2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2693DF781B2F1C3000D2FBB9 /* LandScapeV2Tests.m */; };
 		3F195EDD1B306C65007232AF /* LandScapeCalcNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */; };
 		3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EE41B3079BF007232AF /* NotesViewController.m */; };
+		3F2858E51B30BC1200CE318E /* NotesSectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2858E41B30BC1200CE318E /* NotesSectionViewController.m */; };
 		3FC0FA8D1B305DD700B9E5F5 /* CalculusNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0FA8C1B305DD700B9E5F5 /* CalculusNotes.m */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,8 @@
 		3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandScapeCalcNotes.m; sourceTree = "<group>"; };
 		3F195EE31B3079BF007232AF /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesViewController.h; path = ../LandScapeV2/NotesViewController.h; sourceTree = "<group>"; };
 		3F195EE41B3079BF007232AF /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesViewController.m; path = ../LandScapeV2/NotesViewController.m; sourceTree = "<group>"; };
+		3F2858E31B30BC1200CE318E /* NotesSectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesSectionViewController.h; sourceTree = "<group>"; };
+		3F2858E41B30BC1200CE318E /* NotesSectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesSectionViewController.m; sourceTree = "<group>"; };
 		3FC0FA8B1B305DD700B9E5F5 /* CalculusNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculusNotes.h; path = "../../../Notes 8/Notes/CalculusNotes.h"; sourceTree = "<group>"; };
 		3FC0FA8C1B305DD700B9E5F5 /* CalculusNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculusNotes.m; path = "../../../Notes 8/Notes/CalculusNotes.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +105,8 @@
 				2693DF691B2F1C2F00D2FBB9 /* Images.xcassets */,
 				2693DF6B1B2F1C3000D2FBB9 /* LaunchScreen.xib */,
 				2693DF5C1B2F1C2F00D2FBB9 /* Supporting Files */,
+				3F2858E31B30BC1200CE318E /* NotesSectionViewController.h */,
+				3F2858E41B30BC1200CE318E /* NotesSectionViewController.m */,
 			);
 			path = LandScapeV2;
 			sourceTree = "<group>";
@@ -234,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F2858E51B30BC1200CE318E /* NotesSectionViewController.m in Sources */,
 				3F195EDD1B306C65007232AF /* LandScapeCalcNotes.m in Sources */,
 				2693DF651B2F1C2F00D2FBB9 /* ViewController.m in Sources */,
 				3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */,
