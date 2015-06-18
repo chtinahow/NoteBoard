@@ -16,7 +16,6 @@
 		2693DF791B2F1C3000D2FBB9 /* LandScapeV2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2693DF781B2F1C3000D2FBB9 /* LandScapeV2Tests.m */; };
 		3F195EDD1B306C65007232AF /* LandScapeCalcNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */; };
 		3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EE41B3079BF007232AF /* NotesViewController.m */; };
-		3FC0FA8D1B305DD700B9E5F5 /* CalculusNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC0FA8C1B305DD700B9E5F5 /* CalculusNotes.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +46,6 @@
 		3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandScapeCalcNotes.m; sourceTree = "<group>"; };
 		3F195EE31B3079BF007232AF /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesViewController.h; path = ../LandScapeV2/NotesViewController.h; sourceTree = "<group>"; };
 		3F195EE41B3079BF007232AF /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesViewController.m; path = ../LandScapeV2/NotesViewController.m; sourceTree = "<group>"; };
-		3FC0FA8B1B305DD700B9E5F5 /* CalculusNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CalculusNotes.h; path = "../../../Notes 8/Notes/CalculusNotes.h"; sourceTree = "<group>"; };
-		3FC0FA8C1B305DD700B9E5F5 /* CalculusNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalculusNotes.m; path = "../../../Notes 8/Notes/CalculusNotes.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				2693DF601B2F1C2F00D2FBB9 /* AppDelegate.h */,
-				3FC0FA8B1B305DD700B9E5F5 /* CalculusNotes.h */,
-				3FC0FA8C1B305DD700B9E5F5 /* CalculusNotes.m */,
 				3F195EDB1B306C65007232AF /* LandScapeCalcNotes.h */,
 				3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */,
 				2693DF611B2F1C2F00D2FBB9 /* AppDelegate.m */,
@@ -239,7 +234,6 @@
 				3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */,
 				2693DF621B2F1C2F00D2FBB9 /* AppDelegate.m in Sources */,
 				2693DF5F1B2F1C2F00D2FBB9 /* main.m in Sources */,
-				3FC0FA8D1B305DD700B9E5F5 /* CalculusNotes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

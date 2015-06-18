@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../LandScapeV2/NoteViewController.h">
+   </FileRef>
+   <FileRef
+      location = "group:../LandScapeV2/NoteViewController.m">
+   </FileRef>
+   <FileRef
       location = "self:LandScapeV2.xcodeproj">
    </FileRef>
 </Workspace>
