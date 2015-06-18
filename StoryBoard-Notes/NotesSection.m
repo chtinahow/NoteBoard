@@ -30,8 +30,8 @@
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
-        CGSize layerSize        = CGSizeMake(768, 200);
-        CGPoint layerPosition   = CGPointMake(20, 500);
+        CGSize layerSize        = CGSizeMake(768, 300);
+        CGPoint layerPosition   = CGPointMake(20, 400);
         CGRect viewFrame = CGRectMake(layerPosition.x, layerPosition.y, layerSize.width-50, layerSize.height);
         _scrollView = [[UIScrollView alloc] initWithFrame:viewFrame];
         _scrollView.contentSize                     = CGSizeMake(120, 2000);

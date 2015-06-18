@@ -15,16 +15,52 @@
 
 @property BOOL created;
 
+@property UIScrollView *scrollView;
+
+@property UITextView *label;
+
+
 @end
 
 @implementation Definitions{
     SKSpriteNode *assignButton;
     SKSpriteNode *fLink;
     SKSpriteNode *nLink;
-    SKSpriteNode *ex1;
-    SKSpriteNode *ex2;
-    SKSpriteNode *ex3;
-    SKSpriteNode *ex4;
+    UIButton *button;
+    UIButton *seeMore;
+    UIView *view;
+}
+
+- (id)initWithSize:(CGSize)size
+{
+    if (self = [super initWithSize:size]) {
+        //The UIScroll section
+        CGSize layerSize        = CGSizeMake(768, 300);
+        CGPoint layerPosition   = CGPointMake(20, 400);
+        CGRect viewFrame = CGRectMake(layerPosition.x, layerPosition.y, layerSize.width-50, layerSize.height);
+        _scrollView = [[UIScrollView alloc] initWithFrame:viewFrame];
+        _scrollView.contentSize                     = CGSizeMake(120, 2000);
+        _scrollView.scrollEnabled                   = YES;
+        _scrollView.showsVerticalScrollIndicator  = YES;
+        _scrollView.backgroundColor                 = [UIColor whiteColor];
+        
+        //make an example button
+        UIButton *b = [self makeButton];
+        b.frame = CGRectMake(500, 20, 160, 40);
+        [b addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+        [b setTitle:@"Example 1" forState:UIControlStateNormal];
+        [_scrollView addSubview:b];
+        
+        //text to go with example
+        UITextView *text = [self makeText];
+        text.text = @"Proof by Contradiction: fdsjkgvkjebdfgkjvbkdfg sdvjnlsd sdjnfjwegjb sdbjwbrgsnf osdbf";
+        text.scrollEnabled = NO;
+        [_scrollView addSubview:text];
+        
+        
+    }
+    
+    return self;
 }
 
 - (void) didMoveToView:(SKView *)view{
@@ -32,6 +68,14 @@
         [self createScene];
         self.created = YES;
     }
+    [self.view addSubview:_scrollView];
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
+    
+    [_scrollView removeFromSuperview];
 }
 
 #pragma mark
@@ -63,64 +107,6 @@
     title.position = CGPointMake(0, 230);
     [pap addChild:title];
     
-    //add examples and buttons
-    ex1 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(250, 25)];
-    ex1.position = CGPointMake(250, 180);
-    ex1.name = @"eg1";
-    [pap addChild:ex1];
-    
-    SKLabelNode *eg = [self examplesTitle];
-    eg.position = CGPointMake(250, 175);
-    eg.name = @"eg1";
-    [pap addChild:eg];
-    
-    ex2 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(250, 25)];
-    ex2.position = CGPointMake(250, 100);
-    ex2.name = @"eg2";
-    [pap addChild:ex2];
-    
-    SKLabelNode *eg2 = [self examplesTitle];
-    eg2.position = CGPointMake(250, 95);
-    eg2.name = @"eg2";
-    [pap addChild:eg2];
-    
-    ex3 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(250, 25)];
-    ex3.position = CGPointMake(250, 20);
-    ex3.name = @"eg3";
-    [pap addChild:ex3];
-    
-    SKLabelNode *eg3 = [self examplesTitle];
-    eg3.position = CGPointMake(250, 15);
-    eg3.name = @"eg3";
-    [pap addChild:eg3];
-    
-    ex4 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(250, 25)];
-    ex4.position = CGPointMake(250, -60);
-    ex4.name = @"eg4";
-    [pap addChild:ex4];
-    
-    SKLabelNode *eg4 = [self examplesTitle];
-    eg4.position = CGPointMake(250, -65);
-    eg4.name = @"eg4";
-    [pap addChild:eg4];
-    
-    //add def examples
-    SKNode *e1 = [self exDef1];
-    e1.position = CGPointMake(-250, 175);
-    [pap addChild:e1];
-    
-    SKNode *e2 = [self exDef2];
-    e2.position = CGPointMake(-250, 95);
-    [pap addChild:e2];
-    
-    SKNode *e3 = [self exDef1];
-    e3.position = CGPointMake(-250, 15);
-    [pap addChild:e3];
-    
-    SKNode *e4 = [self exDef2];
-    e4.position = CGPointMake(-250, -65);
-    [pap addChild:e4];
-    
     //add first Link (to formula section)
     fLink = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(350, 30)];
     fLink.position = CGPointMake(-250, -340);
@@ -145,7 +131,6 @@
     
     [self addChild:pap];
 }
-
 #pragma mark
 
 - (SKSpriteNode *)paperNode{
@@ -188,13 +173,40 @@
 }
 
 #pragma mark
+//make text
+-(UITextView *)makeText{
+    CGRect frame = CGRectMake(0, 0, 200, 70);
+    _label = [[UITextView alloc] initWithFrame:frame];
+    _label.font = [UIFont systemFontOfSize:18];
+    return _label;
+}
 
-- (SKLabelNode *) examplesTitle{
-    SKLabelNode *eg = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    eg.text = @"Examples";
-    eg.fontColor = [SKColor blackColor];
-    eg.fontSize = 20;
-    return eg;
+#pragma mark
+//make actual button
+-(UIButton *)makeButton{
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.backgroundColor = [UIColor grayColor];
+    
+    return button;
+}
+
+-(IBAction)buttonClick{
+    NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
+    SKView *view = (SKView *) self.view;
+    SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+    [view presentScene:nn transition:doors];
+}
+
+- (UITextView *) seeMoreText{
+    CGRect frame = CGRectMake(0, 0, 200, 70);
+    UITextView *text = [[UITextView alloc] initWithFrame:frame];
+    text.text = @"establishes the truth of validity of a proposition";
+    text.font = [UIFont systemFontOfSize:15];
+    return text;
+}
+
+-(IBAction)seeMoreB{
+    [self seeMoreText];
 }
 
 #pragma mark
@@ -279,18 +291,6 @@
         if([node.name isEqualToString:@"assign"]){
             assignButton.alpha = 0.5;
         }
-        if([node.name isEqualToString:@"eg1"]){
-            ex1.alpha = 0.5;
-        }
-        if([node.name isEqualToString:@"eg2"]){
-            ex2.alpha = 0.5;
-        }
-        if([node.name isEqualToString:@"eg3"]){
-            ex3.alpha = 0.5;
-        }
-        if([node.name isEqualToString:@"eg4"]){
-            ex4.alpha = 0.5;
-        }
     }
 }
 
@@ -319,18 +319,6 @@
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:aa transition:doors];
-        }
-        if(ex1.alpha == 0.5 && [node.name isEqualToString:@"eg1"]){
-            ex1.alpha = 1.0;
-        }
-        if(ex2.alpha == 0.5 && [node.name isEqualToString:@"eg2"]){
-            ex2.alpha = 1.0;
-        }
-        if(ex3.alpha == 0.5 && [node.name isEqualToString:@"eg3"]){
-            ex3.alpha = 1.0;
-        }
-        if(ex4.alpha == 0.5 && [node.name isEqualToString:@"eg4"]){
-            ex4.alpha = 1.0;
         }
     }
 }
