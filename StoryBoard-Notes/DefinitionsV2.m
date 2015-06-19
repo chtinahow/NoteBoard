@@ -210,19 +210,20 @@
 }
  
  -(IBAction)seeMoreB{
-     _label = [[UITextView alloc] initWithFrame:CGRectMake(0, 60, 100, 200)];
+     _label = [[UITextView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
      [_label setFont:[UIFont fontWithName:@"Enriqueta" size:15]];
-     [_label setScrollEnabled:NO];
+     [_label setScrollEnabled:YES];
      [_label setUserInteractionEnabled:NO];
-     [_label setText:@"establishes the truth of validity of a proposition"];
+     [_label setText:@"establishes the truth of validity of a proposition kfhbvek fkbskdfjcbsd fkwvdscbks caekhfvekhsd vkebvsb fskuhcsdkjf sdifukhcsfkjg idsfgcuishdf sidgficskhdfouh"];
+     [cMore removeFromSuperview];
      
      cLess = [self makeButton];
-     cLess.frame = CGRectMake(0, 40, 50, 20);
+     cLess.frame = CGRectMake(110, 150, 50, 20);
      [cLess setTitle:@"Less" forState:UIControlStateNormal];
      [cLess addTarget:self action:@selector(seeLessB) forControlEvents:UIControlEventTouchUpInside];
      [_scrollView addSubview:cLess];
-     
      [_scrollView addSubview:_label];
+     [_label sizeToFit];
  }
 
 -(IBAction)seeLessB{
@@ -230,6 +231,7 @@
     cMore.frame = CGRectMake(0, 40, 50, 20);
     [cMore addTarget:self action:@selector(seeMoreB) forControlEvents:UIControlEventTouchUpInside];
     [cMore setTitle:@"More" forState:UIControlStateNormal];
+    [cLess removeFromSuperview];
     [_label removeFromSuperview];
     [_scrollView addSubview:cMore];
 }
