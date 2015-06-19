@@ -28,6 +28,8 @@
     SKSpriteNode *nLink;
     UIButton *button;
     UIView *seeMoveView;
+    UIButton *cLess;
+    UIButton *cMore;
 }
 
 - (id)initWithSize:(CGSize)size
@@ -50,9 +52,14 @@
         [b setTitle:@"Example 1" forState:UIControlStateNormal];
         [_scrollView addSubview:b];
         
+        UITextView *textTitle = [self makeText];
+        textTitle.text = @"Proof by Contradiction";
+        [textTitle setUserInteractionEnabled:NO];
+        [_scrollView addSubview:textTitle];
+        
         //see more button
-        UIButton *cMore = [self makeButton];
-         cMore.frame = CGRectMake(0, 60, 50, 20);
+         cMore = [self makeButton];
+         cMore.frame = CGRectMake(0, 40, 50, 20);
          [cMore addTarget:self action:@selector(seeMoreB) forControlEvents:UIControlEventTouchUpInside];
          [cMore setTitle:@"More" forState:UIControlStateNormal];
          [_scrollView addSubview:cMore];
@@ -195,14 +202,6 @@
     [view presentScene:nn transition:doors];
 }
 
-- (UITextView *) seeMoreText{
- CGRect frame = CGRectMake(0, 0, 200, 70);
- UITextView *text = [[UITextView alloc] initWithFrame:frame];
- text.text = @"establishes the truth of validity of a proposition";
- text.font = [UIFont systemFontOfSize:15];
- return text;
- }
-
 - (void) textViewDidEndEditing:(UITextView *)textView
 {
     CGRect frame = _label.frame;
@@ -211,19 +210,29 @@
 }
  
  -(IBAction)seeMoreB{
-     //text to go with example
-     _label = [self makeText];
-     _label.text = @"Proof by Contradiction: fdsjkgvkjebdfgkjvbkdfg sdvjnlsd sdjnfjwegjb sdbjwbrgsnf osdbf";
-     //[_scrollView addSubview:_label];
- 
-     CGSize size = CGSizeMake(160, 40);
-     CGPoint position = CGPointMake(0, 60);
-    CGRect frame = CGRectMake(position.x, position.y, size.width, size.height);
-     seeMoveView = [[UIView alloc] initWithFrame:frame];
-     seeMoveView.backgroundColor = [UIColor blueColor];
-     [seeMoveView addSubview:_label];
-     [_scrollView addSubview:seeMoveView];
+     _label = [[UITextView alloc] initWithFrame:CGRectMake(0, 60, 100, 200)];
+     [_label setFont:[UIFont fontWithName:@"Enriqueta" size:15]];
+     [_label setScrollEnabled:NO];
+     [_label setUserInteractionEnabled:NO];
+     [_label setText:@"establishes the truth of validity of a proposition"];
+     
+     cLess = [self makeButton];
+     cLess.frame = CGRectMake(0, 40, 50, 20);
+     [cLess setTitle:@"Less" forState:UIControlStateNormal];
+     [cLess addTarget:self action:@selector(seeLessB) forControlEvents:UIControlEventTouchUpInside];
+     [_scrollView addSubview:cLess];
+     
+     [_scrollView addSubview:_label];
  }
+
+-(IBAction)seeLessB{
+    cMore = [self makeButton];
+    cMore.frame = CGRectMake(0, 40, 50, 20);
+    [cMore addTarget:self action:@selector(seeMoreB) forControlEvents:UIControlEventTouchUpInside];
+    [cMore setTitle:@"More" forState:UIControlStateNormal];
+    [_label removeFromSuperview];
+    [_scrollView addSubview:cMore];
+}
 
 #pragma mark
 
