@@ -8,7 +8,7 @@
 
 #import "Formulas.h"
 #import "NotesSection.h"
-#import "Definitions.h"
+#import "DefinitionsV2.h"
 #import "Assignments.h"
 
 @interface Formulas()
@@ -369,7 +369,7 @@
         }
         if(dLink.alpha == 0.5 && [node.name isEqualToString:@"def"]){
             dLink.alpha = 1.0;
-            Definitions *dd = [[Definitions alloc] initWithSize:CGSizeMake(1024, 768)];
+            DefinitionsV2 *dd = [[DefinitionsV2 alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:dd transition:doors];

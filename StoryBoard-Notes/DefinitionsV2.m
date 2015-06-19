@@ -19,17 +19,21 @@
 
 @property UITextView *label;
 
+@property UIView *largeView;
+
 
 @end
 
 @implementation DefinitionsV2{
-    SKSpriteNode *assignButton;
-    SKSpriteNode *fLink;
-    SKSpriteNode *nLink;
-    UIButton *button;
-    UIView *seeMoveView;
-    UIButton *cLess;
-    UIButton *cMore;
+    SKSpriteNode *assignButton; //link to assignments page
+    SKSpriteNode *fLink; //link to formulas page
+    SKSpriteNode *nLink; //link to notes page
+    UIButton *button; //used to make generic buttons
+    UIButton *cLess; //see less button
+    UIButton *cMore; //see more button
+    UIButton *enlarge; //button to enlarge text view
+    UIButton *shrink; //button to return to regular view
+    UIView *bView; //border for view
 }
 
 - (id)initWithSize:(CGSize)size
@@ -54,6 +58,7 @@
         
         UITextView *textTitle = [self makeText];
         textTitle.text = @"Proof by Contradiction";
+        textTitle.font = [UIFont systemFontOfSize:18];
         [textTitle setUserInteractionEnabled:NO];
         [_scrollView addSubview:textTitle];
         
@@ -182,7 +187,6 @@
 -(UITextView *)makeText{
     CGRect frame = CGRectMake(0, 0, 200, 70);
     _label = [[UITextView alloc] initWithFrame:frame];
-    _label.font = [UIFont systemFontOfSize:18];
     return _label;
 }
 
@@ -201,26 +205,26 @@
     SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
     [view presentScene:nn transition:doors];
 }
-
-- (void) textViewDidEndEditing:(UITextView *)textView
-{
-    CGRect frame = _label.frame;
-    frame.size.height = _label.contentSize.height;
-    _label.frame = frame;
-}
  
  -(IBAction)seeMoreB{
-     _label = [[UITextView alloc] initWithFrame:CGRectMake(0, 40, 100, 100)];
+     _label = [[UITextView alloc] initWithFrame:CGRectMake(0, 30, 150, 100)];
      [_label setFont:[UIFont fontWithName:@"Enriqueta" size:15]];
-     [_label setScrollEnabled:YES];
+     [_label setScrollEnabled:NO];
      [_label setUserInteractionEnabled:NO];
      [_label setText:@"establishes the truth of validity of a proposition kfhbvek fkbskdfjcbsd fkwvdscbks caekhfvekhsd vkebvsb fskuhcsdkjf sdifukhcsfkjg idsfgcuishdf sidgficskhdfouh"];
      [cMore removeFromSuperview];
      
+     enlarge = [self makeButton];
+     enlarge.frame = CGRectMake(0, 150, 80, 20);
+     [enlarge setTitle:@"Enlarge" forState:UIControlStateNormal];
+     [enlarge addTarget:self action:@selector(enlargeB) forControlEvents:UIControlEventTouchUpInside];
+     
      cLess = [self makeButton];
-     cLess.frame = CGRectMake(110, 150, 50, 20);
+     cLess.frame = CGRectMake(160, 150, 50, 20);
      [cLess setTitle:@"Less" forState:UIControlStateNormal];
      [cLess addTarget:self action:@selector(seeLessB) forControlEvents:UIControlEventTouchUpInside];
+     
+     [_scrollView addSubview:enlarge];
      [_scrollView addSubview:cLess];
      [_scrollView addSubview:_label];
      [_label sizeToFit];
@@ -233,7 +237,41 @@
     [cMore setTitle:@"More" forState:UIControlStateNormal];
     [cLess removeFromSuperview];
     [_label removeFromSuperview];
+    [enlarge removeFromSuperview];
     [_scrollView addSubview:cMore];
+}
+
+//"zooms in on text
+-(IBAction)enlargeB{
+    CGRect borderF = CGRectMake(100, 100, 470, 170);
+    bView = [[UIView alloc] initWithFrame:borderF];
+    bView.backgroundColor = [UIColor blackColor];
+    
+    CGRect zoomFrame = CGRectMake(10, 10, 450, 150);
+    _largeView = [[UIView alloc] initWithFrame:zoomFrame];
+    _largeView.backgroundColor = [UIColor whiteColor];
+    
+    CGRect textFrame = CGRectMake(0, 0, 450, 150);
+    UITextView *text = [[UITextView alloc] initWithFrame:textFrame];
+    [text setFont:[UIFont fontWithName:@"Arial-BoldMT" size:20]];
+    [text setUserInteractionEnabled:NO];
+     [text setText:@"establishes the truth of validity of a proposition kfhbvek fkbskdfjcbsd fkwvdscbks caekhfvekhsd vkebvsb fskuhcsdkjf sdifukhcsfkjg idsfgcuishdf sidgficskhdfouh"];
+    
+    shrink = [self makeButton];
+    shrink.frame = CGRectMake(350, 120, 50, 20);
+    [shrink addTarget:self action:@selector(shrinkB) forControlEvents:UIControlEventTouchUpInside];
+    [shrink setTitle:@"Shrink" forState:UIControlStateNormal];
+    
+    [_largeView addSubview:shrink];
+    [_largeView addSubview:text];
+    [bView addSubview:_largeView];
+    [_scrollView addSubview:bView];
+    [text sizeToFit];
+}
+
+//goes back to original page
+-(IBAction)shrinkB{
+    [bView removeFromSuperview];
 }
 
 #pragma mark
