@@ -27,8 +27,8 @@
     SKSpriteNode *fLink;
     SKSpriteNode *nLink;
     UIButton *button;
-    UIButton *seeMore;
-    UIView *view;
+    NSString *textInView;
+    UIFont *textFont;
 }
 
 - (id)initWithSize:(CGSize)size
@@ -51,13 +51,19 @@
         [b setTitle:@"Example 1" forState:UIControlStateNormal];
         [_scrollView addSubview:b];
         
-        //text to go with example
-        UITextView *text = [self makeText];
-        text.text = @"Proof by Contradiction: fdsjkgvkjebdfgkjvbkdfg sdvjnlsd sdjnfjwegjb sdbjwbrgsnf osdbf";
-        text.scrollEnabled = NO;
-        [_scrollView addSubview:text];
+        CGRect frame = CGRectMake(0, 0, 200, 70);
+        _label = [[UITextView alloc] initWithFrame:frame];
+        _label.text = @"dlajsdjk d sdnjdb sdkjb jfsbkvbk sbdfsbkjbkdb sdjf!";
+        _label.font = [UIFont systemFontOfSize:18];
+        [_scrollView addSubview:_label];
         
         
+        //see more button
+        /*UIButton *cMore = [self makeButton];
+        cMore.frame = CGRectMake(0, 60, 50, 20);
+        [cMore addTarget:self action:@selector(seeMoreB) forControlEvents:UIControlEventTouchUpInside];
+        [cMore setTitle:@"More" forState:UIControlStateNormal];
+        [_scrollView addSubview:cMore];*/
     }
     
     return self;
@@ -197,7 +203,14 @@
     [view presentScene:nn transition:doors];
 }
 
-- (UITextView *) seeMoreText{
+- (void) textViewDidEndEditing:(UITextView *)textView
+{
+    CGRect frame = _label.frame;
+    frame.size.height = _label.contentSize.height;
+    _label.frame = frame;
+}
+
+/*- (UITextView *) seeMoreText{
     CGRect frame = CGRectMake(0, 0, 200, 70);
     UITextView *text = [[UITextView alloc] initWithFrame:frame];
     text.text = @"establishes the truth of validity of a proposition";
@@ -206,8 +219,20 @@
 }
 
 -(IBAction)seeMoreB{
-    [self seeMoreText];
-}
+    //text to go with example
+    UITextView *text = [self makeText];
+    text.text = @"Proof by Contradiction: fdsjkgvkjebdfgkjvbkdfg sdvjnlsd sdjnfjwegjb sdbjwbrgsnf osdbf";
+    text.scrollEnabled = NO;
+    [_scrollView addSubview:text];
+    
+    CGSize size = CGSizeMake(160, 40);
+    CGPoint position = CGPointMake(0, 60);
+    CGRect frame = CGRectMake(position.x, position.y, size.width, size.height);
+    seeMoveView = [[UIView alloc] initWithFrame:frame];
+    seeMoveView.backgroundColor = [UIColor blueColor];
+    [seeMoveView addSubview:text];
+    [_scrollView addSubview:seeMoveView];
+}*/
 
 #pragma mark
 

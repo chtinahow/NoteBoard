@@ -1,35 +1,39 @@
 //
-//  NotesSection.m
+//  Definitions.m
 //  StoryBoard-Notes
 //
 //  Created by Student on 6/17/15.
 //  Copyright (c) 2015 Student. All rights reserved.
 //
 
-#import "NotesSection.h"
 #import "DefinitionsV2.h"
+#import "NotesSection.h"
 #import "Formulas.h"
 #import "Assignments.h"
 
-@interface NotesSection()
+@interface DefinitionsV2()
 
 @property BOOL created;
 
 @property UIScrollView *scrollView;
 
+@property UITextView *label;
+
+
 @end
 
-@implementation NotesSection{
+@implementation DefinitionsV2{
     SKSpriteNode *assignButton;
-    SKSpriteNode *dLink;
     SKSpriteNode *fLink;
+    SKSpriteNode *nLink;
+    UIButton *button;
+    UIView *seeMoveView;
 }
-
-#pragma mark
 
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
+        //The UIScroll section
         CGSize layerSize        = CGSizeMake(768, 300);
         CGPoint layerPosition   = CGPointMake(20, 400);
         CGRect viewFrame = CGRectMake(layerPosition.x, layerPosition.y, layerSize.width-50, layerSize.height);
@@ -37,7 +41,21 @@
         _scrollView.contentSize                     = CGSizeMake(120, 2000);
         _scrollView.scrollEnabled                   = YES;
         _scrollView.showsVerticalScrollIndicator  = YES;
-        _scrollView.backgroundColor                 = [UIColor grayColor];
+        _scrollView.backgroundColor                 = [UIColor whiteColor];
+        
+        //make an example button
+        UIButton *b = [self makeButton];
+        b.frame = CGRectMake(500, 20, 160, 40);
+        [b addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+        [b setTitle:@"Example 1" forState:UIControlStateNormal];
+        [_scrollView addSubview:b];
+        
+        //see more button
+        UIButton *cMore = [self makeButton];
+         cMore.frame = CGRectMake(0, 60, 50, 20);
+         [cMore addTarget:self action:@selector(seeMoreB) forControlEvents:UIControlEventTouchUpInside];
+         [cMore setTitle:@"More" forState:UIControlStateNormal];
+         [_scrollView addSubview:cMore];
     }
     
     return self;
@@ -57,7 +75,6 @@
     
     [_scrollView removeFromSuperview];
 }
-
 
 #pragma mark
 
@@ -84,11 +101,9 @@
     [pap addChild:assign];
     
     //add title
-    SKLabelNode *title = [self notesTitle];
+    SKLabelNode *title = [self dueTitle];
     title.position = CGPointMake(0, 230);
     [pap addChild:title];
-    
-    //added note to just do a quick link back
     
     //add first Link (to formula section)
     fLink = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(350, 30)];
@@ -102,19 +117,18 @@
     [pap addChild:form];
     
     //add second Link (to notes section)
-    dLink = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(350, 30)];
-    dLink.position = CGPointMake(250, -340);
-    dLink.name = @"def";
-    [pap addChild:dLink];
+    nLink = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(350, 30)];
+    nLink.position = CGPointMake(250, -340);
+    [pap addChild:nLink];
     
-    //Definitions title
-    SKLabelNode *defs = [self definition];
-    defs.position = CGPointMake(250, -350);
-    [pap addChild:defs];
+    //Notes title
+    SKLabelNode *notes = [self note];
+    notes.position = CGPointMake(250, -350);
+    notes.name = @"n";
+    [pap addChild:notes];
     
     [self addChild:pap];
 }
-
 #pragma mark
 
 - (SKSpriteNode *)paperNode{
@@ -147,13 +161,112 @@
 
 #pragma mark
 
-- (SKLabelNode *) notesTitle{
+- (SKLabelNode *) dueTitle{
     SKLabelNode * title = [SKLabelNode labelNodeWithFontNamed: @"Arial-BoldMT"];
     title.name = @"title";
-    title.text = @"Notes";
+    title.text = @"Definitions";
     title.fontSize = 40;
     title.fontColor = [SKColor blackColor];
     return title;
+}
+
+#pragma mark
+//make text
+-(UITextView *)makeText{
+    CGRect frame = CGRectMake(0, 0, 200, 70);
+    _label = [[UITextView alloc] initWithFrame:frame];
+    _label.font = [UIFont systemFontOfSize:18];
+    return _label;
+}
+
+#pragma mark
+//make actual button
+-(UIButton *)makeButton{
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.backgroundColor = [UIColor grayColor];
+    
+    return button;
+}
+
+-(IBAction)buttonClick{
+    NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
+    SKView *view = (SKView *) self.view;
+    SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+    [view presentScene:nn transition:doors];
+}
+
+- (UITextView *) seeMoreText{
+ CGRect frame = CGRectMake(0, 0, 200, 70);
+ UITextView *text = [[UITextView alloc] initWithFrame:frame];
+ text.text = @"establishes the truth of validity of a proposition";
+ text.font = [UIFont systemFontOfSize:15];
+ return text;
+ }
+
+- (void) textViewDidEndEditing:(UITextView *)textView
+{
+    CGRect frame = _label.frame;
+    frame.size.height = _label.contentSize.height;
+    _label.frame = frame;
+}
+ 
+ -(IBAction)seeMoreB{
+     //text to go with example
+     _label = [self makeText];
+     _label.text = @"Proof by Contradiction: fdsjkgvkjebdfgkjvbkdfg sdvjnlsd sdjnfjwegjb sdbjwbrgsnf osdbf";
+     //[_scrollView addSubview:_label];
+ 
+     CGSize size = CGSizeMake(160, 40);
+     CGPoint position = CGPointMake(0, 60);
+    CGRect frame = CGRectMake(position.x, position.y, size.width, size.height);
+     seeMoveView = [[UIView alloc] initWithFrame:frame];
+     seeMoveView.backgroundColor = [UIColor blueColor];
+     [seeMoveView addSubview:_label];
+     [_scrollView addSubview:seeMoveView];
+ }
+
+#pragma mark
+
+//example definitions
+
+- (SKNode *) exDef1{
+    SKNode *nerdText = [SKNode node];
+    SKLabelNode *a = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
+    a.fontSize = 15;
+    a.fontColor = [SKColor blackColor];
+    SKLabelNode *b = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
+    b.fontSize = 12;
+    b.fontColor = [SKColor blackColor];
+    NSString *st1 = @"Proof by Contradiction";
+    NSString *st2 = @"establishes the truth of validity of a proposition";
+    b.position = CGPointMake(b.position.x, b.position.y - 20);
+    a.text = st1;
+    b.text = st2;
+    [nerdText addChild:a];
+    [nerdText addChild:b];
+    nerdText.position = CGPointMake(150.0, 250.0);
+    
+    return nerdText;
+}
+
+- (SKNode *) exDef2{
+    SKNode *nerdText = [SKNode node];
+    SKLabelNode *a = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
+    a.fontSize = 15;
+    a.fontColor = [SKColor blackColor];
+    SKLabelNode *b = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
+    b.fontSize = 12;
+    b.fontColor = [SKColor blackColor];
+    NSString *st1 = @"Proof by Induction";
+    NSString *st2 = @"when n=1, n=k, therefore, n = k + 1";
+    b.position = CGPointMake(b.position.x, b.position.y - 20);
+    a.text = st1;
+    b.text = st2;
+    [nerdText addChild:a];
+    [nerdText addChild:b];
+    nerdText.position = CGPointMake(150.0, 250.0);
+    
+    return nerdText;
 }
 
 #pragma mark
@@ -169,14 +282,13 @@
 
 #pragma mark
 
-
-- (SKLabelNode *) definition{
-    SKLabelNode *def = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    def.name = @"def";
-    def.text = @"Definitions";
-    def.fontColor = [SKColor redColor];
-    def.fontSize = 33;
-    return def;
+- (SKLabelNode *) note{
+    SKLabelNode *n = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
+    n.name = @"n";
+    n.text = @"Notes";
+    n.fontColor = [SKColor redColor];
+    n.fontSize = 33;
+    return n;
 }
 
 #pragma mark
@@ -186,8 +298,8 @@
         CGPoint location = [touch locationInNode:self];
         SKNode *node = [self nodeAtPoint:location];
         
-        if([node.name isEqualToString:@"def"]){
-            dLink.alpha = 0.5;
+        if([node.name isEqualToString:@"n"]){
+            nLink.alpha = 0.5;
         }
         if([node.name isEqualToString:@"form"]){
             fLink.alpha = 0.5;
@@ -203,12 +315,12 @@
     for(UITouch *touch in touches){
         CGPoint location = [touch locationInNode:self];
         SKNode *node = [self nodeAtPoint:location];
-        if(dLink.alpha == 0.5 && [node.name isEqualToString:@"def"]){
-            dLink.alpha = 1.0;
-            DefinitionsV2 *dd = [[DefinitionsV2 alloc] initWithSize:CGSizeMake(1024, 768)];
+        if(nLink.alpha == 0.5 && [node.name isEqualToString:@"n"]){
+            nLink.alpha = 1.0;
+            NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
-            [view presentScene:dd transition:doors];
+            [view presentScene:nn transition:doors];
         }
         if(fLink.alpha == 0.5 && [node.name isEqualToString:@"form"]){
             fLink.alpha = 1.0;
@@ -226,5 +338,5 @@
         }
     }
 }
-
 @end
+
