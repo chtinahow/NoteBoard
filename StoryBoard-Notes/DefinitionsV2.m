@@ -6,12 +6,12 @@
 //  Copyright (c) 2015 Student. All rights reserved.
 //
 
-#import "Definitions.h"
+#import "DefinitionsV2.h"
 #import "NotesSection.h"
 #import "Formulas.h"
 #import "Assignments.h"
 
-@interface Definitions()
+@interface DefinitionsV2()
 
 @property BOOL created;
 
@@ -19,16 +19,21 @@
 
 @property UITextView *label;
 
+@property UIView *largeView;
+
 
 @end
 
-@implementation Definitions{
-    SKSpriteNode *assignButton;
-    SKSpriteNode *fLink;
-    SKSpriteNode *nLink;
-    UIButton *button;
-    NSString *textInView;
-    UIFont *textFont;
+@implementation DefinitionsV2{
+    SKSpriteNode *assignButton; //link to assignments page
+    SKSpriteNode *fLink; //link to formulas page
+    SKSpriteNode *nLink; //link to notes page
+    UIButton *button; //used to make generic buttons
+    UIButton *cLess; //see less button
+    UIButton *cMore; //see more button
+    UIButton *enlarge; //button to enlarge text view
+    UIButton *shrink; //button to return to regular view
+    UIView *bView; //border for view
 }
 
 - (id)initWithSize:(CGSize)size
@@ -51,19 +56,18 @@
         [b setTitle:@"Example 1" forState:UIControlStateNormal];
         [_scrollView addSubview:b];
         
-        CGRect frame = CGRectMake(0, 0, 200, 70);
-        _label = [[UITextView alloc] initWithFrame:frame];
-        _label.text = @"dlajsdjk d sdnjdb sdkjb jfsbkvbk sbdfsbkjbkdb sdjf!";
-        _label.font = [UIFont systemFontOfSize:18];
-        [_scrollView addSubview:_label];
-        
+        UITextView *textTitle = [self makeText];
+        textTitle.text = @"Proof by Contradiction";
+        textTitle.font = [UIFont systemFontOfSize:18];
+        [textTitle setUserInteractionEnabled:NO];
+        [_scrollView addSubview:textTitle];
         
         //see more button
-        /*UIButton *cMore = [self makeButton];
-        cMore.frame = CGRectMake(0, 60, 50, 20);
+        cMore = [self makeButton];
+        cMore.frame = CGRectMake(0, 40, 50, 20);
         [cMore addTarget:self action:@selector(seeMoreB) forControlEvents:UIControlEventTouchUpInside];
         [cMore setTitle:@"More" forState:UIControlStateNormal];
-        [_scrollView addSubview:cMore];*/
+        [_scrollView addSubview:cMore];
     }
     
     return self;
@@ -183,7 +187,6 @@
 -(UITextView *)makeText{
     CGRect frame = CGRectMake(0, 0, 200, 70);
     _label = [[UITextView alloc] initWithFrame:frame];
-    _label.font = [UIFont systemFontOfSize:18];
     return _label;
 }
 
@@ -203,36 +206,73 @@
     [view presentScene:nn transition:doors];
 }
 
-- (void) textViewDidEndEditing:(UITextView *)textView
-{
-    CGRect frame = _label.frame;
-    frame.size.height = _label.contentSize.height;
-    _label.frame = frame;
-}
-
-/*- (UITextView *) seeMoreText{
-    CGRect frame = CGRectMake(0, 0, 200, 70);
-    UITextView *text = [[UITextView alloc] initWithFrame:frame];
-    text.text = @"establishes the truth of validity of a proposition";
-    text.font = [UIFont systemFontOfSize:15];
-    return text;
-}
-
 -(IBAction)seeMoreB{
-    //text to go with example
-    UITextView *text = [self makeText];
-    text.text = @"Proof by Contradiction: fdsjkgvkjebdfgkjvbkdfg sdvjnlsd sdjnfjwegjb sdbjwbrgsnf osdbf";
-    text.scrollEnabled = NO;
-    [_scrollView addSubview:text];
+    _label = [[UITextView alloc] initWithFrame:CGRectMake(0, 30, 150, 100)];
+    [_label setFont:[UIFont fontWithName:@"Enriqueta" size:15]];
+    [_label setScrollEnabled:NO];
+    [_label setUserInteractionEnabled:NO];
+    [_label setText:@"establishes the truth of validity of a proposition kfhbvek fkbskdfjcbsd fkwvdscbks caekhfvekhsd vkebvsb fskuhcsdkjf sdifukhcsfkjg idsfgcuishdf sidgficskhdfouh"];
+    [cMore removeFromSuperview];
     
-    CGSize size = CGSizeMake(160, 40);
-    CGPoint position = CGPointMake(0, 60);
-    CGRect frame = CGRectMake(position.x, position.y, size.width, size.height);
-    seeMoveView = [[UIView alloc] initWithFrame:frame];
-    seeMoveView.backgroundColor = [UIColor blueColor];
-    [seeMoveView addSubview:text];
-    [_scrollView addSubview:seeMoveView];
-}*/
+    enlarge = [self makeButton];
+    enlarge.frame = CGRectMake(0, 150, 80, 20);
+    [enlarge setTitle:@"Enlarge" forState:UIControlStateNormal];
+    [enlarge addTarget:self action:@selector(enlargeB) forControlEvents:UIControlEventTouchUpInside];
+    
+    cLess = [self makeButton];
+    cLess.frame = CGRectMake(160, 150, 50, 20);
+    [cLess setTitle:@"Less" forState:UIControlStateNormal];
+    [cLess addTarget:self action:@selector(seeLessB) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_scrollView addSubview:enlarge];
+    [_scrollView addSubview:cLess];
+    [_scrollView addSubview:_label];
+    [_label sizeToFit];
+}
+
+-(IBAction)seeLessB{
+    cMore = [self makeButton];
+    cMore.frame = CGRectMake(0, 40, 50, 20);
+    [cMore addTarget:self action:@selector(seeMoreB) forControlEvents:UIControlEventTouchUpInside];
+    [cMore setTitle:@"More" forState:UIControlStateNormal];
+    [cLess removeFromSuperview];
+    [_label removeFromSuperview];
+    [enlarge removeFromSuperview];
+    [_scrollView addSubview:cMore];
+}
+
+//"zooms in on text
+-(IBAction)enlargeB{
+    CGRect borderF = CGRectMake(100, 100, 470, 170);
+    bView = [[UIView alloc] initWithFrame:borderF];
+    bView.backgroundColor = [UIColor blackColor];
+    
+    CGRect zoomFrame = CGRectMake(10, 10, 450, 150);
+    _largeView = [[UIView alloc] initWithFrame:zoomFrame];
+    _largeView.backgroundColor = [UIColor whiteColor];
+    
+    CGRect textFrame = CGRectMake(0, 0, 450, 150);
+    UITextView *text = [[UITextView alloc] initWithFrame:textFrame];
+    [text setFont:[UIFont fontWithName:@"Arial-BoldMT" size:20]];
+    [text setUserInteractionEnabled:NO];
+    [text setText:@"establishes the truth of validity of a proposition kfhbvek fkbskdfjcbsd fkwvdscbks caekhfvekhsd vkebvsb fskuhcsdkjf sdifukhcsfkjg idsfgcuishdf sidgficskhdfouh"];
+    
+    shrink = [self makeButton];
+    shrink.frame = CGRectMake(350, 120, 50, 20);
+    [shrink addTarget:self action:@selector(shrinkB) forControlEvents:UIControlEventTouchUpInside];
+    [shrink setTitle:@"Shrink" forState:UIControlStateNormal];
+    
+    [_largeView addSubview:shrink];
+    [_largeView addSubview:text];
+    [bView addSubview:_largeView];
+    [_scrollView addSubview:bView];
+    [text sizeToFit];
+}
+
+//goes back to original page
+-(IBAction)shrinkB{
+    [bView removeFromSuperview];
+}
 
 #pragma mark
 
@@ -348,4 +388,3 @@
     }
 }
 @end
-

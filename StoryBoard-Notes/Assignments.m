@@ -18,7 +18,11 @@
 
 @end
 
-@implementation Assignments
+@implementation Assignments{
+    UIButton *button;
+    UIButton *b;
+    UIButton *b2;
+}
 
 #pragma mark
 
@@ -36,11 +40,16 @@
         _scrollView.contentSize                     = CGSizeMake(120, 2000);
         _scrollView.scrollEnabled                   = YES;
         _scrollView.backgroundColor                 = [UIColor grayColor];
-        _table.contentSize = CGSizeMake(120, 2000);
-        _table.scrollEnabled = YES;
-        _table.showsVerticalScrollIndicator = YES;
-        _table.backgroundColor = [UIColor blueColor];
-
+        
+        b = [self makeButton];
+        b.frame = CGRectMake(610, 50, 30, 30);
+        [b addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b];
+        
+        b2 = [self makeButton];
+        b2.frame = CGRectMake(610, 100, 30, 30);
+        [b2 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b2];
     }
     
     return self;
@@ -145,6 +154,38 @@
 
 #pragma mark
 
+-(UIButton *) makeButton{
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.backgroundColor = [UIColor redColor];
+    return button;
+}
 
+-(IBAction)clicked: (UIButton *) pressed{
+    if(pressed == b){
+        [b setTitle:@"X" forState:UIControlStateNormal];
+        [b setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [b addTarget:self action:@selector(clickedAgain:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    if(pressed == b2) {
+        [b2 setTitle:@"X" forState:UIControlStateNormal];
+        [b2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [b2 addTarget:self action:@selector(clickedAgain:) forControlEvents:UIControlEventTouchUpInside];
+    }
+}
+
+-(IBAction)clickedAgain: (UIButton *) pressed{
+    if(pressed == b){
+        b = [self makeButton];
+        b.frame = CGRectMake(610, 50, 30, 30);
+        [b addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b];
+    }
+    if(pressed == b2){
+        b2 = [self makeButton];
+        b2.frame = CGRectMake(610, 100, 30, 30);
+        [b2 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b2];
+    }
+}
 
 @end
