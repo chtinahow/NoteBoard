@@ -22,6 +22,11 @@
     UIButton *button;
     UIButton *b;
     UIButton *b2;
+    UIButton *b3;
+    UIButton *b4;
+    UIButton *b5;
+    UIButton *b6;
+    UIButton *b7;
 }
 
 #pragma mark
@@ -47,9 +52,34 @@
         [_table addSubview:b];
         
         b2 = [self makeButton];
-        b2.frame = CGRectMake(610, 100, 30, 30);
+        b2.frame = CGRectMake(610, 95, 30, 30);
         [b2 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
         [_table addSubview:b2];
+        
+        b3 = [self makeButton];
+        b3.frame = CGRectMake(610, 140, 30, 30);
+        [b3 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b3];
+        
+        b4 = [self makeButton];
+        b4.frame = CGRectMake(610, 185, 30, 30);
+        [b4 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b4];
+        
+        b5 = [self makeButton];
+        b5.frame = CGRectMake(610, 230, 30, 30);
+        [b5 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b5];
+        
+        b6 = [self makeButton];
+        b6.frame = CGRectMake(610, 275, 30, 30);
+        [b6 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b6];
+        
+        b7 = [self makeButton];
+        b7.frame = CGRectMake(610, 320, 30, 30);
+        [b7 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b7];
     }
     
     return self;
@@ -94,7 +124,7 @@
     
     //due date
     SKLabelNode *due = [self dueDate];
-    due.position = CGPointMake(350, 130);
+    due.position = CGPointMake(0, 130);
     [pap addChild:due];
     
     [self addChild:pap];
@@ -166,10 +196,35 @@
         [b setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [b addTarget:self action:@selector(clickedAgain:) forControlEvents:UIControlEventTouchUpInside];
     }
-    if(pressed == b2) {
+    else if(pressed == b2) {
         [b2 setTitle:@"X" forState:UIControlStateNormal];
         [b2 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [b2 addTarget:self action:@selector(clickedAgain:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else if(pressed == b3) {
+        [b3 setTitle:@"X" forState:UIControlStateNormal];
+        [b3 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [b3 addTarget:self action:@selector(clickedAgain:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else if(pressed == b4) {
+        [b4 setTitle:@"X" forState:UIControlStateNormal];
+        [b4 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [b4 addTarget:self action:@selector(clickedAgain:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else if(pressed == b5) {
+        [b5 setTitle:@"X" forState:UIControlStateNormal];
+        [b5 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [b5 addTarget:self action:@selector(clickedAgain:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else if(pressed == b6) {
+        [b6 setTitle:@"X" forState:UIControlStateNormal];
+        [b6 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [b6 addTarget:self action:@selector(clickedAgain:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else if(pressed == b7) {
+        [b7 setTitle:@"X" forState:UIControlStateNormal];
+        [b7 setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [b7 addTarget:self action:@selector(clickedAgain:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
 
@@ -180,11 +235,41 @@
         [b addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
         [_table addSubview:b];
     }
-    if(pressed == b2){
+    else if(pressed == b2){
         b2 = [self makeButton];
-        b2.frame = CGRectMake(610, 100, 30, 30);
+        b2.frame = CGRectMake(610, 95, 30, 30);
         [b2 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
         [_table addSubview:b2];
+    }
+    else if(pressed == b3){
+        b3 = [self makeButton];
+        b3.frame = CGRectMake(610, 140, 30, 30);
+        [b3 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b3];
+    }
+    else if(pressed == b4){
+        b4 = [self makeButton];
+        b4.frame = CGRectMake(610, 185, 30, 30);
+        [b4 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b4];
+    }
+    else if(pressed == b5){
+        b5 = [self makeButton];
+        b5.frame = CGRectMake(610, 230, 30, 30);
+        [b5 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b5];
+    }
+    else if(pressed == b6){
+        b6 = [self makeButton];
+        b6.frame = CGRectMake(610, 275, 30, 30);
+        [b6 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b6];
+    }
+    else if(pressed == b7){
+        b7 = [self makeButton];
+        b7.frame = CGRectMake(610, 320, 30, 30);
+        [b7 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_table addSubview:b7];
     }
 }
 

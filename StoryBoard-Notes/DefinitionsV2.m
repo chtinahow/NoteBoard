@@ -29,11 +29,21 @@
     SKSpriteNode *fLink; //link to formulas page
     SKSpriteNode *nLink; //link to notes page
     UIButton *button; //used to make generic buttons
+    
+    //for example 1
     UIButton *cLess; //see less button
     UIButton *cMore; //see more button
     UIButton *enlarge; //button to enlarge text view
     UIButton *shrink; //button to return to regular view
     UIView *bView; //border for view
+    
+    //for example 2
+    UITextView *textView;
+    UIButton *cMore2;
+    UIButton *cLess2;
+    UIButton *enlarge2;
+    UIButton *shrink2;
+    UIView *bView2;
 }
 
 - (id)initWithSize:(CGSize)size
@@ -48,26 +58,7 @@
         _scrollView.scrollEnabled                   = YES;
         _scrollView.showsVerticalScrollIndicator  = YES;
         _scrollView.backgroundColor                 = [UIColor whiteColor];
-        
-        //make an example button
-        UIButton *b = [self makeButton];
-        b.frame = CGRectMake(500, 20, 160, 40);
-        [b addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-        [b setTitle:@"Example 1" forState:UIControlStateNormal];
-        [_scrollView addSubview:b];
-        
-        UITextView *textTitle = [self makeText];
-        textTitle.text = @"Proof by Contradiction";
-        textTitle.font = [UIFont systemFontOfSize:18];
-        [textTitle setUserInteractionEnabled:NO];
-        [_scrollView addSubview:textTitle];
-        
-        //see more button
-        cMore = [self makeButton];
-        cMore.frame = CGRectMake(0, 40, 50, 20);
-        [cMore addTarget:self action:@selector(seeMoreB) forControlEvents:UIControlEventTouchUpInside];
-        [cMore setTitle:@"More" forState:UIControlStateNormal];
-        [_scrollView addSubview:cMore];
+        [self createUIScene];
     }
     
     return self;
@@ -141,6 +132,51 @@
     
     [self addChild:pap];
 }
+
+#pragma mark
+
+-(void) createUIScene{
+    //make an example button
+    UIButton *b = [self makeButton];
+    b.frame = CGRectMake(500, 20, 120, 40);
+    [b addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+    [b setTitle:@"Example 1" forState:UIControlStateNormal];
+    [_scrollView addSubview:b];
+    
+    CGRect frame = CGRectMake(0, 20, 200, 70);
+    UITextView *textTitle = [[UITextView alloc] initWithFrame:frame];
+    textTitle.text = @"Proof by Contradiction";
+    textTitle.font = [UIFont systemFontOfSize:18];
+    [textTitle setUserInteractionEnabled:NO];
+    [_scrollView addSubview:textTitle];
+    
+    //example 1 see more button
+    cMore = [self makeButton];
+    cMore.frame = CGRectMake(0, 60, 50, 20);
+    [cMore addTarget:self action:@selector(seeMoreB:) forControlEvents:UIControlEventTouchUpInside];
+    [cMore setTitle:@"More" forState:UIControlStateNormal];
+    [_scrollView addSubview:cMore];
+    
+    //second example button
+    UIButton *eg = [self makeButton];
+    eg.frame = CGRectMake(500, 220, 120, 40);
+    [eg addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
+    [eg setTitle:@"Example 2" forState:UIControlStateNormal];
+    [_scrollView addSubview:eg];
+    
+    CGRect frame2 = CGRectMake(0, 240, 200, 70);
+    UITextView *textTitle2 = [[UITextView alloc] initWithFrame:frame2];
+    textTitle2.text = @"Proof by Induction";
+    textTitle2.font = [UIFont systemFontOfSize:18];
+    [textTitle2 setUserInteractionEnabled:NO];
+    [_scrollView addSubview:textTitle2];
+    
+    cMore2 = [self makeButton];
+    cMore2.frame = CGRectMake(0, 280, 50, 20);
+    [cMore2 addTarget:self action:@selector(seeMoreB:) forControlEvents:UIControlEventTouchUpInside];
+    [cMore2 setTitle:@"More" forState:UIControlStateNormal];
+    [_scrollView addSubview:cMore2];
+}
 #pragma mark
 
 - (SKSpriteNode *)paperNode{
@@ -183,14 +219,6 @@
 }
 
 #pragma mark
-//make text
--(UITextView *)makeText{
-    CGRect frame = CGRectMake(0, 0, 200, 70);
-    _label = [[UITextView alloc] initWithFrame:frame];
-    return _label;
-}
-
-#pragma mark
 //make actual button
 -(UIButton *)makeButton{
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -206,97 +234,145 @@
     [view presentScene:nn transition:doors];
 }
 
--(IBAction)seeMoreB{
-    _label = [[UITextView alloc] initWithFrame:CGRectMake(0, 30, 150, 100)];
-    [_label setFont:[UIFont fontWithName:@"Enriqueta" size:15]];
-    [_label setScrollEnabled:NO];
-    [_label setUserInteractionEnabled:NO];
-    [_label setText:@"establishes the truth of validity of a proposition kfhbvek fkbskdfjcbsd fkwvdscbks caekhfvekhsd vkebvsb fskuhcsdkjf sdifukhcsfkjg idsfgcuishdf sidgficskhdfouh"];
-    [cMore removeFromSuperview];
+-(IBAction)seeMoreB: (UIButton *)pressed {
+    if(pressed == cMore){
+        _label = [[UITextView alloc] initWithFrame:CGRectMake(0, 50, 150, 100)];
+        [_label setFont:[UIFont fontWithName:@"Enriqueta" size:15]];
+        [_label setScrollEnabled:NO];
+        [_label setUserInteractionEnabled:NO];
+        [_label setText:@"establishes the truth of validity of a proposition kfhbvek fkbskdfjcbsd fkwvdscbks caekhfvekhsd vkebvsb fskuhcsdkjf sdifukhcsfkjg idsfgcuishdf sidgficskhdfouh"];
+        [cMore removeFromSuperview];
     
-    enlarge = [self makeButton];
-    enlarge.frame = CGRectMake(0, 150, 80, 20);
-    [enlarge setTitle:@"Enlarge" forState:UIControlStateNormal];
-    [enlarge addTarget:self action:@selector(enlargeB) forControlEvents:UIControlEventTouchUpInside];
+        enlarge = [self makeButton];
+        enlarge.frame = CGRectMake(0, 160, 80, 20);
+        [enlarge setTitle:@"Enlarge" forState:UIControlStateNormal];
+        [enlarge addTarget:self action:@selector(enlargeB:) forControlEvents:UIControlEventTouchUpInside];
     
-    cLess = [self makeButton];
-    cLess.frame = CGRectMake(160, 150, 50, 20);
-    [cLess setTitle:@"Less" forState:UIControlStateNormal];
-    [cLess addTarget:self action:@selector(seeLessB) forControlEvents:UIControlEventTouchUpInside];
+        cLess = [self makeButton];
+        cLess.frame = CGRectMake(160, 160, 50, 20);
+        [cLess setTitle:@"Less" forState:UIControlStateNormal];
+        [cLess addTarget:self action:@selector(seeLessB:) forControlEvents:UIControlEventTouchUpInside];
     
-    [_scrollView addSubview:enlarge];
-    [_scrollView addSubview:cLess];
-    [_scrollView addSubview:_label];
-    [_label sizeToFit];
+        [_scrollView addSubview:enlarge];
+        [_scrollView addSubview:cLess];
+        [_scrollView addSubview:_label];
+        [_label sizeToFit];
+    }
+    else if(pressed == cMore2){
+        textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 270, 150, 100)];
+        [textView setFont:[UIFont fontWithName:@"Enriqueta" size:15]];
+        [textView setScrollEnabled:NO];
+        [textView setUserInteractionEnabled:NO];
+        [textView setText:@"when n=1, n=k, therefore, n = k + 1"];
+        [cMore2 removeFromSuperview];
+        
+        enlarge2 = [self makeButton];
+        enlarge2.frame = CGRectMake(0, 380, 80, 20);
+        [enlarge2 setTitle:@"Enlarge" forState:UIControlStateNormal];
+        [enlarge2 addTarget:self action:@selector(enlargeB:) forControlEvents:UIControlEventTouchUpInside];
+        
+        cLess2 = [self makeButton];
+        cLess2.frame = CGRectMake(160, 380, 50, 20);
+        [cLess2 setTitle:@"Less" forState:UIControlStateNormal];
+        [cLess2 addTarget:self action:@selector(seeLessB:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_scrollView addSubview:enlarge2];
+        [_scrollView addSubview:cLess2];
+        [_scrollView addSubview:textView];
+        [textView sizeToFit];
+    }
 }
 
--(IBAction)seeLessB{
-    cMore = [self makeButton];
-    cMore.frame = CGRectMake(0, 40, 50, 20);
-    [cMore addTarget:self action:@selector(seeMoreB) forControlEvents:UIControlEventTouchUpInside];
-    [cMore setTitle:@"More" forState:UIControlStateNormal];
-    [cLess removeFromSuperview];
-    [_label removeFromSuperview];
-    [enlarge removeFromSuperview];
-    [_scrollView addSubview:cMore];
+-(IBAction)seeLessB: (UIButton *)pressed{
+    if(pressed == cLess){
+        cMore = [self makeButton];
+        cMore.frame = CGRectMake(0, 60, 50, 20);
+        [cMore addTarget:self action:@selector(seeMoreB:) forControlEvents:UIControlEventTouchUpInside];
+        [cMore setTitle:@"More" forState:UIControlStateNormal];
+        [cLess removeFromSuperview];
+        [_label removeFromSuperview];
+        [enlarge removeFromSuperview];
+        [_scrollView addSubview:cMore];
+    }
+    else if(pressed == cLess2){
+        cMore2 = [self makeButton];
+        cMore2.frame = CGRectMake(0, 280, 50, 20);
+        [cMore2 addTarget:self action:@selector(seeMoreB:) forControlEvents:UIControlEventTouchUpInside];
+        [cMore2 setTitle:@"More" forState:UIControlStateNormal];
+        [cLess2 removeFromSuperview];
+        [textView removeFromSuperview];
+        [enlarge2 removeFromSuperview];
+        [_scrollView addSubview:cMore2];
+    }
 }
 
 //"zooms in on text
--(IBAction)enlargeB{
-    CGRect borderF = CGRectMake(100, 100, 470, 170);
-    bView = [[UIView alloc] initWithFrame:borderF];
-    bView.backgroundColor = [UIColor blackColor];
+-(IBAction)enlargeB: (UIButton *)pressed{
+    if(pressed == enlarge){
+        CGRect borderF = CGRectMake(100, 100, 470, 170);
+        bView = [[UIView alloc] initWithFrame:borderF];
+        bView.backgroundColor = [UIColor blackColor];
     
-    CGRect zoomFrame = CGRectMake(10, 10, 450, 150);
-    _largeView = [[UIView alloc] initWithFrame:zoomFrame];
-    _largeView.backgroundColor = [UIColor whiteColor];
+        CGRect zoomFrame = CGRectMake(10, 10, 450, 150);
+        _largeView = [[UIView alloc] initWithFrame:zoomFrame];
+        _largeView.backgroundColor = [UIColor whiteColor];
     
-    CGRect textFrame = CGRectMake(0, 0, 450, 150);
-    UITextView *text = [[UITextView alloc] initWithFrame:textFrame];
-    [text setFont:[UIFont fontWithName:@"Arial-BoldMT" size:20]];
-    [text setUserInteractionEnabled:NO];
-    [text setText:@"establishes the truth of validity of a proposition kfhbvek fkbskdfjcbsd fkwvdscbks caekhfvekhsd vkebvsb fskuhcsdkjf sdifukhcsfkjg idsfgcuishdf sidgficskhdfouh"];
+        CGRect textFrame = CGRectMake(0, 0, 450, 150);
+        UITextView *text1 = [[UITextView alloc] initWithFrame:textFrame];
+        [text1 setFont:[UIFont fontWithName:@"Arial-BoldMT" size:20]];
+        [text1 setUserInteractionEnabled:NO];
+        [text1 setText:@"establishes the truth of validity of a proposition kfhbvek fkbskdfjcbsd fkwvdscbks caekhfvekhsd vkebvsb fskuhcsdkjf sdifukhcsfkjg idsfgcuishdf sidgficskhdfouh"];
     
-    shrink = [self makeButton];
-    shrink.frame = CGRectMake(350, 120, 50, 20);
-    [shrink addTarget:self action:@selector(shrinkB) forControlEvents:UIControlEventTouchUpInside];
-    [shrink setTitle:@"Shrink" forState:UIControlStateNormal];
+        shrink = [self makeButton];
+        shrink.frame = CGRectMake(350, 120, 50, 20);
+        [shrink addTarget:self action:@selector(shrinkB:) forControlEvents:UIControlEventTouchUpInside];
+        [shrink setTitle:@"Shrink" forState:UIControlStateNormal];
     
-    [_largeView addSubview:shrink];
-    [_largeView addSubview:text];
-    [bView addSubview:_largeView];
-    [_scrollView addSubview:bView];
-    [text sizeToFit];
+        [_largeView addSubview:shrink];
+        [_largeView addSubview:text1];
+        [bView addSubview:_largeView];
+        [_scrollView addSubview:bView];
+        [text1 sizeToFit];
+    }
+    else if(pressed == enlarge2){
+        CGRect borderF = CGRectMake(100, 300, 470, 170);
+        bView2 = [[UIView alloc] initWithFrame:borderF];
+        bView2.backgroundColor = [UIColor blackColor];
+        
+        CGRect zoomFrame = CGRectMake(10, 10, 450, 150);
+        _largeView = [[UIView alloc] initWithFrame:zoomFrame];
+        _largeView.backgroundColor = [UIColor whiteColor];
+        
+        CGRect textFrame = CGRectMake(0, 0, 450, 150);
+        UITextView *text2 = [[UITextView alloc] initWithFrame:textFrame];
+        [text2 setFont:[UIFont fontWithName:@"Arial-BoldMT" size:20]];
+        [text2 setUserInteractionEnabled:NO];
+        [text2 setText:@"when n=1, n=k, therefore, n = k + 1"];
+        
+        shrink2 = [self makeButton];
+        shrink2.frame = CGRectMake(350, 120, 50, 20);
+        [shrink2 addTarget:self action:@selector(shrinkB:) forControlEvents:UIControlEventTouchUpInside];
+        [shrink2 setTitle:@"Shrink" forState:UIControlStateNormal];
+        
+        [_largeView addSubview:shrink2];
+        [_largeView addSubview:text2];
+        [bView2 addSubview:_largeView];
+        [_scrollView addSubview:bView2];
+        [text2 sizeToFit];
+    }
 }
 
 //goes back to original page
--(IBAction)shrinkB{
-    [bView removeFromSuperview];
+-(IBAction)shrinkB: (UIButton *)pressed{
+    if(pressed == shrink){
+        [bView removeFromSuperview];
+    }
+    else if(pressed == shrink2){
+        [bView2 removeFromSuperview];
+    }
 }
 
 #pragma mark
-
-//example definitions
-
-- (SKNode *) exDef1{
-    SKNode *nerdText = [SKNode node];
-    SKLabelNode *a = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    a.fontSize = 15;
-    a.fontColor = [SKColor blackColor];
-    SKLabelNode *b = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    b.fontSize = 12;
-    b.fontColor = [SKColor blackColor];
-    NSString *st1 = @"Proof by Contradiction";
-    NSString *st2 = @"establishes the truth of validity of a proposition";
-    b.position = CGPointMake(b.position.x, b.position.y - 20);
-    a.text = st1;
-    b.text = st2;
-    [nerdText addChild:a];
-    [nerdText addChild:b];
-    nerdText.position = CGPointMake(150.0, 250.0);
-    
-    return nerdText;
-}
 
 - (SKNode *) exDef2{
     SKNode *nerdText = [SKNode node];
