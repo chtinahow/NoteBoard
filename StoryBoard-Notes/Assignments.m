@@ -44,7 +44,7 @@
         _table = [[UITableView alloc] initWithFrame:tableFrame];
         _scrollView.contentSize                     = CGSizeMake(120, 2000);
         _scrollView.scrollEnabled                   = YES;
-        _scrollView.backgroundColor                 = [UIColor grayColor];
+        _scrollView.backgroundColor                 = [UIColor whiteColor];
         
         b = [self makeButton];
         b.frame = CGRectMake(610, 50, 30, 30);

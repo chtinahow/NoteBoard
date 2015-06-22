@@ -7,7 +7,7 @@
 //
 
 #import "MainPage.h"
-#import "ShuffleNotes.h"
+#import "DifChapters.h"
 
 @interface MainPage()
 
@@ -147,21 +147,21 @@
         SKNode *node = [self nodeAtPoint:location];
         if(cButton.alpha == 0.5 && [node.name isEqualToString:@"calc"]){
             cButton.alpha = 1.0;
-            ShuffleNotes *ss = [[ShuffleNotes alloc] initWithSize:CGSizeMake(1024, 768)];
+            DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:ss transition:doors];
         }
         if(dButton.alpha == 0.5 && [node.name isEqualToString:@"disc"]){
             dButton.alpha = 1.0;
-            ShuffleNotes *ss = [[ShuffleNotes alloc] initWithSize:CGSizeMake(768, 1024)];
+            DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(768, 1024)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:ss transition:doors];
         }
         if(pButton.alpha == 0.5 && [node.name isEqualToString:@"phys"]){
             pButton.alpha = 1.0;
-            ShuffleNotes *ss = [[ShuffleNotes alloc] initWithSize:CGSizeMake(768, 1024)];
+            DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(768, 1024)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:ss transition:doors];

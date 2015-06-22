@@ -11,7 +11,7 @@
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>D1F2D03B53668085825BFAD093A7C55FDF57EDC5</key>
-		<string>https://github.com/chtinahow/NoteBoard.git</string>
+		<string>https://github.com/chtinahow/NoteBoard</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>StoryBoard-Notes.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/chtinahow/NoteBoard.git</string>
+	<string>https://github.com/chtinahow/NoteBoard</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>

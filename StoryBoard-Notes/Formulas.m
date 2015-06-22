@@ -8,34 +8,81 @@
 
 #import "Formulas.h"
 #import "NotesSection.h"
-#import "Definitions.h"
+#import "DefinitionsV2.h"
 #import "Assignments.h"
 
 @interface Formulas()
 
 @property BOOL created;
 
+@property UIScrollView *scrollView;
+
 @end
 
 @implementation Formulas{
+    UIButton *button;
     SKSpriteNode *assignButton;
     SKSpriteNode *nLink;
     SKSpriteNode *dLink;
-    SKSpriteNode *sec2;
-    SKSpriteNode *sec3;
-    SKSpriteNode *sec4;
-    SKSpriteNode *sec5;
-    SKSpriteNode *sec6;
-    SKSpriteNode *sec7;
+    
+    //links to specific section in notes
+    UIButton *section1;
+    UIButton *section2;
+    UIButton *section3;
+    
+    //formula buttons
+    UIButton *f1;
+    UIButton *f2;
+    
+    //zoom in and out buttons
+    UIButton *enlarge;
+    UIButton *shrink;
+    UIView *largeView;
+    UIView *bView;
+    
+    UIButton *enlarge2;
+    UIButton *shrink2;
+    UIView *largeView2;
+    UIView *bView2;
+    
+    //texts
+    UITextView *text;
+    UITextView *text2;
 }
 
 #pragma mark
+
+- (id)initWithSize:(CGSize)size
+{
+    if (self = [super initWithSize:size]) {
+        CGSize layerSize        = CGSizeMake(768, 300);
+        CGPoint layerPosition   = CGPointMake(20, 400);
+        CGRect viewFrame = CGRectMake(layerPosition.x, layerPosition.y, layerSize.width-50, layerSize.height);
+        _scrollView = [[UIScrollView alloc] initWithFrame:viewFrame];
+        _scrollView.contentSize                     = CGSizeMake(120, 2000);
+        _scrollView.scrollEnabled                   = YES;
+        _scrollView.showsVerticalScrollIndicator  = YES;
+        _scrollView.backgroundColor                 = [UIColor whiteColor];
+        
+        [self createUIScene];
+    }
+    
+    return self;
+}
 
 - (void) didMoveToView:(SKView *)view{
     if(!self.created){
         [self createScene];
         self.created = YES;
     }
+    [self.view addSubview:_scrollView];
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
+    
+    [_scrollView removeFromSuperview];
 }
 
 #pragma mark
@@ -66,94 +113,6 @@
     title.position = CGPointMake(0, 230);
     [pap addChild:title];
     
-    //links to specific sections in notes
-    
-    sec2 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(250, 25)];
-    sec2.position = CGPointMake(200, 165);
-    sec2.name = @"sec2";
-    [pap addChild:sec2];
-    
-    SKLabelNode *label2 = [self sectionInNotesLabel];
-    label2.position = CGPointMake(200, 160);
-    label2.name = @"sec2";
-    [pap addChild:label2];
-    
-    sec3 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(250, 25)];
-    sec3.position = CGPointMake(200, 85);
-    sec3.name = @"sec3";
-    [pap addChild:sec3];
-    
-    SKLabelNode *label3 = [self sectionInNotesLabel];
-    label3.position = CGPointMake(200, 80);
-    label3.name = @"sec3";
-    [pap addChild:label3];
-    
-    sec4 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(250, 25)];
-    sec4.position = CGPointMake(200, 5);
-    sec4.name = @"sec4";
-    [pap addChild:sec4];
-    
-    SKLabelNode *label4 = [self sectionInNotesLabel];
-    label4.position = CGPointMake(200, 0);
-    label4.name = @"sec4";
-    [pap addChild:label4];
-    
-    sec5 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(250, 25)];
-    sec5.position = CGPointMake(200, -75);
-    sec5.name = @"sec5";
-    [pap addChild:sec5];
-    
-    SKLabelNode *label5 = [self sectionInNotesLabel];
-    label5.position = CGPointMake(200, -80);
-    label5.name = @"sec5";
-    [pap addChild:label5];
-    
-    sec6 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(250, 25)];
-    sec6.position = CGPointMake(200, -155);
-    sec6.name = @"sec6";
-    [pap addChild:sec6];
-    
-    SKLabelNode *label6 = [self sectionInNotesLabel];
-    label6.position = CGPointMake(200, -160);
-    label6.name = @"sec6";
-    [pap addChild:label6];
-    
-    sec7 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(250, 25)];
-    sec7.position = CGPointMake(200, -235);
-    sec7.name = @"sec7";
-    [pap addChild:sec7];
-    
-    SKLabelNode *label7 = [self sectionInNotesLabel];
-    label7.position = CGPointMake(200, -240);
-    label7.name = @"sec7";
-    [pap addChild:label7];
-    
-    //actual mock formulas
-    
-    SKLabelNode *f2 = [self formula2];
-    f2.position = CGPointMake(-200, 165);
-    [pap addChild:f2];
-    
-    SKLabelNode *f3 = [self formula3];
-    f3.position = CGPointMake(-200, 85);
-    [pap addChild:f3];
-    
-    SKLabelNode *f4 = [self formula4];
-    f4.position = CGPointMake(-200, 5);
-    [pap addChild:f4];
-    
-    SKLabelNode *f5 = [self formula5];
-    f5.position = CGPointMake(-200, -75);
-    [pap addChild:f5];
-    
-    SKLabelNode *f6 = [self formula6];
-    f6.position = CGPointMake(-200, -155);
-    [pap addChild:f6];
-    
-    SKLabelNode *f7 = [self formula7];
-    f7.position = CGPointMake(-200, -235);
-    [pap addChild:f7];
-    
     //add first Link (to definitions section)
     nLink = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(350, 30)];
     nLink.position = CGPointMake(-250, -340);
@@ -175,6 +134,187 @@
     [pap addChild:defs];
     
     [self addChild:pap];
+}
+
+-(void)createUIScene{
+    //section 1
+    section1 = [self makeButton];
+    section1.frame = CGRectMake(530, 20, 120, 40);
+    [section1 addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [section1 setTitle:@"Section In Notes" forState:UIControlStateNormal];
+    [_scrollView addSubview:section1];
+    
+    f1 = [self makeButton];
+    f1.frame = CGRectMake(0, 20, 120, 40);
+    [f1 addTarget:self action:@selector(formulaB:) forControlEvents:UIControlEventTouchUpInside];
+    [f1 setTitle:@"Product Rule" forState:UIControlStateNormal];
+    [_scrollView addSubview:f1];
+    
+    //section 2
+    section2 = [self makeButton];
+    section2.frame = CGRectMake(530, 220, 120, 40);
+    [section2 addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [section2 setTitle:@"Section In Notes" forState:UIControlStateNormal];
+    [_scrollView addSubview:section2];
+    
+    f2 = [self makeButton];
+    f2.frame = CGRectMake(0, 220, 120, 40);
+    [f2 addTarget:self action:@selector(formulaB:) forControlEvents:UIControlEventTouchUpInside];
+    [f2 setTitle:@"Integration by Parts" forState:UIControlStateNormal];
+    [_scrollView addSubview:f2];
+}
+
+#pragma mark
+
+//make actual button
+-(UIButton *)makeButton{
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.backgroundColor = [UIColor grayColor];
+    
+    return button;
+}
+
+-(IBAction)buttonClick: (UIButton*)pressed{
+    if((pressed == section1) || (pressed == section2)){
+        NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
+        SKView *view = (SKView *) self.view;
+        SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+        [view presentScene:nn transition:doors];
+    }
+}
+
+-(IBAction)formulaB:(UIButton *)pressed{
+    if(pressed == f1){
+        [f1 removeFromSuperview];
+        f1 = [self makeButton];
+        f1.frame = CGRectMake(0, 20, 120, 40);
+        [f1 addTarget:self action:@selector(pressedAgain:) forControlEvents:UIControlEventTouchUpInside];
+        [f1 setTitle:@"Product Rule" forState:UIControlStateNormal];
+        [_scrollView addSubview:f1];
+        
+        text = [[UITextView alloc] initWithFrame:CGRectMake(0, 60, 150, 100)];
+        [text setFont:[UIFont fontWithName:@"Arial-BoldMT" size:15]];
+        [text setUserInteractionEnabled:NO];
+        [text setText:@"D(f(x)g(x)) = f(x)g'(x) + f'(x)g(x)"];
+        [_scrollView addSubview:text];
+        [text sizeToFit];
+        
+        enlarge = [self makeButton];
+        enlarge.frame = CGRectMake(80, 110, 80, 30);
+        [enlarge addTarget:self action:@selector(enlarge:) forControlEvents:UIControlEventTouchUpInside];
+        [enlarge setTitle:@"Enlarge" forState:UIControlStateNormal];
+        [_scrollView addSubview:enlarge];
+    }
+    else if(pressed == f2){
+        f2 = [self makeButton];
+        f2.frame = CGRectMake(0, 220, 120, 40);
+        [f2 addTarget:self action:@selector(pressedAgain:) forControlEvents:UIControlEventTouchUpInside];
+        [f2 setTitle:@"Integration by Parts" forState:UIControlStateNormal];
+        [_scrollView addSubview:f2];
+        
+        text2 = [[UITextView alloc] initWithFrame:CGRectMake(0, 260, 150, 100)];
+        [text2 setFont:[UIFont fontWithName:@"Arial-BoldMT" size:15]];
+        [text2 setUserInteractionEnabled:NO];
+        [text2 setText:@"uv - D(vdu)"];
+        [_scrollView addSubview:text2];
+        [text2 sizeToFit];
+        
+        enlarge2 = [self makeButton];
+        enlarge2.frame = CGRectMake(80, 310, 80, 30);
+        [enlarge2 addTarget:self action:@selector(enlarge:) forControlEvents:UIControlEventTouchUpInside];
+        [enlarge2 setTitle:@"Enlarge" forState:UIControlStateNormal];
+        [_scrollView addSubview:enlarge2];
+    }
+}
+
+-(IBAction)pressedAgain:(UIButton *)pressed{
+    if(pressed == f1){
+        [text removeFromSuperview];
+        [f1 removeFromSuperview];
+        [enlarge removeFromSuperview];
+        
+        f1 = [self makeButton];
+        f1.frame = CGRectMake(0, 20, 120, 40);
+        [f1 addTarget:self action:@selector(formulaB:) forControlEvents:UIControlEventTouchUpInside];
+        [f1 setTitle:@"Product Rule" forState:UIControlStateNormal];
+        [_scrollView addSubview:f1];
+    }
+    else if(pressed == f2){
+        [text2 removeFromSuperview];
+        [f2 removeFromSuperview];
+        [enlarge2 removeFromSuperview];
+        
+        f2 = [self makeButton];
+        f2.frame = CGRectMake(0, 220, 120, 40);
+        [f2 addTarget:self action:@selector(formulaB:) forControlEvents:UIControlEventTouchUpInside];
+        [f2 setTitle:@"Integration by Parts" forState:UIControlStateNormal];
+        [_scrollView addSubview:f2];
+    }
+}
+
+-(IBAction)enlarge:(UIButton *)pressed{
+    if(pressed == enlarge){
+        CGRect borderF = CGRectMake(100, 100, 470, 170);
+        bView = [[UIView alloc] initWithFrame:borderF];
+        bView.backgroundColor = [UIColor blackColor];
+    
+        CGRect border = CGRectMake(10, 10, 450, 150);
+        largeView = [[UIView alloc] initWithFrame:border];
+        largeView.backgroundColor = [UIColor whiteColor];
+        
+        CGRect textFrame = CGRectMake(0, 0, 450, 150);
+        UITextView *text1 = [[UITextView alloc] initWithFrame:textFrame];
+        [text1 setFont:[UIFont fontWithName:@"Arial-BoldMT" size:20]];
+        [text1 setUserInteractionEnabled:NO];
+        [text1 setText:@"D(f(x)g(x)) = f(x)g'(x) + f'(x)g(x)"];
+        
+        shrink = [self makeButton];
+        shrink.frame = CGRectMake(380, 120, 50, 20);
+        [shrink addTarget:self action:@selector(shrinkB:) forControlEvents:UIControlEventTouchUpInside];
+        [shrink setTitle:@"Shrink" forState:UIControlStateNormal];
+        
+        [largeView addSubview:shrink];
+        [largeView addSubview:text1];
+        [bView addSubview:largeView];
+        [_scrollView addSubview:bView];
+        [text1 sizeToFit];
+    }
+    else if(pressed == enlarge2){
+        CGRect borderF = CGRectMake(100, 300, 470, 170);
+        bView2 = [[UIView alloc] initWithFrame:borderF];
+        bView2.backgroundColor = [UIColor blackColor];
+        
+        CGRect border = CGRectMake(10, 10, 450, 150);
+        largeView2 = [[UIView alloc] initWithFrame:border];
+        largeView2.backgroundColor = [UIColor whiteColor];
+        
+        CGRect textFrame = CGRectMake(0, 0, 450, 150);
+        UITextView *texty = [[UITextView alloc] initWithFrame:textFrame];
+        [texty setFont:[UIFont fontWithName:@"Arial-BoldMT" size:20]];
+        [texty setUserInteractionEnabled:NO];
+        [texty setText:@"uv - D(vdu)"];
+        
+        shrink2 = [self makeButton];
+        shrink2.frame = CGRectMake(380, 120, 50, 20);
+        [shrink2 addTarget:self action:@selector(shrinkB:) forControlEvents:UIControlEventTouchUpInside];
+        [shrink2 setTitle:@"Shrink" forState:UIControlStateNormal];
+        
+        [largeView2 addSubview:shrink2];
+        [largeView2 addSubview:texty];
+        [bView2 addSubview:largeView2];
+        [_scrollView addSubview:bView2];
+        [texty sizeToFit];
+    }
+}
+
+//goes back to original page
+-(IBAction)shrinkB: (UIButton *)pressed{
+    if(pressed == shrink){
+        [bView removeFromSuperview];
+    }
+    else if(pressed == shrink2){
+        [bView2 removeFromSuperview];
+    }
 }
 
 #pragma mark
@@ -221,24 +361,6 @@
 
 //formulas for presenting
 //needs to be resized dynamically for when actual formulas are being added.
-
-- (SKLabelNode *) formula1{
-    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    label.name = @"f1";
-    label.text = @"Product Rule: D(f(x)g(x)) = f(x)g'(x) + f'(x)g(x)";
-    label.fontColor = [SKColor blackColor];
-    label.fontSize = 15;
-    return label;
-}
-
-- (SKLabelNode *) formula2{
-    SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    label.name = @"f2";
-    label.text = @"Integration by Parts: uv - D(vdu)";
-    label.fontColor = [SKColor blackColor];
-    label.fontSize = 15;
-    return label;
-}
 
 - (SKLabelNode *) formula3{
     SKLabelNode *label = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
@@ -334,24 +456,6 @@
         if([node.name isEqualToString:@"assign"]){
             assignButton.alpha = 0.5;
         }
-        if([node.name isEqualToString:@"sec2"]) {
-            sec2.alpha = 0.5;
-        }
-        if([node.name isEqualToString:@"sec3"]) {
-            sec3.alpha = 0.5;
-        }
-        if([node.name isEqualToString:@"sec4"]) {
-            sec4.alpha = 0.5;
-        }
-        if([node.name isEqualToString:@"sec5"]) {
-            sec5.alpha = 0.5;
-        }
-        if([node.name isEqualToString:@"sec6"]) {
-            sec6.alpha = 0.5;
-        }
-        if([node.name isEqualToString:@"sec7"]) {
-            sec7.alpha = 0.5;
-        }
     }
 }
 
@@ -369,7 +473,7 @@
         }
         if(dLink.alpha == 0.5 && [node.name isEqualToString:@"def"]){
             dLink.alpha = 1.0;
-            Definitions *dd = [[Definitions alloc] initWithSize:CGSizeMake(1024, 768)];
+            DefinitionsV2 *dd = [[DefinitionsV2 alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:dd transition:doors];

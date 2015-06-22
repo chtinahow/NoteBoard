@@ -17,8 +17,6 @@
 
 @property SKSpriteNode *activeDragNode;
 
-@property SKSpriteNode *outlineDragNode;
-
 @end
 
 @implementation ShuffleNotes
@@ -51,7 +49,7 @@
     SKTexture *tex = [self.scene.view textureFromNode:outline];
     SKSpriteNode *newNode = [SKSpriteNode spriteNodeWithTexture:tex];
     newNode.name = @"newNode";
-    newNode.position = CGPointMake(CGRectGetMidX(self.frame)-150, CGRectGetMidY(self.frame)+150);
+    newNode.position = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
     [newNode addChild:date];
     
     SKSpriteNode *paper = [self paperNode2];
@@ -61,7 +59,7 @@
     SKTexture *tex2 = [self.scene.view textureFromNode:outline2];
     SKSpriteNode *newNode2 = [SKSpriteNode spriteNodeWithTexture:tex2];
     newNode2.name = @"newNode2";
-    newNode2.position = CGPointMake(CGRectGetMidX(self.frame)-75, CGRectGetMidY(self.frame)+75);
+    newNode2.position = CGPointMake(CGRectGetMidX(self.frame)-195, CGRectGetMidY(self.frame)+240);
     
     SKSpriteNode *paper2 = [self paperNode2];
     paper2.position = CGPointMake(CGRectGetMidX(outline3.frame), CGRectGetMidY(outline3.frame));
@@ -70,7 +68,7 @@
     SKTexture *tex3 = [self.scene.view textureFromNode:outline3];
     SKSpriteNode *newNode3 = [SKSpriteNode spriteNodeWithTexture:tex3];
     newNode3.name = @"newNode3";
-    newNode3.position = CGPointMake(CGRectGetMidX(self.frame)+150, CGRectGetMidY(self.frame)-200);
+    newNode3.position = CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
     
     [self addChild:newNode3];
     
@@ -133,6 +131,8 @@
         }
         else if([touch tapCount] == 1 && !_tappedTwice){
             _activeDragNode = (SKSpriteNode *)checkNode;
+            [checkNode removeFromParent];
+            [self addChild:checkNode];
         }
     }
 }
