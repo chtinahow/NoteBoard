@@ -16,6 +16,9 @@
 		2693DF791B2F1C3000D2FBB9 /* LandScapeV2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2693DF781B2F1C3000D2FBB9 /* LandScapeV2Tests.m */; };
 		3F195EDD1B306C65007232AF /* LandScapeCalcNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */; };
 		3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EE41B3079BF007232AF /* NotesViewController.m */; };
+		3FE5D2081B384A6600192CA5 /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5D2071B384A6600192CA5 /* ExampleViewController.m */; };
+		3FE5D20A1B385DBD00192CA5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE5D2091B385DBD00192CA5 /* MediaPlayer.framework */; };
+		3FE5D20D1B3882EA00192CA5 /* MediaFormulaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5D20C1B3882EA00192CA5 /* MediaFormulaViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +49,11 @@
 		3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandScapeCalcNotes.m; sourceTree = "<group>"; };
 		3F195EE31B3079BF007232AF /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotesViewController.h; path = ../LandScapeV2/NotesViewController.h; sourceTree = "<group>"; };
 		3F195EE41B3079BF007232AF /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotesViewController.m; path = ../LandScapeV2/NotesViewController.m; sourceTree = "<group>"; };
+		3FE5D2061B384A6600192CA5 /* ExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
+		3FE5D2071B384A6600192CA5 /* ExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
+		3FE5D2091B385DBD00192CA5 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		3FE5D20B1B3882EA00192CA5 /* MediaFormulaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFormulaViewController.h; sourceTree = "<group>"; };
+		3FE5D20C1B3882EA00192CA5 /* MediaFormulaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFormulaViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE5D20A1B385DBD00192CA5 /* MediaPlayer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +78,7 @@
 		2693DF501B2F1C2E00D2FBB9 = {
 			isa = PBXGroup;
 			children = (
+				3FE5D2091B385DBD00192CA5 /* MediaPlayer.framework */,
 				2693DF5B1B2F1C2F00D2FBB9 /* LandScapeV2 */,
 				2693DF751B2F1C3000D2FBB9 /* LandScapeV2Tests */,
 				2693DF5A1B2F1C2F00D2FBB9 /* Products */,
@@ -97,6 +107,10 @@
 				2693DF691B2F1C2F00D2FBB9 /* Images.xcassets */,
 				2693DF6B1B2F1C3000D2FBB9 /* LaunchScreen.xib */,
 				2693DF5C1B2F1C2F00D2FBB9 /* Supporting Files */,
+				3FE5D2061B384A6600192CA5 /* ExampleViewController.h */,
+				3FE5D2071B384A6600192CA5 /* ExampleViewController.m */,
+				3FE5D20B1B3882EA00192CA5 /* MediaFormulaViewController.h */,
+				3FE5D20C1B3882EA00192CA5 /* MediaFormulaViewController.m */,
 			);
 			path = LandScapeV2;
 			sourceTree = "<group>";
@@ -230,8 +244,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F195EDD1B306C65007232AF /* LandScapeCalcNotes.m in Sources */,
+				3FE5D20D1B3882EA00192CA5 /* MediaFormulaViewController.m in Sources */,
 				2693DF651B2F1C2F00D2FBB9 /* ViewController.m in Sources */,
 				3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */,
+				3FE5D2081B384A6600192CA5 /* ExampleViewController.m in Sources */,
 				2693DF621B2F1C2F00D2FBB9 /* AppDelegate.m in Sources */,
 				2693DF5F1B2F1C2F00D2FBB9 /* main.m in Sources */,
 			);
