@@ -1,13 +1,13 @@
 //
-//  ShuffleNotes.h
+//  ShuffleNotesBlue.h
 //  StoryBoard-Notes
 //
-//  Created by Student on 6/16/15.
+//  Created by Student on 6/23/15.
 //  Copyright (c) 2015 Student. All rights reserved.
 //
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface ShuffleNotes : SKScene <SKPhysicsContactDelegate>
+@interface ShuffleNotesBlue : SKScene
 
 @end

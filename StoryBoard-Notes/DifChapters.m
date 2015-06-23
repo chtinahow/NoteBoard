@@ -7,7 +7,7 @@
 //
 
 #import "DifChapters.h"
-#import "ShuffleNotes.h"
+#import "Stacked Notes.h"
 
 @interface DifChapters()
 
@@ -135,29 +135,14 @@
 #pragma mark
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    for(UITouch *touch in touches){
-        CGPoint location = [touch locationInNode:self];
-        SKNode *node = [self nodeAtPoint:location];
-        if([node.name isEqualToString:@"newNode"] || [node.name isEqualToString:@"folder"]){
-            ShuffleNotes *nn = [[ShuffleNotes alloc] initWithSize:CGSizeMake(1024, 768)];
-            SKView *view = (SKView *) self.view;
-            SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
-            [view presentScene:nn transition:doors];
-        }
-        if([node.name isEqualToString:@"newNode2"] || [node.name isEqualToString:@"folder"]){
-            ShuffleNotes *nn = [[ShuffleNotes alloc] initWithSize:CGSizeMake(1024, 768)];
-            SKView *view = (SKView *) self.view;
-            SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
-            [view presentScene:nn transition:doors];
-        }
-        if([node.name isEqualToString:@"newNode3"] || [node.name isEqualToString:@"folder"]){
-            ShuffleNotes *nn = [[ShuffleNotes alloc] initWithSize:CGSizeMake(1024, 768)];
-            SKView *view = (SKView *) self.view;
-            SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
-            [view presentScene:nn transition:doors];
-        }
-        if([node.name isEqualToString:@"newNode4"] || [node.name isEqualToString:@"folder"]){
-            ShuffleNotes *nn = [[ShuffleNotes alloc] initWithSize:CGSizeMake(1024, 768)];
+    UITouch *touch = [touches anyObject];
+    CGPoint scenePosition = [touch locationInNode:self];
+    
+    SKNode *checkNode = [self nodeAtPoint:scenePosition];
+    
+    if(checkNode && [checkNode.name hasPrefix:@"newNode"]){
+        if([touch tapCount] == 2){
+            Stacked_Notes *nn = [[Stacked_Notes alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:nn transition:doors];
