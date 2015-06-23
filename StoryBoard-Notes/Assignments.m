@@ -27,6 +27,8 @@
     UIButton *b5;
     UIButton *b6;
     UIButton *b7;
+    
+    UIView *viewy;
 }
 
 #pragma mark
@@ -45,6 +47,9 @@
         _scrollView.contentSize                     = CGSizeMake(120, 2000);
         _scrollView.scrollEnabled                   = YES;
         _scrollView.backgroundColor                 = [UIColor whiteColor];
+        
+        viewy = [[UIView alloc] initWithFrame:CGRectMake(0, 225, 1024, 40)];
+        viewy.backgroundColor = [UIColor clearColor];
         
         b = [self makeButton];
         b.frame = CGRectMake(610, 50, 30, 30);
@@ -80,6 +85,19 @@
         b7.frame = CGRectMake(610, 320, 30, 30);
         [b7 addTarget:self action:@selector(clicked:) forControlEvents:UIControlEventTouchUpInside];
         [_table addSubview:b7];
+        
+        //date
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        NSDate *now = [[NSDate alloc] init];
+        NSString *theDate = [dateFormat stringFromDate:now];
+        
+        UITextField *date = [[UITextField alloc] initWithFrame:CGRectMake(5, 0, 100, 40)];
+        date.backgroundColor = [UIColor clearColor];
+        date.userInteractionEnabled = NO;
+        [date setText:[NSString stringWithFormat:@"%@", theDate]];
+        date.textColor = [UIColor blueColor];
+        [viewy addSubview:date];
     }
     
     return self;
@@ -92,6 +110,7 @@
     }
     [_scrollView addSubview:_table];
     [self.view addSubview:_scrollView];
+    [self.view addSubview:viewy];
 }
 
 - (void)willMoveFromView:(SKView *)view
@@ -99,6 +118,7 @@
     [super willMoveFromView:view];
     
     [_scrollView removeFromSuperview];
+    [viewy removeFromSuperview];
 }
 
 - (void)createScene{
@@ -106,11 +126,6 @@
     self.scaleMode = SKSceneScaleModeAspectFit;
     SKSpriteNode *pap = [self paperNode];
     pap.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    
-    //add date
-    SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-470, 340);
-    [pap addChild:date];
     
     //title of page
     SKLabelNode *up = [self upcoming];

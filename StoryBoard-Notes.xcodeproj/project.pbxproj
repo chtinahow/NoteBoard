@@ -16,9 +16,9 @@
 		3F2859121B30D29C00CE318E /* StoryBoard_NotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2859111B30D29C00CE318E /* StoryBoard_NotesTests.m */; };
 		3F28591D1B30D2AF00CE318E /* MainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F28591C1B30D2AF00CE318E /* MainPage.m */; };
 		3F2859201B30D31800CE318E /* ShuffleNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F28591F1B30D31800CE318E /* ShuffleNotes.m */; };
+		3F9A70AF1B399AF900C91615 /* ExampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A70AE1B399AF900C91615 /* ExampleView.m */; };
 		3FBE09AC1B3862A900E5B916 /* DifChapters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE09AB1B3862A900E5B916 /* DifChapters.m */; };
 		3FF79EBB1B31BE4100A3A197 /* NotesSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF79EBA1B31BE4100A3A197 /* NotesSection.m */; };
-		3FF79EBF1B31C1CD00A3A197 /* Definitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF79EBE1B31C1CD00A3A197 /* Definitions.m */; };
 		3FF79EC31B31C66B00A3A197 /* Formulas.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF79EC21B31C66B00A3A197 /* Formulas.m */; };
 		3FF79EC71B31C9D600A3A197 /* Assignments.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF79EC61B31C9D600A3A197 /* Assignments.m */; };
 		C9D27CD11B33C0E6003DD66C /* DefinitionsV2.m in Sources */ = {isa = PBXBuildFile; fileRef = C9D27CD01B33C0E6003DD66C /* DefinitionsV2.m */; };
@@ -52,12 +52,12 @@
 		3F28591C1B30D2AF00CE318E /* MainPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainPage.m; sourceTree = "<group>"; };
 		3F28591E1B30D31800CE318E /* ShuffleNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShuffleNotes.h; sourceTree = "<group>"; };
 		3F28591F1B30D31800CE318E /* ShuffleNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShuffleNotes.m; sourceTree = "<group>"; };
+		3F9A70AD1B399AF900C91615 /* ExampleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleView.h; sourceTree = "<group>"; };
+		3F9A70AE1B399AF900C91615 /* ExampleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleView.m; sourceTree = "<group>"; };
 		3FBE09AA1B3862A900E5B916 /* DifChapters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DifChapters.h; sourceTree = "<group>"; };
 		3FBE09AB1B3862A900E5B916 /* DifChapters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DifChapters.m; sourceTree = "<group>"; };
 		3FF79EB91B31BE4100A3A197 /* NotesSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesSection.h; sourceTree = "<group>"; };
 		3FF79EBA1B31BE4100A3A197 /* NotesSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesSection.m; sourceTree = "<group>"; };
-		3FF79EBD1B31C1CD00A3A197 /* Definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definitions.h; sourceTree = "<group>"; };
-		3FF79EBE1B31C1CD00A3A197 /* Definitions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Definitions.m; sourceTree = "<group>"; wrapsLines = 0; };
 		3FF79EC11B31C66B00A3A197 /* Formulas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Formulas.h; sourceTree = "<group>"; };
 		3FF79EC21B31C66B00A3A197 /* Formulas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Formulas.m; sourceTree = "<group>"; };
 		3FF79EC51B31C9D600A3A197 /* Assignments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assignments.h; sourceTree = "<group>"; };
@@ -105,6 +105,7 @@
 		3F2858F41B30D29C00CE318E /* StoryBoard-Notes */ = {
 			isa = PBXGroup;
 			children = (
+				3F9A70AC1B399ADF00C91615 /* ExampleView */,
 				3FF79EC41B31C9C100A3A197 /* AssignmentSection */,
 				3FF79EC01B31C65700A3A197 /* FormulaSection */,
 				3FF79EBC1B31C1B800A3A197 /* DefinitionsSection */,
@@ -149,6 +150,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3F9A70AC1B399ADF00C91615 /* ExampleView */ = {
+			isa = PBXGroup;
+			children = (
+				3F9A70AD1B399AF900C91615 /* ExampleView.h */,
+				3F9A70AE1B399AF900C91615 /* ExampleView.m */,
+			);
+			name = ExampleView;
+			sourceTree = "<group>";
+		};
 		3FF79EB51B31BDCB00A3A197 /* MainPage */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,8 +191,6 @@
 		3FF79EBC1B31C1B800A3A197 /* DefinitionsSection */ = {
 			isa = PBXGroup;
 			children = (
-				3FF79EBD1B31C1CD00A3A197 /* Definitions.h */,
-				3FF79EBE1B31C1CD00A3A197 /* Definitions.m */,
 				C9D27CCF1B33C0E6003DD66C /* DefinitionsV2.h */,
 				C9D27CD01B33C0E6003DD66C /* DefinitionsV2.m */,
 			);
@@ -309,7 +317,6 @@
 			files = (
 				C9D27CD11B33C0E6003DD66C /* DefinitionsV2.m in Sources */,
 				3F2858FE1B30D29C00CE318E /* ViewController.m in Sources */,
-				3FF79EBF1B31C1CD00A3A197 /* Definitions.m in Sources */,
 				3FBE09AC1B3862A900E5B916 /* DifChapters.m in Sources */,
 				3F2858FB1B30D29C00CE318E /* AppDelegate.m in Sources */,
 				3F2859201B30D31800CE318E /* ShuffleNotes.m in Sources */,
@@ -318,6 +325,7 @@
 				3F2858F81B30D29C00CE318E /* main.m in Sources */,
 				3FF79EC31B31C66B00A3A197 /* Formulas.m in Sources */,
 				3F28591D1B30D2AF00CE318E /* MainPage.m in Sources */,
+				3F9A70AF1B399AF900C91615 /* ExampleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

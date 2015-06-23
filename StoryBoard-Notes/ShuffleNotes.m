@@ -19,7 +19,12 @@
 
 @end
 
-@implementation ShuffleNotes
+@implementation ShuffleNotes{
+    SKSpriteNode *outline;
+    SKSpriteNode *outline1;
+    SKSpriteNode *outline2;
+    SKSpriteNode *outline3;
+}
 
 - (void)didMoveToView: (SKView *) view{
     if (!self.created) {
@@ -34,19 +39,19 @@
     self.backgroundColor = [SKColor grayColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
     
-    SKSpriteNode *outline = [self outlineNode];
-    SKSpriteNode *outline2 = [self outlineNode];
-    SKSpriteNode *outline3 = [self outlineNode];
+    outline1 = [self outlineNode];
+    outline2 = [self outlineNode];
+    outline3 = [self outlineNode];
     
     SKSpriteNode *pap = [self paperNode];
-    pap.position = CGPointMake(CGRectGetMidX(outline.frame), CGRectGetMidY(outline.frame));
-    [outline addChild:pap];
+    pap.position = CGPointMake(CGRectGetMidX(outline1.frame), CGRectGetMidY(outline1.frame));
+    [outline1 addChild:pap];
     
     //add date
     SKLabelNode *date = [self dateNode];
     date.position = CGPointMake(-130, 80);
     
-    SKTexture *tex = [self.scene.view textureFromNode:outline];
+    SKTexture *tex = [self.scene.view textureFromNode:outline1];
     SKSpriteNode *newNode = [SKSpriteNode spriteNodeWithTexture:tex];
     newNode.name = @"newNode";
     newNode.position = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
@@ -96,7 +101,7 @@
 }
 
 - (SKSpriteNode *)outlineNode{
-    SKSpriteNode *outline = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(325, 225)];
+    outline = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(325, 225)];
     outline.name = @"outline";
     
     return outline;
@@ -133,6 +138,8 @@
             _activeDragNode = (SKSpriteNode *)checkNode;
             [checkNode removeFromParent];
             [self addChild:checkNode];
+            SKAction *changeColorAction = [SKAction colorizeWithColor:[SKColor redColor] colorBlendFactor:1.0 duration:0.5];
+            [checkNode runAction:changeColorAction];
         }
     }
 }
@@ -151,7 +158,16 @@
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint scenePosition = [touch locationInNode:self];
+    
+    SKNode *checkNode = [self nodeAtPoint:scenePosition];
     _activeDragNode = nil;
+    
+    if(checkNode && ([checkNode.name hasPrefix:@"newNode"] || [checkNode.name hasPrefix:@"newNode2"] || [checkNode.name hasPrefix:@"newNode3"])){
+        SKAction *changeColorAction = [SKAction colorizeWithColor:[SKColor whiteColor] colorBlendFactor:1.0 duration:0.5];
+        [checkNode runAction:changeColorAction];
+    }
 }
 
 @end

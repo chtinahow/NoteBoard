@@ -10,6 +10,7 @@
 #import "NotesSection.h"
 #import "Formulas.h"
 #import "Assignments.h"
+#import "ExampleView.h"
 
 @interface DefinitionsV2()
 
@@ -25,6 +26,7 @@
 @end
 
 @implementation DefinitionsV2{
+    UIWebView *webView;
     SKSpriteNode *assignButton; //link to assignments page
     SKSpriteNode *fLink; //link to formulas page
     SKSpriteNode *nLink; //link to notes page
@@ -44,6 +46,8 @@
     UIButton *enlarge2;
     UIButton *shrink2;
     UIView *bView2;
+    
+    UIView *viewy;
 }
 
 - (id)initWithSize:(CGSize)size
@@ -58,6 +62,10 @@
         _scrollView.scrollEnabled                   = YES;
         _scrollView.showsVerticalScrollIndicator  = YES;
         _scrollView.backgroundColor                 = [UIColor whiteColor];
+        
+        viewy = [[UIView alloc] initWithFrame:CGRectMake(0, 225, 1024, 40)];
+        viewy.backgroundColor = [UIColor clearColor];
+        
         [self createUIScene];
     }
     
@@ -70,6 +78,7 @@
         self.created = YES;
     }
     [self.view addSubview:_scrollView];
+    [self.view addSubview:viewy];
 }
 
 - (void)willMoveFromView:(SKView *)view
@@ -77,6 +86,7 @@
     [super willMoveFromView:view];
     
     [_scrollView removeFromSuperview];
+    [viewy removeFromSuperview];
 }
 
 #pragma mark
@@ -86,11 +96,6 @@
     self.scaleMode = SKSceneScaleModeAspectFit;
     SKSpriteNode *pap = [self paperNode];
     pap.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    
-    //add date
-    SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-470, 340);
-    [pap addChild:date];
     
     //due date button
     assignButton = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(325, 30)];
@@ -176,6 +181,19 @@
     [cMore2 addTarget:self action:@selector(seeMoreB:) forControlEvents:UIControlEventTouchUpInside];
     [cMore2 setTitle:@"More" forState:UIControlStateNormal];
     [_scrollView addSubview:cMore2];
+    
+    //date
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-dd"];
+    NSDate *now = [[NSDate alloc] init];
+    NSString *theDate = [dateFormat stringFromDate:now];
+    
+    UITextField *date = [[UITextField alloc] initWithFrame:CGRectMake(5, 0, 100, 40)];
+    date.backgroundColor = [UIColor clearColor];
+    date.userInteractionEnabled = NO;
+    [date setText:[NSString stringWithFormat:@"%@", theDate]];
+    date.textColor = [UIColor blueColor];
+    [viewy addSubview:date];
 }
 #pragma mark
 
@@ -183,17 +201,6 @@
     SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(1024, 768)];
     
     return paper;
-}
-
-#pragma mark
-
-- (SKLabelNode *)dateNode{
-    SKLabelNode *date = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    date.name = @"date";
-    date.text = @"Date: ";
-    date.fontSize = 30;
-    date.fontColor = [SKColor blackColor];
-    return date;
 }
 
 #pragma mark
@@ -228,10 +235,15 @@
 }
 
 -(IBAction)buttonClick{
-    NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
+    /*NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
     SKView *view = (SKView *) self.view;
     SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
-    [view presentScene:nn transition:doors];
+    [view presentScene:nn transition:doors];*/
+    
+    ExampleView *eV = [[ExampleView alloc] initWithSize:CGSizeMake(1024, 768)];
+    SKView *view = (SKView *) self.view;
+    SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+    [view presentScene:eV transition:doors];
 }
 
 -(IBAction)seeMoreB: (UIButton *)pressed {
@@ -445,6 +457,8 @@
             NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+            [viewy removeFromSuperview];
+            [_scrollView removeFromSuperview];
             [view presentScene:nn transition:doors];
         }
         if(fLink.alpha == 0.5 && [node.name isEqualToString:@"form"]){
@@ -452,6 +466,8 @@
             Formulas *ff = [[Formulas alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+            [viewy removeFromSuperview];
+            [_scrollView removeFromSuperview];
             [view presentScene:ff transition:doors];
         }
         if(assignButton.alpha == 0.5 && [node.name isEqualToString:@"assign"]){
@@ -459,6 +475,8 @@
             Assignments *aa = [[Assignments alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+            [viewy removeFromSuperview];
+            [_scrollView removeFromSuperview];
             [view presentScene:aa transition:doors];
         }
     }

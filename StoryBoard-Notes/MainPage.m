@@ -19,15 +19,47 @@
     SKSpriteNode *cButton;
     SKSpriteNode *dButton;
     SKSpriteNode *pButton;
+    
+     UIView *viewy;
 }
 
 #pragma mark
+
+- (id)initWithSize:(CGSize)size
+{
+    if (self = [super initWithSize:size]) {
+        viewy = [[UIView alloc] initWithFrame:CGRectMake(0, 225, 1024, 40)];
+        viewy.backgroundColor = [UIColor clearColor];
+        
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        NSDate *now = [[NSDate alloc] init];
+        NSString *theDate = [dateFormat stringFromDate:now];
+        
+        UITextField *date = [[UITextField alloc] initWithFrame:CGRectMake(5, 0, 100, 40)];
+        date.backgroundColor = [UIColor clearColor];
+        date.userInteractionEnabled = NO;
+        [date setText:[NSString stringWithFormat:@"%@", theDate]];
+        date.textColor = [UIColor blueColor];
+        [viewy addSubview:date];
+    }
+    
+    return self;
+}
 
 - (void) didMoveToView:(SKView *)view{
     if(!self.created){
         [self createScene];
         self.created = YES;
     }
+    [self.view addSubview:viewy];
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
+    
+    [viewy removeFromSuperview];
 }
 
 #pragma mark
@@ -37,11 +69,6 @@
     self.scaleMode = SKSceneScaleModeAspectFit;
     SKSpriteNode *pap = [self paperNode];
     pap.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
-    
-    //add date
-    SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-470, 350);
-    [pap addChild:date];
     
     cButton = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(350, 55)];
     cButton.name = @"calc";
@@ -150,6 +177,7 @@
             DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+            [viewy removeFromSuperview];
             [view presentScene:ss transition:doors];
         }
         if(dButton.alpha == 0.5 && [node.name isEqualToString:@"disc"]){
@@ -157,6 +185,7 @@
             DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(768, 1024)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+            [viewy removeFromSuperview];
             [view presentScene:ss transition:doors];
         }
         if(pButton.alpha == 0.5 && [node.name isEqualToString:@"phys"]){
@@ -164,6 +193,7 @@
             DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(768, 1024)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+            [viewy removeFromSuperview];
             [view presentScene:ss transition:doors];
         }
     }
