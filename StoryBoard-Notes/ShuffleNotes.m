@@ -104,12 +104,12 @@ static const int outline3Category = 3;
     newNode2.physicsBody.allowsRotation = NO;
     
     //newNode3
-    newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 225)];
-    newNode.physicsBody.categoryBitMask = outline3Category;
-    newNode.physicsBody.contactTestBitMask = outline2Category | outline1Category;
-    newNode.physicsBody.collisionBitMask = outline2Category | outline1Category;
-    newNode.physicsBody.affectedByGravity = NO;
-    newNode.physicsBody.allowsRotation = NO;
+    newNode3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 225)];
+    newNode3.physicsBody.categoryBitMask = outline3Category;
+    newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category;
+    newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category;
+    newNode3.physicsBody.affectedByGravity = NO;
+    newNode3.physicsBody.allowsRotation = NO;
     
     [self addChild:newNode3];
     
