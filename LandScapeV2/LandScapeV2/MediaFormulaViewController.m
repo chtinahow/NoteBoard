@@ -17,13 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURL *url = [[NSURL alloc]initWithString:@"https://www.youtube.com/watch?v=JC82Il2cjqA"];
-    
-    moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];
-    
-    [moviePlayer.view setFrame:CGRectMake(20, 100, 280, 150)];
-    [self.view addSubview:moviePlayer.view];
-    
 }
 
 - (void)didReceiveMemoryWarning {

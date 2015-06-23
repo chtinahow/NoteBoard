@@ -15,11 +15,16 @@
 @end
 
 @implementation ExampleViewController
-@synthesize myWebView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSString *embedCode = @"<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/JC82Il2cjqA\" frameborder=\"0\" allowfullscreen></iframe>";
-    [[self myWebView]loadHTMLString:embedCode baseURL:nil];
+    /*NSString *fullURL = @"https://youtu.be/mDFKyp40XUc";
+    NSURL *url = [NSURL URLWithString:fullURL];
+    NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+    [_viewWeb loadRequest:requestObj];*/
+    
+    NSString *embedCode = @"<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/mDFKyp40XUc\" frameborder=\"0\" allowfullscreen></iframe>";
+    [[self viewWeb]loadHTMLString:embedCode baseURL:nil];
 
     
     

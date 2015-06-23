@@ -12,7 +12,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface ExampleViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UIWebView * myWebView;
+@property (weak, nonatomic) IBOutlet UIWebView *viewWeb;
 
 
 @end
