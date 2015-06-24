@@ -88,7 +88,7 @@ static const int outline3Category = 3;
     newNode3.position = CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
     
     //newNode1 physics body
-    newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 225)];
+    newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
     newNode.physicsBody.categoryBitMask = outline1Category;
     newNode.physicsBody.contactTestBitMask = outline2Category | outline3Category;
     newNode.physicsBody.collisionBitMask = outline2Category | outline3Category;
@@ -96,7 +96,7 @@ static const int outline3Category = 3;
     newNode.physicsBody.allowsRotation = NO;
     
     //newNode2 physics body
-    newNode2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 225)];
+    newNode2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
     newNode2.physicsBody.categoryBitMask = outline2Category;
     newNode2.physicsBody.contactTestBitMask = outline1Category | outline3Category;
     newNode2.physicsBody.collisionBitMask = outline1Category | outline3Category;
@@ -104,7 +104,7 @@ static const int outline3Category = 3;
     newNode2.physicsBody.allowsRotation = NO;
     
     //newNode3
-    newNode3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 225)];
+    newNode3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
     newNode3.physicsBody.categoryBitMask = outline3Category;
     newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category;
     newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category;
