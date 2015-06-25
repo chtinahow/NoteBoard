@@ -8,6 +8,7 @@
 
 #import "ShuffleNotes.h"
 #import "NotesSection.h"
+#import "ENHGlowFilter.h"
 
 @interface ShuffleNotes()
 
@@ -17,6 +18,8 @@
 
 @property SKSpriteNode *activeDragNode;
 
+@property SKEffectNode *effectNode;
+
 @end
 
 @implementation ShuffleNotes{
@@ -24,6 +27,8 @@
     SKSpriteNode *outline1;
     SKSpriteNode *outline2;
     SKSpriteNode *outline3;
+    SKTexture *tex;
+    SKSpriteNode *sprite;
 }
 
 static const int outline1Category = 1;
@@ -33,6 +38,17 @@ static const int outline3Category = 3;
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         self.physicsWorld.contactDelegate = self;
+        
+        [self setAnchorPoint:(CGPoint){0.5, 0.5}];
+        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
+        
+        SKEffectNode *effectNode = [[SKEffectNode alloc] init];
+        ENHGlowFilter *glowFilter = [[ENHGlowFilter alloc] init];
+        [glowFilter setGlowColor:[[UIColor redColor] colorWithAlphaComponent:0.5]];
+        [effectNode setShouldRasterize:YES];
+        [effectNode setFilter:glowFilter];
+        [self addChild:effectNode];
+        _effectNode = effectNode;
         
     }
     return self;
@@ -63,7 +79,7 @@ static const int outline3Category = 3;
     SKLabelNode *date = [self dateNode];
     date.position = CGPointMake(-130, 80);
     
-    SKTexture *tex = [self.scene.view textureFromNode:outline1];
+    tex = [self.scene.view textureFromNode:outline1];
     SKSpriteNode *newNode = [SKSpriteNode spriteNodeWithTexture:tex];
     newNode.name = @"newNode";
     newNode.position = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
@@ -111,6 +127,9 @@ static const int outline3Category = 3;
     newNode3.physicsBody.affectedByGravity = NO;
     newNode3.physicsBody.allowsRotation = NO;
     
+    sprite = [SKSpriteNode spriteNodeWithTexture:tex];
+    [_effectNode addChild:sprite];
+    
     [self addChild:newNode3];
     
     [self addChild:newNode2];
@@ -118,7 +137,6 @@ static const int outline3Category = 3;
     [self addChild:newNode];
 }
 
-//needs to make it compatible with three nodes!
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
     SKPhysicsBody *firstBody, *secondBody;
@@ -181,8 +199,6 @@ static const int outline3Category = 3;
             _activeDragNode = (SKSpriteNode *)checkNode;
             [checkNode removeFromParent];
             [self addChild:checkNode];
-            /*SKAction *changeColorAction = [SKAction colorizeWithColor:[SKColor redColor] colorBlendFactor:1.0 duration:0.5];
-            [checkNode runAction:changeColorAction];*/
         }
     }
 }
