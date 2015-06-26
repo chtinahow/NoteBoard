@@ -47,8 +47,6 @@ static const int outline3Category = 3;
         [glowFilter setGlowColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5]];
         [effectNode setShouldRasterize:YES];
         [effectNode setFilter:glowFilter];
-        //[self addChild:effectNode];
-        //self.effectNode = effectNode;
         effectNode.name = @"newNode";
         
     }
@@ -80,12 +78,12 @@ static const int outline3Category = 3;
     SKLabelNode *date = [self dateNode];
     date.position = CGPointMake(-130, 80);
     
-    tex = [self.scene.view textureFromNode:outline1];
+    [effectNode addChild:outline1];
+    tex = [self.scene.view textureFromNode:effectNode];
     SKSpriteNode *newNode = [SKSpriteNode spriteNodeWithTexture:tex];
     newNode.name = @"newNode";
     newNode.position = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
     [newNode addChild:date];
-    [effectNode addChild:newNode];
     
     SKSpriteNode *paper = [self paperNode];
     paper.position = CGPointMake(CGRectGetMidX(outline2.frame), CGRectGetMidY(outline2.frame));
@@ -135,7 +133,7 @@ static const int outline3Category = 3;
     
     [self addChild:newNode2];
     
-    [self addChild:effectNode];
+    [self addChild:newNode];
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact

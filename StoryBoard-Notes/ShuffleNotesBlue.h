@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface ShuffleNotesBlue : SKScene
+@interface ShuffleNotesBlue : SKScene <SKPhysicsContactDelegate>
 
 @end

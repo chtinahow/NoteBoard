@@ -50,7 +50,7 @@
     if (centerX > 0) {
         CGAffineTransform transform = CGAffineTransformIdentity;
         transform = CGAffineTransformTranslate(transform, centerX, centerY);
-        transform = CGAffineTransformScale(transform, 25.2, 25.2);
+        transform = CGAffineTransformScale(transform, 1.2, 1.2);
         transform = CGAffineTransformTranslate(transform, -centerX, -centerY);
         
         CIFilter *affineTransformFilter = [CIFilter filterWithName:@"CIAffineTransform"];
@@ -64,7 +64,7 @@
     CIFilter *gaussianBlurFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
     [gaussianBlurFilter setDefaults];
     [gaussianBlurFilter setValue:glowImage forKey:@"inputImage"];
-    [gaussianBlurFilter setValue:self.inputRadius ?: @100.0 forKey:@"inputRadius"];
+    [gaussianBlurFilter setValue:self.inputRadius ?: @40.0 forKey:@"inputRadius"];
     glowImage = [gaussianBlurFilter valueForKey:@"outputImage"];
     
     // Blend

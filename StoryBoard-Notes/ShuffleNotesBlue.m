@@ -8,6 +8,7 @@
 
 #import "ShuffleNotesBlue.h"
 #import "NotesSection.h"
+#import "ENHGlowFilter.h"
 
 @interface ShuffleNotesBlue()
 
@@ -24,11 +25,30 @@
     SKSpriteNode *outline1;
     SKSpriteNode *outline2;
     SKSpriteNode *outline3;
+    SKEffectNode *effectNode;
 }
 
 static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
+
+-(id)initWithSize:(CGSize)size {
+    if (self = [super initWithSize:size]) {
+        self.physicsWorld.contactDelegate = self;
+        
+        [self setAnchorPoint:(CGPoint){0.5, 0.5}];
+        self.backgroundColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
+        
+        effectNode = [[SKEffectNode alloc] init];
+        ENHGlowFilter *glowFilter = [[ENHGlowFilter alloc] init];
+        [glowFilter setGlowColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5]];
+        [effectNode setShouldRasterize:YES];
+        [effectNode setFilter:glowFilter];
+        effectNode.name = @"newNode";
+        
+    }
+    return self;
+}
 
 - (void)didMoveToView: (SKView *) view{
     if (!self.created) {
@@ -60,6 +80,7 @@ static const int outline3Category = 3;
     newNode.name = @"newNode";
     newNode.position = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
     [newNode addChild:date];
+    [effectNode addChild:newNode];
     
     SKSpriteNode *paper = [self paperNode];
     paper.position = CGPointMake(CGRectGetMidX(outline2.frame), CGRectGetMidY(outline2.frame));
@@ -107,7 +128,7 @@ static const int outline3Category = 3;
     
     [self addChild:newNode2];
     
-    [self addChild:newNode];
+    [self addChild:effectNode];
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
