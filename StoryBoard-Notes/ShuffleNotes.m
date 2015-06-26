@@ -28,7 +28,6 @@
     SKSpriteNode *outline2;
     SKSpriteNode *outline3;
     SKTexture *tex;
-    SKSpriteNode *sprite;
 }
 
 static const int outline1Category = 1;
@@ -40,15 +39,15 @@ static const int outline3Category = 3;
         self.physicsWorld.contactDelegate = self;
         
         [self setAnchorPoint:(CGPoint){0.5, 0.5}];
-        self.backgroundColor = [SKColor colorWithRed:0.15 green:0.15 blue:0.3 alpha:1.0];
+        self.backgroundColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
         
         SKEffectNode *effectNode = [[SKEffectNode alloc] init];
         ENHGlowFilter *glowFilter = [[ENHGlowFilter alloc] init];
-        [glowFilter setGlowColor:[[UIColor redColor] colorWithAlphaComponent:0.5]];
+        [glowFilter setGlowColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5]];
         [effectNode setShouldRasterize:YES];
         [effectNode setFilter:glowFilter];
         [self addChild:effectNode];
-        _effectNode = effectNode;
+        self.effectNode = effectNode;
         
     }
     return self;
@@ -64,7 +63,7 @@ static const int outline3Category = 3;
 //Note! We need to give the papers outlines in this portion or it'll look like a deformed paper monster!
 //Also, I made the papers that we won't be clicking red just to be able to tell the difference for now.
 - (void)createSceneContents{
-    self.backgroundColor = [SKColor grayColor];
+    self.backgroundColor = [SKColor darkGrayColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
     
     outline1 = [self outlineNode];
@@ -127,14 +126,11 @@ static const int outline3Category = 3;
     newNode3.physicsBody.affectedByGravity = NO;
     newNode3.physicsBody.allowsRotation = NO;
     
-    sprite = [SKSpriteNode spriteNodeWithTexture:tex];
-    [_effectNode addChild:sprite];
+    [self.effectNode addChild:newNode3];
     
-    [self addChild:newNode3];
+    [self.effectNode addChild:newNode2];
     
-    [self addChild:newNode2];
-    
-    [self addChild:newNode];
+    [self.effectNode addChild:newNode];
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
@@ -196,9 +192,9 @@ static const int outline3Category = 3;
             [view presentScene:nn transition:doors];
         }
         else if([touch tapCount] == 1 && !_tappedTwice){
-            _activeDragNode = (SKSpriteNode *)checkNode;
             [checkNode removeFromParent];
             [self addChild:checkNode];
+            _activeDragNode = (SKSpriteNode *)checkNode;
         }
     }
 }
@@ -218,6 +214,16 @@ static const int outline3Category = 3;
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     _activeDragNode = nil;
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint scenePosition = [touch locationInNode:self];
+    
+    SKNode *checkNode = [self nodeAtPoint:scenePosition];
+    
+    if(checkNode && ([checkNode.name hasPrefix:@"newNode"] || [checkNode.name hasPrefix:@"newNode2"] || [checkNode.name hasPrefix:@"newNode3"])){
+        [checkNode removeFromParent];
+        [self.effectNode addChild:checkNode];
+    }
 }
 
 @end

@@ -31,16 +31,16 @@
     
     // Monochrome
     CIFilter *monochromeFilter = [CIFilter filterWithName:@"CIColorMatrix"];
-    CGFloat red = 0.0;
-    CGFloat green = 0.0;
-    CGFloat blue = 0.0;
-    CGFloat alpha = 0.0;
+    CGFloat red = 10.0;
+    CGFloat green = 10.0;
+    CGFloat blue = 10.0;
+    CGFloat alpha = 1.0;
     [self.glowColor getRed:&red green:&green blue:&blue alpha:&alpha];
     [monochromeFilter setDefaults];
-    [monochromeFilter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:red] forKey:@"inputRVector"];
-    [monochromeFilter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:green] forKey:@"inputGVector"];
-    [monochromeFilter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:blue] forKey:@"inputBVector"];
-    [monochromeFilter setValue:[CIVector vectorWithX:0 Y:0 Z:0 W:alpha] forKey:@"inputAVector"];
+    [monochromeFilter setValue:[CIVector vectorWithX:100 Y:100 Z:100 W:red] forKey:@"inputRVector"];
+    [monochromeFilter setValue:[CIVector vectorWithX:100 Y:100 Z:100 W:green] forKey:@"inputGVector"];
+    [monochromeFilter setValue:[CIVector vectorWithX:100 Y:100 Z:100 W:blue] forKey:@"inputBVector"];
+    [monochromeFilter setValue:[CIVector vectorWithX:100 Y:100 Z:100 W:alpha] forKey:@"inputAVector"];
     [monochromeFilter setValue:inputImage forKey:@"inputImage"];
     CIImage *glowImage = [monochromeFilter valueForKey:@"outputImage"];
     
@@ -50,7 +50,7 @@
     if (centerX > 0) {
         CGAffineTransform transform = CGAffineTransformIdentity;
         transform = CGAffineTransformTranslate(transform, centerX, centerY);
-        transform = CGAffineTransformScale(transform, 1.2, 1.2);
+        transform = CGAffineTransformScale(transform, 25.2, 25.2);
         transform = CGAffineTransformTranslate(transform, -centerX, -centerY);
         
         CIFilter *affineTransformFilter = [CIFilter filterWithName:@"CIAffineTransform"];
@@ -64,7 +64,7 @@
     CIFilter *gaussianBlurFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
     [gaussianBlurFilter setDefaults];
     [gaussianBlurFilter setValue:glowImage forKey:@"inputImage"];
-    [gaussianBlurFilter setValue:self.inputRadius ?: @10.0 forKey:@"inputRadius"];
+    [gaussianBlurFilter setValue:self.inputRadius ?: @100.0 forKey:@"inputRadius"];
     glowImage = [gaussianBlurFilter valueForKey:@"outputImage"];
     
     // Blend
