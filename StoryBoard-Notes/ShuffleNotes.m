@@ -18,7 +18,7 @@
 
 @property SKSpriteNode *activeDragNode;
 
-@property SKEffectNode *effectNode;
+//@property SKEffectNode *effectNode;
 
 @end
 
@@ -28,6 +28,7 @@
     SKSpriteNode *outline2;
     SKSpriteNode *outline3;
     SKTexture *tex;
+    SKEffectNode *effectNode;
 }
 
 static const int outline1Category = 1;
@@ -41,13 +42,14 @@ static const int outline3Category = 3;
         [self setAnchorPoint:(CGPoint){0.5, 0.5}];
         self.backgroundColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
         
-        SKEffectNode *effectNode = [[SKEffectNode alloc] init];
+        effectNode = [[SKEffectNode alloc] init];
         ENHGlowFilter *glowFilter = [[ENHGlowFilter alloc] init];
         [glowFilter setGlowColor:[[UIColor whiteColor] colorWithAlphaComponent:0.5]];
         [effectNode setShouldRasterize:YES];
         [effectNode setFilter:glowFilter];
-        [self addChild:effectNode];
-        self.effectNode = effectNode;
+        //[self addChild:effectNode];
+        //self.effectNode = effectNode;
+        effectNode.name = @"newNode";
         
     }
     return self;
@@ -83,6 +85,7 @@ static const int outline3Category = 3;
     newNode.name = @"newNode";
     newNode.position = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
     [newNode addChild:date];
+    [effectNode addChild:newNode];
     
     SKSpriteNode *paper = [self paperNode];
     paper.position = CGPointMake(CGRectGetMidX(outline2.frame), CGRectGetMidY(outline2.frame));
@@ -92,6 +95,7 @@ static const int outline3Category = 3;
     SKSpriteNode *newNode2 = [SKSpriteNode spriteNodeWithTexture:tex2];
     newNode2.name = @"newNode2";
     newNode2.position = CGPointMake(CGRectGetMidX(self.frame)-195, CGRectGetMidY(self.frame)+240);
+    //[newNode2 addChild:effectNode];
     
     SKSpriteNode *paper2 = [self paperNode];
     paper2.position = CGPointMake(CGRectGetMidX(outline3.frame), CGRectGetMidY(outline3.frame));
@@ -101,6 +105,7 @@ static const int outline3Category = 3;
     SKSpriteNode *newNode3 = [SKSpriteNode spriteNodeWithTexture:tex3];
     newNode3.name = @"newNode3";
     newNode3.position = CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
+    //[newNode3 addChild:effectNode];
     
     //newNode1 physics body
     newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
@@ -126,11 +131,11 @@ static const int outline3Category = 3;
     newNode3.physicsBody.affectedByGravity = NO;
     newNode3.physicsBody.allowsRotation = NO;
     
-    [self.effectNode addChild:newNode3];
+    [self addChild:newNode3];
     
-    [self.effectNode addChild:newNode2];
+    [self addChild:newNode2];
     
-    [self.effectNode addChild:newNode];
+    [self addChild:effectNode];
 }
 
 -(void)didBeginContact:(SKPhysicsContact *)contact
@@ -192,9 +197,9 @@ static const int outline3Category = 3;
             [view presentScene:nn transition:doors];
         }
         else if([touch tapCount] == 1 && !_tappedTwice){
+            _activeDragNode = (SKSpriteNode *)checkNode;
             [checkNode removeFromParent];
             [self addChild:checkNode];
-            _activeDragNode = (SKSpriteNode *)checkNode;
         }
     }
 }
@@ -215,7 +220,7 @@ static const int outline3Category = 3;
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     _activeDragNode = nil;
     
-    UITouch *touch = [touches anyObject];
+    /*UITouch *touch = [touches anyObject];
     CGPoint scenePosition = [touch locationInNode:self];
     
     SKNode *checkNode = [self nodeAtPoint:scenePosition];
@@ -223,7 +228,7 @@ static const int outline3Category = 3;
     if(checkNode && ([checkNode.name hasPrefix:@"newNode"] || [checkNode.name hasPrefix:@"newNode2"] || [checkNode.name hasPrefix:@"newNode3"])){
         [checkNode removeFromParent];
         [self.effectNode addChild:checkNode];
-    }
+    }*/
 }
 
 @end
