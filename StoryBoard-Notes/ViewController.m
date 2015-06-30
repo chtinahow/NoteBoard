@@ -2,8 +2,8 @@
 //  ViewController.m
 //  StoryBoard-Notes
 //
-//  Created by Student on 6/16/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Created by Kimberly Sookoo on 6/16/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "ViewController.h"
@@ -20,6 +20,7 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
+//shows UIView
 -(void)willLayoutSubviews
 {
     if(!self.didPresentScene)
@@ -29,8 +30,9 @@
     }
 }
 
+//shows SKView
 -(void)viewWillAppear:(BOOL)animated{
-    MainPage *math = [[MainPage alloc] initWithSize:CGSizeMake(1024, 768)];
+    MainPage *math = [[MainPage alloc] initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     SKView *view = (SKView *) self.view;
     [view presentScene:math];
 }

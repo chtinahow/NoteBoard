@@ -2,8 +2,8 @@
 //  Formulas.m
 //  StoryBoard-Notes
 //
-//  Created by Student on 6/17/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Created by Kimberly Sookoo on 6/17/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "Formulas.h"
@@ -20,7 +20,9 @@
 @end
 
 @implementation Formulas{
-    UIButton *button;
+    UIButton *button; //generic button
+    
+    //links to other pages
     SKSpriteNode *assignButton;
     SKSpriteNode *nLink;
     SKSpriteNode *dLink;
@@ -96,7 +98,7 @@
 
 - (void)createScene{
     self.backgroundColor = [SKColor grayColor];
-    self.scaleMode = SKSceneScaleModeAspectFit;
+    self.scaleMode = SKSceneScaleModeFill;
     SKSpriteNode *pap = [self paperNode];
     pap.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     
@@ -138,6 +140,7 @@
     [self addChild:pap];
 }
 
+//UI scene
 -(void)createUIScene{
     //section 1
     section1 = [self makeButton];
@@ -189,6 +192,7 @@
     return button;
 }
 
+//button that links to notes section
 -(IBAction)buttonClick: (UIButton*)pressed{
     if((pressed == section1) || (pressed == section2)){
         NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
@@ -198,6 +202,7 @@
     }
 }
 
+//see more button
 -(IBAction)formulaB:(UIButton *)pressed{
     if(pressed == f1){
         [f1 removeFromSuperview];
@@ -242,6 +247,7 @@
     }
 }
 
+//see less button
 -(IBAction)pressedAgain:(UIButton *)pressed{
     if(pressed == f1){
         [text removeFromSuperview];
@@ -267,6 +273,7 @@
     }
 }
 
+//zoom in
 -(IBAction)enlarge:(UIButton *)pressed{
     if(pressed == enlarge){
         CGRect borderF = CGRectMake(100, 100, 470, 170);
@@ -338,17 +345,6 @@
     SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(1024, 768)];
     
     return paper;
-}
-
-#pragma mark
-
-- (SKLabelNode *)dateNode{
-    SKLabelNode *date = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    date.name = @"date";
-    date.text = @"Date: ";
-    date.fontSize = 30;
-    date.fontColor = [SKColor blackColor];
-    return date;
 }
 
 #pragma mark
@@ -457,6 +453,7 @@
 
 #pragma mark
 
+//links to other pages
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     for(UITouch *touch in touches){
         CGPoint location = [touch locationInNode:self];

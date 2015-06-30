@@ -17,6 +17,10 @@
 		3F28591D1B30D2AF00CE318E /* MainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F28591C1B30D2AF00CE318E /* MainPage.m */; };
 		3F2859201B30D31800CE318E /* ShuffleNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F28591F1B30D31800CE318E /* ShuffleNotes.m */; };
 		3F28C48F1B3C42AF005AE757 /* ENHGlowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F28C48E1B3C42AF005AE757 /* ENHGlowFilter.m */; };
+		3F76E6941B3D987900454864 /* IS787-191.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F76E6931B3D987900454864 /* IS787-191.jpg */; };
+		3F76E69A1B3D9E1400454864 /* IS787-189.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F76E6961B3D9E1400454864 /* IS787-189.jpg */; };
+		3F76E69B1B3D9E1400454864 /* 48SCP0118RM.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F76E6971B3D9E1400454864 /* 48SCP0118RM.jpg */; };
+		3F76E69C1B3D9E1400454864 /* IS098Z75U.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F76E6981B3D9E1400454864 /* IS098Z75U.jpg */; };
 		3F9A70AF1B399AF900C91615 /* ExampleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F9A70AE1B399AF900C91615 /* ExampleView.m */; };
 		3FA553951B39E129001F0538 /* Stacked Notes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA553941B39E129001F0538 /* Stacked Notes.m */; };
 		3FA553981B39EE70001F0538 /* ShuffleNotesBlue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA553971B39EE70001F0538 /* ShuffleNotesBlue.m */; };
@@ -58,6 +62,10 @@
 		3F28591F1B30D31800CE318E /* ShuffleNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShuffleNotes.m; sourceTree = "<group>"; };
 		3F28C48D1B3C42AF005AE757 /* ENHGlowFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENHGlowFilter.h; sourceTree = "<group>"; };
 		3F28C48E1B3C42AF005AE757 /* ENHGlowFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ENHGlowFilter.m; sourceTree = "<group>"; };
+		3F76E6931B3D987900454864 /* IS787-191.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "IS787-191.jpg"; sourceTree = "<group>"; };
+		3F76E6961B3D9E1400454864 /* IS787-189.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "IS787-189.jpg"; sourceTree = "<group>"; };
+		3F76E6971B3D9E1400454864 /* 48SCP0118RM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 48SCP0118RM.jpg; sourceTree = "<group>"; };
+		3F76E6981B3D9E1400454864 /* IS098Z75U.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = IS098Z75U.jpg; sourceTree = "<group>"; };
 		3F9A70AD1B399AF900C91615 /* ExampleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleView.h; sourceTree = "<group>"; };
 		3F9A70AE1B399AF900C91615 /* ExampleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleView.m; sourceTree = "<group>"; };
 		3FA553931B39E129001F0538 /* Stacked Notes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Stacked Notes.h"; sourceTree = "<group>"; };
@@ -128,6 +136,10 @@
 				3F2858FD1B30D29C00CE318E /* ViewController.m */,
 				3F2858FF1B30D29C00CE318E /* Main.storyboard */,
 				3F2859021B30D29C00CE318E /* Images.xcassets */,
+				3F76E6931B3D987900454864 /* IS787-191.jpg */,
+				3F76E6961B3D9E1400454864 /* IS787-189.jpg */,
+				3F76E6971B3D9E1400454864 /* 48SCP0118RM.jpg */,
+				3F76E6981B3D9E1400454864 /* IS098Z75U.jpg */,
 				3FF79EB51B31BDCB00A3A197 /* MainPage */,
 				3F2859041B30D29C00CE318E /* LaunchScreen.xib */,
 				3F2858F51B30D29C00CE318E /* Supporting Files */,
@@ -284,6 +296,7 @@
 				TargetAttributes = {
 					3F2858F11B30D29C00CE318E = {
 						CreatedOnToolsVersion = 6.1.1;
+						DevelopmentTeam = 4ZD4B3UWF7;
 					};
 					3F28590A1B30D29C00CE318E = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -316,7 +329,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F2859011B30D29C00CE318E /* Main.storyboard in Resources */,
+				3F76E69A1B3D9E1400454864 /* IS787-189.jpg in Resources */,
+				3F76E69B1B3D9E1400454864 /* 48SCP0118RM.jpg in Resources */,
+				3F76E69C1B3D9E1400454864 /* IS098Z75U.jpg in Resources */,
 				3F2859061B30D29C00CE318E /* LaunchScreen.xib in Resources */,
+				3F76E6941B3D987900454864 /* IS787-191.jpg in Resources */,
 				3F2859031B30D29C00CE318E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,7 +490,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "StoryBoard-Notes/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -483,7 +502,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = "StoryBoard-Notes/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -1,9 +1,9 @@
 //
 //  ShuffleNotes.m
 //  StoryBoard-Notes
-//  Section 1 View - Red
-//  Created by Student on 6/16/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Section 2 View - Blue
+//  Created by Kimberly Sookoo on 6/16/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "ShuffleNotesBlue.h"
@@ -28,6 +28,7 @@
     SKEffectNode *effectNode;
 }
 
+//constants for the physicsWorld
 static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
@@ -57,11 +58,9 @@ static const int outline3Category = 3;
     }
 }
 
-//Note! We need to give the papers outlines in this portion or it'll look like a deformed paper monster!
-//Also, I made the papers that we won't be clicking red just to be able to tell the difference for now.
 - (void)createSceneContents{
     self.backgroundColor = [SKColor grayColor];
-    self.scaleMode = SKSceneScaleModeAspectFit;
+    self.scaleMode = SKSceneScaleModeFill;
     
     outline1 = [self outlineNode];
     outline2 = [self outlineNode];
@@ -173,7 +172,7 @@ static const int outline3Category = 3;
     return date;
 }
 
-
+//glow in this section vanishes as soon as contact is made with the node
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     _tappedTwice = NO;
     UITouch *touch = [touches anyObject];

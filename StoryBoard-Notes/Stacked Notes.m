@@ -2,8 +2,9 @@
 //  Stacked Notes.m
 //  StoryBoard-Notes
 //
-//  Created by Student on 6/23/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Stacked Notes represent different topics in each chapter; clickable but not stackable
+//  Created by Kimberly Sookoo on 6/23/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "Stacked Notes.h"
@@ -41,7 +42,7 @@
 //Textures help with merging the border and paper nodes into one object
 - (void)createSceneContents{
     self.backgroundColor = [SKColor grayColor];
-    self.scaleMode = SKSceneScaleModeAspectFit;
+    self.scaleMode = SKSceneScaleModeFill;
     
     //stack 1
     outline1 = [self outlineNode];

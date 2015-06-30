@@ -2,8 +2,8 @@
 //  Definitions.m
 //  StoryBoard-Notes
 //
-//  Created by Student on 6/17/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Created by Kimberly Sookoo on 6/17/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "DefinitionsV2.h"
@@ -91,9 +91,10 @@
 
 #pragma mark
 
+//SKView scene
 - (void)createScene{
     self.backgroundColor = [SKColor grayColor];
-    self.scaleMode = SKSceneScaleModeAspectFit;
+    self.scaleMode = SKSceneScaleModeFill;
     SKSpriteNode *pap = [self paperNode];
     pap.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     
@@ -140,6 +141,7 @@
 
 #pragma mark
 
+//UIView Scene
 -(void) createUIScene{
     //make an example button
     UIButton *b = [self makeButton];
@@ -246,6 +248,7 @@
     [view presentScene:eV transition:doors];
 }
 
+//see more button
 -(IBAction)seeMoreB: (UIButton *)pressed {
     if(pressed == cMore){
         _label = [[UITextView alloc] initWithFrame:CGRectMake(0, 50, 150, 100)];
@@ -295,6 +298,7 @@
     }
 }
 
+//see less button
 -(IBAction)seeLessB: (UIButton *)pressed{
     if(pressed == cLess){
         cMore = [self makeButton];
@@ -386,28 +390,6 @@
 
 #pragma mark
 
-- (SKNode *) exDef2{
-    SKNode *nerdText = [SKNode node];
-    SKLabelNode *a = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    a.fontSize = 15;
-    a.fontColor = [SKColor blackColor];
-    SKLabelNode *b = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    b.fontSize = 12;
-    b.fontColor = [SKColor blackColor];
-    NSString *st1 = @"Proof by Induction";
-    NSString *st2 = @"when n=1, n=k, therefore, n = k + 1";
-    b.position = CGPointMake(b.position.x, b.position.y - 20);
-    a.text = st1;
-    b.text = st2;
-    [nerdText addChild:a];
-    [nerdText addChild:b];
-    nerdText.position = CGPointMake(150.0, 250.0);
-    
-    return nerdText;
-}
-
-#pragma mark
-
 - (SKLabelNode *) formula{
     SKLabelNode *form = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
     form.name = @"form";
@@ -430,6 +412,7 @@
 
 #pragma mark
 
+//links to other pages
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     for(UITouch *touch in touches){
         CGPoint location = [touch locationInNode:self];

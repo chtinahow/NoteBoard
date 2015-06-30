@@ -1,9 +1,9 @@
 //
 //  ShuffleNotes.m
 //  StoryBoard-Notes
-//  Section 1 View - Red
-//  Created by Student on 6/16/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Section 3 View - Green
+//  Created by Kimberly Sookoo on 6/16/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "ShuffleNotesGreen.h"
@@ -17,18 +17,43 @@
 
 @property SKSpriteNode *activeDragNode;
 
+@property BOOL didChange;
+
 @end
 
 @implementation ShuffleNotesGreen{
+    SKNode *checkNode;
+    
     SKSpriteNode *outline;
     SKSpriteNode *outline1;
     SKSpriteNode *outline2;
     SKSpriteNode *outline3;
+    SKSpriteNode *newNode;
+    
+    SKSpriteNode *backButton;
+    
+    UIImage *image;
+    SKSpriteNode *image2;
+    SKSpriteNode *image3;
+    
+    //UIView section
+    UIView *viewy;
+    UIButton *image1;
 }
 
 static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
+
+- (id)initWithSize:(CGSize)size
+{
+    if (self = [super initWithSize:size]) {
+        viewy = [[UIView alloc] initWithFrame:CGRectMake(500, 50, 200, 700)];
+        viewy.backgroundColor = [UIColor blueColor];
+    }
+    
+    return self;
+}
 
 - (void)didMoveToView: (SKView *) view{
     if (!self.created) {
@@ -37,11 +62,15 @@ static const int outline3Category = 3;
     }
 }
 
-//Note! We need to give the papers outlines in this portion or it'll look like a deformed paper monster!
-//Also, I made the papers that we won't be clicking red just to be able to tell the difference for now.
+- (void)willMoveFromView:(SKView *)view{
+    [super willMoveFromView:view];
+    [viewy removeFromSuperview];
+}
+
+//Creates the SKScene
 - (void)createSceneContents{
     self.backgroundColor = [SKColor grayColor];
-    self.scaleMode = SKSceneScaleModeAspectFit;
+    self.scaleMode = SKSceneScaleModeFill;
     
     outline1 = [self outlineNode];
     outline2 = [self outlineNode];
@@ -55,8 +84,26 @@ static const int outline3Category = 3;
     SKLabelNode *date = [self dateNode];
     date.position = CGPointMake(-130, 80);
     
+    //creates images and places uibuttons on them to make them clickable.
+    image = [UIImage imageNamed:@"IS787-189.jpg"];
+    image1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [image1 setBackgroundImage:image forState:UIControlStateNormal];
+    image1.frame = CGRectMake(50, 50, 100, 50);
+    [image1 setTitle:@"" forState:UIControlStateNormal];
+    [image1 addTarget:self action:@selector(backgroundChanger:) forControlEvents:UIControlEventTouchUpInside];
+    
+    /*image2 = [SKSpriteNode spriteNodeWithImageNamed:@"ISO98Z75U.jpg"];
+    image2.size = CGSizeMake(100, 50);
+    image2.position = CGPointMake(0, 0);
+    image2.name = @"image2";
+    
+    image3 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
+    image3.size = CGSizeMake(100, 50);
+    image3.position = CGPointMake(50, -100);
+    image3.name = @"image3";*/
+    
     SKTexture *tex = [self.scene.view textureFromNode:outline1];
-    SKSpriteNode *newNode = [SKSpriteNode spriteNodeWithTexture:tex];
+    newNode = [SKSpriteNode spriteNodeWithTexture:tex];
     newNode.name = @"newNode";
     newNode.position = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
     [newNode addChild:date];
@@ -78,6 +125,24 @@ static const int outline3Category = 3;
     SKSpriteNode *newNode3 = [SKSpriteNode spriteNodeWithTexture:tex3];
     newNode3.name = @"newNode3";
     newNode3.position = CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
+    
+    SKSpriteNode *background = [self backGroundColor];
+
+    SKTexture *tex4 = [self.scene.view textureFromNode:background];
+    backButton = [SKSpriteNode spriteNodeWithTexture:tex4];
+    backButton.name = @"Background";
+    backButton.position = CGPointMake(700, 700);
+    
+    SKLabelNode *bText = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
+    bText.text = @"+";
+    bText.fontColor = [SKColor whiteColor];
+    bText.fontSize = 15;
+    bText.position = CGPointMake(0, -5);
+    [backButton addChild:bText];
+    
+    backButton.position = CGPointMake(140, -90);
+    
+    [newNode addChild:backButton];
     
     //newNode1 physics body
     newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
@@ -123,6 +188,17 @@ static const int outline3Category = 3;
 }
 
 #pragma mark
+//the selector
+-(IBAction)backgroundChanger:(UIButton*)pressed{
+    if(pressed == image1){
+        image2 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
+        image2.name = @"image2";
+        checkNode = [SKSpriteNode spriteNodeWithImageNamed:@"image2"];
+        [viewy removeFromSuperview];
+    }
+}
+
+#pragma mark
 
 - (SKSpriteNode *)paperNode{
     SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor greenColor] size:CGSizeMake(300, 200)];
@@ -152,15 +228,23 @@ static const int outline3Category = 3;
     return date;
 }
 
+#pragma mark
+//creates the button that links to the available background images.
+-(SKSpriteNode *)backGroundColor{
+    SKSpriteNode *bc = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(20, 20)];
+    
+    return bc;
+}
 
+//in this section, the nodes' backgrounds will be able to by customized by the students using Access Math
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     _tappedTwice = NO;
     UITouch *touch = [touches anyObject];
     CGPoint scenePosition = [touch locationInNode:self];
     
-    SKNode *checkNode = [self nodeAtPoint:scenePosition];
+    checkNode = [self nodeAtPoint:scenePosition];
     
-    if(checkNode && ([checkNode.name hasPrefix:@"newNode"] || [checkNode.name hasPrefix:@"newNode2"] || [checkNode.name hasPrefix:@"newNode3"])){
+    if(checkNode && ([checkNode.name hasPrefix:@"newNode"])){
         if([touch tapCount] == 2){
             _tappedTwice = YES;
             NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
@@ -172,8 +256,14 @@ static const int outline3Category = 3;
             _activeDragNode = (SKSpriteNode *)checkNode;
             [checkNode removeFromParent];
             [self addChild:checkNode];
-            /*SKAction *changeColorAction = [SKAction colorizeWithColor:[SKColor redColor] colorBlendFactor:1.0 duration:0.5];
-             [checkNode runAction:changeColorAction];*/
+        }
+    }
+    else if(checkNode && [checkNode.name hasPrefix:@"Background"]){
+        if([touch tapCount] == 1){
+            [backButton removeFromParent];
+            [self.view addSubview:viewy];
+            [viewy addSubview:image1];
+            [checkNode.name isEqualToString:@"newNode"];
         }
     }
 }

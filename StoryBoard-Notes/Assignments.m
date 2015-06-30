@@ -2,8 +2,9 @@
 //  Assignments.m
 //  StoryBoard-Notes
 //
-//  Created by Student on 6/17/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  The assignments page displays all upcoming assignments, and gives it the ability to be marked complete.
+//  Created by Kimberly Sookoo on 6/17/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "Assignments.h"
@@ -19,6 +20,7 @@
 @end
 
 @implementation Assignments{
+    //buttons for makeshift checklist
     UIButton *button;
     UIButton *b;
     UIButton *b2;
@@ -33,11 +35,12 @@
 
 #pragma mark
 
+//initializes UIView and UIScrollView along with the UIButtons
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
-        CGSize layerSize        = CGSizeMake(768, 300);
-        CGSize tableSize = CGSizeMake(768, 2400);
+        CGSize layerSize        = CGSizeMake(1024, 300);
+        CGSize tableSize = CGSizeMake(1024, 2400);
         CGPoint layerPosition   = CGPointMake(20, 450);
         CGPoint tablePosition = CGPointMake(0, 0);
         CGRect viewFrame = CGRectMake(layerPosition.x, layerPosition.y, layerSize.width-50, layerSize.height);
@@ -123,7 +126,7 @@
 
 - (void)createScene{
     self.backgroundColor = [SKColor grayColor];
-    self.scaleMode = SKSceneScaleModeAspectFit;
+    self.scaleMode = SKSceneScaleModeFill;
     SKSpriteNode *pap = [self paperNode];
     pap.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     
@@ -137,11 +140,6 @@
     assign.position = CGPointMake(-350, 130);
     [pap addChild:assign];
     
-    //due date
-    SKLabelNode *due = [self dueDate];
-    due.position = CGPointMake(0, 130);
-    [pap addChild:due];
-    
     [self addChild:pap];
 }
 
@@ -151,17 +149,6 @@
     SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(1024, 768)];
     
     return paper;
-}
-
-#pragma mark
-
-- (SKLabelNode *)dateNode{
-    SKLabelNode *date = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    date.name = @"date";
-    date.text = @"Date: ";
-    date.fontSize = 30;
-    date.fontColor = [SKColor blackColor];
-    return date;
 }
 
 #pragma mark
@@ -198,13 +185,14 @@
 }
 
 #pragma mark
-
+//instantiates button
 -(UIButton *) makeButton{
     button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.backgroundColor = [UIColor redColor];
     return button;
 }
 
+//action to mark assignment as complete or incomplete
 -(IBAction)clicked: (UIButton *) pressed{
     if(pressed == b){
         [b setTitle:@"X" forState:UIControlStateNormal];

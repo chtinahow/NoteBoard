@@ -2,8 +2,9 @@
 //  ExampleView.m
 //  StoryBoard-Notes
 //
-//  Created by Student on 6/23/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Example page that contains web view
+//  Created by Kimberly Sookoo on 6/23/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "ExampleView.h"
@@ -21,6 +22,7 @@
     UIView *viewy;
 }
 
+//initializes the UIScrollView and regular UIView.
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
@@ -43,6 +45,7 @@
     return self;
 }
 
+//shows if the UIView and SKView came into view
 - (void) didMoveToView:(SKView *)view{
     if(!self.created){
         [self createScene];
@@ -52,6 +55,7 @@
     [self.view addSubview:viewy];
 }
 
+//removes UIScrollView and UIView from page
 - (void)willMoveFromView:(SKView *)view
 {
     [super willMoveFromView:view];
@@ -60,14 +64,16 @@
     [viewy removeFromSuperview];
 }
 
+//createa the SKScene
 -(void)createScene{
     self.backgroundColor = [SKColor grayColor];
-    self.scaleMode = SKSceneScaleModeAspectFit;
+    self.scaleMode = SKSceneScaleModeFill;
     SKSpriteNode *pap = [self paperNode];
     pap.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
     [self addChild:pap];
 }
 
+//creates the UIView Scene that contains web video and the date
 -(void) createUIScene{
      webView = [[UIWebView alloc] initWithFrame:CGRectMake(50, 0, 768, 350)];
      NSString *embedCode = @"<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/mDFKyp40XUc\" frameborder=\"0\" allowfullscreen></iframe>";

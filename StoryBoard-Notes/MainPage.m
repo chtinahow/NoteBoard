@@ -2,8 +2,10 @@
 //  MainPage.m
 //  StoryBoard-Notes
 //
-//  Created by Student on 6/16/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  This is the main page for the prototype.
+//
+//  Created by Kimberly Sookoo on 6/16/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "MainPage.h"
@@ -11,7 +13,7 @@
 
 @interface MainPage()
 
-@property BOOL created;
+@property BOOL created; //tells if the scene came into view
 
 @end
 
@@ -25,12 +27,14 @@
 
 #pragma mark
 
+//initializes the view of the date via UIView.
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
-        viewy = [[UIView alloc] initWithFrame:CGRectMake(0, 225, 1024, 40)];
+        viewy = [[UIView alloc] initWithFrame:CGRectMake(0, 20, self.frame.size.width, self.frame.size.height)];
         viewy.backgroundColor = [UIColor clearColor];
         
+        //format for the date
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
         NSDate *now = [[NSDate alloc] init];
@@ -47,6 +51,7 @@
     return self;
 }
 
+//brings the SKScene into view and adds the UIView.
 - (void) didMoveToView:(SKView *)view{
     if(!self.created){
         [self createScene];
@@ -64,19 +69,22 @@
 
 #pragma mark
 
+//creates the SKScene
 - (void)createScene{
     self.backgroundColor = [SKColor grayColor];
-    self.scaleMode = SKSceneScaleModeAspectFit;
-    SKSpriteNode *pap = [self paperNode];
-    pap.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame));
+    self.scaleMode = SKSceneScaleModeFill; //sets it to work with both portrait and landscape views
     
+    SKSpriteNode *pap = [self paperNode];
+    pap.position = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame));
+    
+    //Calculus Display
     cButton = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(350, 55)];
     cButton.name = @"calc";
-    cButton.position = CGPointMake(0, 280);
+    cButton.position = CGPointMake(0, 260);
     [pap addChild:cButton];
     
     SKLabelNode *calc = [self calc];
-    calc.position = CGPointMake(0, 260);
+    calc.position = CGPointMake(0, 240);
     [pap addChild:calc];
     
     //Discrete Display
@@ -102,21 +110,11 @@
     [self addChild:pap];
 }
 
+//creates paper
 - (SKSpriteNode *) paperNode{
-    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(1024, 768)];
+    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
     
     return paper;
-}
-
-#pragma mark
-
-- (SKLabelNode *)dateNode{
-    SKLabelNode *date = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    date.name = @"date";
-    date.text = @"Date: ";
-    date.fontSize = 30;
-    date.fontColor = [SKColor blackColor];
-    return date;
 }
 
 #pragma mark
@@ -149,6 +147,7 @@
     return phys;
 }
 
+//links to view that displays different chapters for the chosen subject
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     for(UITouch *touch in touches){
@@ -156,7 +155,7 @@
         SKNode *node = [self nodeAtPoint:location];
         
         if([node.name isEqualToString:@"calc"]){
-            cButton.alpha = 0.5;
+            cButton.alpha = 0.5; //.alpha is used to have node mimic the effect of clicking a button
         }
         if([node.name isEqualToString:@"disc"]){
             dButton.alpha = 0.5;
@@ -174,7 +173,7 @@
         SKNode *node = [self nodeAtPoint:location];
         if(cButton.alpha == 0.5 && [node.name isEqualToString:@"calc"]){
             cButton.alpha = 1.0;
-            DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(1024, 768)];
+            DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [viewy removeFromSuperview];
@@ -182,7 +181,7 @@
         }
         if(dButton.alpha == 0.5 && [node.name isEqualToString:@"disc"]){
             dButton.alpha = 1.0;
-            DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(768, 1024)];
+            DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [viewy removeFromSuperview];
@@ -190,7 +189,7 @@
         }
         if(pButton.alpha == 0.5 && [node.name isEqualToString:@"phys"]){
             pButton.alpha = 1.0;
-            DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(768, 1024)];
+            DifChapters *ss = [[DifChapters alloc] initWithSize:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [viewy removeFromSuperview];

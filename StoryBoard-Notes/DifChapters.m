@@ -2,8 +2,9 @@
 //  DifChapters.m
 //  StoryBoard-Notes
 //
-//  Created by Student on 6/22/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Basically sets up rough view of the chapters available
+//  Created by Kimberly Sookoo on 6/22/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "DifChapters.h"
@@ -31,7 +32,7 @@
 
 - (void)createSceneContents{
     self.backgroundColor = [SKColor grayColor];
-    self.scaleMode = SKSceneScaleModeAspectFit;
+    self.scaleMode = SKSceneScaleModeFill;
     
     outline = [self outlineNode];
     outline2 = [self outlineNode];
@@ -134,6 +135,7 @@
 
 #pragma mark
 
+//transitions to the stacks of notes for the individual chapters
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
     CGPoint scenePosition = [touch locationInNode:self];

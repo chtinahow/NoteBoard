@@ -2,8 +2,8 @@
 //  ShuffleNotes.m
 //  StoryBoard-Notes
 //  Section 1 View - Red
-//  Created by Student on 6/16/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Created by Kimberly Sookoo on 6/16/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "ShuffleNotes.h"
@@ -17,8 +17,6 @@
 @property BOOL tappedTwice;
 
 @property SKSpriteNode *activeDragNode;
-
-//@property SKEffectNode *effectNode;
 
 @end
 
@@ -37,8 +35,10 @@ static const int outline3Category = 3;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
+        //sets up physicsWorld delegate
         self.physicsWorld.contactDelegate = self;
         
+        //sets up glow effect on node
         [self setAnchorPoint:(CGPoint){0.5, 0.5}];
         self.backgroundColor = [SKColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
         
@@ -60,11 +60,10 @@ static const int outline3Category = 3;
     }
 }
 
-//Note! We need to give the papers outlines in this portion or it'll look like a deformed paper monster!
-//Also, I made the papers that we won't be clicking red just to be able to tell the difference for now.
+//create SKScene
 - (void)createSceneContents{
     self.backgroundColor = [SKColor darkGrayColor];
-    self.scaleMode = SKSceneScaleModeAspectFit;
+    self.scaleMode = SKSceneScaleModeFill;
     
     outline1 = [self outlineNode];
     outline2 = [self outlineNode];
@@ -136,6 +135,7 @@ static const int outline3Category = 3;
     [self addChild:newNode];
 }
 
+//determines if physics bodies made contact
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
     SKPhysicsBody *firstBody, *secondBody;
@@ -178,7 +178,7 @@ static const int outline3Category = 3;
     return date;
 }
 
-
+//papers are both draggable and clickable; the glow effect is continuous in this view, but the radius of the glow poses a problem for the textures
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     _tappedTwice = NO;
     UITouch *touch = [touches anyObject];
@@ -217,16 +217,6 @@ static const int outline3Category = 3;
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
     _activeDragNode = nil;
-    
-    /*UITouch *touch = [touches anyObject];
-    CGPoint scenePosition = [touch locationInNode:self];
-    
-    SKNode *checkNode = [self nodeAtPoint:scenePosition];
-    
-    if(checkNode && ([checkNode.name hasPrefix:@"newNode"] || [checkNode.name hasPrefix:@"newNode2"] || [checkNode.name hasPrefix:@"newNode3"])){
-        [checkNode removeFromParent];
-        [self.effectNode addChild:checkNode];
-    }*/
 }
 
 @end
