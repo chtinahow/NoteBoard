@@ -32,7 +32,7 @@
     
     SKSpriteNode *backButton;
     
-    UIImage *image;
+    SKSpriteNode *image;
     SKSpriteNode *image2;
     SKSpriteNode *image3;
     
@@ -44,6 +44,7 @@
 static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
+static const int image1Category = 4;
 
 - (id)initWithSize:(CGSize)size
 {
@@ -85,19 +86,12 @@ static const int outline3Category = 3;
     date.position = CGPointMake(-130, 80);
     
     //creates images and places uibuttons on them to make them clickable.
-    image = [UIImage imageNamed:@"IS787-189.jpg"];
-    image1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [image1 setBackgroundImage:image forState:UIControlStateNormal];
-    image1.frame = CGRectMake(50, 50, 100, 50);
-    [image1 setTitle:@"" forState:UIControlStateNormal];
-    [image1 addTarget:self action:@selector(backgroundChanger:) forControlEvents:UIControlEventTouchUpInside];
-    
-    /*image2 = [SKSpriteNode spriteNodeWithImageNamed:@"ISO98Z75U.jpg"];
+    image2 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
     image2.size = CGSizeMake(100, 50);
-    image2.position = CGPointMake(0, 0);
+    image2.position = CGPointMake(500, 500);
     image2.name = @"image2";
     
-    image3 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
+    /*image3 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
     image3.size = CGSizeMake(100, 50);
     image3.position = CGPointMake(50, -100);
     image3.name = @"image3";*/
@@ -147,26 +141,34 @@ static const int outline3Category = 3;
     //newNode1 physics body
     newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
     newNode.physicsBody.categoryBitMask = outline1Category;
-    newNode.physicsBody.contactTestBitMask = outline2Category | outline3Category;
-    newNode.physicsBody.collisionBitMask = outline2Category | outline3Category;
+    newNode.physicsBody.contactTestBitMask = outline2Category | outline3Category | image1Category;
+    newNode.physicsBody.collisionBitMask = outline2Category | outline3Category | image1Category;
     newNode.physicsBody.affectedByGravity = NO;
     newNode.physicsBody.allowsRotation = NO;
     
     //newNode2 physics body
     newNode2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
     newNode2.physicsBody.categoryBitMask = outline2Category;
-    newNode2.physicsBody.contactTestBitMask = outline1Category | outline3Category;
-    newNode2.physicsBody.collisionBitMask = outline1Category | outline3Category;
+    newNode2.physicsBody.contactTestBitMask = outline1Category | outline3Category | image1Category;
+    newNode2.physicsBody.collisionBitMask = outline1Category | outline3Category | image1Category;
     newNode2.physicsBody.affectedByGravity = NO;
     newNode2.physicsBody.allowsRotation = NO;
     
     //newNode3
     newNode3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
     newNode3.physicsBody.categoryBitMask = outline3Category;
-    newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category;
-    newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category;
+    newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category | image1Category;
+    newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category | image1Category;
     newNode3.physicsBody.affectedByGravity = NO;
     newNode3.physicsBody.allowsRotation = NO;
+    
+    //image2
+    image2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(100, 50)];
+    image2.physicsBody.categoryBitMask = image1Category;
+    image2.physicsBody.contactTestBitMask = outline1Category | outline2Category | outline3Category;
+    image2.physicsBody.collisionBitMask = outline1Category | outline2Category | outline3Category;
+    image2.physicsBody.affectedByGravity = NO;
+    image2.physicsBody.allowsRotation = NO;
     
     [self addChild:newNode3];
     
@@ -185,6 +187,11 @@ static const int outline3Category = 3;
     if((firstBody.categoryBitMask == (outline2Category | outline3Category)) || (secondBody.categoryBitMask == (outline2Category | outline3Category)))
     {
     }
+    /*else if((firstBody.categoryBitMask == image1Category) || (secondBody.categoryBitMask == image1Category)){
+        if([checkNode.name hasPrefix:@"newNode"]){
+            checkNode
+        }
+    }*/
 }
 
 #pragma mark
@@ -192,7 +199,7 @@ static const int outline3Category = 3;
 -(IBAction)backgroundChanger:(UIButton*)pressed{
     if(pressed == image1){
         image2 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
-        image2.name = @"image2";
+        image2.name = @"IS787-189.jpg";
         checkNode = [SKSpriteNode spriteNodeWithImageNamed:@"image2"];
         [viewy removeFromSuperview];
     }
@@ -224,14 +231,14 @@ static const int outline3Category = 3;
     date.name = @"date";
     date.text = @"Date: ";
     date.fontSize = 15;
-    date.fontColor = [SKColor blackColor];
+    date.fontColor = [SKColor whiteColor];
     return date;
 }
 
 #pragma mark
 //creates the button that links to the available background images.
 -(SKSpriteNode *)backGroundColor{
-    SKSpriteNode *bc = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(20, 20)];
+    SKSpriteNode *bc = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(40, 20)];
     
     return bc;
 }
@@ -258,12 +265,18 @@ static const int outline3Category = 3;
             [self addChild:checkNode];
         }
     }
-    else if(checkNode && [checkNode.name hasPrefix:@"Background"]){
-        if([touch tapCount] == 1){
-            [backButton removeFromParent];
-            [self.view addSubview:viewy];
-            [viewy addSubview:image1];
-            [checkNode.name isEqualToString:@"newNode"];
+    else if(checkNode && ([checkNode.name hasPrefix:@"Background"])){
+        [checkNode removeFromParent];
+        [self addChild:image2];
+    }
+    //finally! code to get background image changed!
+    else if(checkNode && ([checkNode.name hasPrefix:@"image"])){
+        SKTexture *tex = [self.scene.view textureFromNode:checkNode];
+        SKAction* changeFace = [SKAction setTexture:tex];
+        [checkNode removeFromParent];
+        for(SKNode *check in self.children){
+            [self runAction:changeFace];
+            [check runAction:changeFace];
         }
     }
 }
