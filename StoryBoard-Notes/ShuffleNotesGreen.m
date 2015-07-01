@@ -22,15 +22,16 @@
 @end
 
 @implementation ShuffleNotesGreen{
-    SKNode *checkNode;
-    
     SKSpriteNode *outline;
     SKSpriteNode *outline1;
     SKSpriteNode *outline2;
     SKSpriteNode *outline3;
     SKSpriteNode *newNode;
+    SKSpriteNode *newNode2;
+    SKSpriteNode *newNode3;
     
     SKSpriteNode *backButton;
+    SKSpriteNode *opt;
     
     SKSpriteNode *image;
     SKSpriteNode *image2;
@@ -44,7 +45,6 @@
 static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
-static const int image1Category = 4;
 
 - (id)initWithSize:(CGSize)size
 {
@@ -83,18 +83,18 @@ static const int image1Category = 4;
     
     //add date
     SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-130, 80);
+    date.position = CGPointMake(-105, 70);
     
     //creates images and places uibuttons on them to make them clickable.
     image2 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
     image2.size = CGSizeMake(100, 50);
-    image2.position = CGPointMake(500, 500);
+    image2.position = CGPointMake(0, 0);
     image2.name = @"image2";
     
-    /*image3 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
+    image3 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-191.jpg"];
     image3.size = CGSizeMake(100, 50);
-    image3.position = CGPointMake(50, -100);
-    image3.name = @"image3";*/
+    image3.position = CGPointMake(0, -100);
+    image3.name = @"image3";
     
     SKTexture *tex = [self.scene.view textureFromNode:outline1];
     newNode = [SKSpriteNode spriteNodeWithTexture:tex];
@@ -107,7 +107,7 @@ static const int image1Category = 4;
     [outline2 addChild:paper];
     
     SKTexture *tex2 = [self.scene.view textureFromNode:outline2];
-    SKSpriteNode *newNode2 = [SKSpriteNode spriteNodeWithTexture:tex2];
+    newNode2 = [SKSpriteNode spriteNodeWithTexture:tex2];
     newNode2.name = @"newNode2";
     newNode2.position = CGPointMake(CGRectGetMidX(self.frame)-195, CGRectGetMidY(self.frame)+240);
     
@@ -116,59 +116,49 @@ static const int image1Category = 4;
     [outline3 addChild:paper2];
     
     SKTexture *tex3 = [self.scene.view textureFromNode:outline3];
-    SKSpriteNode *newNode3 = [SKSpriteNode spriteNodeWithTexture:tex3];
+    newNode3 = [SKSpriteNode spriteNodeWithTexture:tex3];
     newNode3.name = @"newNode3";
     newNode3.position = CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
     
     SKSpriteNode *background = [self backGroundColor];
-
-    SKTexture *tex4 = [self.scene.view textureFromNode:background];
-    backButton = [SKSpriteNode spriteNodeWithTexture:tex4];
-    backButton.name = @"Background";
-    backButton.position = CGPointMake(700, 700);
-    
     SKLabelNode *bText = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
     bText.text = @"+";
     bText.fontColor = [SKColor whiteColor];
-    bText.fontSize = 15;
-    bText.position = CGPointMake(0, -5);
-    [backButton addChild:bText];
+    bText.fontSize = 20;
+    bText.position = CGPointMake(0, -8);
+    [background addChild:bText];
+    SKTexture *tex4 = [self.scene.view textureFromNode:background];
+    backButton = [SKSpriteNode spriteNodeWithTexture:tex4];
+    backButton.name = @"Background";
+    backButton.position = CGPointMake(112, -90);
     
-    backButton.position = CGPointMake(140, -90);
-    
+    //[newNode3 addChild:backButton];
+    //[newNode2 addChild:backButton];
     [newNode addChild:backButton];
     
     //newNode1 physics body
     newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
     newNode.physicsBody.categoryBitMask = outline1Category;
-    newNode.physicsBody.contactTestBitMask = outline2Category | outline3Category | image1Category;
-    newNode.physicsBody.collisionBitMask = outline2Category | outline3Category | image1Category;
+    newNode.physicsBody.contactTestBitMask = outline2Category | outline3Category;
+    newNode.physicsBody.collisionBitMask = outline2Category | outline3Category;
     newNode.physicsBody.affectedByGravity = NO;
     newNode.physicsBody.allowsRotation = NO;
     
     //newNode2 physics body
     newNode2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
     newNode2.physicsBody.categoryBitMask = outline2Category;
-    newNode2.physicsBody.contactTestBitMask = outline1Category | outline3Category | image1Category;
-    newNode2.physicsBody.collisionBitMask = outline1Category | outline3Category | image1Category;
+    newNode2.physicsBody.contactTestBitMask = outline1Category | outline3Category;
+    newNode2.physicsBody.collisionBitMask = outline1Category | outline3Category;
     newNode2.physicsBody.affectedByGravity = NO;
     newNode2.physicsBody.allowsRotation = NO;
     
     //newNode3
     newNode3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
     newNode3.physicsBody.categoryBitMask = outline3Category;
-    newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category | image1Category;
-    newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category | image1Category;
+    newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category;
+    newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category;
     newNode3.physicsBody.affectedByGravity = NO;
     newNode3.physicsBody.allowsRotation = NO;
-    
-    //image2
-    image2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(100, 50)];
-    image2.physicsBody.categoryBitMask = image1Category;
-    image2.physicsBody.contactTestBitMask = outline1Category | outline2Category | outline3Category;
-    image2.physicsBody.collisionBitMask = outline1Category | outline2Category | outline3Category;
-    image2.physicsBody.affectedByGravity = NO;
-    image2.physicsBody.allowsRotation = NO;
     
     [self addChild:newNode3];
     
@@ -184,24 +174,7 @@ static const int image1Category = 4;
     firstBody = contact.bodyA;
     secondBody = contact.bodyB;
     
-    if((firstBody.categoryBitMask == (outline2Category | outline3Category)) || (secondBody.categoryBitMask == (outline2Category | outline3Category)))
-    {
-    }
-    /*else if((firstBody.categoryBitMask == image1Category) || (secondBody.categoryBitMask == image1Category)){
-        if([checkNode.name hasPrefix:@"newNode"]){
-            checkNode
-        }
-    }*/
-}
-
-#pragma mark
-//the selector
--(IBAction)backgroundChanger:(UIButton*)pressed{
-    if(pressed == image1){
-        image2 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
-        image2.name = @"IS787-189.jpg";
-        checkNode = [SKSpriteNode spriteNodeWithImageNamed:@"image2"];
-        [viewy removeFromSuperview];
+    if((firstBody.categoryBitMask == (outline2Category | outline3Category)) || (secondBody.categoryBitMask == (outline2Category | outline3Category))){
     }
 }
 
@@ -230,7 +203,7 @@ static const int image1Category = 4;
     SKLabelNode *date = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
     date.name = @"date";
     date.text = @"Date: ";
-    date.fontSize = 15;
+    date.fontSize = 35;
     date.fontColor = [SKColor whiteColor];
     return date;
 }
@@ -238,18 +211,25 @@ static const int image1Category = 4;
 #pragma mark
 //creates the button that links to the available background images.
 -(SKSpriteNode *)backGroundColor{
-    SKSpriteNode *bc = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(40, 20)];
+    SKSpriteNode *bc = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(75, 30)];
     
     return bc;
 }
 
+-(SKSpriteNode *)optionsView{
+    SKSpriteNode *opt2 = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(200, self.frame.size.height+2)];
+    opt2.position = CGPointMake(950, 383);
+    return opt2;
+}
+
 //in this section, the nodes' backgrounds will be able to by customized by the students using Access Math
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    //SKSpriteNode *layer;
     _tappedTwice = NO;
     UITouch *touch = [touches anyObject];
     CGPoint scenePosition = [touch locationInNode:self];
     
-    checkNode = [self nodeAtPoint:scenePosition];
+    SKNode *checkNode = [self nodeAtPoint:scenePosition];
     
     if(checkNode && ([checkNode.name hasPrefix:@"newNode"])){
         if([touch tapCount] == 2){
@@ -266,17 +246,45 @@ static const int image1Category = 4;
         }
     }
     else if(checkNode && ([checkNode.name hasPrefix:@"Background"])){
-        [checkNode removeFromParent];
-        [self addChild:image2];
+        /*layer = [[SKSpriteNode alloc] initWithColor:[SKColor clearColor] size:CGSizeMake(checkNode.frame.size.width, checkNode.frame.size.height)];
+        [checkNode addChild:layer];*/
+        checkNode.userInteractionEnabled = NO;
+        opt = [self optionsView];
+        [opt addChild:image2];
+        [opt addChild:image3];
+        
+        SKSpriteNode *less = [self backGroundColor];
+        SKLabelNode *bText = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
+        bText.text = @"-";
+        bText.fontColor = [SKColor whiteColor];
+        bText.fontSize = 20;
+        bText.position = CGPointMake(0, -5);
+        [less addChild:bText];
+        SKTexture *texLess = [self.scene.view textureFromNode:less];
+        SKSpriteNode *lessN = [SKSpriteNode spriteNodeWithTexture:texLess];
+        lessN.position = CGPointMake(30, -365);
+        lessN.name = @"lessN";
+        
+        [opt addChild:lessN];
+        [self addChild:opt];
     }
     //finally! code to get background image changed!
     else if(checkNode && ([checkNode.name hasPrefix:@"image"])){
         SKTexture *tex = [self.scene.view textureFromNode:checkNode];
         SKAction* changeFace = [SKAction setTexture:tex];
-        [checkNode removeFromParent];
         for(SKNode *check in self.children){
-            [self runAction:changeFace];
-            [check runAction:changeFace];
+            if([check.name hasPrefix:@"newNode"]){
+                [self runAction:changeFace];
+                [check runAction:changeFace];
+            }
+        }
+    }
+    else if(checkNode && ([checkNode.name isEqualToString:@"lessN"])){
+        [opt removeFromParent];
+        for(SKNode *check in self.children){
+            if([check.name hasPrefix:@"Background"]){
+                check.userInteractionEnabled = YES;
+            }
         }
     }
 }
