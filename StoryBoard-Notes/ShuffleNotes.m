@@ -75,7 +75,7 @@ static const int outline3Category = 3;
     
     //add date
     SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-130, 80);
+    date.position = CGPointMake(-100, 67);
     
     [effectNode addChild:outline1];
     tex = [self.scene.view textureFromNode:effectNode];
@@ -173,8 +173,8 @@ static const int outline3Category = 3;
     SKLabelNode *date = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
     date.name = @"date";
     date.text = @"Date: ";
-    date.fontSize = 15;
-    date.fontColor = [SKColor blackColor];
+    date.fontSize = 35;
+    date.fontColor = [SKColor whiteColor];
     return date;
 }
 

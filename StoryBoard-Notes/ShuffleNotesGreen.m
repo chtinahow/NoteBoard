@@ -83,7 +83,7 @@ static const int outline3Category = 3;
     
     //add date
     SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-105, 70);
+    date.position = CGPointMake(-100, 67);
     
     //creates images and places uibuttons on them to make them clickable.
     image2 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
@@ -130,7 +130,7 @@ static const int outline3Category = 3;
     SKTexture *tex4 = [self.scene.view textureFromNode:background];
     backButton = [SKSpriteNode spriteNodeWithTexture:tex4];
     backButton.name = @"Background";
-    backButton.position = CGPointMake(112, -90);
+    backButton.position = CGPointMake(110, -85);
     
     //[newNode3 addChild:backButton];
     //[newNode2 addChild:backButton];
@@ -248,7 +248,7 @@ static const int outline3Category = 3;
     else if(checkNode && ([checkNode.name hasPrefix:@"Background"])){
         /*layer = [[SKSpriteNode alloc] initWithColor:[SKColor clearColor] size:CGSizeMake(checkNode.frame.size.width, checkNode.frame.size.height)];
         [checkNode addChild:layer];*/
-        checkNode.userInteractionEnabled = NO;
+        [checkNode removeFromParent];
         opt = [self optionsView];
         [opt addChild:image2];
         [opt addChild:image3];
@@ -282,8 +282,8 @@ static const int outline3Category = 3;
     else if(checkNode && ([checkNode.name isEqualToString:@"lessN"])){
         [opt removeFromParent];
         for(SKNode *check in self.children){
-            if([check.name hasPrefix:@"Background"]){
-                check.userInteractionEnabled = YES;
+            if([check.name hasPrefix:@"newNode"]){
+                [check addChild:backButton];
             }
         }
     }

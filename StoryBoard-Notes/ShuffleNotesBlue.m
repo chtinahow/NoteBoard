@@ -72,7 +72,7 @@ static const int outline3Category = 3;
     
     //add date
     SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-130, 80);
+    date.position = CGPointMake(-100, 67);
     
     SKTexture *tex = [self.scene.view textureFromNode:outline1];
     SKSpriteNode *newNode = [SKSpriteNode spriteNodeWithTexture:tex];
@@ -167,8 +167,8 @@ static const int outline3Category = 3;
     SKLabelNode *date = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
     date.name = @"date";
     date.text = @"Date: ";
-    date.fontSize = 15;
-    date.fontColor = [SKColor blackColor];
+    date.fontSize = 35;
+    date.fontColor = [SKColor whiteColor];
     return date;
 }
 

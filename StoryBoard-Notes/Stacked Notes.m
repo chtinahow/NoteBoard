@@ -206,8 +206,8 @@
 - (SKLabelNode *)textNode{
     SKLabelNode *text = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
     text.name = @"text";
-    text.fontSize = 25;
-    text.fontColor = [SKColor blackColor];
+    text.fontSize = 40;
+    text.fontColor = [SKColor whiteColor];
     return text;
 }
 

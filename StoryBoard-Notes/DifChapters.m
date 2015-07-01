@@ -128,7 +128,7 @@
 - (SKLabelNode *)dateNode{
     SKLabelNode *date = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
     date.name = @"folder";
-    date.fontSize = 20;
+    date.fontSize = 35;
     date.fontColor = [SKColor blackColor];
     return date;
 }
