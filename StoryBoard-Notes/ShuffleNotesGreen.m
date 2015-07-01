@@ -36,36 +36,17 @@
     SKSpriteNode *image;
     SKSpriteNode *image2;
     SKSpriteNode *image3;
-    
-    //UIView section
-    UIView *viewy;
-    UIButton *image1;
 }
 
 static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
 
-- (id)initWithSize:(CGSize)size
-{
-    if (self = [super initWithSize:size]) {
-        viewy = [[UIView alloc] initWithFrame:CGRectMake(500, 50, 200, 700)];
-        viewy.backgroundColor = [UIColor blueColor];
-    }
-    
-    return self;
-}
-
 - (void)didMoveToView: (SKView *) view{
     if (!self.created) {
         [self createSceneContents];
         self.created = YES;
     }
-}
-
-- (void)willMoveFromView:(SKView *)view{
-    [super willMoveFromView:view];
-    [viewy removeFromSuperview];
 }
 
 //Creates the SKScene
@@ -130,11 +111,9 @@ static const int outline3Category = 3;
     SKTexture *tex4 = [self.scene.view textureFromNode:background];
     backButton = [SKSpriteNode spriteNodeWithTexture:tex4];
     backButton.name = @"Background";
-    backButton.position = CGPointMake(110, -85);
+    backButton.position = CGPointMake(700, 750);
     
-    //[newNode3 addChild:backButton];
-    //[newNode2 addChild:backButton];
-    [newNode addChild:backButton];
+    [self addChild:backButton];
     
     //newNode1 physics body
     newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
@@ -167,6 +146,7 @@ static const int outline3Category = 3;
     [self addChild:newNode];
 }
 
+//detects if contact is made
 -(void)didBeginContact:(SKPhysicsContact *)contact
 {
     SKPhysicsBody *firstBody, *secondBody;
@@ -268,10 +248,19 @@ static const int outline3Category = 3;
         [opt addChild:lessN];
         [self addChild:opt];
     }
-    //finally! code to get background image changed!
+    //finally! code to get background image changed! outline is kept
     else if(checkNode && ([checkNode.name hasPrefix:@"image"])){
         SKTexture *tex = [self.scene.view textureFromNode:checkNode];
-        SKAction* changeFace = [SKAction setTexture:tex];
+        SKSpriteNode *paper = [[SKSpriteNode alloc] initWithTexture:tex];
+        paper.size = CGSizeMake(300, 200);
+        
+        SKSpriteNode *outliner = [self outlineNode];
+        [outliner addChild:paper];
+        
+        SKTexture *newTex = [self.scene.view textureFromNode:outliner];
+        
+        SKAction* changeFace = [SKAction setTexture:newTex];
+        
         for(SKNode *check in self.children){
             if([check.name hasPrefix:@"newNode"]){
                 [self runAction:changeFace];
@@ -281,11 +270,7 @@ static const int outline3Category = 3;
     }
     else if(checkNode && ([checkNode.name isEqualToString:@"lessN"])){
         [opt removeFromParent];
-        for(SKNode *check in self.children){
-            if([check.name hasPrefix:@"newNode"]){
-                [check addChild:backButton];
-            }
-        }
+        [self addChild:backButton];
     }
 }
 
