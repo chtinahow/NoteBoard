@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F16B2F31B44799D00BBCA2D /* transparent-arrow-th.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F16B2F21B44799D00BBCA2D /* transparent-arrow-th.png */; };
+		3F16B2F51B448D2900BBCA2D /* notebook-page.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F16B2F41B448D2900BBCA2D /* notebook-page.jpg */; };
 		3F2858F81B30D29C00CE318E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2858F71B30D29C00CE318E /* main.m */; };
 		3F2858FB1B30D29C00CE318E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2858FA1B30D29C00CE318E /* AppDelegate.m */; };
 		3F2858FE1B30D29C00CE318E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F2858FD1B30D29C00CE318E /* ViewController.m */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F16B2F21B44799D00BBCA2D /* transparent-arrow-th.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "transparent-arrow-th.png"; sourceTree = "<group>"; };
+		3F16B2F41B448D2900BBCA2D /* notebook-page.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "notebook-page.jpg"; sourceTree = "<group>"; };
 		3F2858F21B30D29C00CE318E /* StoryBoard-Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StoryBoard-Notes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F2858F61B30D29C00CE318E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F2858F71B30D29C00CE318E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 				3F2858FF1B30D29C00CE318E /* Main.storyboard */,
 				3F2859021B30D29C00CE318E /* Images.xcassets */,
 				3F76E6931B3D987900454864 /* IS787-191.jpg */,
+				3F16B2F41B448D2900BBCA2D /* notebook-page.jpg */,
+				3F16B2F21B44799D00BBCA2D /* transparent-arrow-th.png */,
 				3F76E6961B3D9E1400454864 /* IS787-189.jpg */,
 				3F76E6971B3D9E1400454864 /* 48SCP0118RM.jpg */,
 				3F76E6981B3D9E1400454864 /* IS098Z75U.jpg */,
@@ -334,6 +340,8 @@
 				3F76E69C1B3D9E1400454864 /* IS098Z75U.jpg in Resources */,
 				3F2859061B30D29C00CE318E /* LaunchScreen.xib in Resources */,
 				3F76E6941B3D987900454864 /* IS787-191.jpg in Resources */,
+				3F16B2F31B44799D00BBCA2D /* transparent-arrow-th.png in Resources */,
+				3F16B2F51B448D2900BBCA2D /* notebook-page.jpg in Resources */,
 				3F2859031B30D29C00CE318E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

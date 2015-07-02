@@ -30,6 +30,8 @@
     SKSpriteNode *outline7;
     SKSpriteNode *outline8;
     SKSpriteNode *outline9;
+    
+    SKSpriteNode *changeText;
 }
 
 - (void)didMoveToView: (SKView *) view{
@@ -165,8 +167,36 @@
     [self addChild:newNode8];
     
     [self addChild:newNode7];
-
     
+    //Change the color of the text
+    SKSpriteNode *color1 = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(30, 30)];
+    color1.position = CGPointMake(-60, 0);
+    color1.name = @"color1";
+    
+    SKSpriteNode *color2 = [[SKSpriteNode alloc] initWithColor:[SKColor darkGrayColor] size:CGSizeMake(30, 30)];
+    color2.position = CGPointMake(-30, 0);
+    color2.name = @"color2";
+    
+    SKSpriteNode *color3 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(30, 30)];
+    color3.position = CGPointMake(0, 0);
+    color3.name = @"color3";
+    
+    SKSpriteNode *color4 = [[SKSpriteNode alloc] initWithColor:[SKColor lightGrayColor] size:CGSizeMake(30, 30)];
+    color4.position = CGPointMake(30, 0);
+    color4.name = @"color4";
+    
+    SKSpriteNode *color5 = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(30, 30)];
+    color5.position = CGPointMake(60, 0);
+    color5.name = @"color5";
+    
+    changeText = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(153, 33)];
+    changeText.position = CGPointMake(850, 30);
+    [changeText addChild:color1];
+    [changeText addChild:color2];
+    [changeText addChild:color3];
+    [changeText addChild:color4];
+    [changeText addChild:color5];
+    [self addChild:changeText];
 }
 
 #pragma mark
@@ -226,7 +256,7 @@
             [view presentScene:ss transition:doors];
         }
     }
-    if(checkNode && [checkNode.name hasPrefix:@"blue"]){
+    else if(checkNode && [checkNode.name hasPrefix:@"blue"]){
         if([touch tapCount] == 2){
             ShuffleNotesBlue *ss = [[ShuffleNotesBlue alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
@@ -234,12 +264,35 @@
             [view presentScene:ss transition:doors];
         }
     }
-    if(checkNode && [checkNode.name hasPrefix:@"green"]){
+    else if(checkNode && [checkNode.name hasPrefix:@"green"]){
         if([touch tapCount] == 2){
             ShuffleNotesGreen *ss = [[ShuffleNotesGreen alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:ss transition:doors];
+        }
+    }
+    else if (checkNode && [checkNode.name hasPrefix:@"color"]){
+        for(SKNode *check in self.children){
+            if([check.name isEqualToString:@"red"] || [check.name isEqualToString:@"blue"] || [check.name isEqualToString:@"green"]){
+                for(SKLabelNode *label in check.children){
+                    if([checkNode.name isEqualToString:@"color1"]){
+                        label.fontColor = [SKColor blackColor];
+                    }
+                    if([checkNode.name isEqualToString:@"color2"]){
+                        label.fontColor = [SKColor darkGrayColor];
+                    }
+                    if([checkNode.name isEqualToString:@"color3"]){
+                        label.fontColor = [SKColor grayColor];
+                    }
+                    if([checkNode.name isEqualToString:@"color4"]){
+                        label.fontColor = [SKColor lightGrayColor];
+                    }
+                    if([checkNode.name isEqualToString:@"color5"]){
+                        label.fontColor = [SKColor whiteColor];
+                    }
+                }
+            }
         }
     }
 }
