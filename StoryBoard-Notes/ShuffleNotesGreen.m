@@ -12,28 +12,31 @@
 
 @interface ShuffleNotesGreen()
 
-@property BOOL created;
+@property BOOL created; //checks to see if scene is created
 
-@property BOOL tappedTwice;
+@property BOOL tappedTwice; //checks to see is node is tapped twice
 
-@property SKSpriteNode *activeDragNode;
-
-@property BOOL isDefault;
+@property SKSpriteNode *activeDragNode; //sets the node to be dragged
 
 @end
 
 @implementation ShuffleNotesGreen{
+    //black outlines for the nodes
     SKSpriteNode *outline;
     SKSpriteNode *outline1;
     SKSpriteNode *outline2;
     SKSpriteNode *outline3;
+    
+    //the nodes themselves
     SKSpriteNode *newNode;
     SKSpriteNode *newNode2;
     SKSpriteNode *newNode3;
     
+    //button to expand the backgrounds for nodes
     SKSpriteNode *backButton;
     SKSpriteNode *opt;
     
+    //background images
     SKSpriteNode *image;
     SKSpriteNode *image2;
     SKSpriteNode *image3;
@@ -43,12 +46,16 @@
     SKSpriteNode *image7;
     SKSpriteNode *image8;
     
+    //arrow to traverse pages
     SKSpriteNode *arrow;
     
+    //changes color of text
     SKSpriteNode *changeText;
     
     //Save Button
     UIButton *save;
+    
+    //update date and texture
     SKTexture *curr;
     SKLabelNode *dateColor;
 }
@@ -57,6 +64,7 @@ static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
 
+//instantiates save button
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
@@ -72,7 +80,7 @@ static const int outline3Category = 3;
 
 - (void)didMoveToView: (SKView *) view{
     if (!self.created) {
-        [self createSceneContents];
+        [self loadScene];
         self.created = YES;
     }
     [self.view addSubview:save];
@@ -86,6 +94,7 @@ static const int outline3Category = 3;
     [save removeFromSuperview];
 }
 
+//saves the texture of the nodes and keeps it
 - (IBAction)saveButton:(UIButton *)pressed{
     if(save == pressed){
         dateColor = [saveData sharedData].date;
@@ -99,7 +108,7 @@ static const int outline3Category = 3;
         curr = [saveData sharedData].current;
         newNode = [SKSpriteNode spriteNodeWithTexture:curr];
         newNode.name = @"newNode";
-        newNode.position = [saveData sharedData].pos1;
+        newNode.position = [saveData sharedData].pos1; //used to keep the current position
         [newNode addChild:dateColor];
         
         newNode2 = [SKSpriteNode spriteNodeWithTexture:curr];
@@ -110,6 +119,7 @@ static const int outline3Category = 3;
         newNode3.name = @"newNode2";
         newNode3.position = [saveData sharedData].pos3;
         
+        //re-instantiate the physics of the nodes
         //newNode1 physics body
         newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
         newNode.physicsBody.categoryBitMask = outline1Category;
@@ -140,24 +150,66 @@ static const int outline3Category = 3;
     }
 }
 
-//Creates the SKScene
-- (void)createSceneContents{
+//creates the SKScene
+-(void)loadScene{
     self.backgroundColor = [SKColor grayColor];
     self.scaleMode = SKSceneScaleModeFill;
     
-    outline1 = [self outlineNode];
-    outline2 = [self outlineNode];
-    outline3 = [self outlineNode];
+    dateColor = [saveData sharedData].date;
+    dateColor.position = CGPointMake(-100, 67);
     
-    SKSpriteNode *pap = [self paperNode];
-    pap.position = CGPointMake(CGRectGetMidX(outline1.frame), CGRectGetMidY(outline1.frame));
-    [outline1 addChild:pap];
+    [[saveData sharedData] save];
+    [newNode removeFromParent];
+    [newNode2 removeFromParent];
+    [newNode3 removeFromParent];
     
-    //add date
-    SKLabelNode *date = [self dateNode];
-    date.position = CGPointMake(-100, 67);
+    //for the following nodes, the ability to return to default needs to be instantiated
+    curr = [saveData sharedData].current;
+    newNode = [SKSpriteNode spriteNodeWithTexture:curr];
+    newNode.name = @"newNode";
+    newNode.position = [saveData sharedData].pos1;
+    //CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
+    [newNode addChild:dateColor];
     
-    //creates clickable images
+    newNode2 = [SKSpriteNode spriteNodeWithTexture:curr];
+    newNode2.name = @"newNode2";
+    newNode2.position = [saveData sharedData].pos2;
+    //CGPointMake(CGRectGetMidX(self.frame)-195, CGRectGetMidY(self.frame)+240);
+    
+    newNode3 = [SKSpriteNode spriteNodeWithTexture:curr];
+    newNode3.name = @"newNode2";
+    newNode3.position = [saveData sharedData].pos3;
+    //CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
+    
+    //newNode1 physics body
+    newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+    newNode.physicsBody.categoryBitMask = outline1Category;
+    newNode.physicsBody.contactTestBitMask = outline2Category | outline3Category;
+    newNode.physicsBody.collisionBitMask = outline2Category | outline3Category;
+    newNode.physicsBody.affectedByGravity = NO;
+    newNode.physicsBody.allowsRotation = NO;
+    
+    //newNode2 physics body
+    newNode2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+    newNode2.physicsBody.categoryBitMask = outline2Category;
+    newNode2.physicsBody.contactTestBitMask = outline1Category | outline3Category;
+    newNode2.physicsBody.collisionBitMask = outline1Category | outline3Category;
+    newNode2.physicsBody.affectedByGravity = NO;
+    newNode2.physicsBody.allowsRotation = NO;
+    
+    //newNode3
+    newNode3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+    newNode3.physicsBody.categoryBitMask = outline3Category;
+    newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category;
+    newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category;
+    newNode3.physicsBody.affectedByGravity = NO;
+    newNode3.physicsBody.allowsRotation = NO;
+    
+    [self addChild:newNode3];
+    [self addChild:newNode2];
+    [self addChild:newNode];
+    
+    //creates clickable background images
     image = [SKSpriteNode spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(150, 75)];
     image.position = CGPointMake(-15, 300);
     image.name = @"image1";
@@ -195,35 +247,13 @@ static const int outline3Category = 3;
     image8.position = CGPointMake(-15, -180);
     image8.name = @"image8";
     
+    //arrow to go cycle through backgrounds
     arrow = [SKSpriteNode spriteNodeWithImageNamed:@"transparent-arrow-th.png"];
     arrow.size = CGSizeMake(100, 30);
     arrow.position = CGPointMake(-15, -325);
     arrow.name = @"arrow";
     
-    SKTexture *tex = [self.scene.view textureFromNode:outline1];
-    newNode = [SKSpriteNode spriteNodeWithTexture:tex];
-    newNode.name = @"newNode";
-    newNode.position = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
-    [newNode addChild:date];
-    
-    SKSpriteNode *paper = [self paperNode];
-    paper.position = CGPointMake(CGRectGetMidX(outline2.frame), CGRectGetMidY(outline2.frame));
-    [outline2 addChild:paper];
-    
-    SKTexture *tex2 = [self.scene.view textureFromNode:outline2];
-    newNode2 = [SKSpriteNode spriteNodeWithTexture:tex2];
-    newNode2.name = @"newNode2";
-    newNode2.position = CGPointMake(CGRectGetMidX(self.frame)-195, CGRectGetMidY(self.frame)+240);
-    
-    SKSpriteNode *paper2 = [self paperNode];
-    paper2.position = CGPointMake(CGRectGetMidX(outline3.frame), CGRectGetMidY(outline3.frame));
-    [outline3 addChild:paper2];
-    
-    SKTexture *tex3 = [self.scene.view textureFromNode:outline3];
-    newNode3 = [SKSpriteNode spriteNodeWithTexture:tex3];
-    newNode3.name = @"newNode3";
-    newNode3.position = CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
-    
+    //sets up button to open background menu
     SKSpriteNode *background = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(250, 40)];
     SKLabelNode *bText = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
     bText.text = @"Change BackGround";
@@ -237,36 +267,6 @@ static const int outline3Category = 3;
     backButton.position = CGPointMake(850, 40);
     
     [self addChild:backButton];
-    
-    //newNode1 physics body
-    newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
-    newNode.physicsBody.categoryBitMask = outline1Category;
-    newNode.physicsBody.contactTestBitMask = outline2Category | outline3Category;
-    newNode.physicsBody.collisionBitMask = outline2Category | outline3Category;
-    newNode.physicsBody.affectedByGravity = NO;
-    newNode.physicsBody.allowsRotation = NO;
-    
-    //newNode2 physics body
-    newNode2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
-    newNode2.physicsBody.categoryBitMask = outline2Category;
-    newNode2.physicsBody.contactTestBitMask = outline1Category | outline3Category;
-    newNode2.physicsBody.collisionBitMask = outline1Category | outline3Category;
-    newNode2.physicsBody.affectedByGravity = NO;
-    newNode2.physicsBody.allowsRotation = NO;
-    
-    //newNode3
-    newNode3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
-    newNode3.physicsBody.categoryBitMask = outline3Category;
-    newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category;
-    newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category;
-    newNode3.physicsBody.affectedByGravity = NO;
-    newNode3.physicsBody.allowsRotation = NO;
-    
-    [self addChild:newNode3];
-    
-    [self addChild:newNode2];
-    
-    [self addChild:newNode];
     
     //Change the color of the text
     SKSpriteNode *color1 = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(30, 30)];
@@ -297,6 +297,7 @@ static const int outline3Category = 3;
     [changeText addChild:color4];
     [changeText addChild:color5];
     [self addChild:changeText];
+
 }
 
 //detects if contact is made
@@ -357,13 +358,17 @@ static const int outline3Category = 3;
 
 //in this section, the nodes' backgrounds will be able to by customized by the students using Access Math
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    //SKSpriteNode *layer;
     _tappedTwice = NO;
     UITouch *touch = [touches anyObject];
     CGPoint scenePosition = [touch locationInNode:self];
     
     SKNode *checkNode = [self nodeAtPoint:scenePosition];
-    
+    /*
+     The following section is divided into cycling through nodes with different names.
+     Each has different properties.
+     The first if checks to see if the node being clicked is the SKSpriteNode for the paper itself, and thus checks to see if
+     it is being dragged or being double clicked to transition to another page.
+     */
     if(checkNode && ([checkNode.name hasPrefix:@"newNode"])){
         if([touch tapCount] == 2){
             _tappedTwice = YES;
@@ -378,9 +383,11 @@ static const int outline3Category = 3;
             [self addChild:checkNode];
         }
     }
+    /*
+     Checks to see if the change background button has been clicked, and opens the menu to choose the
+     available backgrounds from.
+     */
     else if(checkNode && ([checkNode.name hasPrefix:@"Background"])){
-        /*layer = [[SKSpriteNode alloc] initWithColor:[SKColor clearColor] size:CGSizeMake(checkNode.frame.size.width, checkNode.frame.size.height)];
-        [checkNode addChild:layer];*/
         [checkNode removeFromParent];
         opt = [self optionsView];
         [opt addChild:image2];
@@ -428,9 +435,10 @@ static const int outline3Category = 3;
             }
         }
         [[saveData sharedData] save];
-        [saveData sharedData].current = newTex;
+        [saveData sharedData].current = newTex; //saves the texture
 
     }
+    /*The following ifs (where the names are exactly "arrow" or "arrow2" cycles through the pages of available backgrounds*/
     else if(checkNode && [checkNode.name isEqualToString:@"arrow"]){
         [opt removeFromParent];
         [image removeFromParent];
@@ -485,10 +493,12 @@ static const int outline3Category = 3;
         [opt addChild:lessN];
         [self addChild:opt];
     }
+    //removes the change background menu
     else if(checkNode && ([checkNode.name isEqualToString:@"lessN"])){
         [opt removeFromParent];
         [self addChild:backButton];
     }
+    //changes the color of the text and stores it.
     else if (checkNode && [checkNode.name hasPrefix:@"color"]){
         for(SKNode *check in self.children){
             if([check.name hasPrefix:@"newNode"]){
@@ -534,6 +544,7 @@ static const int outline3Category = 3;
         
         _activeDragNode.position = newLoc;
         
+        //saves the current position of the node
         if(checkNode == newNode){
             [saveData sharedData].pos1 = newLoc;
         }

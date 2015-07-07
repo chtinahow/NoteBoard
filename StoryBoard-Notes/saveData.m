@@ -2,8 +2,15 @@
 //  saveData.m
 //  StoryBoard-Notes
 //
+//  This file defines the save mechanics for the sprite kit scene with the draggable and clickable nodes.
+//  Its primary purpose is to save the user preferences for the background and/or text color.
+//  It utilizes NSCoding protocol, which declares two required methods in addition to the others presented:
+//      1) encodeWithCoder - converts object into a buffer of data
+//      2) initWithCoder - converts a buffer of data into object
+//  The onject(s) in this case happen to be SKTexture, SKLabelNode, and CGPoints.
+//
 //  Created by Student on 7/6/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "saveData.h"
@@ -12,6 +19,9 @@
 
 static NSString* const currentTexture = @"currentTexture";
 static NSString* const dateColor = @"dateColor";
+static NSString* const posi1 = @"posi1";
+static NSString* const posi2 = @"posi2";
+static NSString* const posi3 = @"posi3";
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
 {
@@ -19,6 +29,9 @@ static NSString* const dateColor = @"dateColor";
     if (self) {
         _current = [decoder decodeObjectForKey:currentTexture];
         _date = [decoder decodeObjectForKey:dateColor];
+        _pos1 = [decoder decodeCGPointForKey:posi1];
+        _pos2 = [decoder decodeCGPointForKey:posi2];
+        _pos3 = [decoder decodeCGPointForKey:posi3];
     }
     return self;
 }
@@ -27,6 +40,9 @@ static NSString* const dateColor = @"dateColor";
 {
     [encoder encodeObject:self.current forKey:currentTexture];
     [encoder encodeObject:self.date forKey:dateColor];
+    [encoder encodeCGPoint:self.pos1 forKey:posi1];
+    [encoder encodeCGPoint:self.pos2 forKey:posi2];
+    [encoder encodeCGPoint:self.pos3 forKey:posi3];
 }
 
 +(NSString*)filePath
