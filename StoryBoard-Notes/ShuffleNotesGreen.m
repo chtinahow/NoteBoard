@@ -45,17 +45,48 @@
     SKSpriteNode *arrow;
     
     SKSpriteNode *changeText;
+    
+    SKTexture *newTex;
+    
+    //save mechanic
+    UIButton *save;
 }
 
 static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
 
+- (id)initWithSize:(CGSize)size
+{
+    if (self = [super initWithSize:size]) {
+        save = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        save.backgroundColor = [UIColor darkGrayColor];
+        save.frame = CGRectMake(300, 500, 120, 40);
+        [save setTitle:@"Save" forState:UIControlStateNormal];
+        [save addTarget:self action:@selector(changeDefault:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    return self;
+}
+
+-(IBAction)changeDefault:(UIButton *)pressed{
+    if(pressed == save) {
+         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults setObject:newTex forKey:@"DefaultBackground"];
+        //[userDefaults synchronize];
+        /*SKTexture *defaultTex = [userDefaults objectForKey:@"DefaultBackground"];
+        newNode = [SKSpriteNode spriteNodeWithTexture:defaultTex];
+        newNode.name = @"newNode";
+        newNode.position = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);*/
+    }
+}
+
 - (void)didMoveToView: (SKView *) view{
     if (!self.created) {
         [self createSceneContents];
         self.created = YES;
     }
+    [self.view addSubview:save];
 }
 
 //Creates the SKScene
@@ -335,7 +366,7 @@ static const int outline3Category = 3;
         SKSpriteNode *outliner = [self outlineNode];
         [outliner addChild:paper];
         
-        SKTexture *newTex = [self.scene.view textureFromNode:outliner];
+        newTex = [self.scene.view textureFromNode:outliner];
         
         SKAction* changeFace = [SKAction setTexture:newTex];
         
