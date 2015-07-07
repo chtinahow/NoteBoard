@@ -8,6 +8,6 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface ShuffleNotesGreen : SKScene
+@interface ShuffleNotesGreen : SKScene <NSCoding>
 
 @end

@@ -8,6 +8,7 @@
 
 #import "ShuffleNotesGreen.h"
 #import "NotesSection.h"
+#import "saveData.h"
 
 @interface ShuffleNotesGreen()
 
@@ -17,7 +18,7 @@
 
 @property SKSpriteNode *activeDragNode;
 
-@property BOOL didChange;
+@property BOOL isDefault;
 
 @end
 
@@ -46,10 +47,10 @@
     
     SKSpriteNode *changeText;
     
-    SKTexture *newTex;
-    
-    //save mechanic
+    //Save Button
     UIButton *save;
+    SKTexture *curr;
+    SKLabelNode *dateColor;
 }
 
 static const int outline1Category = 1;
@@ -61,24 +62,12 @@ static const int outline3Category = 3;
     if (self = [super initWithSize:size]) {
         save = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         save.backgroundColor = [UIColor darkGrayColor];
-        save.frame = CGRectMake(300, 500, 120, 40);
+        save.frame = CGRectMake(300, 40, 50, 20);
         [save setTitle:@"Save" forState:UIControlStateNormal];
-        [save addTarget:self action:@selector(changeDefault:) forControlEvents:UIControlEventTouchUpInside];
+        [save addTarget:self action:@selector(saveButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return self;
-}
-
--(IBAction)changeDefault:(UIButton *)pressed{
-    if(pressed == save) {
-         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        [userDefaults setObject:newTex forKey:@"DefaultBackground"];
-        //[userDefaults synchronize];
-        /*SKTexture *defaultTex = [userDefaults objectForKey:@"DefaultBackground"];
-        newNode = [SKSpriteNode spriteNodeWithTexture:defaultTex];
-        newNode.name = @"newNode";
-        newNode.position = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);*/
-    }
 }
 
 - (void)didMoveToView: (SKView *) view{
@@ -87,6 +76,68 @@ static const int outline3Category = 3;
         self.created = YES;
     }
     [self.view addSubview:save];
+
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
+    
+    [save removeFromSuperview];
+}
+
+- (IBAction)saveButton:(UIButton *)pressed{
+    if(save == pressed){
+        dateColor = [saveData sharedData].date;
+        dateColor.position = CGPointMake(-100, 67);
+        
+        [[saveData sharedData] save];
+        [newNode removeFromParent];
+        [newNode2 removeFromParent];
+        [newNode3 removeFromParent];
+        
+        curr = [saveData sharedData].current;
+        newNode = [SKSpriteNode spriteNodeWithTexture:curr];
+        newNode.name = @"newNode";
+        newNode.position = [saveData sharedData].pos1;
+        [newNode addChild:dateColor];
+        
+        newNode2 = [SKSpriteNode spriteNodeWithTexture:curr];
+        newNode2.name = @"newNode2";
+        newNode2.position = [saveData sharedData].pos2;
+        
+        newNode3 = [SKSpriteNode spriteNodeWithTexture:curr];
+        newNode3.name = @"newNode2";
+        newNode3.position = [saveData sharedData].pos3;
+        
+        //newNode1 physics body
+        newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+        newNode.physicsBody.categoryBitMask = outline1Category;
+        newNode.physicsBody.contactTestBitMask = outline2Category | outline3Category;
+        newNode.physicsBody.collisionBitMask = outline2Category | outline3Category;
+        newNode.physicsBody.affectedByGravity = NO;
+        newNode.physicsBody.allowsRotation = NO;
+        
+        //newNode2 physics body
+        newNode2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+        newNode2.physicsBody.categoryBitMask = outline2Category;
+        newNode2.physicsBody.contactTestBitMask = outline1Category | outline3Category;
+        newNode2.physicsBody.collisionBitMask = outline1Category | outline3Category;
+        newNode2.physicsBody.affectedByGravity = NO;
+        newNode2.physicsBody.allowsRotation = NO;
+        
+        //newNode3
+        newNode3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+        newNode3.physicsBody.categoryBitMask = outline3Category;
+        newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category;
+        newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category;
+        newNode3.physicsBody.affectedByGravity = NO;
+        newNode3.physicsBody.allowsRotation = NO;
+        
+        [self addChild:newNode3];
+        [self addChild:newNode2];
+        [self addChild:newNode];
+    }
 }
 
 //Creates the SKScene
@@ -366,7 +417,7 @@ static const int outline3Category = 3;
         SKSpriteNode *outliner = [self outlineNode];
         [outliner addChild:paper];
         
-        newTex = [self.scene.view textureFromNode:outliner];
+        SKTexture *newTex = [self.scene.view textureFromNode:outliner];
         
         SKAction* changeFace = [SKAction setTexture:newTex];
         
@@ -376,6 +427,9 @@ static const int outline3Category = 3;
                 [check runAction:changeFace];
             }
         }
+        [[saveData sharedData] save];
+        [saveData sharedData].current = newTex;
+
     }
     else if(checkNode && [checkNode.name isEqualToString:@"arrow"]){
         [opt removeFromParent];
@@ -441,18 +495,23 @@ static const int outline3Category = 3;
                 for(SKLabelNode *label in check.children){
                     if([checkNode.name isEqualToString:@"color1"]){
                         label.fontColor = [SKColor blackColor];
+                        [saveData sharedData].date = label;
                     }
                     if([checkNode.name isEqualToString:@"color2"]){
                         label.fontColor = [SKColor darkGrayColor];
+                        [saveData sharedData].date = label;
                     }
                     if([checkNode.name isEqualToString:@"color3"]){
                         label.fontColor = [SKColor grayColor];
+                        [saveData sharedData].date = label;
                     }
                     if([checkNode.name isEqualToString:@"color4"]){
                         label.fontColor = [SKColor lightGrayColor];
+                        [saveData sharedData].date = label;
                     }
                     if([checkNode.name isEqualToString:@"color5"]){
                         label.fontColor = [SKColor whiteColor];
+                        [saveData sharedData].date = label;
                     }
                 }
             }
@@ -461,6 +520,11 @@ static const int outline3Category = 3;
 }
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint scenePosition = [touch locationInNode:self];
+    
+    SKNode *checkNode = [self nodeAtPoint:scenePosition];
+    
     if(_activeDragNode != nil){
         UITouch *touch = [touches anyObject];
         CGPoint scenePosition = [touch locationInNode:self];
@@ -469,6 +533,16 @@ static const int outline3Category = 3;
         CGPoint newLoc = CGPointMake(_activeDragNode.position.x + (scenePosition.x - lastPos.x), _activeDragNode.position.y + (scenePosition.y - lastPos.y));
         
         _activeDragNode.position = newLoc;
+        
+        if(checkNode == newNode){
+            [saveData sharedData].pos1 = newLoc;
+        }
+        else if(checkNode == newNode2){
+            [saveData sharedData].pos2 = newLoc;
+        }
+        else if(checkNode == newNode3){
+            [saveData sharedData].pos3 = newLoc;
+        }
     }
     
 }
