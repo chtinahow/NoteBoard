@@ -16,6 +16,10 @@
 @property CGPoint pos1;
 @property CGPoint pos2;
 @property CGPoint pos3;
+@property CGPoint statPos;
+@property CGPoint statPos2;
+@property CGPoint statPos3;
+@property BOOL isStacked;
 
 +(instancetype)sharedData;
 -(void)save;

@@ -55,11 +55,15 @@
     //Save Button
     UIButton *save;
     
+    //stack button
+    UIButton *stackButton;
+    
     //update date and texture
     SKTexture *curr;
     SKLabelNode *dateColor;
 }
 
+//paper nodes physics categories
 static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
@@ -70,9 +74,15 @@ static const int outline3Category = 3;
     if (self = [super initWithSize:size]) {
         save = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         save.backgroundColor = [UIColor darkGrayColor];
-        save.frame = CGRectMake(300, 40, 50, 20);
+        save.frame = CGRectMake(600, 300, 50, 20);
         [save setTitle:@"Save" forState:UIControlStateNormal];
         [save addTarget:self action:@selector(saveButton:) forControlEvents:UIControlEventTouchUpInside];
+        
+        stackButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        stackButton.backgroundColor = [UIColor darkGrayColor];
+        stackButton.frame = CGRectMake(400, 300, 100, 20);
+        [stackButton setTitle:@"Stack Papers" forState:UIControlStateNormal];
+        [stackButton addTarget:self action:@selector(stackPapers:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return self;
@@ -84,6 +94,7 @@ static const int outline3Category = 3;
         self.created = YES;
     }
     [self.view addSubview:save];
+    [self.view addSubview:stackButton];
 
 }
 
@@ -92,10 +103,12 @@ static const int outline3Category = 3;
     [super willMoveFromView:view];
     
     [save removeFromSuperview];
+    [stackButton removeFromSuperview];
 }
 
-//saves the texture of the nodes and keeps it
+//saves the texture of the nodes and keeps it; also used to keep the nodes in their specific positions
 - (IBAction)saveButton:(UIButton *)pressed{
+    [saveData sharedData].isStacked = NO;
     if(save == pressed){
         dateColor = [saveData sharedData].date;
         dateColor.position = CGPointMake(-100, 67);
@@ -116,7 +129,7 @@ static const int outline3Category = 3;
         newNode2.position = [saveData sharedData].pos2;
         
         newNode3 = [SKSpriteNode spriteNodeWithTexture:curr];
-        newNode3.name = @"newNode2";
+        newNode3.name = @"newNode3";
         newNode3.position = [saveData sharedData].pos3;
         
         //re-instantiate the physics of the nodes
@@ -150,10 +163,68 @@ static const int outline3Category = 3;
     }
 }
 
+//action to stack papers
+-(IBAction)stackPapers:(UIButton *)pressed{
+    [saveData sharedData].isStacked = YES;
+    if(pressed == stackButton){
+        dateColor = [saveData sharedData].date;
+        dateColor.position = CGPointMake(-100, 67);
+    
+        [[saveData sharedData] save];
+        [newNode removeFromParent];
+        [newNode2 removeFromParent];
+        [newNode3 removeFromParent];
+    
+        curr = [saveData sharedData].current;
+        newNode = [SKSpriteNode spriteNodeWithTexture:curr];
+        newNode.name = @"newNode";
+        newNode.position = [saveData sharedData].statPos;
+        [newNode addChild:dateColor];
+    
+        newNode2 = [SKSpriteNode spriteNodeWithTexture:curr];
+        newNode2.name = @"newNode2";
+        newNode2.position = [saveData sharedData].statPos2;
+    
+        newNode3 = [SKSpriteNode spriteNodeWithTexture:curr];
+        newNode3.name = @"newNode3";
+        newNode3.position = [saveData sharedData].statPos3;
+    
+        //re-instantiate the physics of the nodes
+        //newNode1 physics body
+        newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+        newNode.physicsBody.categoryBitMask = outline1Category;
+        newNode.physicsBody.contactTestBitMask = outline2Category | outline3Category;
+        newNode.physicsBody.collisionBitMask = outline2Category | outline3Category;
+        newNode.physicsBody.affectedByGravity = NO;
+        newNode.physicsBody.allowsRotation = NO;
+    
+        //newNode2 physics body
+        newNode2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+        newNode2.physicsBody.categoryBitMask = outline2Category;
+        newNode2.physicsBody.contactTestBitMask = outline1Category | outline3Category;
+        newNode2.physicsBody.collisionBitMask = outline1Category | outline3Category;
+        newNode2.physicsBody.affectedByGravity = NO;
+        newNode2.physicsBody.allowsRotation = NO;
+    
+        //newNode3
+        newNode3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+        newNode3.physicsBody.categoryBitMask = outline3Category;
+        newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category;
+        newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category;
+        newNode3.physicsBody.affectedByGravity = NO;
+        newNode3.physicsBody.allowsRotation = NO;
+    
+        [self addChild:newNode3];
+        [self addChild:newNode2];
+        [self addChild:newNode];
+    }
+}
+
 //creates the SKScene
 -(void)loadScene{
     self.backgroundColor = [SKColor grayColor];
     self.scaleMode = SKSceneScaleModeFill;
+    [self sceneBoundaries];
     
     dateColor = [saveData sharedData].date;
     dateColor.position = CGPointMake(-100, 67);
@@ -167,19 +238,23 @@ static const int outline3Category = 3;
     curr = [saveData sharedData].current;
     newNode = [SKSpriteNode spriteNodeWithTexture:curr];
     newNode.name = @"newNode";
-    newNode.position = [saveData sharedData].pos1;
-    //CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
     [newNode addChild:dateColor];
     
     newNode2 = [SKSpriteNode spriteNodeWithTexture:curr];
     newNode2.name = @"newNode2";
-    newNode2.position = [saveData sharedData].pos2;
-    //CGPointMake(CGRectGetMidX(self.frame)-195, CGRectGetMidY(self.frame)+240);
     
     newNode3 = [SKSpriteNode spriteNodeWithTexture:curr];
     newNode3.name = @"newNode2";
-    newNode3.position = [saveData sharedData].pos3;
-    //CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
+    
+    if([saveData sharedData].isStacked == YES){
+        newNode.position = [saveData sharedData].statPos;
+        newNode2.position = [saveData sharedData].statPos2;
+        newNode3.position = [saveData sharedData].statPos3;
+    } else{
+        newNode.position = [saveData sharedData].pos1;
+        newNode2.position = [saveData sharedData].pos2;
+        newNode3.position = [saveData sharedData].pos3;
+    }
     
     //newNode1 physics body
     newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
@@ -188,6 +263,9 @@ static const int outline3Category = 3;
     newNode.physicsBody.collisionBitMask = outline2Category | outline3Category;
     newNode.physicsBody.affectedByGravity = NO;
     newNode.physicsBody.allowsRotation = NO;
+    newNode.physicsBody.friction = 0.0f;
+    newNode.physicsBody.restitution = 1.0f;
+    newNode.physicsBody.linearDamping = 0.0f;
     
     //newNode2 physics body
     newNode2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
@@ -297,7 +375,41 @@ static const int outline3Category = 3;
     [changeText addChild:color4];
     [changeText addChild:color5];
     [self addChild:changeText];
+}
 
+-(void)sceneBoundaries{
+    SKSpriteNode *bound1 = [[SKSpriteNode alloc] initWithColor:[SKColor clearColor] size:CGSizeMake(100, 700)];
+    bound1.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(250, 750)];
+    bound1.physicsBody.affectedByGravity = NO;
+    bound1.physicsBody.allowsRotation = NO;
+    bound1.physicsBody.dynamic = NO;
+    bound1.position = CGPointMake(0, 400);
+    
+    SKSpriteNode *bound2 = [[SKSpriteNode alloc] initWithColor:[SKColor clearColor] size:CGSizeMake(100, 750)];
+    bound2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(250, 700)];
+    bound2.physicsBody.affectedByGravity = NO;
+    bound2.physicsBody.allowsRotation = NO;
+    bound2.physicsBody.dynamic = NO;
+    bound2.position = CGPointMake(1000, 400);
+    
+    SKSpriteNode *bound3 = [[SKSpriteNode alloc] initWithColor:[SKColor clearColor] size:CGSizeMake(900, 100)];
+    bound3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1000, 250)];
+    bound3.physicsBody.affectedByGravity = NO;
+    bound3.physicsBody.allowsRotation = NO;
+    bound3.physicsBody.dynamic = NO;
+    bound3.position = CGPointMake(500, 30);
+    
+    SKSpriteNode *bound4 = [[SKSpriteNode alloc] initWithColor:[SKColor clearColor] size:CGSizeMake(900, 100)];
+    bound4.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1000, 250)];
+    bound4.physicsBody.affectedByGravity = NO;
+    bound4.physicsBody.allowsRotation = NO;
+    bound4.physicsBody.dynamic = NO;
+    bound4.position = CGPointMake(500, 800);
+    
+    [self addChild:bound1];
+    [self addChild:bound2];
+    [self addChild:bound3];
+    [self addChild:bound4];
 }
 
 //detects if contact is made
@@ -540,19 +652,25 @@ static const int outline3Category = 3;
         CGPoint scenePosition = [touch locationInNode:self];
         CGPoint lastPos = [touch previousLocationInNode:self];
         
-        CGPoint newLoc = CGPointMake(_activeDragNode.position.x + (scenePosition.x - lastPos.x), _activeDragNode.position.y + (scenePosition.y - lastPos.y));
-        
-        _activeDragNode.position = newLoc;
-        
-        //saves the current position of the node
-        if(checkNode == newNode){
-            [saveData sharedData].pos1 = newLoc;
-        }
-        else if(checkNode == newNode2){
-            [saveData sharedData].pos2 = newLoc;
-        }
-        else if(checkNode == newNode3){
-            [saveData sharedData].pos3 = newLoc;
+        if(((_activeDragNode.position.x + (scenePosition.x - lastPos.x)) > CGRectGetMinX(self.view.frame)+100) || ((_activeDragNode.position.x + (scenePosition.x - lastPos.x)) < CGRectGetMaxX(self.view.frame)) || ((_activeDragNode.position.y + (scenePosition.y - lastPos.y)) > CGRectGetMinY(self.view.frame)+100) || ((_activeDragNode.position.y + (scenePosition.y - lastPos.y)) < CGRectGetMaxY(self.view.frame)+100)){
+            CGPoint newLoc = CGPointMake(_activeDragNode.position.x + (scenePosition.x - lastPos.x), _activeDragNode.position.y + (scenePosition.y - lastPos.y));
+            
+            _activeDragNode.position = newLoc;
+            
+            //saves the current position of the node
+            if(checkNode == newNode){
+                [saveData sharedData].pos1 = newLoc;
+                [saveData sharedData].statPos = CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
+            }
+            else if(checkNode == newNode2){
+                [saveData sharedData].pos2 = newLoc;
+                [saveData sharedData].statPos2 = CGPointMake(CGRectGetMidX(self.frame)-195, CGRectGetMidY(self.frame)+240);
+            }
+            else if(checkNode == newNode3){
+                [saveData sharedData].pos3 = newLoc;
+                [saveData sharedData].statPos3 = CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
+            }
+
         }
     }
     

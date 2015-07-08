@@ -80,7 +80,7 @@
 		3FA553961B39EE70001F0538 /* ShuffleNotesBlue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShuffleNotesBlue.h; sourceTree = "<group>"; };
 		3FA553971B39EE70001F0538 /* ShuffleNotesBlue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShuffleNotesBlue.m; sourceTree = "<group>"; };
 		3FA553991B39EFD4001F0538 /* ShuffleNotesGreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShuffleNotesGreen.h; sourceTree = "<group>"; };
-		3FA5539A1B39EFD4001F0538 /* ShuffleNotesGreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShuffleNotesGreen.m; sourceTree = "<group>"; };
+		3FA5539A1B39EFD4001F0538 /* ShuffleNotesGreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ShuffleNotesGreen.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3FBE09AA1B3862A900E5B916 /* DifChapters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DifChapters.h; sourceTree = "<group>"; };
 		3FBE09AB1B3862A900E5B916 /* DifChapters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DifChapters.m; sourceTree = "<group>"; };
 		3FF79EB91B31BE4100A3A197 /* NotesSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesSection.h; sourceTree = "<group>"; };
