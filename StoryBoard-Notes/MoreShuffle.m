@@ -111,10 +111,8 @@ static const int outline3Category = 3;
 
 - (void)didMoveToView: (SKView *) view{
     if (!self.created) {
-        if ([saveData sharedData].current != nil) {
-            [self createScene];
-            self.created = YES;
-        }
+        [self createScene];
+        self.created = YES;
     }
     [self.view addSubview:newPaper];
     [self.view addSubview:reset];
@@ -176,7 +174,19 @@ static const int outline3Category = 3;
 
 //generates more nodes
 -(IBAction)newPaper{
-    SKSpriteNode *newPap = [[SKSpriteNode alloc] initWithTexture:[saveData sharedData].current];
+    SKSpriteNode *newPap;
+    if ([saveData sharedData].current != nil) {
+        newPap = [[SKSpriteNode alloc] initWithTexture:[saveData sharedData].current];
+    } else {
+        SKSpriteNode *pap = [self paperNode];
+        pap.position = CGPointMake(CGRectGetMidX(outline1.frame), CGRectGetMidY(outline1.frame));
+        
+        outline1 = [self outlineNode];
+        [outline1 addChild:pap];
+        
+        SKTexture *tex = [self.scene.view textureFromNode:outline1];
+        newPap = [[SKSpriteNode alloc] initWithTexture:tex];
+    }
     newPap.position = CGPointMake(450, 500);
     newPap.name = @"newNodeX";
     
@@ -188,7 +198,7 @@ static const int outline3Category = 3;
     newPap.physicsBody.allowsRotation = NO;
     
     [saveData sharedData].node = newPap;
-    [[saveData sharedData].array addObject:newPap];
+    [[saveData sharedData].array addObject:[saveData sharedData].node];
     NSLog(@"%d", [[saveData sharedData].array count]);
     [[saveData sharedData] save];
     
@@ -281,7 +291,18 @@ static const int outline3Category = 3;
     
     for (SKSpriteNode *sprite in [saveData sharedData].array) {
         if ([saveData sharedData].array != nil) {
-            sprite.texture = [saveData sharedData].current;
+            if ([saveData sharedData].current != nil) {
+                sprite.texture = [saveData sharedData].current;
+            } else {
+                SKSpriteNode *pap = [self paperNode];
+                pap.position = CGPointMake(CGRectGetMidX(outline1.frame), CGRectGetMidY(outline1.frame));
+                
+                outline1 = [self outlineNode];
+                [outline1 addChild:pap];
+                
+                SKTexture *tex = [self.scene.view textureFromNode:outline1];
+                sprite.texture = tex;
+            }
             [self addChild:sprite];
         }
     }
