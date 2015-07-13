@@ -61,6 +61,9 @@
     //generate new node
     UIButton *newPaper;
     
+    //reset button
+    UIButton *reset;
+    
     //update date and texture
     SKTexture *curr;
     SKLabelNode *dateColor;
@@ -95,6 +98,12 @@ static const int outline3Category = 3;
         newPaper.frame = CGRectMake(890, 655, 100, 20);
         [newPaper setTitle:@"Make More" forState:UIControlStateNormal];
         [newPaper addTarget:self action:@selector(newPaper) forControlEvents:UIControlEventTouchUpInside];
+        
+        reset = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        reset.backgroundColor = [UIColor darkGrayColor];
+        reset.frame = CGRectMake(500, 655, 100, 20);
+        [reset setTitle:@"Reset" forState:UIControlStateNormal];
+        [reset addTarget:self action:@selector(resetButton) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return self;
@@ -108,6 +117,7 @@ static const int outline3Category = 3;
         }
     }
     [self.view addSubview:newPaper];
+    [self.view addSubview:reset];
     
     //swipes to show backgrounds
     leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action: @selector(leftFlip:)];
@@ -123,6 +133,7 @@ static const int outline3Category = 3;
     [save removeFromSuperview];
     [stackButton removeFromSuperview];
     [newPaper removeFromSuperview];
+    [reset removeFromSuperview];
     
     [self.view removeGestureRecognizer:leftSwipe];
     [self.view removeGestureRecognizer:closeSwipe];
@@ -182,6 +193,12 @@ static const int outline3Category = 3;
     [[saveData sharedData] save];
     
     [self addChild:[saveData sharedData].node];
+}
+
+- (IBAction)resetButton{
+    [[saveData sharedData] reset];
+    [self removeAllChildren];
+    [self createScene];
 }
 
 //saves the texture of the nodes and keeps it; also used to keep the nodes in their specific positions

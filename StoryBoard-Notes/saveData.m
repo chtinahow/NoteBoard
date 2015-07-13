@@ -60,7 +60,7 @@ static NSString* const isStacked = @"isStacked";
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     if(!self.array){
-     self.array = [[NSMutableArray alloc] init];   
+     self.array = [[NSMutableArray alloc] init];
     }
     [encoder encodeObject:self.array forKey:array];
     [encoder encodeObject:self.node forKey:newNode];
@@ -121,6 +121,7 @@ static NSString* const isStacked = @"isStacked";
     self.current = nil;
     self.date = nil;
     self.node = nil;
+    [self.array removeAllObjects];
 }
 
 @end
