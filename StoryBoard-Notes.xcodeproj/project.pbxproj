@@ -19,6 +19,7 @@
 		3F28591D1B30D2AF00CE318E /* MainPage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F28591C1B30D2AF00CE318E /* MainPage.m */; };
 		3F2859201B30D31800CE318E /* ShuffleNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F28591F1B30D31800CE318E /* ShuffleNotes.m */; };
 		3F28C48F1B3C42AF005AE757 /* ENHGlowFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F28C48E1B3C42AF005AE757 /* ENHGlowFilter.m */; };
+		3F6221F41B50072400049351 /* MoreShuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F6221F31B50072400049351 /* MoreShuffle.m */; };
 		3F76E6941B3D987900454864 /* IS787-191.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F76E6931B3D987900454864 /* IS787-191.jpg */; };
 		3F76E69A1B3D9E1400454864 /* IS787-189.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F76E6961B3D9E1400454864 /* IS787-189.jpg */; };
 		3F76E69B1B3D9E1400454864 /* 48SCP0118RM.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F76E6971B3D9E1400454864 /* 48SCP0118RM.jpg */; };
@@ -67,6 +68,8 @@
 		3F28591F1B30D31800CE318E /* ShuffleNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShuffleNotes.m; sourceTree = "<group>"; };
 		3F28C48D1B3C42AF005AE757 /* ENHGlowFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ENHGlowFilter.h; sourceTree = "<group>"; };
 		3F28C48E1B3C42AF005AE757 /* ENHGlowFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ENHGlowFilter.m; sourceTree = "<group>"; };
+		3F6221F21B50072400049351 /* MoreShuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoreShuffle.h; sourceTree = "<group>"; };
+		3F6221F31B50072400049351 /* MoreShuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreShuffle.m; sourceTree = "<group>"; };
 		3F76E6931B3D987900454864 /* IS787-191.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "IS787-191.jpg"; sourceTree = "<group>"; };
 		3F76E6961B3D9E1400454864 /* IS787-189.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "IS787-189.jpg"; sourceTree = "<group>"; };
 		3F76E6971B3D9E1400454864 /* 48SCP0118RM.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 48SCP0118RM.jpg; sourceTree = "<group>"; };
@@ -132,6 +135,7 @@
 		3F2858F41B30D29C00CE318E /* StoryBoard-Notes */ = {
 			isa = PBXGroup;
 			children = (
+				3F6221F11B5006F100049351 /* AddMoreShuffle */,
 				3F9A70AC1B399ADF00C91615 /* ExampleView */,
 				3FF79EC41B31C9C100A3A197 /* AssignmentSection */,
 				3FF79EC01B31C65700A3A197 /* FormulaSection */,
@@ -180,6 +184,15 @@
 				3F2859101B30D29C00CE318E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F6221F11B5006F100049351 /* AddMoreShuffle */ = {
+			isa = PBXGroup;
+			children = (
+				3F6221F21B50072400049351 /* MoreShuffle.h */,
+				3F6221F31B50072400049351 /* MoreShuffle.m */,
+			);
+			name = AddMoreShuffle;
 			sourceTree = "<group>";
 		};
 		3F97B8491B4AC19A006687A5 /* Images */ = {
@@ -385,6 +398,7 @@
 				3FF79EBB1B31BE4100A3A197 /* NotesSection.m in Sources */,
 				3FF79EC71B31C9D600A3A197 /* Assignments.m in Sources */,
 				3F2858F81B30D29C00CE318E /* main.m in Sources */,
+				3F6221F41B50072400049351 /* MoreShuffle.m in Sources */,
 				3FF79EC31B31C66B00A3A197 /* Formulas.m in Sources */,
 				3F28591D1B30D2AF00CE318E /* MainPage.m in Sources */,
 				3F97B84C1B4AE1AC006687A5 /* saveData.m in Sources */,

@@ -11,6 +11,7 @@
 #import "ShuffleNotes.h"
 #import "ShuffleNotesBlue.h"
 #import "ShuffleNotesGreen.h"
+#import "MoreShuffle.h"
 
 @interface Stacked_Notes()
 
@@ -266,10 +267,15 @@
     }
     else if(checkNode && [checkNode.name hasPrefix:@"green"]){
         if([touch tapCount] == 2){
-            ShuffleNotesGreen *ss = [[ShuffleNotesGreen alloc] initWithSize:CGSizeMake(1024, 768)];
+            /*ShuffleNotesGreen *ss = [[ShuffleNotesGreen alloc] initWithSize:CGSizeMake(1024, 768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
-            [view presentScene:ss transition:doors];
+            [view presentScene:ss transition:doors];*/
+            
+            MoreShuffle *stack = [[MoreShuffle alloc] initWithSize:CGSizeMake(1024, 768)];
+            SKView *view = (SKView *) self.view;
+            SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
+            [view presentScene:stack transition:doors];
         }
     }
     else if (checkNode && [checkNode.name hasPrefix:@"color"]){

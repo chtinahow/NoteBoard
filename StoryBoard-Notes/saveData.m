@@ -17,8 +17,11 @@
 
 @implementation saveData
 
+static NSString* const array = @"array";
+static NSString* const newNode = @"newNode";
 static NSString* const currentTexture = @"currentTexture";
 static NSString* const dateColor = @"dateColor";
+
 static NSString* const posi1 = @"posi1";
 static NSString* const posi2 = @"posi2";
 static NSString* const posi3 = @"posi3";
@@ -33,14 +36,22 @@ static NSString* const isStacked = @"isStacked";
 {
     self = [self init];
     if (self) {
+        if(!_array){
+         _array = [[NSMutableArray alloc] init];
+        }
+        _array = [[decoder decodeObjectForKey:array] mutableCopy];
+        _node = [decoder decodeObjectForKey:newNode];
         _current = [decoder decodeObjectForKey:currentTexture];
         _date = [decoder decodeObjectForKey:dateColor];
+        
         _pos1 = [decoder decodeCGPointForKey:posi1];
         _pos2 = [decoder decodeCGPointForKey:posi2];
         _pos3 = [decoder decodeCGPointForKey:posi3];
+        
         _statPos = [decoder decodeCGPointForKey:statPos];
         _statPos2 = [decoder decodeCGPointForKey:statPos2];
         _statPos3 = [decoder decodeCGPointForKey:statPos3];
+        
         _isStacked = [decoder decodeBoolForKey:isStacked];
     }
     return self;
@@ -48,14 +59,22 @@ static NSString* const isStacked = @"isStacked";
 
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
+    if(!self.array){
+     self.array = [[NSMutableArray alloc] init];   
+    }
+    [encoder encodeObject:self.array forKey:array];
+    [encoder encodeObject:self.node forKey:newNode];
     [encoder encodeObject:self.current forKey:currentTexture];
     [encoder encodeObject:self.date forKey:dateColor];
+    
     [encoder encodeCGPoint:self.pos1 forKey:posi1];
     [encoder encodeCGPoint:self.pos2 forKey:posi2];
     [encoder encodeCGPoint:self.pos3 forKey:posi3];
+    
     [encoder encodeCGPoint:self.statPos forKey:statPos];
     [encoder encodeCGPoint:self.statPos2 forKey:statPos2];
     [encoder encodeCGPoint:self.statPos3 forKey:statPos3];
+    
     [encoder encodeBool:self.isStacked forKey:isStacked];
 }
 
@@ -96,6 +115,12 @@ static NSString* const isStacked = @"isStacked";
 {
     NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject: self];
     [encodedData writeToFile:[saveData filePath] atomically:YES];
+}
+
+-(void)reset{
+    self.current = nil;
+    self.date = nil;
+    self.node = nil;
 }
 
 @end

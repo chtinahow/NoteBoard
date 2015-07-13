@@ -11,6 +11,8 @@
 
 @interface saveData : NSObject <NSCoding>
 
+@property NSMutableArray *array;
+@property SKSpriteNode *node;
 @property SKTexture *current;
 @property SKLabelNode *date;
 @property CGPoint pos1;
@@ -23,5 +25,6 @@
 
 +(instancetype)sharedData;
 -(void)save;
+-(void)reset;
 
 @end
