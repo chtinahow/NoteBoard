@@ -9,6 +9,7 @@
 #import "MoreShuffle.h"
 #import "NotesSection.h"
 #import "saveData.h"
+#import "ShuffleNotesGreen.h"
 
 @interface MoreShuffle()
 
@@ -21,6 +22,8 @@
 @end
 
 @implementation MoreShuffle{
+    SKScene *currentScene;
+    
     //black outlines for the nodes
     SKSpriteNode *outline;
     SKSpriteNode *outline1;
@@ -64,6 +67,12 @@
     //reset button
     UIButton *reset;
     
+    //generate new stack & page
+    UIButton *newStack;
+    
+    //button to traverse pages
+    UIButton *back;
+    
     //update date and texture
     SKTexture *curr;
     SKLabelNode *dateColor;
@@ -84,6 +93,7 @@ static const int outline3Category = 3;
         save = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         save.backgroundColor = [UIColor darkGrayColor];
         save.frame = CGRectMake(890, 625, 50, 20);
+        //save.frame = CGRectMake(500, 500, 50, 20);
         [save setTitle:@"Save" forState:UIControlStateNormal];
         [save addTarget:self action:@selector(saveButton:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -104,6 +114,18 @@ static const int outline3Category = 3;
         reset.frame = CGRectMake(500, 655, 100, 20);
         [reset setTitle:@"Reset" forState:UIControlStateNormal];
         [reset addTarget:self action:@selector(resetButton) forControlEvents:UIControlEventTouchUpInside];
+        
+        newStack = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        newStack.backgroundColor = [UIColor darkGrayColor];
+        newStack.frame = CGRectMake(890, 455, 100, 20);
+        [newStack setTitle:@"New Stack" forState:UIControlStateNormal];
+        [newStack addTarget:self action:@selector(newStack) forControlEvents:UIControlEventTouchUpInside];
+        
+        /*back = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        back.backgroundColor = [UIColor darkGrayColor];
+        back.frame = CGRectMake(890, 255, 100, 20);
+        [back setTitle:@"Back" forState:UIControlStateNormal];
+        [back addTarget:self action:@selector(backButton) forControlEvents:UIControlEventTouchUpInside];*/
     }
     
     return self;
@@ -116,11 +138,18 @@ static const int outline3Category = 3;
     }
     [self.view addSubview:newPaper];
     [self.view addSubview:reset];
+    [self.view addSubview:newStack];
+    //[self.view addSubview:back];
     
     //swipes to show backgrounds
     leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action: @selector(leftFlip:)];
     [leftSwipe setDirection:UISwipeGestureRecognizerDirectionLeft];
     [self.view addGestureRecognizer:leftSwipe];
+    
+    self.anchorPoint = CGPointMake (0.5,0.5);
+    SKNode *myWorld = [SKNode node];
+    [self addChild:myWorld];
+    
     
 }
 
@@ -128,10 +157,10 @@ static const int outline3Category = 3;
 {
     [super willMoveFromView:view];
     
-    [save removeFromSuperview];
-    [stackButton removeFromSuperview];
     [newPaper removeFromSuperview];
     [reset removeFromSuperview];
+    [newStack removeFromSuperview];
+    //[back removeFromSuperview];
     
     [self.view removeGestureRecognizer:leftSwipe];
     [self.view removeGestureRecognizer:closeSwipe];
@@ -197,12 +226,35 @@ static const int outline3Category = 3;
     newPap.physicsBody.affectedByGravity = NO;
     newPap.physicsBody.allowsRotation = NO;
     
+    /*
+     Creating more nodes that have their physicsBodies instantiated and can adapt to changes in texture like those in
+     the original stack can be stored and saved via the NSMutableArray.
+     */
     [saveData sharedData].node = newPap;
     [[saveData sharedData].array addObject:[saveData sharedData].node];
     NSLog(@"%d", [[saveData sharedData].array count]);
     [[saveData sharedData] save];
     
     [self addChild:[saveData sharedData].node];
+}
+
+-(IBAction)newStack{
+    /*MoreShuffle *stack = [[MoreShuffle alloc] initWithSize:CGSizeMake(1024, 768)];
+    SKView *view = (SKView *) self.view;
+    currentScene = [view scene];
+    SKTransition *doors = [SKTransition flipVerticalWithDuration: 0.5];
+    [[saveData sharedData].page addObject:currentScene];
+    [stack resetButton];
+    [view presentScene:stack transition:doors];
+}
+
+-(IBAction)backButton{
+    if ([saveData sharedData].page != nil) {
+        SKView *view = (SKView *) self.view;
+        SKTransition *doors = [SKTransition flipVerticalWithDuration: 0.5];
+        [self removeAllChildren];
+        [view presentScene:[[saveData sharedData].page objectAtIndex:0] transition:doors];
+    }*/
 }
 
 - (IBAction)resetButton{
@@ -424,6 +476,12 @@ static const int outline3Category = 3;
     
     if((firstBody.categoryBitMask == (outline2Category | outline3Category)) || (secondBody.categoryBitMask == (outline2Category | outline3Category))){
     }
+}
+
+-(void)centerOnNode:(SKNode*)node {
+    CGPoint cameraPositionInScene = [node.scene convertPoint:node.position fromNode:node.parent];
+    cameraPositionInScene.x = 0;
+    node.parent.position = CGPointMake(node.parent.position.x - cameraPositionInScene.x, node.parent.position.y - cameraPositionInScene.y);
 }
 
 #pragma mark

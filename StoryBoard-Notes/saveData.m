@@ -32,6 +32,8 @@ static NSString* const statPos3 = @"statPos3";
 
 static NSString* const isStacked = @"isStacked";
 
+static NSString* const page = @"page";
+
 - (instancetype)initWithCoder:(NSCoder *)decoder
 {
     self = [self init];
@@ -53,6 +55,11 @@ static NSString* const isStacked = @"isStacked";
         _statPos3 = [decoder decodeCGPointForKey:statPos3];
         
         _isStacked = [decoder decodeBoolForKey:isStacked];
+        
+        if (!_page) {
+            _page = [[NSMutableArray alloc] init];
+        }
+        _page = [[decoder decodeObjectForKey:page] mutableCopy];
     }
     return self;
 }
@@ -76,6 +83,11 @@ static NSString* const isStacked = @"isStacked";
     [encoder encodeCGPoint:self.statPos3 forKey:statPos3];
     
     [encoder encodeBool:self.isStacked forKey:isStacked];
+    
+    if (!self.page) {
+        self.page = [[NSMutableArray alloc] init];
+    }
+    [encoder encodeObject:self.page forKey:page];
 }
 
 +(NSString*)filePath

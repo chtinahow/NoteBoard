@@ -11,7 +11,8 @@
 
 @interface saveData : NSObject <NSCoding>
 
-@property NSMutableArray *array;
+@property NSMutableArray* page;
+@property NSMutableArray* array;
 @property SKSpriteNode *node;
 @property SKTexture *current;
 @property SKLabelNode *date;
@@ -22,6 +23,7 @@
 @property CGPoint statPos2;
 @property CGPoint statPos3;
 @property BOOL isStacked;
+
 
 +(instancetype)sharedData;
 -(void)save;
