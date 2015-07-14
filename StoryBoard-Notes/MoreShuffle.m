@@ -79,6 +79,10 @@
     
     UISwipeGestureRecognizer *leftSwipe;
     UISwipeGestureRecognizer *closeSwipe;
+    
+    //zoom
+    UIPinchGestureRecognizer *zoomIn;
+    UITapGestureRecognizer *zoomOut;
 }
 
 //paper nodes physics categories
@@ -146,11 +150,64 @@ static const int outline3Category = 3;
     [leftSwipe setDirection:UISwipeGestureRecognizerDirectionLeft];
     [self.view addGestureRecognizer:leftSwipe];
     
-    self.anchorPoint = CGPointMake (0.5,0.5);
-    SKNode *myWorld = [SKNode node];
-    [self addChild:myWorld];
+    zoomIn = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
+    [self.view addGestureRecognizer:zoomIn];
     
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    [panRecognizer setMinimumNumberOfTouches:3];
+    //[panRecognizer setMaximumNumberOfTouches:1];
+    [self.view addGestureRecognizer:panRecognizer];
     
+}
+
+- (void)handlePanGesture:(UIPanGestureRecognizer *)panGesture {
+    CGPoint translation = [panGesture translationInView:panGesture.view.superview];
+    
+    if (UIGestureRecognizerStateBegan == panGesture.state ||UIGestureRecognizerStateChanged == panGesture.state) {
+        panGesture.view.center = CGPointMake(panGesture.view.center.x + translation.x,
+                                             panGesture.view.center.y + translation.y);
+        // Reset translation, so we can get translation delta's (i.e. change in translation)
+        [panGesture setTranslation:CGPointZero inView:self.view];
+    }
+    // Don't need any logic for ended/failed/canceled states
+}
+
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)pinchGesture {
+    
+    if (UIGestureRecognizerStateBegan == pinchGesture.state ||
+        UIGestureRecognizerStateChanged == pinchGesture.state) {
+        
+        // Use the x or y scale, they should be the same for typical zooming (non-skewing)
+        float currentScale = [[pinchGesture.view.layer valueForKeyPath:@"transform.scale.x"] floatValue];
+        
+        // Variables to adjust the max/min values of zoom
+        float minScale = 1.0;
+        float maxScale = 2.0;
+        float zoomSpeed = .5;
+        
+        float deltaScale = pinchGesture.scale;
+        
+        // You need to translate the zoom to 0 (origin) so that you
+        // can multiply a speed factor and then translate back to "zoomSpace" around 1
+        deltaScale = ((deltaScale - 1) * zoomSpeed) + 1;
+        
+        // Limit to min/max size (i.e maxScale = 2, current scale = 2, 2/2 = 1.0)
+        //  A deltaScale is ~0.99 for decreasing or ~1.01 for increasing
+        //  A deltaScale of 1.0 will maintain the zoom size
+        deltaScale = MIN(deltaScale, maxScale / currentScale);
+        deltaScale = MAX(deltaScale, minScale / currentScale);
+        
+        CGAffineTransform zoomTransform = CGAffineTransformScale(pinchGesture.view.transform, deltaScale, deltaScale);
+        pinchGesture.view.transform = zoomTransform;
+        
+        // Reset to 1 for scale delta's
+        //  Note: not 0, or we won't see a size: 0 * width = 0
+        pinchGesture.scale = 1;
+    }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES; // Works for most use cases of pinch + zoom + pan
 }
 
 - (void)willMoveFromView:(SKView *)view
@@ -255,6 +312,9 @@ static const int outline3Category = 3;
         [self removeAllChildren];
         [view presentScene:[[saveData sharedData].page objectAtIndex:0] transition:doors];
     }*/
+    
+    //CGPoint current = CGPointMake(self.position.x, self.position.y);
+    self.size = CGSizeMake((self.size.width - 200), (self.size.height - 200));
 }
 
 - (IBAction)resetButton{
@@ -269,6 +329,7 @@ static const int outline3Category = 3;
 
 //action to stack papers
 -(IBAction)stackPapers:(UIButton *)pressed{
+    self.scene.size = CGSizeMake((self.scene.size.width + 200), (self.scene.size.height + 200));
 }
 
 //creates the initial SKScene
@@ -277,13 +338,11 @@ static const int outline3Category = 3;
     self.scaleMode = SKSceneScaleModeFill;
     
     //[self sceneBoundaries];
-    // get the screensize
-    CGSize scr = self.scene.frame.size;
     
     // setup a position constraint
-    SKConstraint *c = [SKConstraint
-                       positionX:[SKRange rangeWithLowerLimit:150 upperLimit:(scr.width-150)]
-                       Y:[SKRange rangeWithLowerLimit:100 upperLimit:(scr.height-100)]];
+    
+    SKConstraint *x = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150]];
+    SKConstraint *y = [SKConstraint positionY:[SKRange rangeWithLowerLimit:100]];
     
     SKLabelNode *date = [self dateNode];
     date.position = CGPointMake(-110, 70);
@@ -299,7 +358,7 @@ static const int outline3Category = 3;
         SKTexture *tex = [self.scene.view textureFromNode:outline1];
         newNode = [SKSpriteNode spriteNodeWithTexture:tex];
         newNode.name = @"newNode";
-        newNode.constraints = @[c];
+        newNode.constraints = @[x,y];
         [newNode addChild:date];
         
         SKSpriteNode *pap2 = [self paperNode];
@@ -312,7 +371,7 @@ static const int outline3Category = 3;
         
         newNode2 = [SKSpriteNode spriteNodeWithTexture:tex2];
         newNode2.name = @"newNode2";
-        newNode2.constraints = @[c];
+        newNode2.constraints = @[x,y];
         
         SKSpriteNode *pap3 = [self paperNode];
         pap3.position = CGPointMake(CGRectGetMidX(outline3.frame), CGRectGetMidY(outline3.frame));
@@ -324,21 +383,21 @@ static const int outline3Category = 3;
         
         newNode3 = [SKSpriteNode spriteNodeWithTexture:tex3];
         newNode3.name = @"newNode3";
-        newNode3.constraints = @[c];
+        newNode3.constraints = @[x,y];
     }
     else {
         newNode = [SKSpriteNode spriteNodeWithTexture:[saveData sharedData].current];
         newNode.name = @"newNode";
-        newNode.constraints = @[c];
+        newNode.constraints = @[x,y];
         [newNode addChild:date];
         
         newNode2 = [SKSpriteNode spriteNodeWithTexture:[saveData sharedData].current];
         newNode2.name = @"newNode2";
-        newNode2.constraints = @[c];
+        newNode2.constraints = @[x,y];
         
         newNode3 = [SKSpriteNode spriteNodeWithTexture:[saveData sharedData].current];
         newNode3.name = @"newNode3";
-        newNode3.constraints = @[c];
+        newNode3.constraints = @[x,y];
     }
     
     for (SKSpriteNode *sprite in [saveData sharedData].array) {
@@ -476,12 +535,6 @@ static const int outline3Category = 3;
     
     if((firstBody.categoryBitMask == (outline2Category | outline3Category)) || (secondBody.categoryBitMask == (outline2Category | outline3Category))){
     }
-}
-
--(void)centerOnNode:(SKNode*)node {
-    CGPoint cameraPositionInScene = [node.scene convertPoint:node.position fromNode:node.parent];
-    cameraPositionInScene.x = 0;
-    node.parent.position = CGPointMake(node.parent.position.x - cameraPositionInScene.x, node.parent.position.y - cameraPositionInScene.y);
 }
 
 #pragma mark

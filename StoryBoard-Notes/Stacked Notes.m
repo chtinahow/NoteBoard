@@ -272,7 +272,7 @@
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:ss transition:doors];*/
             
-            MoreShuffle *stack = [[MoreShuffle alloc] initWithSize:CGSizeMake(1024, 768)];
+            MoreShuffle *stack = [[MoreShuffle alloc] initWithSize:CGSizeMake(2000, 1768)];
             SKView *view = (SKView *) self.view;
             SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
             [view presentScene:stack transition:doors];
