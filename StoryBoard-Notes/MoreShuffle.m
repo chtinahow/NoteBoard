@@ -10,6 +10,7 @@
 #import "NotesSection.h"
 #import "saveData.h"
 #import "ShuffleNotesGreen.h"
+#import "backgroundImages.h"
 
 @interface MoreShuffle()
 
@@ -78,11 +79,11 @@
     SKLabelNode *dateColor;
     
     UISwipeGestureRecognizer *leftSwipe;
-    UISwipeGestureRecognizer *closeSwipe;
+    
+    UIPanGestureRecognizer *panRecognizer;
     
     //zoom
     UIPinchGestureRecognizer *zoomIn;
-    UITapGestureRecognizer *zoomOut;
 }
 
 //paper nodes physics categories
@@ -97,7 +98,6 @@ static const int outline3Category = 3;
         save = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         save.backgroundColor = [UIColor darkGrayColor];
         save.frame = CGRectMake(890, 625, 50, 20);
-        //save.frame = CGRectMake(500, 500, 50, 20);
         [save setTitle:@"Save" forState:UIControlStateNormal];
         [save addTarget:self action:@selector(saveButton:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -124,12 +124,6 @@ static const int outline3Category = 3;
         newStack.frame = CGRectMake(890, 455, 100, 20);
         [newStack setTitle:@"New Stack" forState:UIControlStateNormal];
         [newStack addTarget:self action:@selector(newStack) forControlEvents:UIControlEventTouchUpInside];
-        
-        /*back = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        back.backgroundColor = [UIColor darkGrayColor];
-        back.frame = CGRectMake(890, 255, 100, 20);
-        [back setTitle:@"Back" forState:UIControlStateNormal];
-        [back addTarget:self action:@selector(backButton) forControlEvents:UIControlEventTouchUpInside];*/
     }
     
     return self;
@@ -143,7 +137,6 @@ static const int outline3Category = 3;
     [self.view addSubview:newPaper];
     [self.view addSubview:reset];
     [self.view addSubview:newStack];
-    //[self.view addSubview:back];
     
     //swipes to show backgrounds
     leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action: @selector(leftFlip:)];
@@ -153,9 +146,9 @@ static const int outline3Category = 3;
     zoomIn = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
     [self.view addGestureRecognizer:zoomIn];
     
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-    [panRecognizer setMinimumNumberOfTouches:3];
-    //[panRecognizer setMaximumNumberOfTouches:1];
+    panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
+    [panRecognizer setMinimumNumberOfTouches:2];
+    [panRecognizer setMaximumNumberOfTouches:3];
     [self.view addGestureRecognizer:panRecognizer];
     
 }
@@ -168,6 +161,22 @@ static const int outline3Category = 3;
                                              panGesture.view.center.y + translation.y);
         // Reset translation, so we can get translation delta's (i.e. change in translation)
         [panGesture setTranslation:CGPointZero inView:self.view];
+    }
+    else if (panGesture.state == UIGestureRecognizerStateEnded) {
+        
+        CGPoint velocity = [panGesture velocityInView:self.view];
+        CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
+        CGFloat slideMult = magnitude / 200; //original divider 200
+        
+        float slideFactor = 0.1 * slideMult /4; // Increase for more of a slide (original doesn't have a divider)
+        CGPoint finalPoint = CGPointMake(panGesture.view.center.x + (velocity.x * slideFactor),
+                                         panGesture.view.center.y + (velocity.y * slideFactor));
+        finalPoint.x = MIN(MAX(finalPoint.x, 70), self.view.bounds.size.width-70);
+        finalPoint.y = MIN(MAX(finalPoint.y, 100), self.view.bounds.size.height-100);
+        
+        [UIView animateWithDuration:slideFactor*2 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            panGesture.view.center = finalPoint;
+        } completion:nil];
     }
     // Don't need any logic for ended/failed/canceled states
 }
@@ -182,7 +191,7 @@ static const int outline3Category = 3;
         
         // Variables to adjust the max/min values of zoom
         float minScale = 1.0;
-        float maxScale = 2.0;
+        float maxScale = 3.0;
         float zoomSpeed = .5;
         
         float deltaScale = pinchGesture.scale;
@@ -217,10 +226,9 @@ static const int outline3Category = 3;
     [newPaper removeFromSuperview];
     [reset removeFromSuperview];
     [newStack removeFromSuperview];
-    //[back removeFromSuperview];
     
     [self.view removeGestureRecognizer:leftSwipe];
-    [self.view removeGestureRecognizer:closeSwipe];
+    [self.view removeGestureRecognizer:panRecognizer];
 }
 
 /*
@@ -228,34 +236,13 @@ static const int outline3Category = 3;
  available backgrounds from.
  */
 - (void)leftFlip:(id)sender{
-    opt = [self optionsView];
-    [opt addChild:image2];
-    [opt addChild:image3];
-    [opt addChild:image4];
-    [opt addChild:image5];
-    [opt addChild:image6];
-    [opt addChild:image7];
-    [opt addChild:image8];
-    [opt addChild:arrow];
-    arrow.name = @"arrow2";
-    
-    [self addChild:opt];
-    [self.view addSubview:save];
-    [self.view addSubview:stackButton];
+    [self.view removeGestureRecognizer:zoomIn];
     [self.view removeGestureRecognizer:leftSwipe];
-    
-    closeSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action: @selector(rightFlip:)];
-    [closeSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
-    [self.view addGestureRecognizer:closeSwipe];
-}
-
-//removes the change background menu
--(void)rightFlip:(id)sender{
-    [opt removeFromParent];
-    [save removeFromSuperview];
-    [stackButton removeFromSuperview];
-    [self.view removeGestureRecognizer:closeSwipe];
-    [self.view addGestureRecognizer:leftSwipe];
+    [self.view removeGestureRecognizer:panRecognizer];
+    backgroundImages *backy = [[backgroundImages alloc] initWithSize:CGSizeMake(300, 700)];
+    SKView *view = (SKView *) self.view;
+    [view presentScene:backy];
+    //[self.view removeGestureRecognizer:leftSwipe];
 }
 
 //generates more nodes
@@ -289,7 +276,6 @@ static const int outline3Category = 3;
      */
     [saveData sharedData].node = newPap;
     [[saveData sharedData].array addObject:[saveData sharedData].node];
-    NSLog(@"%d", [[saveData sharedData].array count]);
     [[saveData sharedData] save];
     
     [self addChild:[saveData sharedData].node];
@@ -451,47 +437,47 @@ static const int outline3Category = 3;
     [self addChild:newNode];
     
     //creates clickable background images
-    image = [SKSpriteNode spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(150, 75)];
+    image = [SKSpriteNode spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(200, 125)];
     image.position = CGPointMake(-15, 300);
     image.name = @"image1";
     
     image2 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
-    image2.size = CGSizeMake(150, 75);
-    image2.position = CGPointMake(-15, 300);
+    image2.size = CGSizeMake(200, 125);
+    image2.position = CGPointMake(-15, 140);
     image2.name = @"image2";
     
     image3 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-191.jpg"];
-    image3.size = CGSizeMake(150, 75);
-    image3.position = CGPointMake(-15, 220);
+    image3.size = CGSizeMake(200, 125);
+    image3.position = CGPointMake(-15, -20);
     image3.name = @"image3";
     
-    image4 = [SKSpriteNode spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(150, 75)];
-    image4.position = CGPointMake(-15, 140);
+    image4 = [SKSpriteNode spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(200, 125)];
+    image4.position = CGPointMake(-15, -180);
     image4.name = @"image4";
     
-    image5 = [SKSpriteNode spriteNodeWithColor:[SKColor orangeColor] size:CGSizeMake(150, 75)];
-    image5.size = CGSizeMake(150, 75);
-    image5.position = CGPointMake(-15, 60);
+    image5 = [SKSpriteNode spriteNodeWithColor:[SKColor orangeColor] size:CGSizeMake(200, 125)];
+    image5.size = CGSizeMake(200, 125);
+    image5.position = CGPointMake(-15, -340);
     image5.name = @"image5";
     
-    image6 = [SKSpriteNode spriteNodeWithColor:[SKColor purpleColor] size:CGSizeMake(150, 75)];
-    image6.size = CGSizeMake(150, 75);
-    image6.position = CGPointMake(-15, -20);
+    image6 = [SKSpriteNode spriteNodeWithColor:[SKColor purpleColor] size:CGSizeMake(200, 125)];
+    image6.size = CGSizeMake(200, 125);
+    image6.position = CGPointMake(-15, -500);
     image6.name = @"image6";
     
-    image7 = [SKSpriteNode spriteNodeWithColor:[SKColor brownColor] size:CGSizeMake(150, 75)];
-    image7.position = CGPointMake(-15, -100);
+    image7 = [SKSpriteNode spriteNodeWithColor:[SKColor brownColor] size:CGSizeMake(200, 125)];
+    image7.position = CGPointMake(-15, -660);
     image7.name = @"image7";
     
     image8 = [SKSpriteNode spriteNodeWithImageNamed:@"notebook-page.jpg"];
-    image8.size = CGSizeMake(150, 75);
-    image8.position = CGPointMake(-15, -180);
+    image8.size = CGSizeMake(200, 125);
+    image8.position = CGPointMake(-15, -820);
     image8.name = @"image8";
     
     //arrow to go cycle through backgrounds
     arrow = [SKSpriteNode spriteNodeWithImageNamed:@"transparent-arrow-th.png"];
     arrow.size = CGSizeMake(100, 30);
-    arrow.position = CGPointMake(-15, -350);
+    arrow.position = CGPointMake(-15, -1150);
     arrow.name = @"arrow";
     
     //Change the color of the text
@@ -569,8 +555,8 @@ static const int outline3Category = 3;
 
 #pragma mark
 -(SKSpriteNode *)optionsView{
-    SKSpriteNode *opt2 = [[SKSpriteNode alloc] initWithColor:[SKColor lightGrayColor] size:CGSizeMake(200, self.frame.size.height+2)];
-    opt2.position = CGPointMake(950, 383);
+    SKSpriteNode *opt2 = [[SKSpriteNode alloc] initWithColor:[SKColor lightGrayColor] size:CGSizeMake(300, 2600)];
+    opt2.position = CGPointMake(CGRectGetMaxX(self.frame)-100, CGRectGetMaxY(self.frame)-500);
     return opt2;
 }
 

@@ -30,7 +30,7 @@
 		3FA553981B39EE70001F0538 /* ShuffleNotesBlue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA553971B39EE70001F0538 /* ShuffleNotesBlue.m */; };
 		3FA5539B1B39EFD4001F0538 /* ShuffleNotesGreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA5539A1B39EFD4001F0538 /* ShuffleNotesGreen.m */; };
 		3FBE09AC1B3862A900E5B916 /* DifChapters.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FBE09AB1B3862A900E5B916 /* DifChapters.m */; };
-		3FF168891B554A8700B14704 /* TestShuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF168881B554A8700B14704 /* TestShuffle.m */; };
+		3FD1DAA01B58074A005FCB8A /* backgroundImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD1DA9F1B58074A005FCB8A /* backgroundImages.m */; };
 		3FF79EBB1B31BE4100A3A197 /* NotesSection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF79EBA1B31BE4100A3A197 /* NotesSection.m */; };
 		3FF79EC31B31C66B00A3A197 /* Formulas.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF79EC21B31C66B00A3A197 /* Formulas.m */; };
 		3FF79EC71B31C9D600A3A197 /* Assignments.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF79EC61B31C9D600A3A197 /* Assignments.m */; };
@@ -87,8 +87,8 @@
 		3FA5539A1B39EFD4001F0538 /* ShuffleNotesGreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ShuffleNotesGreen.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3FBE09AA1B3862A900E5B916 /* DifChapters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DifChapters.h; sourceTree = "<group>"; };
 		3FBE09AB1B3862A900E5B916 /* DifChapters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DifChapters.m; sourceTree = "<group>"; };
-		3FF168871B554A8700B14704 /* TestShuffle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestShuffle.h; sourceTree = "<group>"; };
-		3FF168881B554A8700B14704 /* TestShuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestShuffle.m; sourceTree = "<group>"; };
+		3FD1DA9E1B58074A005FCB8A /* backgroundImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backgroundImages.h; sourceTree = "<group>"; };
+		3FD1DA9F1B58074A005FCB8A /* backgroundImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundImages.m; sourceTree = "<group>"; };
 		3FF79EB91B31BE4100A3A197 /* NotesSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesSection.h; sourceTree = "<group>"; };
 		3FF79EBA1B31BE4100A3A197 /* NotesSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesSection.m; sourceTree = "<group>"; };
 		3FF79EC11B31C66B00A3A197 /* Formulas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Formulas.h; sourceTree = "<group>"; };
@@ -194,8 +194,8 @@
 			children = (
 				3F6221F21B50072400049351 /* MoreShuffle.h */,
 				3F6221F31B50072400049351 /* MoreShuffle.m */,
-				3FF168871B554A8700B14704 /* TestShuffle.h */,
-				3FF168881B554A8700B14704 /* TestShuffle.m */,
+				3FD1DA9E1B58074A005FCB8A /* backgroundImages.h */,
+				3FD1DA9F1B58074A005FCB8A /* backgroundImages.m */,
 			);
 			name = AddMoreShuffle;
 			sourceTree = "<group>";
@@ -402,9 +402,9 @@
 				3F2859201B30D31800CE318E /* ShuffleNotes.m in Sources */,
 				3FF79EBB1B31BE4100A3A197 /* NotesSection.m in Sources */,
 				3FF79EC71B31C9D600A3A197 /* Assignments.m in Sources */,
+				3FD1DAA01B58074A005FCB8A /* backgroundImages.m in Sources */,
 				3F2858F81B30D29C00CE318E /* main.m in Sources */,
 				3F6221F41B50072400049351 /* MoreShuffle.m in Sources */,
-				3FF168891B554A8700B14704 /* TestShuffle.m in Sources */,
 				3FF79EC31B31C66B00A3A197 /* Formulas.m in Sources */,
 				3F28591D1B30D2AF00CE318E /* MainPage.m in Sources */,
 				3F97B84C1B4AE1AC006687A5 /* saveData.m in Sources */,

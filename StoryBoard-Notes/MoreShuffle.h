@@ -10,17 +10,4 @@
 
 @interface MoreShuffle : SKScene
 
-/*[saveData sharedData].node = newPap;
- [[saveData sharedData].nodeArray addObject:[saveData sharedData].node];
- [[saveData sharedData] save];
- [self addChild:[saveData sharedData].node];
- 
- if ([saveData sharedData].nodeArray != nil) {
- NSLog(@"I'm not empty!");
- for (SKSpriteNode *sprite in [saveData sharedData].nodeArray) {
- sprite.texture = [saveData sharedData].current;
- [self addChild:sprite];
- }
- }*/
-
 @end
