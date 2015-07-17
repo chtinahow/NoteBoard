@@ -15,6 +15,7 @@
 @property NSMutableArray* array;
 @property SKSpriteNode *node;
 @property SKTexture *current;
+@property SKTexture *saved;
 @property SKLabelNode *date;
 @property CGPoint pos1;
 @property CGPoint pos2;

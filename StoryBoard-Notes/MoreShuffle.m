@@ -23,7 +23,8 @@
 @end
 
 @implementation MoreShuffle{
-    SKScene *currentScene;
+    //original center
+    CGPoint _originalCenter;
     
     //black outlines for the nodes
     SKSpriteNode *outline;
@@ -67,12 +68,6 @@
     
     //reset button
     UIButton *reset;
-    
-    //generate new stack & page
-    UIButton *newStack;
-    
-    //button to traverse pages
-    UIButton *back;
     
     //update date and texture
     SKTexture *curr;
@@ -118,12 +113,6 @@ static const int outline3Category = 3;
         reset.frame = CGRectMake(500, 655, 100, 20);
         [reset setTitle:@"Reset" forState:UIControlStateNormal];
         [reset addTarget:self action:@selector(resetButton) forControlEvents:UIControlEventTouchUpInside];
-        
-        newStack = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        newStack.backgroundColor = [UIColor darkGrayColor];
-        newStack.frame = CGRectMake(890, 455, 100, 20);
-        [newStack setTitle:@"New Stack" forState:UIControlStateNormal];
-        [newStack addTarget:self action:@selector(newStack) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return self;
@@ -136,7 +125,6 @@ static const int outline3Category = 3;
     }
     [self.view addSubview:newPaper];
     [self.view addSubview:reset];
-    [self.view addSubview:newStack];
     
     //swipes to show backgrounds
     leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action: @selector(leftFlip:)];
@@ -150,12 +138,22 @@ static const int outline3Category = 3;
     [panRecognizer setMinimumNumberOfTouches:2];
     [panRecognizer setMaximumNumberOfTouches:3];
     [self.view addGestureRecognizer:panRecognizer];
+}
+
+- (void)willMoveFromView:(SKView *)view
+{
+    [super willMoveFromView:view];
     
+    [newPaper removeFromSuperview];
+    [reset removeFromSuperview];
+    
+    [self.view removeGestureRecognizer:leftSwipe];
+    [self.view removeGestureRecognizer:panRecognizer];
 }
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)panGesture {
     CGPoint translation = [panGesture translationInView:panGesture.view.superview];
-    
+    _originalCenter = panRecognizer.view.center;
     if (UIGestureRecognizerStateBegan == panGesture.state ||UIGestureRecognizerStateChanged == panGesture.state) {
         panGesture.view.center = CGPointMake(panGesture.view.center.x + translation.x,
                                              panGesture.view.center.y + translation.y);
@@ -219,27 +217,16 @@ static const int outline3Category = 3;
     return YES; // Works for most use cases of pinch + zoom + pan
 }
 
-- (void)willMoveFromView:(SKView *)view
-{
-    [super willMoveFromView:view];
-    
-    [newPaper removeFromSuperview];
-    [reset removeFromSuperview];
-    [newStack removeFromSuperview];
-    
-    [self.view removeGestureRecognizer:leftSwipe];
-    [self.view removeGestureRecognizer:panRecognizer];
-}
-
 /*
  Checks to see if the change background button has been clicked, and opens the menu to choose the
  available backgrounds from.
  */
 - (void)leftFlip:(id)sender{
+    [self.view setCenter:CGPointMake(512, 384)];
     [self.view removeGestureRecognizer:zoomIn];
     [self.view removeGestureRecognizer:leftSwipe];
     [self.view removeGestureRecognizer:panRecognizer];
-    backgroundImages *backy = [[backgroundImages alloc] initWithSize:CGSizeMake(300, 700)];
+    backgroundImages *backy = [[backgroundImages alloc] initWithSize:CGSizeMake(1024, 768)];
     SKView *view = (SKView *) self.view;
     [view presentScene:backy];
     //[self.view removeGestureRecognizer:leftSwipe];
@@ -260,8 +247,14 @@ static const int outline3Category = 3;
         SKTexture *tex = [self.scene.view textureFromNode:outline1];
         newPap = [[SKSpriteNode alloc] initWithTexture:tex];
     }
+    // get the screensize
+    CGSize scr = self.scene.frame.size;
+    // setup a position constraint
+    SKConstraint *c = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150 upperLimit:(scr.width-150)] Y:[SKRange rangeWithLowerLimit:100 upperLimit:(scr.height-100)]];
+    
     newPap.position = CGPointMake(450, 500);
     newPap.name = @"newNodeX";
+    newPap.constraints = @[c];
     
     newPap.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
     newPap.physicsBody.categoryBitMask = outline1Category;
@@ -275,37 +268,16 @@ static const int outline3Category = 3;
      the original stack can be stored and saved via the NSMutableArray.
      */
     [saveData sharedData].node = newPap;
-    [[saveData sharedData].array addObject:[saveData sharedData].node];
+    [[saveData sharedData].array addObject:newPap];
     [[saveData sharedData] save];
     
-    [self addChild:[saveData sharedData].node];
-}
-
--(IBAction)newStack{
-    /*MoreShuffle *stack = [[MoreShuffle alloc] initWithSize:CGSizeMake(1024, 768)];
-    SKView *view = (SKView *) self.view;
-    currentScene = [view scene];
-    SKTransition *doors = [SKTransition flipVerticalWithDuration: 0.5];
-    [[saveData sharedData].page addObject:currentScene];
-    [stack resetButton];
-    [view presentScene:stack transition:doors];
-}
-
--(IBAction)backButton{
-    if ([saveData sharedData].page != nil) {
-        SKView *view = (SKView *) self.view;
-        SKTransition *doors = [SKTransition flipVerticalWithDuration: 0.5];
-        [self removeAllChildren];
-        [view presentScene:[[saveData sharedData].page objectAtIndex:0] transition:doors];
-    }*/
-    
-    //CGPoint current = CGPointMake(self.position.x, self.position.y);
-    self.size = CGSizeMake((self.size.width - 200), (self.size.height - 200));
+    [self addChild:newPap];
 }
 
 - (IBAction)resetButton{
-    [[saveData sharedData] reset];
     [self removeAllChildren];
+    [[saveData sharedData] reset];
+    [[saveData sharedData] save];
     [self createScene];
 }
 
@@ -315,7 +287,6 @@ static const int outline3Category = 3;
 
 //action to stack papers
 -(IBAction)stackPapers:(UIButton *)pressed{
-    self.scene.size = CGSizeMake((self.scene.size.width + 200), (self.scene.size.height + 200));
 }
 
 //creates the initial SKScene
@@ -327,8 +298,10 @@ static const int outline3Category = 3;
     
     // setup a position constraint
     
-    SKConstraint *x = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150]];
-    SKConstraint *y = [SKConstraint positionY:[SKRange rangeWithLowerLimit:100]];
+    // get the screensize
+    CGSize scr = self.scene.frame.size;
+    // setup a position constraint
+    SKConstraint *c = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150 upperLimit:(scr.width-150)] Y:[SKRange rangeWithLowerLimit:100 upperLimit:(scr.height-100)]];
     
     SKLabelNode *date = [self dateNode];
     date.position = CGPointMake(-110, 70);
@@ -344,7 +317,7 @@ static const int outline3Category = 3;
         SKTexture *tex = [self.scene.view textureFromNode:outline1];
         newNode = [SKSpriteNode spriteNodeWithTexture:tex];
         newNode.name = @"newNode";
-        newNode.constraints = @[x,y];
+        newNode.constraints = @[c];
         [newNode addChild:date];
         
         SKSpriteNode *pap2 = [self paperNode];
@@ -357,7 +330,7 @@ static const int outline3Category = 3;
         
         newNode2 = [SKSpriteNode spriteNodeWithTexture:tex2];
         newNode2.name = @"newNode2";
-        newNode2.constraints = @[x,y];
+        newNode2.constraints = @[c];
         
         SKSpriteNode *pap3 = [self paperNode];
         pap3.position = CGPointMake(CGRectGetMidX(outline3.frame), CGRectGetMidY(outline3.frame));
@@ -369,24 +342,29 @@ static const int outline3Category = 3;
         
         newNode3 = [SKSpriteNode spriteNodeWithTexture:tex3];
         newNode3.name = @"newNode3";
-        newNode3.constraints = @[x,y];
+        newNode3.constraints = @[c];
     }
     else {
-        newNode = [SKSpriteNode spriteNodeWithTexture:[saveData sharedData].current];
+        newNode = [[SKSpriteNode alloc] initWithTexture:[saveData sharedData].current];
         newNode.name = @"newNode";
-        newNode.constraints = @[x,y];
+        newNode.constraints = @[c];
         [newNode addChild:date];
         
-        newNode2 = [SKSpriteNode spriteNodeWithTexture:[saveData sharedData].current];
+        newNode2 = [[SKSpriteNode alloc] initWithTexture:[saveData sharedData].current];
         newNode2.name = @"newNode2";
-        newNode2.constraints = @[x,y];
+        newNode2.constraints = @[c];
         
-        newNode3 = [SKSpriteNode spriteNodeWithTexture:[saveData sharedData].current];
+        newNode3 = [[SKSpriteNode alloc] initWithTexture:[saveData sharedData].current];
         newNode3.name = @"newNode3";
-        newNode3.constraints = @[x,y];
+        newNode3.constraints = @[c];
     }
     
     for (SKSpriteNode *sprite in [saveData sharedData].array) {
+        // get the screensize
+        CGSize scr = self.scene.frame.size;
+        // setup a position constraint
+        SKConstraint *c = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150 upperLimit:(scr.width-150)] Y:[SKRange rangeWithLowerLimit:100 upperLimit:(scr.height-100)]];
+        
         if ([saveData sharedData].array != nil) {
             if ([saveData sharedData].current != nil) {
                 sprite.texture = [saveData sharedData].current;
@@ -400,6 +378,7 @@ static const int outline3Category = 3;
                 SKTexture *tex = [self.scene.view textureFromNode:outline1];
                 sprite.texture = tex;
             }
+            sprite.constraints = @[c];
             [self addChild:sprite];
         }
     }
@@ -435,50 +414,7 @@ static const int outline3Category = 3;
     [self addChild:newNode3];
     [self addChild:newNode2];
     [self addChild:newNode];
-    
-    //creates clickable background images
-    image = [SKSpriteNode spriteNodeWithColor:[SKColor yellowColor] size:CGSizeMake(200, 125)];
-    image.position = CGPointMake(-15, 300);
-    image.name = @"image1";
-    
-    image2 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-189.jpg"];
-    image2.size = CGSizeMake(200, 125);
-    image2.position = CGPointMake(-15, 140);
-    image2.name = @"image2";
-    
-    image3 = [SKSpriteNode spriteNodeWithImageNamed:@"IS787-191.jpg"];
-    image3.size = CGSizeMake(200, 125);
-    image3.position = CGPointMake(-15, -20);
-    image3.name = @"image3";
-    
-    image4 = [SKSpriteNode spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(200, 125)];
-    image4.position = CGPointMake(-15, -180);
-    image4.name = @"image4";
-    
-    image5 = [SKSpriteNode spriteNodeWithColor:[SKColor orangeColor] size:CGSizeMake(200, 125)];
-    image5.size = CGSizeMake(200, 125);
-    image5.position = CGPointMake(-15, -340);
-    image5.name = @"image5";
-    
-    image6 = [SKSpriteNode spriteNodeWithColor:[SKColor purpleColor] size:CGSizeMake(200, 125)];
-    image6.size = CGSizeMake(200, 125);
-    image6.position = CGPointMake(-15, -500);
-    image6.name = @"image6";
-    
-    image7 = [SKSpriteNode spriteNodeWithColor:[SKColor brownColor] size:CGSizeMake(200, 125)];
-    image7.position = CGPointMake(-15, -660);
-    image7.name = @"image7";
-    
-    image8 = [SKSpriteNode spriteNodeWithImageNamed:@"notebook-page.jpg"];
-    image8.size = CGSizeMake(200, 125);
-    image8.position = CGPointMake(-15, -820);
-    image8.name = @"image8";
-    
-    //arrow to go cycle through backgrounds
-    arrow = [SKSpriteNode spriteNodeWithImageNamed:@"transparent-arrow-th.png"];
-    arrow.size = CGSizeMake(100, 30);
-    arrow.position = CGPointMake(-15, -1150);
-    arrow.name = @"arrow";
+    [[saveData sharedData] save];
     
     //Change the color of the text
     SKSpriteNode *color1 = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(30, 30)];

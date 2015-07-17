@@ -20,6 +20,7 @@
 static NSString* const array = @"array";
 static NSString* const newNode = @"newNode";
 static NSString* const currentTexture = @"currentTexture";
+static NSString* const savedTexture = @"savedTexture";
 static NSString* const dateColor = @"dateColor";
 
 static NSString* const posi1 = @"posi1";
@@ -44,6 +45,7 @@ static NSString* const page = @"page";
         _array = [[decoder decodeObjectForKey:array] mutableCopy];
         _node = [decoder decodeObjectForKey:newNode];
         _current = [decoder decodeObjectForKey:currentTexture];
+        _saved = [decoder decodeObjectForKey:savedTexture];
         _date = [decoder decodeObjectForKey:dateColor];
         
         _pos1 = [decoder decodeCGPointForKey:posi1];
@@ -72,6 +74,7 @@ static NSString* const page = @"page";
     [encoder encodeObject:self.array forKey:array];
     [encoder encodeObject:self.node forKey:newNode];
     [encoder encodeObject:self.current forKey:currentTexture];
+    [encoder encodeObject:self.saved forKey:savedTexture];
     [encoder encodeObject:self.date forKey:dateColor];
     
     [encoder encodeCGPoint:self.pos1 forKey:posi1];
