@@ -26,6 +26,9 @@
     //original center
     CGPoint _originalCenter;
     
+    //date node
+    SKLabelNode *date;
+    
     //black outlines for the nodes
     SKSpriteNode *outline;
     SKSpriteNode *outline1;
@@ -90,12 +93,6 @@ static const int outline3Category = 3;
 - (id)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
-        save = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        save.backgroundColor = [UIColor darkGrayColor];
-        save.frame = CGRectMake(890, 625, 50, 20);
-        [save setTitle:@"Save" forState:UIControlStateNormal];
-        [save addTarget:self action:@selector(saveButton:) forControlEvents:UIControlEventTouchUpInside];
-        
         stackButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         stackButton.backgroundColor = [UIColor darkGrayColor];
         stackButton.frame = CGRectMake(890, 655, 100, 20);
@@ -104,13 +101,13 @@ static const int outline3Category = 3;
         
         newPaper = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         newPaper.backgroundColor = [UIColor darkGrayColor];
-        newPaper.frame = CGRectMake(890, 655, 100, 20);
+        newPaper.frame = CGRectMake(890, 740, 100, 20);
         [newPaper setTitle:@"Make More" forState:UIControlStateNormal];
         [newPaper addTarget:self action:@selector(newPaper) forControlEvents:UIControlEventTouchUpInside];
         
         reset = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         reset.backgroundColor = [UIColor darkGrayColor];
-        reset.frame = CGRectMake(500, 655, 100, 20);
+        reset.frame = CGRectMake(750, 740, 100, 20);
         [reset setTitle:@"Reset" forState:UIControlStateNormal];
         [reset addTarget:self action:@selector(resetButton) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -125,6 +122,7 @@ static const int outline3Category = 3;
     }
     [self.view addSubview:newPaper];
     [self.view addSubview:reset];
+    [self.view addSubview:stackButton];
     
     //swipes to show backgrounds
     leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action: @selector(leftFlip:)];
@@ -146,6 +144,7 @@ static const int outline3Category = 3;
     
     [newPaper removeFromSuperview];
     [reset removeFromSuperview];
+    [stackButton removeFromSuperview];
     
     [self.view removeGestureRecognizer:leftSwipe];
     [self.view removeGestureRecognizer:panRecognizer];
@@ -250,7 +249,7 @@ static const int outline3Category = 3;
     // get the screensize
     CGSize scr = self.scene.frame.size;
     // setup a position constraint
-    SKConstraint *c = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150 upperLimit:(scr.width-150)] Y:[SKRange rangeWithLowerLimit:100 upperLimit:(scr.height-100)]];
+    SKConstraint *c = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150 upperLimit:(scr.width-150)] Y:[SKRange rangeWithLowerLimit:200 upperLimit:(scr.height-100)]];
     
     newPap.position = CGPointMake(450, 500);
     newPap.name = @"newNodeX";
@@ -287,6 +286,29 @@ static const int outline3Category = 3;
 
 //action to stack papers
 -(IBAction)stackPapers:(UIButton *)pressed{
+    [saveData sharedData].isStacked = YES;
+    
+    for (SKSpriteNode *node in self.children) {
+        if ([node.name isEqualToString:@"newNode"]) {
+            newNode.position = CGPointMake(1000, 600);
+            [saveData sharedData].statPos = newNode.position;
+        }
+        if ([node.name isEqualToString:@"newNode2"]) {
+            newNode2.position = CGPointMake(1000, 600);
+            [saveData sharedData].statPos2 = newNode2.position;
+        }
+        if ([node.name isEqualToString:@"newNode3"]) {
+            newNode3.position = CGPointMake(1000, 600);
+            [saveData sharedData].statPos3 = newNode3.position;
+        }
+        if ([saveData sharedData].array != nil) {
+            for (SKSpriteNode *sprite in [saveData sharedData].array) {
+                sprite.position = CGPointMake(1000, 600);
+            }
+        }
+    }
+    
+    [[saveData sharedData] save];
 }
 
 //creates the initial SKScene
@@ -301,9 +323,15 @@ static const int outline3Category = 3;
     // get the screensize
     CGSize scr = self.scene.frame.size;
     // setup a position constraint
-    SKConstraint *c = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150 upperLimit:(scr.width-150)] Y:[SKRange rangeWithLowerLimit:100 upperLimit:(scr.height-100)]];
+    SKConstraint *c = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150 upperLimit:(scr.width-150)] Y:[SKRange rangeWithLowerLimit:200 upperLimit:(scr.height-100)]];
     
-    SKLabelNode *date = [self dateNode];
+    if ([saveData sharedData].date != nil) {
+        date = [saveData sharedData].date;
+        [date removeFromParent];
+    }
+    else{
+        date = [self dateNode];
+    }
     date.position = CGPointMake(-110, 70);
     
     if ([saveData sharedData].current == nil) {
@@ -363,7 +391,7 @@ static const int outline3Category = 3;
         // get the screensize
         CGSize scr = self.scene.frame.size;
         // setup a position constraint
-        SKConstraint *c = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150 upperLimit:(scr.width-150)] Y:[SKRange rangeWithLowerLimit:100 upperLimit:(scr.height-100)]];
+        SKConstraint *c = [SKConstraint positionX:[SKRange rangeWithLowerLimit:150 upperLimit:(scr.width-150)] Y:[SKRange rangeWithLowerLimit:200 upperLimit:(scr.height-100)]];
         
         if ([saveData sharedData].array != nil) {
             if ([saveData sharedData].current != nil) {
@@ -383,9 +411,32 @@ static const int outline3Category = 3;
         }
     }
     
-    newNode.position = CGPointMake(500, 500);
-    newNode2.position = CGPointMake(CGRectGetMidX(self.frame)-195, CGRectGetMidY(self.frame)+240);
-    newNode3.position = CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
+    if ([saveData sharedData].isStacked == NO) {
+        if ([saveData sharedData].isSet == YES) {
+            newNode.position = [saveData sharedData].pos1;
+        }
+        else{
+            newNode.position =  CGPointMake(CGRectGetMidX(self.frame)-200, CGRectGetMidY(self.frame)+250);
+        }
+        
+        if ([saveData sharedData].isSet2 == YES) {
+            newNode2.position = [saveData sharedData].pos2;
+        }
+        else{
+            newNode2.position = CGPointMake(CGRectGetMidX(self.frame)-195, CGRectGetMidY(self.frame)+240);
+        }
+        
+        if ([saveData sharedData].isSet3 == YES) {
+            newNode3.position = [saveData sharedData].pos3;
+        }
+        else{
+            newNode3.position = CGPointMake(CGRectGetMidX(self.frame)-190, CGRectGetMidY(self.frame)+230);
+        }
+    } else{
+        newNode.position = [saveData sharedData].statPos;
+        newNode2.position = [saveData sharedData].statPos2;
+        newNode3.position = [saveData sharedData].statPos3;
+    }
     
     //newNode1 physics body
     newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
@@ -414,37 +465,38 @@ static const int outline3Category = 3;
     [self addChild:newNode3];
     [self addChild:newNode2];
     [self addChild:newNode];
-    [[saveData sharedData] save];
     
     //Change the color of the text
-    SKSpriteNode *color1 = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(30, 30)];
-    color1.position = CGPointMake(-60, 0);
+    SKSpriteNode *color1 = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(120, 60)];
+    color1.position = CGPointMake(-240, 0);
     color1.name = @"color1";
     
-    SKSpriteNode *color2 = [[SKSpriteNode alloc] initWithColor:[SKColor darkGrayColor] size:CGSizeMake(30, 30)];
-    color2.position = CGPointMake(-30, 0);
+    SKSpriteNode *color2 = [[SKSpriteNode alloc] initWithColor:[SKColor darkGrayColor] size:CGSizeMake(120, 60)];
+    color2.position = CGPointMake(-120, 0);
     color2.name = @"color2";
     
-    SKSpriteNode *color3 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(30, 30)];
+    SKSpriteNode *color3 = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(120, 60)];
     color3.position = CGPointMake(0, 0);
     color3.name = @"color3";
     
-    SKSpriteNode *color4 = [[SKSpriteNode alloc] initWithColor:[SKColor lightGrayColor] size:CGSizeMake(30, 30)];
-    color4.position = CGPointMake(30, 0);
+    SKSpriteNode *color4 = [[SKSpriteNode alloc] initWithColor:[SKColor lightGrayColor] size:CGSizeMake(120, 60)];
+    color4.position = CGPointMake(120, 0);
     color4.name = @"color4";
     
-    SKSpriteNode *color5 = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(30, 30)];
-    color5.position = CGPointMake(60, 0);
+    SKSpriteNode *color5 = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(120, 60)];
+    color5.position = CGPointMake(240, 0);
     color5.name = @"color5";
     
-    changeText = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(153, 33)];
-    changeText.position = CGPointMake(850, 100);
+    changeText = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(612, 66)];
+    changeText.position = CGPointMake(325, 40);
     [changeText addChild:color1];
     [changeText addChild:color2];
     [changeText addChild:color3];
     [changeText addChild:color4];
     [changeText addChild:color5];
     [self addChild:changeText];
+    
+    [[saveData sharedData] save];
 }
 
 //detects if contact is made
@@ -481,12 +533,12 @@ static const int outline3Category = 3;
 #pragma mark
 
 - (SKLabelNode *)dateNode{
-    SKLabelNode *date = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
-    date.name = @"date";
-    date.text = @"Date: ";
-    date.fontSize = 35;
-    date.fontColor = [SKColor whiteColor];
-    return date;
+    SKLabelNode *datey = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
+    datey.name = @"date";
+    datey.text = @"Date: ";
+    datey.fontSize = 35;
+    datey.fontColor = [SKColor whiteColor];
+    return datey;
 }
 
 #pragma mark
@@ -523,63 +575,45 @@ static const int outline3Category = 3;
             [self addChild:checkNode];
             [self.view removeGestureRecognizer:leftSwipe];
         }
+        //changes the color of the text and stores it.
     }
-    //finally! code to get background image changed! outline is kept
-    else if(checkNode && ([checkNode.name hasPrefix:@"image"])){
-        SKTexture *tex = [self.scene.view textureFromNode:checkNode];
-        SKSpriteNode *paper = [[SKSpriteNode alloc] initWithTexture:tex];
-        paper.size = CGSizeMake(300, 200);
-        
-        SKSpriteNode *outliner = [self outlineNode];
-        [outliner addChild:paper];
-        
-        SKTexture *newTex = [self.scene.view textureFromNode:outliner];
-        [saveData sharedData].current = newTex;
-        
-        SKAction* changeFace = [SKAction setTexture:[saveData sharedData].current];
-        
+    else if (checkNode && [checkNode.name hasPrefix:@"color"]){
         for(SKNode *check in self.children){
             if([check.name hasPrefix:@"newNode"]){
-                [self runAction:changeFace];
-                [check runAction:changeFace];
-                [[saveData sharedData] save];
+                for(SKLabelNode *label in check.children){
+                    if([checkNode.name isEqualToString:@"color1"]){
+                        label.fontColor = [SKColor blackColor];
+                        [saveData sharedData].date = label;
+                    }
+                    if([checkNode.name isEqualToString:@"color2"]){
+                        label.fontColor = [SKColor darkGrayColor];
+                        [saveData sharedData].date = label;
+                    }
+                    if([checkNode.name isEqualToString:@"color3"]){
+                        label.fontColor = [SKColor grayColor];
+                        [saveData sharedData].date = label;
+                    }
+                    if([checkNode.name isEqualToString:@"color4"]){
+                        label.fontColor = [SKColor lightGrayColor];
+                        [saveData sharedData].date = label;
+                    }
+                    if([checkNode.name isEqualToString:@"color5"]){
+                        label.fontColor = [SKColor whiteColor];
+                        [saveData sharedData].date = label;
+                    }
+                }
             }
         }
-        
     }
-    /*The following ifs (where the names are exactly "arrow" or "arrow2" cycles through the pages of available backgrounds*/
-    else if(checkNode && [checkNode.name isEqualToString:@"arrow"]){
-        [opt removeFromParent];
-        [image removeFromParent];
-        [arrow removeFromParent];
-        
-        [opt addChild:image2];
-        [opt addChild:image3];
-        [opt addChild:image4];
-        [opt addChild:image5];
-        [opt addChild:image6];
-        [opt addChild:image7];
-        [opt addChild:image8];
-        [opt addChild:arrow];
-        arrow.name = @"arrow2";
-        
-        [self addChild:opt];
-    }
-    else if(checkNode && [checkNode.name isEqualToString:@"arrow2"]){
-        [opt removeFromParent];
-        [arrow removeFromParent];
-        
-        opt = [self optionsView];
-        [opt addChild:image];
-        [opt addChild:arrow];
-        arrow.name = @"arrow";
-        
-        [self addChild:opt];
-    }
+    [[saveData sharedData] save];
 }
 
-
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+    UITouch *touch = [touches anyObject];
+    CGPoint scenePosition = [touch locationInNode:self];
+    
+    SKNode *checkNode = [self nodeAtPoint:scenePosition];
+    
     if(_activeDragNode != nil){
         UITouch *touch = [touches anyObject];
         CGPoint scenePosition = [touch locationInNode:self];
@@ -588,11 +622,26 @@ static const int outline3Category = 3;
         CGPoint newLoc = CGPointMake(_activeDragNode.position.x + (scenePosition.x - lastPos.x), _activeDragNode.position.y + (scenePosition.y - lastPos.y));
         
         _activeDragNode.position = newLoc;
+        
+        if ([checkNode.name isEqualToString:@"newNode"]) {
+            [saveData sharedData].pos1 = newLoc;
+            [saveData sharedData].isSet = YES;
+        }
+        if ([checkNode.name isEqualToString:@"newNode2"]) {
+            [saveData sharedData].pos2 = newLoc;
+            [saveData sharedData].isSet2 = YES;
+        }
+        if ([checkNode.name isEqualToString:@"newNode3"]) {
+            [saveData sharedData].pos3 = newLoc;
+            [saveData sharedData].isSet3 = YES;
+        }
+        
+        [saveData sharedData].isStacked = NO;
     }
-    
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    [[saveData sharedData] save];
     UITouch *touch = [touches anyObject];
     CGPoint scenePosition = [touch locationInNode:self];
     

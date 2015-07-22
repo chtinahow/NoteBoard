@@ -11,18 +11,22 @@
 
 @interface saveData : NSObject <NSCoding>
 
-@property NSMutableArray* page;
 @property NSMutableArray* array;
 @property SKSpriteNode *node;
 @property SKTexture *current;
-@property SKTexture *saved;
 @property SKLabelNode *date;
+
 @property CGPoint pos1;
+@property BOOL isSet;
 @property CGPoint pos2;
+@property BOOL isSet2;
 @property CGPoint pos3;
+@property BOOL isSet3;
+
 @property CGPoint statPos;
 @property CGPoint statPos2;
 @property CGPoint statPos3;
+
 @property BOOL isStacked;
 
 

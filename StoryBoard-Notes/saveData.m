@@ -20,20 +20,21 @@
 static NSString* const array = @"array";
 static NSString* const newNode = @"newNode";
 static NSString* const currentTexture = @"currentTexture";
-static NSString* const savedTexture = @"savedTexture";
 static NSString* const dateColor = @"dateColor";
 
 static NSString* const posi1 = @"posi1";
 static NSString* const posi2 = @"posi2";
 static NSString* const posi3 = @"posi3";
 
+static NSString* const set = @"set";
+static NSString* const set2 = @"set2";
+static NSString* const set3 = @"set3";
+
 static NSString* const statPos = @"statPos";
 static NSString* const statPos2 = @"statPos2";
 static NSString* const statPos3 = @"statPos3";
 
 static NSString* const isStacked = @"isStacked";
-
-static NSString* const page = @"page";
 
 - (instancetype)initWithCoder:(NSCoder *)decoder
 {
@@ -45,23 +46,20 @@ static NSString* const page = @"page";
         _array = [[decoder decodeObjectForKey:array] mutableCopy];
         _node = [decoder decodeObjectForKey:newNode];
         _current = [decoder decodeObjectForKey:currentTexture];
-        _saved = [decoder decodeObjectForKey:savedTexture];
         _date = [decoder decodeObjectForKey:dateColor];
         
         _pos1 = [decoder decodeCGPointForKey:posi1];
+        _isSet = [decoder decodeBoolForKey:set];
         _pos2 = [decoder decodeCGPointForKey:posi2];
+        _isSet2 = [decoder decodeBoolForKey:set2];
         _pos3 = [decoder decodeCGPointForKey:posi3];
+        _isSet3 = [decoder decodeBoolForKey:set3];
         
         _statPos = [decoder decodeCGPointForKey:statPos];
         _statPos2 = [decoder decodeCGPointForKey:statPos2];
         _statPos3 = [decoder decodeCGPointForKey:statPos3];
         
         _isStacked = [decoder decodeBoolForKey:isStacked];
-        
-        if (!_page) {
-            _page = [[NSMutableArray alloc] init];
-        }
-        _page = [[decoder decodeObjectForKey:page] mutableCopy];
     }
     return self;
 }
@@ -74,23 +72,20 @@ static NSString* const page = @"page";
     [encoder encodeObject:self.array forKey:array];
     [encoder encodeObject:self.node forKey:newNode];
     [encoder encodeObject:self.current forKey:currentTexture];
-    [encoder encodeObject:self.saved forKey:savedTexture];
     [encoder encodeObject:self.date forKey:dateColor];
     
     [encoder encodeCGPoint:self.pos1 forKey:posi1];
+    [encoder encodeBool:self.isSet forKey:set];
     [encoder encodeCGPoint:self.pos2 forKey:posi2];
+    [encoder encodeBool:self.isSet2 forKey:set2];
     [encoder encodeCGPoint:self.pos3 forKey:posi3];
+    [encoder encodeBool:self.isSet3 forKey:set3];
     
     [encoder encodeCGPoint:self.statPos forKey:statPos];
     [encoder encodeCGPoint:self.statPos2 forKey:statPos2];
     [encoder encodeCGPoint:self.statPos3 forKey:statPos3];
     
     [encoder encodeBool:self.isStacked forKey:isStacked];
-    
-    if (!self.page) {
-        self.page = [[NSMutableArray alloc] init];
-    }
-    [encoder encodeObject:self.page forKey:page];
 }
 
 +(NSString*)filePath
