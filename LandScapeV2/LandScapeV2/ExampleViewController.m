@@ -11,13 +11,16 @@
 #import "ViewController.h"
 
 @interface ExampleViewController ()
-
 @end
 
 @implementation ExampleViewController
-
+/*
+ viewDidLoad contains both methods of using only the url and the embedded
+ versions in order to use the webView as a website or video player of sorts
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     /*NSString *fullURL = @"https://youtu.be/mDFKyp40XUc";
     NSURL *url = [NSURL URLWithString:fullURL];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
@@ -25,9 +28,7 @@
     
     NSString *embedCode = @"<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/mDFKyp40XUc\" frameborder=\"0\" allowfullscreen></iframe>";
     [[self viewWeb]loadHTMLString:embedCode baseURL:nil];
-
-    
-    
+   
 }
 
 - (void)didReceiveMemoryWarning {

@@ -13,10 +13,29 @@
 @end
 
 @implementation MediaFormulaViewController
-@synthesize moviePlayer;
+
+/*
+General outline for initalizing the movieplayer along with the alloted formats that are allowed under the framework.
+Sets the size and where it is located along with autoplayer and the source types that are allowed;
+ 
+ 
+think about a picker that brings up the camera roll or local files accosiated with the ipad or device itself
+ */
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _moviePlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:@"http://nordenmovil.com/urrea/InstalaciondelavaboURREAbaja.mp4"]];
+    _moviePlayer.view.frame = CGRectMake(300, 0, 400, 400);
+    _moviePlayer.moviePlayer.shouldAutoplay=YES;
+    
+    
+    _moviePlayer.moviePlayer.movieSourceType= MPMovieSourceTypeFile;
+    [_moviePlayer.moviePlayer setControlStyle:MPMovieControlStyleDefault];
+    
+    [self.view addSubview:_moviePlayer.view];
+    
+    [_moviePlayer.moviePlayer play];
 }
 
 - (void)didReceiveMemoryWarning {

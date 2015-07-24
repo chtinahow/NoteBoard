@@ -9,9 +9,10 @@
 #import "NotesViewController.h"
 #import <SpriteKit/SpriteKit.h>
 #import "LandScapeCalcNotes.h"
+#import "MoreShuffle.h"
+#import "weeksNotesViewController.h"
 
 @interface NotesViewController ()
-
 @end
 
 @implementation NotesViewController
@@ -19,18 +20,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    SKView *spriteView = (SKView *) self.view;
-    spriteView.showsDrawCount = YES;
-    spriteView.showsNodeCount = YES;
-    spriteView.showsFPS = YES;
+    //code needed to access notifier
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentWeeksNotesViewController) name:@"gotoNotes" object:nil];
 }
 
 -(void) viewWillAppear:(BOOL)animated{
-    LandScapeCalcNotes *math = [[LandScapeCalcNotes alloc] initWithSize:CGSizeMake(768, 1024)];
+    MoreShuffle *math = [[MoreShuffle alloc] initWithSize:CGSizeMake(2000, 1768)];
     SKView *view = (SKView *) self.view;
     [view presentScene:math];
 }
 
+//sets up other view controller
+-(void) presentWeeksNotesViewController
+{
+    weeksNotesViewController *wViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tabView"];
+    [self.navigationController pushViewController:wViewController animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

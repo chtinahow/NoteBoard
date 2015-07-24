@@ -12,6 +12,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface ExampleViewController : UIViewController
+//initializes the UIWebView Interface
 @property (weak, nonatomic) IBOutlet UIWebView *viewWeb;
 
 

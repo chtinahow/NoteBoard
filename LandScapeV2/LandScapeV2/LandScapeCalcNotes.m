@@ -22,6 +22,10 @@
 
 @end
 
+static const int outline1Category = 1;
+static const int outline2Category = 2;
+static const int outline3Category = 3;
+
 @implementation LandScapeCalcNotes
 
 - (void)didMoveToView: (SKView *) view{
@@ -55,7 +59,7 @@
     newNode.position = CGPointMake(CGRectGetMidX(self.frame)-150, CGRectGetMidY(self.frame)+150);
     [newNode addChild:date];
     
-    SKSpriteNode *paper = [self paperNode2];
+    SKSpriteNode *paper = [self paperNode];
     paper.position = CGPointMake(CGRectGetMidX(outline2.frame), CGRectGetMidY(outline2.frame));
     [outline2 addChild:paper];
     
@@ -64,7 +68,7 @@
     newNode2.name = @"newNode2";
     newNode2.position = CGPointMake(CGRectGetMidX(self.frame)-75, CGRectGetMidY(self.frame)+75);
     
-    SKSpriteNode *paper2 = [self paperNode2];
+    SKSpriteNode *paper2 = [self paperNode];
     paper2.position = CGPointMake(CGRectGetMidX(outline3.frame), CGRectGetMidY(outline3.frame));
     [outline3 addChild:paper2];
     
@@ -73,6 +77,30 @@
     newNode3.name = @"newNode3";
     newNode3.position = CGPointMake(CGRectGetMidX(self.frame)+150, CGRectGetMidY(self.frame)-200);
     
+    //newNode1 physics body
+    newNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+    newNode.physicsBody.categoryBitMask = outline1Category;
+    newNode.physicsBody.contactTestBitMask = outline2Category | outline3Category;
+    newNode.physicsBody.collisionBitMask = outline2Category | outline3Category;
+    newNode.physicsBody.affectedByGravity = NO;
+    newNode.physicsBody.allowsRotation = NO;
+    
+    //newNode2 physics body
+    newNode2.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+    newNode2.physicsBody.categoryBitMask = outline2Category;
+    newNode2.physicsBody.contactTestBitMask = outline1Category | outline3Category;
+    newNode2.physicsBody.collisionBitMask = outline1Category | outline3Category;
+    newNode2.physicsBody.affectedByGravity = NO;
+    newNode2.physicsBody.allowsRotation = NO;
+    
+    //newNode3
+    newNode3.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(20, 20)];
+    newNode3.physicsBody.categoryBitMask = outline3Category;
+    newNode3.physicsBody.contactTestBitMask = outline2Category | outline1Category;
+    newNode3.physicsBody.collisionBitMask = outline2Category | outline1Category;
+    newNode3.physicsBody.affectedByGravity = NO;
+    newNode3.physicsBody.allowsRotation = NO;
+    
     [self addChild:newNode3];
     
     [self addChild:newNode2];
@@ -80,10 +108,22 @@
     [self addChild:newNode];
 }
 
+-(void)didBeginContact:(SKPhysicsContact *)contact
+{
+    SKPhysicsBody *firstBody, *secondBody;
+    
+    firstBody = contact.bodyA;
+    secondBody = contact.bodyB;
+    
+    if((firstBody.categoryBitMask == (outline2Category | outline3Category)) || (secondBody.categoryBitMask == (outline2Category | outline3Category)))
+    {
+    }
+}
+
 #pragma mark
 
 - (SKSpriteNode *)paperNode{
-    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(300, 200)];
+    SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(300, 200)];
     paper.name = @"paper";
     _activeDragNode = nil;
     
@@ -122,18 +162,20 @@
     _tappedTwice = NO;
     UITouch *touch = [touches anyObject];
     
-    if([touch tapCount] == 2){
-        _tappedTwice = YES;
-        [self.view.window.rootViewController dismissViewControllerAnimated:YES completion:nil];
-
-    }
-    else if([touch tapCount] == 1 && !_tappedTwice){
-        CGPoint scenePosition = [touch locationInNode:self];
-        
-        SKNode *checkNode = [self nodeAtPoint:scenePosition];
-        
-        if(checkNode && ([checkNode.name hasPrefix:@"newNode"] || [checkNode.name hasPrefix:@"newNode2"] || [checkNode.name hasPrefix:@"newNode3"])){
+    CGPoint scenePosition = [touch locationInNode:self];
+    
+    SKNode *checkNode = [self nodeAtPoint:scenePosition];
+    
+    if(checkNode && ([checkNode.name hasPrefix:@"newNode"] || [checkNode.name hasPrefix:@"newNode2"] || [checkNode.name hasPrefix:@"newNode3"])){
+        if([touch tapCount] == 2){
+            _tappedTwice = YES;
+            //notifier to go to Notes Section
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoNotes" object:nil];
+        }
+        else if([touch tapCount] == 1 && !_tappedTwice){
             _activeDragNode = (SKSpriteNode *)checkNode;
+            [checkNode removeFromParent];
+            [self addChild:checkNode];
         }
     }
 }
