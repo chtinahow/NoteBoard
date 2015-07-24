@@ -10,7 +10,9 @@
 #import "AssignmentsViewController.h"
 #import "AssignmentItem.h"
 
-@interface AssignmentsViewController ()
+@interface AssignmentsViewController (){
+    NSMutableArray *SelectedRows;
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *currDate;
 @property (nonatomic) int selectedRow;
@@ -34,7 +36,8 @@
     
     //initialize the arrays here
     self.toDoItems = [[NSMutableArray alloc] init];
-    self.completedAssignments = [[NSMutableArray alloc]init];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    SelectedRows = [NSMutableArray arrayWithArray:[userDef objectForKey:@"SelectedRows"]];
     
     //NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
     //[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:indexPath.row] forKey:@"cycle"];
@@ -108,52 +111,45 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     AssignmentItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
     cell.textLabel.text = toDoItem.itemName;
     //NSLog(cell.textLabel.text);
     
-  
-    
-    if (toDoItem.completed) {
+    NSNumber *obj = [NSNumber numberWithInteger:indexPath.row];
+    if ([SelectedRows containsObject:obj])
+    {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        [self.completedAssignments addObject:cell];
-        //check the information inside of the cell itself
-       // NSLog(@"This is what's being added: %@", cell);
-        //if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
-            //indicates that the cell does have the checkmark
-           // NSLog(@"There is a checkmark with this cell   ( ͡° ͜ʖ ͡°)");
-       // }
-        
-        [[NSUserDefaults standardUserDefaults] synchronize];
-        
-        
-    } else {
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        //adding the information for the cellAccessoryNone to the array
-        [self.completedAssignments addObject:cell];
-       // NSLog(@"This is what's being added: %@", cell);
-        //if (cell.accessoryType != UITableViewCellAccessoryCheckmark) {
-            //indicates that the cell does have the checkmark
-            //NSLog(@"There isn't checkmark with this cell   ノ(;Ĺ̯̿̿ ;ノ)");
-        //}
     }
-    //[standardUserDefaults setObject:self.completedAssignments forKey:@"checkmark"];
-    NSData *dataSave = [NSKeyedArchiver archivedDataWithRootObject:self.completedAssignments];
-    [[NSUserDefaults standardUserDefaults] setObject:dataSave forKey:@"array"];
-    //NSLog(@" THIS INFORMATION IS IMPORTSNNT %@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]);
-    //NSLog(@" This is the saved data that I need ᕙ༼=ݓ益ݓ=༽ᕗ  %@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allValues]);
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    else
+    {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
     return cell;
 }
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    /*[tableView deselectRowAtIndexPath:indexPath animated:NO];
     AssignmentItem *tappedItem = [self.toDoItems objectAtIndex:indexPath.row];
     tappedItem.completed = !tappedItem.completed;
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];*/
+    
+    NSNumber *obj = [NSNumber numberWithInteger:indexPath.row];
+    if ([SelectedRows containsObject:obj])
+    {
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        [SelectedRows removeObject:obj];
+        [tableView reloadData];
+    }else{
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        [SelectedRows addObject:obj];
+        [tableView reloadData];
+    }
+    
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    [userDef setObject:SelectedRows forKey:@"SelectedRows"];
+    [userDef synchronize];
     
 }
 
