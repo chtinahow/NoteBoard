@@ -39,35 +39,11 @@
     NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
     SelectedRows = [NSMutableArray arrayWithArray:[userDef objectForKey:@"SelectedRows"]];
     
-    //NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    //[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:indexPath.row] forKey:@"cycle"];
-    //BOOL setCheckmarks = [[NSUserDefaults standardUserDefaults] boolForKey:@"cycle"];
-    
     [self loadInitialData];
 
-    //[self viewWillAppear:YES];
     
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    //self.selectedRow = [[[NSUserDefaults standardUserDefaults] objectForKey:@"cycle"] intValue];
-    //NSData *data = [[NSUserDefaults standardUserDefaults] objectForKey:@"array"];
-   // NSLog(@"             %@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]);
-    
-    //NSArray *savedArray = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-   // NSLog(@"stuffff       %@", savedArray[0]);
-
-   
-    
-    
-}
--(void) viewWillDisappear:(BOOL)animated{
-    
-    NSData *dataSave = [NSKeyedArchiver archivedDataWithRootObject:self.completedAssignments];
-    [[NSUserDefaults standardUserDefaults] setObject:dataSave forKey:@"array"];
-
-    
-}
 /*
  loadInitialData loads everything statically for the intial information that goes into the array
  */
@@ -130,10 +106,6 @@
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    /*[tableView deselectRowAtIndexPath:indexPath animated:NO];
-    AssignmentItem *tappedItem = [self.toDoItems objectAtIndex:indexPath.row];
-    tappedItem.completed = !tappedItem.completed;
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];*/
     
     NSNumber *obj = [NSNumber numberWithInteger:indexPath.row];
     if ([SelectedRows containsObject:obj])

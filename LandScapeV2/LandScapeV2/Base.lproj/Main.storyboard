@@ -123,17 +123,6 @@
                                     <segue destination="K0B-lZ-FWF" kind="show" id="Aal-cq-LbG"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZLZ-zl-EDt">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Tar-Wm-pvE" kind="popoverPresentation" popoverAnchorView="ZLZ-zl-EDt" id="9lW-Td-qpE">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -147,9 +136,6 @@
                             <constraint firstItem="yuI-La-M48" firstAttribute="top" secondItem="zf8-qR-eK2" secondAttribute="bottom" constant="8" symbolic="YES" id="GVN-ep-bGR"/>
                             <constraint firstItem="cZ5-EL-N6u" firstAttribute="leading" secondItem="zyr-OC-4d3" secondAttribute="trailing" constant="65" id="GuR-MV-05l"/>
                             <constraint firstItem="yuI-La-M48" firstAttribute="leading" secondItem="ieD-u0-tc5" secondAttribute="leadingMargin" id="I1i-dW-nLC"/>
-                            <constraint firstItem="ZLZ-zl-EDt" firstAttribute="centerX" secondItem="rEb-4o-P5R" secondAttribute="centerX" id="STv-9W-AOl">
-                                <variation key="heightClass=regular" constant="-15.5"/>
-                            </constraint>
                             <constraint firstItem="cZ5-EL-N6u" firstAttribute="trailing" secondItem="rEb-4o-P5R" secondAttribute="trailing" id="a6E-Bu-qwJ"/>
                             <constraint firstItem="rEb-4o-P5R" firstAttribute="trailing" secondItem="ieD-u0-tc5" secondAttribute="trailingMargin" id="akz-Bb-hE7"/>
                             <constraint firstItem="MkF-iO-C81" firstAttribute="top" secondItem="cZ5-EL-N6u" secondAttribute="bottom" constant="255" id="b7u-YH-um8"/>
@@ -161,7 +147,6 @@
                             <constraint firstItem="odM-f0-Yah" firstAttribute="leading" secondItem="ieD-u0-tc5" secondAttribute="leadingMargin" constant="19" id="mkH-dF-c1T"/>
                             <constraint firstItem="Hia-gZ-ehP" firstAttribute="centerX" secondItem="ieD-u0-tc5" secondAttribute="centerX" id="q7b-G5-jVk"/>
                             <constraint firstItem="efJ-s7-h2t" firstAttribute="leading" secondItem="ieD-u0-tc5" secondAttribute="leadingMargin" constant="-5" id="sEH-g1-oQh"/>
-                            <constraint firstItem="ZLZ-zl-EDt" firstAttribute="top" secondItem="zf8-qR-eK2" secondAttribute="bottom" constant="45" id="tXy-Ef-ohu"/>
                             <constraint firstItem="fUv-7q-dCG" firstAttribute="centerY" secondItem="yuI-La-M48" secondAttribute="centerY" id="tjm-tA-ItN"/>
                             <constraint firstItem="rEb-4o-P5R" firstAttribute="leading" secondItem="YMf-AO-A0p" secondAttribute="trailing" constant="54" id="to0-Cw-OFn"/>
                             <constraint firstItem="YMf-AO-A0p" firstAttribute="top" secondItem="Hia-gZ-ehP" secondAttribute="bottom" constant="68" id="wGF-QQ-RZu"/>
@@ -174,14 +159,11 @@
                                 <exclude reference="zyr-OC-4d3"/>
                                 <exclude reference="odM-f0-Yah"/>
                                 <exclude reference="cZ5-EL-N6u"/>
-                                <exclude reference="ZLZ-zl-EDt"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="2fT-fC-9d2"/>
                                 <exclude reference="buI-NO-9FG"/>
                                 <exclude reference="tjm-tA-ItN"/>
-                                <exclude reference="STv-9W-AOl"/>
-                                <exclude reference="tXy-Ef-ohu"/>
                                 <exclude reference="GuR-MV-05l"/>
                                 <exclude reference="a6E-Bu-qwJ"/>
                                 <exclude reference="4LS-EE-Z6e"/>
@@ -206,14 +188,11 @@
                                 <include reference="zyr-OC-4d3"/>
                                 <include reference="odM-f0-Yah"/>
                                 <include reference="cZ5-EL-N6u"/>
-                                <include reference="ZLZ-zl-EDt"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="2fT-fC-9d2"/>
                                 <include reference="buI-NO-9FG"/>
                                 <include reference="tjm-tA-ItN"/>
-                                <include reference="STv-9W-AOl"/>
-                                <include reference="tXy-Ef-ohu"/>
                                 <include reference="GuR-MV-05l"/>
                                 <include reference="a6E-Bu-qwJ"/>
                                 <include reference="4LS-EE-Z6e"/>
@@ -480,17 +459,6 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3bQ-4I-Zgh">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="SWt-xq-imh" kind="popoverPresentation" popoverAnchorView="3bQ-4I-Zgh" id="0YP-ES-jMJ">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -502,9 +470,7 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                             <constraint firstItem="Ylc-7R-ptJ" firstAttribute="leading" secondItem="6Vg-VN-7nF" secondAttribute="leadingMargin" id="DoY-1O-1lA"/>
                             <constraint firstItem="SHL-ab-V5H" firstAttribute="top" secondItem="IGP-EF-c29" secondAttribute="bottom" constant="8" symbolic="YES" id="G5h-pH-35N"/>
                             <constraint firstItem="amZ-1E-1iv" firstAttribute="top" secondItem="Ylc-7R-ptJ" secondAttribute="bottom" constant="18" id="Gp4-WC-RWl"/>
-                            <constraint firstItem="3bQ-4I-Zgh" firstAttribute="trailing" secondItem="Ylc-7R-ptJ" secondAttribute="trailing" id="KrF-no-bhr"/>
                             <constraint firstItem="SHL-ab-V5H" firstAttribute="leading" secondItem="IGP-EF-c29" secondAttribute="leading" id="Nb9-Of-13q"/>
-                            <constraint firstItem="3bQ-4I-Zgh" firstAttribute="top" secondItem="80Y-5X-xsV" secondAttribute="bottom" constant="31" id="UWr-Le-KqJ"/>
                             <constraint firstItem="amZ-1E-1iv" firstAttribute="leading" secondItem="Ylc-7R-ptJ" secondAttribute="leading" id="Xxb-qr-ccg"/>
                             <constraint firstItem="fWR-KU-6Sk" firstAttribute="top" secondItem="amZ-1E-1iv" secondAttribute="bottom" constant="78" id="YMT-PF-DdC"/>
                             <constraint firstItem="Ylc-7R-ptJ" firstAttribute="leading" secondItem="SHL-ab-V5H" secondAttribute="leading" id="ZYH-pb-Txy"/>
@@ -520,14 +486,11 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                                 <exclude reference="U7O-Zk-YB1"/>
                                 <exclude reference="Ylc-7R-ptJ"/>
                                 <exclude reference="amZ-1E-1iv"/>
-                                <exclude reference="3bQ-4I-Zgh"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="CA8-aX-jzi"/>
                                 <exclude reference="Ce5-KI-q3R"/>
                                 <exclude reference="aQ0-G8-wnw"/>
-                                <exclude reference="KrF-no-bhr"/>
-                                <exclude reference="UWr-Le-KqJ"/>
                                 <exclude reference="Ahh-wn-XX2"/>
                                 <exclude reference="DoY-1O-1lA"/>
                                 <exclude reference="ZYH-pb-Txy"/>
@@ -549,14 +512,11 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                                 <include reference="U7O-Zk-YB1"/>
                                 <include reference="Ylc-7R-ptJ"/>
                                 <include reference="amZ-1E-1iv"/>
-                                <include reference="3bQ-4I-Zgh"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="CA8-aX-jzi"/>
                                 <include reference="Ce5-KI-q3R"/>
                                 <include reference="aQ0-G8-wnw"/>
-                                <include reference="KrF-no-bhr"/>
-                                <include reference="UWr-Le-KqJ"/>
                                 <include reference="Ahh-wn-XX2"/>
                                 <include reference="DoY-1O-1lA"/>
                                 <include reference="ZYH-pb-Txy"/>
@@ -676,8 +636,7 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                                         <exclude reference="2WG-gg-OfS"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="22" y="248" width="562" height="538"/>
+                                <variation key="heightClass=regular">
                                     <mask key="constraints">
                                         <include reference="2WG-gg-OfS"/>
                                     </mask>
@@ -902,6 +861,8 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
         <!--Settings View Controller-->
         <scene sceneID="rtw-ek-C9L">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ca1-BM-awh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xHk-gY-pWG" userLabel="Exit" sceneMemberID="exit"/>
                 <viewController modalPresentationStyle="pageSheet" id="Cbb-fr-rcU" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9bx-9H-nx6"/>
@@ -1082,8 +1043,6 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <outlet property="mySlider" destination="GZF-eF-BpQ" id="HG1-dc-HJe"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ca1-BM-awh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="xHk-gY-pWG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4169" y="1361.25"/>
         </scene>
@@ -1260,17 +1219,6 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                     </mask>
                                 </variation>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="35N-Pe-faY">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="SWt-xq-imh" kind="popoverPresentation" popoverAnchorView="35N-Pe-faY" id="hcq-ld-8Wl">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1289,13 +1237,11 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                             <constraint firstItem="9i2-up-g5d" firstAttribute="top" secondItem="v7b-4R-ZYa" secondAttribute="bottom" constant="49" id="Kqa-g5-VC9"/>
                             <constraint firstItem="v7b-4R-ZYa" firstAttribute="top" secondItem="TUK-ne-IwO" secondAttribute="bottom" constant="8" symbolic="YES" id="Mg2-28-dgL"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="top" secondItem="wXe-3M-LaZ" secondAttribute="bottom" constant="124" id="NBS-Kk-ZIO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="35N-Pe-faY" secondAttribute="trailing" constant="7" id="P2b-vi-x39"/>
                             <constraint firstItem="jTf-9j-i2q" firstAttribute="leading" secondItem="TUK-ne-IwO" secondAttribute="trailing" constant="8" symbolic="YES" id="QFq-AB-Gtg"/>
                             <constraint firstItem="TUK-ne-IwO" firstAttribute="leading" secondItem="tRB-b1-4Vc" secondAttribute="leadingMargin" constant="-5" id="arM-sD-Ijx"/>
                             <constraint firstItem="jTf-9j-i2q" firstAttribute="centerY" secondItem="TUK-ne-IwO" secondAttribute="centerY" id="bWs-Ka-0AW"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="top" secondItem="z02-gc-lpM" secondAttribute="bottom" id="c51-71-pFY"/>
                             <constraint firstItem="v7b-4R-ZYa" firstAttribute="leading" secondItem="tRB-b1-4Vc" secondAttribute="leading" id="hKi-Qr-phe"/>
-                            <constraint firstItem="35N-Pe-faY" firstAttribute="top" secondItem="jTf-9j-i2q" secondAttribute="top" id="jBf-Oc-oN7"/>
                             <constraint firstItem="TUK-ne-IwO" firstAttribute="top" secondItem="wXe-3M-LaZ" secondAttribute="bottom" constant="8" symbolic="YES" id="m5q-83-Ep6"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="leading" secondItem="tRB-b1-4Vc" secondAttribute="leadingMargin" constant="-11" id="oTO-Me-9LH"/>
                             <constraint firstItem="z02-gc-lpM" firstAttribute="centerX" secondItem="9i2-up-g5d" secondAttribute="centerX" id="tTj-H3-BOk"/>
@@ -1304,14 +1250,11 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="jTf-9j-i2q"/>
-                                <exclude reference="35N-Pe-faY"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="ECe-a1-W4Q"/>
                                 <exclude reference="QFq-AB-Gtg"/>
                                 <exclude reference="bWs-Ka-0AW"/>
-                                <exclude reference="P2b-vi-x39"/>
-                                <exclude reference="jBf-Oc-oN7"/>
                                 <exclude reference="arM-sD-Ijx"/>
                                 <exclude reference="m5q-83-Ep6"/>
                                 <exclude reference="ElB-XM-kji"/>
@@ -1327,14 +1270,11 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <variation key="heightClass=regular">
                             <mask key="subviews">
                                 <include reference="jTf-9j-i2q"/>
-                                <include reference="35N-Pe-faY"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="ECe-a1-W4Q"/>
                                 <include reference="QFq-AB-Gtg"/>
                                 <include reference="bWs-Ka-0AW"/>
-                                <include reference="P2b-vi-x39"/>
-                                <include reference="jBf-Oc-oN7"/>
                                 <exclude reference="7he-f3-Q9t"/>
                                 <include reference="arM-sD-Ijx"/>
                                 <include reference="m5q-83-Ep6"/>
@@ -1636,6 +1576,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
         <!--Navigation Controller-->
         <scene sceneID="oj5-bL-hWI">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YfW-Ah-608" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SWt-xq-imh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oGX-J5-zEi">
@@ -1647,14 +1588,12 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <segue destination="Cbb-fr-rcU" kind="relationship" relationship="rootViewController" id="put-Z3-Bs5"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YfW-Ah-608" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3357" y="1361.25"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Yzb-7O-xbz"/>
-        <segue reference="hcq-ld-8Wl"/>
-        <segue reference="13l-3X-30f"/>
+        <segue reference="kwB-Gs-6SA"/>
     </inferredMetricsTieBreakers>
 </document>
