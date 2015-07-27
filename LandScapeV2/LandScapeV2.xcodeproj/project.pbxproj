@@ -121,7 +121,6 @@
 		2693DF501B2F1C2E00D2FBB9 = {
 			isa = PBXGroup;
 			children = (
-				3FE5D2091B385DBD00192CA5 /* MediaPlayer.framework */,
 				2693DF5B1B2F1C2F00D2FBB9 /* LandScapeV2 */,
 				2693DF751B2F1C3000D2FBB9 /* LandScapeV2Tests */,
 				2693DF5A1B2F1C2F00D2FBB9 /* Products */,
@@ -140,39 +139,14 @@
 		2693DF5B1B2F1C2F00D2FBB9 /* LandScapeV2 */ = {
 			isa = PBXGroup;
 			children = (
+				3FB19E2B1B66807800F4D16E /* Frameworks */,
+				3FB19E291B66801C00F4D16E /* App Delegate */,
+				3FB19E201B667C1E00F4D16E /* Controllers */,
 				3FE1605B1B618C210074456F /* Shuffle */,
-				2693DF601B2F1C2F00D2FBB9 /* AppDelegate.h */,
-				3F195EDB1B306C65007232AF /* LandScapeCalcNotes.h */,
-				3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */,
-				2693DF611B2F1C2F00D2FBB9 /* AppDelegate.m */,
-				2693DF631B2F1C2F00D2FBB9 /* ViewController.h */,
-				2693DF641B2F1C2F00D2FBB9 /* ViewController.m */,
 				2693DF661B2F1C2F00D2FBB9 /* Main.storyboard */,
-				3FD88F571B4D9AC2008DA5AA /* PresetZoomSetingsViewController.h */,
-				3FD88F581B4D9AC2008DA5AA /* PresetZoomSetingsViewController.m */,
-				3FD88F5A1B4DA240008DA5AA /* PresetZoomItem.h */,
-				3FD88F5B1B4DA240008DA5AA /* PresetZoomItem.m */,
-				3FFBEC3E1B3B258800BB3025 /* AssignmentsViewController.h */,
-				3FFBEC3F1B3B258800BB3025 /* AssignmentsViewController.m */,
-				3F74DF201B3B452300D5F320 /* AssignmentItem.h */,
-				3F74DF211B3B452300D5F320 /* AssignmentItem.m */,
 				2693DF691B2F1C2F00D2FBB9 /* Images.xcassets */,
 				2693DF6B1B2F1C3000D2FBB9 /* LaunchScreen.xib */,
 				2693DF5C1B2F1C2F00D2FBB9 /* Supporting Files */,
-				3FE5D2061B384A6600192CA5 /* ExampleViewController.h */,
-				3FE5D2071B384A6600192CA5 /* ExampleViewController.m */,
-				3FE5D20B1B3882EA00192CA5 /* MediaFormulaViewController.h */,
-				3FE5D20C1B3882EA00192CA5 /* MediaFormulaViewController.m */,
-				3F35B3441B3ADF8C0007606C /* DefinitionsViewController.h */,
-				3F35B3451B3ADF8C0007606C /* DefinitionsViewController.m */,
-				3F35B3471B3AE63F0007606C /* FormulasViewController.h */,
-				3F35B3481B3AE63F0007606C /* FormulasViewController.m */,
-				3F35B34A1B3AE7AF0007606C /* weeksNotesViewController.h */,
-				3F35B34B1B3AE7AF0007606C /* weeksNotesViewController.m */,
-				3F195EE31B3079BF007232AF /* NotesViewController.h */,
-				3F195EE41B3079BF007232AF /* NotesViewController.m */,
-				3FEE1C641B4B0D0F001ADCC8 /* SettingsViewController.h */,
-				3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */,
 			);
 			path = LandScapeV2;
 			sourceTree = "<group>";
@@ -201,6 +175,128 @@
 				2693DF771B2F1C3000D2FBB9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3FB19E201B667C1E00F4D16E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3FB19E2A1B66804D00F4D16E /* SettingsViewController */,
+				3FB19E281B667F1400F4D16E /* FormulasViewController */,
+				3FB19E271B667EF900F4D16E /* DefinitionsViewController */,
+				3FB19E261B667EC800F4D16E /* NotesViewController */,
+				3FB19E251B667E5A00F4D16E /* ExampleViewController */,
+				3FB19E241B667D8300F4D16E /* ZoomController */,
+				3FB19E231B667D1100F4D16E /* NoteCardViewController */,
+				3FB19E221B667CE200F4D16E /* ExampleViewController */,
+				3FB19E211B667CB400F4D16E /* AssignmentViewController */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		3FB19E211B667CB400F4D16E /* AssignmentViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3FFBEC3F1B3B258800BB3025 /* AssignmentsViewController.m */,
+				3FFBEC3E1B3B258800BB3025 /* AssignmentsViewController.h */,
+				3F74DF201B3B452300D5F320 /* AssignmentItem.h */,
+				3F74DF211B3B452300D5F320 /* AssignmentItem.m */,
+			);
+			name = AssignmentViewController;
+			sourceTree = "<group>";
+		};
+		3FB19E221B667CE200F4D16E /* ExampleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3FE5D2061B384A6600192CA5 /* ExampleViewController.h */,
+				3FE5D2071B384A6600192CA5 /* ExampleViewController.m */,
+			);
+			name = ExampleViewController;
+			sourceTree = "<group>";
+		};
+		3FB19E231B667D1100F4D16E /* NoteCardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F195EDB1B306C65007232AF /* LandScapeCalcNotes.h */,
+				3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */,
+				2693DF631B2F1C2F00D2FBB9 /* ViewController.h */,
+				2693DF641B2F1C2F00D2FBB9 /* ViewController.m */,
+				3F195EE31B3079BF007232AF /* NotesViewController.h */,
+				3F195EE41B3079BF007232AF /* NotesViewController.m */,
+			);
+			name = NoteCardViewController;
+			sourceTree = "<group>";
+		};
+		3FB19E241B667D8300F4D16E /* ZoomController */ = {
+			isa = PBXGroup;
+			children = (
+				3FD88F571B4D9AC2008DA5AA /* PresetZoomSetingsViewController.h */,
+				3FD88F581B4D9AC2008DA5AA /* PresetZoomSetingsViewController.m */,
+				3FD88F5A1B4DA240008DA5AA /* PresetZoomItem.h */,
+				3FD88F5B1B4DA240008DA5AA /* PresetZoomItem.m */,
+			);
+			name = ZoomController;
+			sourceTree = "<group>";
+		};
+		3FB19E251B667E5A00F4D16E /* ExampleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3FE5D20B1B3882EA00192CA5 /* MediaFormulaViewController.h */,
+				3FE5D20C1B3882EA00192CA5 /* MediaFormulaViewController.m */,
+			);
+			name = ExampleViewController;
+			sourceTree = "<group>";
+		};
+		3FB19E261B667EC800F4D16E /* NotesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F35B34A1B3AE7AF0007606C /* weeksNotesViewController.h */,
+				3F35B34B1B3AE7AF0007606C /* weeksNotesViewController.m */,
+			);
+			name = NotesViewController;
+			sourceTree = "<group>";
+		};
+		3FB19E271B667EF900F4D16E /* DefinitionsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F35B3441B3ADF8C0007606C /* DefinitionsViewController.h */,
+				3F35B3451B3ADF8C0007606C /* DefinitionsViewController.m */,
+			);
+			name = DefinitionsViewController;
+			sourceTree = "<group>";
+		};
+		3FB19E281B667F1400F4D16E /* FormulasViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F35B3471B3AE63F0007606C /* FormulasViewController.h */,
+				3F35B3481B3AE63F0007606C /* FormulasViewController.m */,
+			);
+			name = FormulasViewController;
+			sourceTree = "<group>";
+		};
+		3FB19E291B66801C00F4D16E /* App Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				2693DF601B2F1C2F00D2FBB9 /* AppDelegate.h */,
+				2693DF611B2F1C2F00D2FBB9 /* AppDelegate.m */,
+			);
+			name = "App Delegate";
+			sourceTree = "<group>";
+		};
+		3FB19E2A1B66804D00F4D16E /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3FEE1C641B4B0D0F001ADCC8 /* SettingsViewController.h */,
+				3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */,
+			);
+			name = SettingsViewController;
+			sourceTree = "<group>";
+		};
+		3FB19E2B1B66807800F4D16E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3FE5D2091B385DBD00192CA5 /* MediaPlayer.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		3FE1605B1B618C210074456F /* Shuffle */ = {
