@@ -272,6 +272,23 @@ static const int outline3Category = 3;
     newPap.physicsBody.affectedByGravity = NO;
     newPap.physicsBody.allowsRotation = NO;
     
+    //delete button for user generated note cards
+    SKLabelNode *delText = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
+    delText.text = @"Delete";
+    delText.fontColor = [SKColor blueColor];
+    delText.fontSize = 12;
+    delText.position = CGPointMake(0, -5);
+    
+    SKSpriteNode *delete = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(50, 20)];
+    [delete addChild:delText];
+    
+    SKTexture *deleture = [self.scene.view textureFromNode:delete];
+    
+    SKSpriteNode *deleteButton = [SKSpriteNode spriteNodeWithTexture:deleture];
+    deleteButton.position = CGPointMake(125, -90);
+    deleteButton.name = @"delete";
+    [newPap addChild:deleteButton];
+    
     /*
      Creating more nodes that have their physicsBodies instantiated and can adapt to changes in texture like those in
      the original stack can be stored and saved via the NSMutableArray.
@@ -620,6 +637,12 @@ static const int outline3Category = 3;
             }
         }
     }
+    else if (checkNode && [checkNode.name hasPrefix:@"delete"]){
+        [[saveData sharedData].array removeObject:checkNode.parent];
+        [checkNode.parent removeFromParent];
+        [checkNode removeFromParent];
+    }
+    
     [[saveData sharedData] save];
 }
 
