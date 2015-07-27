@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsViewController : UIViewController
+
 @property (weak, nonatomic) IBOutlet UISlider *mySlider;
 @property (weak, nonatomic) IBOutlet UILabel *myLabel;
 

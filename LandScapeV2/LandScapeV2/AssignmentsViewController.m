@@ -10,7 +10,8 @@
 #import "AssignmentsViewController.h"
 #import "AssignmentItem.h"
 
-@interface AssignmentsViewController (){
+@interface AssignmentsViewController ()
+{
     NSMutableArray *SelectedRows;
 }
 
@@ -23,7 +24,8 @@
 
 @implementation AssignmentsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     //date things
@@ -47,7 +49,8 @@
 /*
  loadInitialData loads everything statically for the intial information that goes into the array
  */
--(void) loadInitialData{
+-(void) loadInitialData
+{
     AssignmentItem *item1 = [[AssignmentItem alloc] init];
     item1.itemName = @"Chapter 10, section 3                                                                                                                                        4/23/15";
     [self.toDoItems addObject:item1];
@@ -72,20 +75,26 @@
  
  }*/
 
--(IBAction)unwindToList:(UIStoryboardSegue *)segue {
+-(IBAction)unwindToList:(UIStoryboardSegue *)segue
+{
     UITabBarController *tc = [self.storyboard instantiateViewControllerWithIdentifier:@"tabViews"];
     [self.navigationController pushViewController:tc animated:YES];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
     // Return the number of sections.
     return 1;
 }
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     // Return the number of rows in the section.
     return [self.toDoItems count];
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
     AssignmentItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
@@ -96,16 +105,17 @@
     if ([SelectedRows containsObject:obj])
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    else
-    {
+        
+    } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+    
     return cell;
 }
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
     NSNumber *obj = [NSNumber numberWithInteger:indexPath.row];
     if ([SelectedRows containsObject:obj])
@@ -113,7 +123,8 @@
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
         [SelectedRows removeObject:obj];
         [tableView reloadData];
-    }else{
+        
+    } else {
         [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
         [SelectedRows addObject:obj];
         [tableView reloadData];
@@ -126,7 +137,8 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

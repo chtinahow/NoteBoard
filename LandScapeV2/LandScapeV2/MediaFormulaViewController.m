@@ -23,7 +23,8 @@ think about a picker that brings up the camera roll or local files accosiated wi
  */
 
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     _moviePlayer = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:@"http://nordenmovil.com/urrea/InstalaciondelavaboURREAbaja.mp4"]];
     _moviePlayer.view.frame = CGRectMake(300, 0, 400, 400);

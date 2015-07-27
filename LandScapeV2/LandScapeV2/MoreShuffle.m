@@ -21,7 +21,8 @@
 @end
 
 
-@implementation MoreShuffle {
+@implementation MoreShuffle
+{
     //original center
     CGPoint _originalCenter;
     
@@ -114,7 +115,8 @@ static const int outline3Category = 3;
     return self;
 }
 
-- (void)didMoveToView: (SKView *) view{
+- (void)didMoveToView: (SKView *) view
+{
     if (!self.created) {
         [self createScene];
         self.created = YES;
@@ -153,7 +155,8 @@ static const int outline3Category = 3;
     [self removeAllChildren];
 }
 
-- (void)handlePanGesture:(UIPanGestureRecognizer *)panGesture {
+- (void)handlePanGesture:(UIPanGestureRecognizer *)panGesture
+{
     CGPoint translation = [panGesture translationInView:panGesture.view.superview];
     _originalCenter = panRecognizer.view.center;
     if (UIGestureRecognizerStateBegan == panGesture.state ||UIGestureRecognizerStateChanged == panGesture.state) {
@@ -161,8 +164,8 @@ static const int outline3Category = 3;
                                              panGesture.view.center.y + translation.y);
         // Reset translation, so we can get translation delta's (i.e. change in translation)
         [panGesture setTranslation:CGPointZero inView:self.view];
-    }
-    else if (panGesture.state == UIGestureRecognizerStateEnded) {
+        
+    } else if (panGesture.state == UIGestureRecognizerStateEnded) {
         
         CGPoint velocity = [panGesture velocityInView:self.view];
         CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
@@ -181,7 +184,8 @@ static const int outline3Category = 3;
     // Don't need any logic for ended/failed/canceled states
 }
 
-- (void)handlePinchGesture:(UIPinchGestureRecognizer *)pinchGesture {
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)pinchGesture
+{
     
     if (UIGestureRecognizerStateBegan == pinchGesture.state ||
         UIGestureRecognizerStateChanged == pinchGesture.state) {
@@ -215,7 +219,8 @@ static const int outline3Category = 3;
     }
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
     return YES; // Works for most use cases of pinch + zoom + pan
 }
 
@@ -223,7 +228,8 @@ static const int outline3Category = 3;
  Checks to see if the change background button has been clicked, and opens the menu to choose the
  available backgrounds from.
  */
-- (void)leftFlip:(id)sender{
+- (void)leftFlip:(id)sender
+{
     [self.view setCenter:CGPointMake(512, 384)];
     [self.view removeGestureRecognizer:zoomIn];
     [self.view removeGestureRecognizer:leftSwipe];
@@ -235,7 +241,8 @@ static const int outline3Category = 3;
 }
 
 //generates more nodes
--(IBAction)newPaper{
+-(IBAction)newPaper
+{
     SKSpriteNode *newPap;
     if ([saveData sharedData].current != nil) {
         newPap = [[SKSpriteNode alloc] initWithTexture:[saveData sharedData].current];
@@ -276,7 +283,8 @@ static const int outline3Category = 3;
     [self addChild:newPap];
 }
 
-- (IBAction)resetButton{
+- (IBAction)resetButton
+{
     [self removeAllChildren];
     [[saveData sharedData] reset];
     [[saveData sharedData] save];
@@ -284,11 +292,13 @@ static const int outline3Category = 3;
 }
 
 //saves the texture of the nodes and keeps it; also used to keep the nodes in their specific positions
-- (IBAction)saveButton:(UIButton *)pressed{
+- (IBAction)saveButton:(UIButton *)pressed
+{
 }
 
 //action to stack papers
--(IBAction)stackPapers:(UIButton *)pressed{
+-(IBAction)stackPapers:(UIButton *)pressed
+{
     [saveData sharedData].isStacked = YES;
     
     for (SKSpriteNode *node in self.children) {
@@ -315,7 +325,8 @@ static const int outline3Category = 3;
 }
 
 //creates the initial SKScene
--(void)createScene{
+-(void)createScene
+{
     self.backgroundColor = [SKColor grayColor];
     self.scaleMode = SKSceneScaleModeFill;
     
@@ -331,8 +342,8 @@ static const int outline3Category = 3;
     if ([saveData sharedData].date != nil) {
         date = [saveData sharedData].date;
         [date removeFromParent];
-    }
-    else{
+    } else {
+        
         date = [self dateNode];
     }
     date.position = CGPointMake(-110, 70);
@@ -374,8 +385,7 @@ static const int outline3Category = 3;
         newNode3 = [SKSpriteNode spriteNodeWithTexture:tex3];
         newNode3.name = @"newNode3";
         newNode3.constraints = @[c];
-    }
-    else {
+    } else {
         newNode = [[SKSpriteNode alloc] initWithTexture:[saveData sharedData].current];
         newNode.name = @"newNode";
         newNode.constraints = @[c];
@@ -513,7 +523,8 @@ static const int outline3Category = 3;
 
 #pragma mark
 
-- (SKSpriteNode *)paperNode{
+- (SKSpriteNode *)paperNode
+{
     SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor greenColor] size:CGSizeMake(300, 200)];
     paper.name = @"paper";
     _activeDragNode = nil;
@@ -523,7 +534,8 @@ static const int outline3Category = 3;
 
 #pragma mark
 
-- (SKSpriteNode *)outlineNode{
+- (SKSpriteNode *)outlineNode
+{
     outline = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(325, 225)];
     outline.name = @"outline";
     
@@ -532,7 +544,8 @@ static const int outline3Category = 3;
 
 #pragma mark
 
-- (SKLabelNode *)dateNode{
+- (SKLabelNode *)dateNode
+{
     SKLabelNode *datey = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
     datey.name = @"date";
     datey.text = @"Date: ";
@@ -542,7 +555,8 @@ static const int outline3Category = 3;
 }
 
 #pragma mark
--(SKSpriteNode *)optionsView{
+-(SKSpriteNode *)optionsView
+{
     SKSpriteNode *opt2 = [[SKSpriteNode alloc] initWithColor:[SKColor lightGrayColor] size:CGSizeMake(300, 2600)];
     opt2.position = CGPointMake(CGRectGetMaxX(self.frame)-100, CGRectGetMaxY(self.frame)-500);
     return opt2;
@@ -570,8 +584,7 @@ static const int outline3Category = 3;
             [view presentScene:nn transition:doors];*/
             
             [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoNotes" object:nil];
-        }
-        else if([touch tapCount] == 1 && !_tappedTwice){
+        } else if([touch tapCount] == 1 && !_tappedTwice) {
             _activeDragNode = (SKSpriteNode *)checkNode;
             [checkNode removeFromParent];
             [self addChild:checkNode];
@@ -610,7 +623,8 @@ static const int outline3Category = 3;
     [[saveData sharedData] save];
 }
 
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch *touch = [touches anyObject];
     CGPoint scenePosition = [touch locationInNode:self];
     
@@ -642,7 +656,8 @@ static const int outline3Category = 3;
     }
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
     [[saveData sharedData] save];
     UITouch *touch = [touches anyObject];
     CGPoint scenePosition = [touch locationInNode:self];

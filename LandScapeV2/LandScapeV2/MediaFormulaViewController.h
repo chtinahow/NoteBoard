@@ -12,6 +12,8 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 @interface MediaFormulaViewController : UIViewController
+
 //Initializes the MoviePlayerViewController
 @property (nonatomic,strong) MPMoviePlayerViewController *moviePlayer;
+
 @end

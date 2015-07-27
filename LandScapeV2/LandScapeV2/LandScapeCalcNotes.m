@@ -28,7 +28,8 @@ static const int outline3Category = 3;
 
 @implementation LandScapeCalcNotes
 
-- (void)didMoveToView: (SKView *) view{
+- (void)didMoveToView: (SKView *) view
+{
     if (!self.created) {
         [self createSceneContents];
         self.created = YES;
@@ -37,7 +38,8 @@ static const int outline3Category = 3;
 
 //Note! We need to give the papers outlines in this portion or it'll look like a deformed paper monster!
 //Also, I made the papers that we won't be clicking red just to be able to tell the difference for now.
-- (void)createSceneContents{
+- (void)createSceneContents
+{
     self.backgroundColor = [SKColor grayColor];
     self.scaleMode = SKSceneScaleModeAspectFit;
     
@@ -117,12 +119,14 @@ static const int outline3Category = 3;
     
     if((firstBody.categoryBitMask == (outline2Category | outline3Category)) || (secondBody.categoryBitMask == (outline2Category | outline3Category)))
     {
+        
     }
 }
 
 #pragma mark
 
-- (SKSpriteNode *)paperNode{
+- (SKSpriteNode *)paperNode
+{
     SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(300, 200)];
     paper.name = @"paper";
     _activeDragNode = nil;
@@ -133,13 +137,15 @@ static const int outline3Category = 3;
 #pragma mark
 
 //papers that are not currently clickable
-- (SKSpriteNode *)paperNode2{
+- (SKSpriteNode *)paperNode2
+{
     SKSpriteNode *paper = [[SKSpriteNode alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(300, 200)];
     
     return paper;
 }
 
-- (SKSpriteNode *)outlineNode{
+- (SKSpriteNode *)outlineNode
+{
     SKSpriteNode *outline = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(325, 225)];
     outline.name = @"outline";
     
@@ -148,7 +154,8 @@ static const int outline3Category = 3;
 
 #pragma mark
 
-- (SKLabelNode *)dateNode{
+- (SKLabelNode *)dateNode
+{
     SKLabelNode *date = [SKLabelNode labelNodeWithFontNamed:@"Arial-BoldMT"];
     date.name = @"date";
     date.text = @"Date: ";
@@ -158,7 +165,8 @@ static const int outline3Category = 3;
 }
 
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     _tappedTwice = NO;
     UITouch *touch = [touches anyObject];
     
@@ -171,8 +179,8 @@ static const int outline3Category = 3;
             _tappedTwice = YES;
             //notifier to go to Notes Section
             [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoNotes" object:nil];
-        }
-        else if([touch tapCount] == 1 && !_tappedTwice){
+            
+        } else if([touch tapCount] == 1 && !_tappedTwice) {
             _activeDragNode = (SKSpriteNode *)checkNode;
             [checkNode removeFromParent];
             [self addChild:checkNode];
@@ -180,7 +188,8 @@ static const int outline3Category = 3;
     }
 }
 
--(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
     if(_activeDragNode != nil){
         UITouch *touch = [touches anyObject];
         CGPoint scenePosition = [touch locationInNode:self];
@@ -193,7 +202,8 @@ static const int outline3Category = 3;
     
 }
 
--(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+-(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
     _activeDragNode = nil;
 }
 

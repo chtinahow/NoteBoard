@@ -16,7 +16,8 @@
 
 @end
 
-@implementation backgroundImages{
+@implementation backgroundImages
+{
     //background images
     SKSpriteNode *image;
     SKSpriteNode *image2;
@@ -34,7 +35,8 @@
     UIPinchGestureRecognizer *zoomIn;
 }
 
-- (void)didMoveToView: (SKView *) view{
+- (void)didMoveToView: (SKView *) view
+{
     self.anchorPoint = CGPointMake(0, 0);
     if (!self.created) {
         [self createScene];
@@ -49,7 +51,8 @@
 }
 
 //removes the change background menu
--(void)rightFlip:(id)sender{
+-(void)rightFlip:(id)sender
+{
     [self.view removeGestureRecognizer:closeSwipe];
     [self.view removeGestureRecognizer:zoomIn];
     MoreShuffle *backy = [[MoreShuffle alloc] initWithSize:CGSizeMake(2000, 1768)];
@@ -57,7 +60,8 @@
     [view presentScene:backy];
 }
 
-- (void)handlePinchGesture:(UIPinchGestureRecognizer *)pinchGesture {
+- (void)handlePinchGesture:(UIPinchGestureRecognizer *)pinchGesture
+{
     
     if (UIGestureRecognizerStateBegan == pinchGesture.state ||
         UIGestureRecognizerStateChanged == pinchGesture.state) {
@@ -91,7 +95,8 @@
     }
 }
 
--(void)createScene{
+-(void)createScene
+{
     self.backgroundColor = [SKColor grayColor];
     self.scaleMode = SKSceneScaleModeFill;
     
@@ -150,14 +155,16 @@
 
 #pragma mark
 
-- (SKSpriteNode *)outlineNode{
+- (SKSpriteNode *)outlineNode
+{
     SKSpriteNode* outline = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(325, 225)];
     outline.name = @"outline";
     
     return outline;
 }
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch *touch = [touches anyObject];
     CGPoint scenePosition = [touch locationInNode:self];
     

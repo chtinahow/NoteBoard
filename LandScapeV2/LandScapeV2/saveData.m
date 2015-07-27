@@ -103,7 +103,8 @@ static NSString* const isStacked = @"isStacked";
     return [[saveData alloc] init];
 }
 
-+ (instancetype)sharedData {
++ (instancetype)sharedData
+{
     static id sharedInstance = nil;
     
     static dispatch_once_t onceToken;
@@ -120,7 +121,8 @@ static NSString* const isStacked = @"isStacked";
     [encodedData writeToFile:[saveData filePath] atomically:YES];
 }
 
--(void)reset{
+-(void)reset
+{
     self.current = nil;
     self.date = nil;
     self.node = nil;

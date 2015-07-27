@@ -196,8 +196,8 @@
 		3FB19E211B667CB400F4D16E /* AssignmentViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3FFBEC3F1B3B258800BB3025 /* AssignmentsViewController.m */,
 				3FFBEC3E1B3B258800BB3025 /* AssignmentsViewController.h */,
+				3FFBEC3F1B3B258800BB3025 /* AssignmentsViewController.m */,
 				3F74DF201B3B452300D5F320 /* AssignmentItem.h */,
 				3F74DF211B3B452300D5F320 /* AssignmentItem.m */,
 			);

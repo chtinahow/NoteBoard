@@ -14,10 +14,11 @@
 
 @implementation FormulasViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
-    //date things
+    //date implementation
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSDate *now = [[NSDate alloc]init];
@@ -26,7 +27,8 @@
     _currDate.userInteractionEnabled = NO;
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

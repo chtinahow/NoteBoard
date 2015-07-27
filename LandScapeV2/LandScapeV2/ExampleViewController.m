@@ -18,7 +18,8 @@
  viewDidLoad contains both methods of using only the url and the embedded
  versions in order to use the webView as a website or video player of sorts
  */
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     /*NSString *fullURL = @"https://youtu.be/mDFKyp40XUc";
@@ -31,7 +32,8 @@
    
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

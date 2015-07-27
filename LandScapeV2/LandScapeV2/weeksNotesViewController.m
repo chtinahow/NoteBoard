@@ -9,13 +9,17 @@
 #import "weeksNotesViewController.h"
 
 @interface weeksNotesViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *currDate;
+
 @end
 
 @implementation weeksNotesViewController
+
 @synthesize textZoom;
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     
     //date things
@@ -26,14 +30,12 @@
     _currDate.text = theDate;
     _currDate.userInteractionEnabled = NO;
     
-// This is for adding rhe recognizers for the tapping
-    //for (UIView * view in self.view.subviews) {
-        UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleZoom:)];
-        recognizer.delegate = self;
-        recognizer.numberOfTapsRequired = 2;
-        recognizer.numberOfTouchesRequired = 1;
-        [self.view addGestureRecognizer:recognizer];
-    //}
+    UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleZoom:)];
+    recognizer.delegate = self;
+    recognizer.numberOfTapsRequired = 2;
+    recognizer.numberOfTouchesRequired = 1;
+    [self.view addGestureRecognizer:recognizer];
+ 
 
 
 }
@@ -43,12 +45,14 @@
     recognizer.scale = 1;
 }*/
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)unwindToList:(UIStoryboardSegue *)segue {
+-(IBAction)unwindToList:(UIStoryboardSegue *)segue
+{
 }
 
 -(void) handleZoom:(UITapGestureRecognizer *)recognizer{

@@ -15,7 +15,8 @@
 
 @implementation SettingsViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -23,13 +24,16 @@
     self.mySlider.maximumValue = 50;
 }
 
-- (IBAction)sliderChanged:(id)sender{
+- (IBAction)sliderChanged:(id)sender
+{
     UISlider *slider = (UISlider *)sender;
     NSInteger val = lround(slider.value);
     self.myLabel.text = [NSString stringWithFormat:@"%dx",val];
 
 }
-- (void)didReceiveMemoryWarning {
+
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -47,11 +51,14 @@
 
 
 // This is the start for the application of sending the infor for the zooming amount in settings
-- (IBAction)applyZoom:(id)sender{
+
+- (IBAction)applyZoom:(id)sender
+{
      //NS *zoomValue = self.mySlider.value;
 }
 
-- (IBAction)resetDefault:(id) sender{
+- (IBAction)resetDefault:(id) sender
+{
     //UISlider * slider;
     _mySlider.value = 5;
     //NSInteger val = lround(_mySlider.value);
