@@ -94,7 +94,7 @@
         pinchGesture.scale = 1;
     }
 }
-
+//dummy text
 -(void)createScene
 {
     self.backgroundColor = [SKColor grayColor];
