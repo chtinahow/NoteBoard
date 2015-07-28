@@ -288,6 +288,7 @@
                         <viewControllerLayoutGuide type="bottom" id="RJ2-B0-doK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vyp-id-Um0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maximum Zoom" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiC-Gn-Eqy">
@@ -861,8 +862,6 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
         <!--Settings View Controller-->
         <scene sceneID="rtw-ek-C9L">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ca1-BM-awh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="xHk-gY-pWG" userLabel="Exit" sceneMemberID="exit"/>
                 <viewController modalPresentationStyle="pageSheet" id="Cbb-fr-rcU" customClass="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9bx-9H-nx6"/>
@@ -1043,6 +1042,8 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <outlet property="mySlider" destination="GZF-eF-BpQ" id="HG1-dc-HJe"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ca1-BM-awh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="xHk-gY-pWG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4169" y="1361.25"/>
         </scene>
@@ -1576,7 +1577,6 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
         <!--Navigation Controller-->
         <scene sceneID="oj5-bL-hWI">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YfW-Ah-608" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SWt-xq-imh" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oGX-J5-zEi">
@@ -1588,6 +1588,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <segue destination="Cbb-fr-rcU" kind="relationship" relationship="rootViewController" id="put-Z3-Bs5"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YfW-Ah-608" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3357" y="1361.25"/>
         </scene>

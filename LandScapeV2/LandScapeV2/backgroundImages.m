@@ -44,6 +44,7 @@
     }
     closeSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action: @selector(rightFlip:)];
     [closeSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    [closeSwipe setNumberOfTouchesRequired:2];
     [self.view addGestureRecognizer:closeSwipe];
     
     zoomIn = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];

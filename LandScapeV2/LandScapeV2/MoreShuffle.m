@@ -128,14 +128,15 @@ static const int outline3Category = 3;
     //swipes to show backgrounds
     leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action: @selector(leftFlip:)];
     [leftSwipe setDirection:UISwipeGestureRecognizerDirectionLeft];
+    [leftSwipe setNumberOfTouchesRequired:2];                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
     [view addGestureRecognizer:leftSwipe];
     
     zoomIn = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinchGesture:)];
     [view addGestureRecognizer:zoomIn];
     
     panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanGesture:)];
-    [panRecognizer setMinimumNumberOfTouches:2];
-    [panRecognizer setMaximumNumberOfTouches:3];
+    [panRecognizer setMinimumNumberOfTouches:1];
+    [panRecognizer setMaximumNumberOfTouches:1];
     [view addGestureRecognizer:panRecognizer];
 }
 
@@ -320,21 +321,27 @@ static const int outline3Category = 3;
     
     for (SKSpriteNode *node in self.children) {
         if ([node.name isEqualToString:@"newNode"]) {
-            newNode.position = CGPointMake(1000, 600);
+            newNode.position = CGPointMake(600, 1000);
             [saveData sharedData].statPos = newNode.position;
         }
         if ([node.name isEqualToString:@"newNode2"]) {
-            newNode2.position = CGPointMake(1000, 600);
+            newNode2.position = CGPointMake(610, 990);
             [saveData sharedData].statPos2 = newNode2.position;
         }
         if ([node.name isEqualToString:@"newNode3"]) {
-            newNode3.position = CGPointMake(1000, 600);
+            newNode3.position = CGPointMake(620, 980);
             [saveData sharedData].statPos3 = newNode3.position;
         }
-        if ([saveData sharedData].array != nil) {
-            for (SKSpriteNode *sprite in [saveData sharedData].array) {
-                sprite.position = CGPointMake(1000, 600);
-            }
+    }
+    
+    float x = 1200;
+    float y = 1000;
+    
+    if ([saveData sharedData].array != nil) {
+        for (SKSpriteNode *sprite in [saveData sharedData].array) {
+            sprite.position = CGPointMake(x, y);
+            x -= 10;
+            y += 15;
         }
     }
     
@@ -606,12 +613,13 @@ static const int outline3Category = 3;
             [checkNode removeFromParent];
             [self addChild:checkNode];
             [self.view removeGestureRecognizer:leftSwipe];
+            [self.view removeGestureRecognizer:panRecognizer];
         }
         //changes the color of the text and stores it.
     }
     else if (checkNode && [checkNode.name hasPrefix:@"color"]){
         for(SKNode *check in self.children){
-            if([check.name hasPrefix:@"newNode"]){
+            if([check.name isEqualToString:@"newNode"]){
                 for(SKLabelNode *label in check.children){
                     if([checkNode.name isEqualToString:@"color1"]){
                         label.fontColor = [SKColor blackColor];
@@ -692,6 +700,7 @@ static const int outline3Category = 3;
     //stops the swipe gesture from crashing
     if ([checkNode.name hasPrefix:@"newNode"]) {
         [self.view addGestureRecognizer:leftSwipe];
+        [self.view addGestureRecognizer:panRecognizer];
     }
 }
 
