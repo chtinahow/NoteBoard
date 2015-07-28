@@ -351,7 +351,7 @@ static const int outline3Category = 3;
 //creates the initial SKScene
 -(void)createScene
 {
-    self.backgroundColor = [SKColor grayColor];
+    self.backgroundColor = [SKColor lightGrayColor];
     self.scaleMode = SKSceneScaleModeFill;
     
     //[self sceneBoundaries];
