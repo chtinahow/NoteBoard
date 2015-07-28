@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>2611100C-5756-4FEB-AF75-5AF87DF91EE8</string>
 	<key>IDESourceControlProjectName</key>
-	<string>LandScapeV2</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>D1F2D03B53668085825BFAD093A7C55FDF57EDC5</key>
 		<string>https://github.com/chtinahow/NoteBoard.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>LandScapeV2/LandScapeV2.xcodeproj</string>
+	<string>LandScapeV2/LandScapeV2.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D1F2D03B53668085825BFAD093A7C55FDF57EDC5</key>
