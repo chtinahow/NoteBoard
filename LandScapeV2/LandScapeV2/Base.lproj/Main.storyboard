@@ -55,9 +55,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEb-4o-P5R">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="WebView example">
+                                <state key="normal" title="Example">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="458" y="219" width="126" height="30"/>
+                                </variation>
                                 <connections>
                                     <segue destination="BXd-Ge-YKg" kind="show" id="M4t-8S-NmA"/>
                                 </connections>
@@ -67,6 +70,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="24" y="204" width="380" height="170"/>
+                                </variation>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fUv-7q-dCG">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
@@ -91,6 +97,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="29" y="444" width="346" height="168"/>
+                                </variation>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="∫ x n dx = xn+1 /(n+1)     if n+1 ≠ 0" translatesAutoresizingMaskIntoConstraints="NO" id="odM-f0-Yah">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
@@ -116,9 +125,12 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZ5-EL-N6u">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="MediaPlayerExample">
+                                <state key="normal" title="Example">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="440" y="466" width="144" height="30"/>
+                                </variation>
                                 <connections>
                                     <segue destination="K0B-lZ-FWF" kind="show" id="Aal-cq-LbG"/>
                                 </connections>
@@ -298,7 +310,7 @@
                                     <constraint firstAttribute="height" constant="56" id="qC0-wy-lkt"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -387,7 +399,7 @@
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHL-ab-V5H">
                                 <rect key="frame" x="16" y="57" width="153" height="30"/>
                                 <animations/>
-                                <state key="normal" title="Assignment Due Date:">
+                                <state key="normal" title="Upcoming Due Dates">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -637,7 +649,8 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                                         <exclude reference="2WG-gg-OfS"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular">
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="19" y="242" width="562" height="538"/>
                                     <mask key="constraints">
                                         <include reference="2WG-gg-OfS"/>
                                     </mask>
@@ -905,7 +918,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                     <constraint firstAttribute="width" constant="58" id="flR-l1-ic5"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -1595,6 +1608,6 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Yzb-7O-xbz"/>
-        <segue reference="13l-3X-30f"/>
+        <segue reference="kwB-Gs-6SA"/>
     </inferredMetricsTieBreakers>
 </document>
