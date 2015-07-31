@@ -602,12 +602,11 @@ static const int outline3Category = 3;
     if(checkNode && ([checkNode.name hasPrefix:@"newNode"])){
         if([touch tapCount] == 2){
             _tappedTwice = YES;
-            /*NotesSection *nn = [[NotesSection alloc] initWithSize:CGSizeMake(1024, 768)];
-            SKView *view = (SKView *) self.view;
-            SKTransition *doors = [SKTransition doorsOpenVerticalWithDuration: 0.5];
-            [view presentScene:nn transition:doors];*/
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoNotes" object:nil];
+            if ([checkNode.name isEqualToString:@"newNode"] || [checkNode.name isEqualToString:@"newNode2"] || [checkNode.name isEqualToString:@"newNode3"]) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoNotes" object:nil];
+            } else{
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"gotoNewNotes" object:nil];
+            }
         } else if([touch tapCount] == 1 && !_tappedTwice) {
             _activeDragNode = (SKSpriteNode *)checkNode;
             [checkNode removeFromParent];
