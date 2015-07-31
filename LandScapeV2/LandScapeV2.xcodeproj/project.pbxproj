@@ -17,6 +17,7 @@
 		3F0BFABE1B6278350081A229 /* saveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BFABD1B6278350081A229 /* saveData.m */; };
 		3F0BFAC11B6278850081A229 /* MoreShuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BFAC01B6278850081A229 /* MoreShuffle.m */; };
 		3F0BFAC41B6278E80081A229 /* backgroundImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BFAC31B6278E80081A229 /* backgroundImages.m */; };
+		3F0D80651B6BC16300300D6C /* NewNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80641B6BC16300300D6C /* NewNotesViewController.m */; };
 		3F195EDD1B306C65007232AF /* LandScapeCalcNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */; };
 		3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EE41B3079BF007232AF /* NotesViewController.m */; };
 		3F35B3461B3ADF8C0007606C /* DefinitionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F35B3451B3ADF8C0007606C /* DefinitionsViewController.m */; };
@@ -67,6 +68,8 @@
 		3F0BFAC01B6278850081A229 /* MoreShuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreShuffle.m; sourceTree = "<group>"; };
 		3F0BFAC21B6278E80081A229 /* backgroundImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backgroundImages.h; sourceTree = "<group>"; };
 		3F0BFAC31B6278E80081A229 /* backgroundImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundImages.m; sourceTree = "<group>"; };
+		3F0D80631B6BC16300300D6C /* NewNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNotesViewController.h; sourceTree = "<group>"; };
+		3F0D80641B6BC16300300D6C /* NewNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNotesViewController.m; sourceTree = "<group>"; };
 		3F195EDB1B306C65007232AF /* LandScapeCalcNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandScapeCalcNotes.h; sourceTree = "<group>"; };
 		3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandScapeCalcNotes.m; sourceTree = "<group>"; };
 		3F195EE31B3079BF007232AF /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
@@ -177,9 +180,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3F0D80621B6BC13C00300D6C /* NewNotesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F0D80631B6BC16300300D6C /* NewNotesViewController.h */,
+				3F0D80641B6BC16300300D6C /* NewNotesViewController.m */,
+			);
+			name = NewNotesViewController;
+			sourceTree = "<group>";
+		};
 		3FB19E201B667C1E00F4D16E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3F0D80621B6BC13C00300D6C /* NewNotesViewController */,
 				3FB19E2A1B66804D00F4D16E /* SettingsViewController */,
 				3FB19E281B667F1400F4D16E /* FormulasViewController */,
 				3FB19E271B667EF900F4D16E /* DefinitionsViewController */,
@@ -438,6 +451,7 @@
 				3FE5D2081B384A6600192CA5 /* ExampleViewController.m in Sources */,
 				3F0BFAC11B6278850081A229 /* MoreShuffle.m in Sources */,
 				2693DF621B2F1C2F00D2FBB9 /* AppDelegate.m in Sources */,
+				3F0D80651B6BC16300300D6C /* NewNotesViewController.m in Sources */,
 				2693DF5F1B2F1C2F00D2FBB9 /* main.m in Sources */,
 				3F0BFABE1B6278350081A229 /* saveData.m in Sources */,
 				3FEE1C661B4B0D0F001ADCC8 /* SettingsViewController.m in Sources */,

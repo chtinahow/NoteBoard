@@ -11,6 +11,7 @@
 #import "LandScapeCalcNotes.h"
 #import "MoreShuffle.h"
 #import "weeksNotesViewController.h"
+#import "NewNotesViewController.h"
 
 @interface NotesViewController ()
 @end
@@ -23,6 +24,8 @@
     // Do any additional setup after loading the view.
     //code needed to access notifier
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentWeeksNotesViewController) name:@"gotoNotes" object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(presentNewNotesViewController) name:@"gotoNewNotes" object:nil];
 }
 
 -(void) viewWillAppear:(BOOL)animated
@@ -36,6 +39,13 @@
 -(void) presentWeeksNotesViewController
 {
     weeksNotesViewController *wViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"tabView"];
+    [self.navigationController pushViewController:wViewController animated:YES];
+}
+
+//set up NewNotes view controller
+-(void) presentNewNotesViewController
+{
+    NewNotesViewController *wViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newNotes"];
     [self.navigationController pushViewController:wViewController animated:YES];
 }
 

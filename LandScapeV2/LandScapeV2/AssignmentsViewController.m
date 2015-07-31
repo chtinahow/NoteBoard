@@ -43,8 +43,8 @@
     
     [self loadInitialData];
 
-    
 }
+
 
 /*
  loadInitialData loads everything statically for the intial information that goes into the array
@@ -106,8 +106,18 @@
     {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         
+        NSDictionary* attributes = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]};
+        NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:toDoItem.itemName attributes:attributes];
+        
+        cell.textLabel.attributedText = attributedString;
+        
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        NSDictionary* attributes = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:0]};
+        NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:toDoItem.itemName attributes:attributes];
+        
+        cell.textLabel.attributedText = attributedString;
     }
     
     return cell;
