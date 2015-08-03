@@ -210,7 +210,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Formulas" id="lm1-53-VoT"/>
+                    <tabBarItem key="tabBarItem" title="Formulas" image="Square Root-32.png" id="lm1-53-VoT"/>
                     <connections>
                         <outlet property="currDate" destination="fUv-7q-dCG" id="ROU-YA-dmX"/>
                     </connections>
@@ -535,7 +535,7 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Definitions" id="TmT-PK-gwH"/>
+                    <tabBarItem key="tabBarItem" title="Definitions" image="Book-Open-32.png" id="TmT-PK-gwH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="currDate" destination="U7O-Zk-YB1" id="wsx-qD-aOd"/>
@@ -576,25 +576,6 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thJ-Il-ZlU">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="Nmp-8V-SYY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Nmp-8V-SYY"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="Nmp-8V-SYY"/>
-                                    </mask>
-                                </variation>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uqe-Gs-9qU">
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
@@ -647,6 +628,25 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                                     <outlet property="delegate" destination="UVc-iu-Bhb" id="MA2-Au-Avq"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thJ-Il-ZlU">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="Nmp-8V-SYY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Nmp-8V-SYY"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="Nmp-8V-SYY"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -669,9 +669,9 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                             <mask key="subviews">
                                 <exclude reference="QHr-Ci-VaQ"/>
                                 <exclude reference="tbC-1n-9Pa"/>
-                                <exclude reference="thJ-Il-ZlU"/>
                                 <exclude reference="Uqe-Gs-9qU"/>
                                 <exclude reference="C64-qX-Rp3"/>
+                                <exclude reference="thJ-Il-ZlU"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Hxn-6Z-hJZ"/>
@@ -693,9 +693,9 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                             <mask key="subviews">
                                 <include reference="QHr-Ci-VaQ"/>
                                 <include reference="tbC-1n-9Pa"/>
-                                <include reference="thJ-Il-ZlU"/>
                                 <include reference="Uqe-Gs-9qU"/>
                                 <include reference="C64-qX-Rp3"/>
+                                <include reference="thJ-Il-ZlU"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Hxn-6Z-hJZ"/>
@@ -1298,7 +1298,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Notes" id="UOA-Q3-taM"/>
+                    <tabBarItem key="tabBarItem" title="Notes" image="Stationery-Pen-32.png" id="UOA-Q3-taM"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="700"/>
                     <connections>
@@ -1319,7 +1319,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                     </connections>
                 </pinchGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1058" y="-68.25"/>
+            <point key="canvasLocation" x="1870" y="-68.25"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="I7E-Mh-5H1">
@@ -1499,27 +1499,6 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                     <rect key="frame" x="66" y="107" width="97" height="30"/>
                                 </variation>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3c3-5M-8Xp">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="5" y="110" width="41" height="21"/>
-                                </variation>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GbV-9D-L7d">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Upcoming Due Dates">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="5" y="144" width="147" height="30"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="UVc-iu-Bhb" kind="show" id="sP9-NB-Iby"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GHS-WT-fqQ">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1527,25 +1506,29 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="215" width="600" height="800"/>
+                                    <rect key="frame" x="0.0" y="326" width="600" height="466"/>
                                 </variation>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3wN-tF-m66">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="32" y="28" width="521" height="279"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="YJx-Gh-lPJ"/>
-                                <exclude reference="3c3-5M-8Xp"/>
-                                <exclude reference="GbV-9D-L7d"/>
                                 <exclude reference="GHS-WT-fqQ"/>
+                                <exclude reference="3wN-tF-m66"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="subviews">
                                 <include reference="YJx-Gh-lPJ"/>
-                                <include reference="3c3-5M-8Xp"/>
-                                <include reference="GbV-9D-L7d"/>
                                 <include reference="GHS-WT-fqQ"/>
+                                <include reference="3wN-tF-m66"/>
                             </mask>
                         </variation>
                     </view>
@@ -1671,9 +1654,13 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
             <point key="canvasLocation" x="3357" y="1361.25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Book-Open-32.png" width="32" height="32"/>
+        <image name="Square Root-32.png" width="32" height="32"/>
+        <image name="Stationery-Pen-32.png" width="32" height="32"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sP9-NB-Iby"/>
         <segue reference="Yzb-7O-xbz"/>
-        <segue reference="kwB-Gs-6SA"/>
+        <segue reference="dgE-HY-SDY"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,6 +17,12 @@
 		3F0BFABE1B6278350081A229 /* saveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BFABD1B6278350081A229 /* saveData.m */; };
 		3F0BFAC11B6278850081A229 /* MoreShuffle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BFAC01B6278850081A229 /* MoreShuffle.m */; };
 		3F0BFAC41B6278E80081A229 /* backgroundImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0BFAC31B6278E80081A229 /* backgroundImages.m */; };
+		3F0C17F31B6FA0730095256F /* Square Root-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0C17F21B6FA0730095256F /* Square Root-128.png */; };
+		3F0C17F51B6FA07D0095256F /* Book-Open-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0C17F41B6FA07D0095256F /* Book-Open-128.png */; };
+		3F0C17F71B6FA0950095256F /* Stationery-Pen-128 (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0C17F61B6FA0950095256F /* Stationery-Pen-128 (1).png */; };
+		3F0C17F91B6FA8270095256F /* Square Root-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0C17F81B6FA8270095256F /* Square Root-32.png */; };
+		3F0C17FB1B6FAA490095256F /* Stationery-Pen-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0C17FA1B6FAA490095256F /* Stationery-Pen-32.png */; };
+		3F0C17FD1B6FAE350095256F /* Book-Open-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0C17FC1B6FAE350095256F /* Book-Open-32.png */; };
 		3F0D80651B6BC16300300D6C /* NewNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80641B6BC16300300D6C /* NewNotesViewController.m */; };
 		3F195EDD1B306C65007232AF /* LandScapeCalcNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */; };
 		3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EE41B3079BF007232AF /* NotesViewController.m */; };
@@ -68,6 +74,12 @@
 		3F0BFAC01B6278850081A229 /* MoreShuffle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoreShuffle.m; sourceTree = "<group>"; };
 		3F0BFAC21B6278E80081A229 /* backgroundImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = backgroundImages.h; sourceTree = "<group>"; };
 		3F0BFAC31B6278E80081A229 /* backgroundImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = backgroundImages.m; sourceTree = "<group>"; };
+		3F0C17F21B6FA0730095256F /* Square Root-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Square Root-128.png"; sourceTree = "<group>"; };
+		3F0C17F41B6FA07D0095256F /* Book-Open-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Book-Open-128.png"; sourceTree = "<group>"; };
+		3F0C17F61B6FA0950095256F /* Stationery-Pen-128 (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stationery-Pen-128 (1).png"; sourceTree = "<group>"; };
+		3F0C17F81B6FA8270095256F /* Square Root-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Square Root-32.png"; sourceTree = "<group>"; };
+		3F0C17FA1B6FAA490095256F /* Stationery-Pen-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stationery-Pen-32.png"; sourceTree = "<group>"; };
+		3F0C17FC1B6FAE350095256F /* Book-Open-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Book-Open-32.png"; sourceTree = "<group>"; };
 		3F0D80631B6BC16300300D6C /* NewNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNotesViewController.h; sourceTree = "<group>"; };
 		3F0D80641B6BC16300300D6C /* NewNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNotesViewController.m; sourceTree = "<group>"; };
 		3F195EDB1B306C65007232AF /* LandScapeCalcNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandScapeCalcNotes.h; sourceTree = "<group>"; };
@@ -142,6 +154,7 @@
 		2693DF5B1B2F1C2F00D2FBB9 /* LandScapeV2 */ = {
 			isa = PBXGroup;
 			children = (
+				3F0C17F11B6FA0510095256F /* Images */,
 				3FB19E2B1B66807800F4D16E /* Frameworks */,
 				3FB19E291B66801C00F4D16E /* App Delegate */,
 				3FB19E201B667C1E00F4D16E /* Controllers */,
@@ -178,6 +191,19 @@
 				2693DF771B2F1C3000D2FBB9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F0C17F11B6FA0510095256F /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				3F0C17FC1B6FAE350095256F /* Book-Open-32.png */,
+				3F0C17FA1B6FAA490095256F /* Stationery-Pen-32.png */,
+				3F0C17F81B6FA8270095256F /* Square Root-32.png */,
+				3F0C17F61B6FA0950095256F /* Stationery-Pen-128 (1).png */,
+				3F0C17F41B6FA07D0095256F /* Book-Open-128.png */,
+				3F0C17F21B6FA0730095256F /* Square Root-128.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		3F0D80621B6BC13C00300D6C /* NewNotesViewController */ = {
@@ -415,10 +441,16 @@
 				3FE160681B618C490074456F /* IS098Z75U.jpg in Resources */,
 				2693DF681B2F1C2F00D2FBB9 /* Main.storyboard in Resources */,
 				2693DF6D1B2F1C3000D2FBB9 /* LaunchScreen.xib in Resources */,
+				3F0C17FB1B6FAA490095256F /* Stationery-Pen-32.png in Resources */,
+				3F0C17F91B6FA8270095256F /* Square Root-32.png in Resources */,
+				3F0C17F51B6FA07D0095256F /* Book-Open-128.png in Resources */,
 				3FE1606C1B618C490074456F /* notebook-page.jpg in Resources */,
 				3FE1606A1B618C490074456F /* IS787-191.jpg in Resources */,
+				3F0C17FD1B6FAE350095256F /* Book-Open-32.png in Resources */,
 				3FE1606E1B618C490074456F /* transparent-arrow-th.png in Resources */,
+				3F0C17F71B6FA0950095256F /* Stationery-Pen-128 (1).png in Resources */,
 				2693DF6A1B2F1C3000D2FBB9 /* Images.xcassets in Resources */,
+				3F0C17F31B6FA0730095256F /* Square Root-128.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
