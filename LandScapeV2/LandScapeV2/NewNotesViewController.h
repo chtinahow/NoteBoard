@@ -8,8 +8,10 @@
 
 #import "ViewController.h"
 
-@interface NewNotesViewController : ViewController
+@interface NewNotesViewController : ViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 -(IBAction)unwindToList:(UIStoryboardSegue *)segue;
+
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 
 @end

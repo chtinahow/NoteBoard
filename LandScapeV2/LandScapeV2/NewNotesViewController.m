@@ -50,6 +50,7 @@
     addImage = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     addImage.backgroundColor = [UIColor grayColor];
     [addImage setTitle:@"Add Image" forState:UIControlStateNormal];
+    [addImage addTarget:self action:@selector(addImage:) forControlEvents:UIControlEventTouchUpInside];
     
     addText = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     addText.backgroundColor = [UIColor grayColor];
@@ -129,6 +130,32 @@
     }
 }
 
+- (IBAction)addImage:(UIButton *)sender {
+    
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    self.imageView.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
