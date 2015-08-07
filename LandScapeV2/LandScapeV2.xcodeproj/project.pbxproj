@@ -26,10 +26,13 @@
 		3F0D80651B6BC16300300D6C /* NewNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80641B6BC16300300D6C /* NewNotesViewController.m */; };
 		3F195EDD1B306C65007232AF /* LandScapeCalcNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */; };
 		3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EE41B3079BF007232AF /* NotesViewController.m */; };
+		3F3028821B7299310022DAA5 /* Add-Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F3028811B7299310022DAA5 /* Add-Image.jpg */; };
+		3F3028841B72AD880022DAA5 /* AddImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F3028831B72AD880022DAA5 /* AddImage.png */; };
 		3F35B3461B3ADF8C0007606C /* DefinitionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F35B3451B3ADF8C0007606C /* DefinitionsViewController.m */; };
 		3F35B3491B3AE63F0007606C /* FormulasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F35B3481B3AE63F0007606C /* FormulasViewController.m */; };
 		3F35B34C1B3AE7AF0007606C /* weeksNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F35B34B1B3AE7AF0007606C /* weeksNotesViewController.m */; };
 		3F74DF221B3B452300D5F320 /* AssignmentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F74DF211B3B452300D5F320 /* AssignmentItem.m */; };
+		3F8E6CB11B74F16300822EE8 /* AddAssignmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8E6CB01B74F16300822EE8 /* AddAssignmentsViewController.m */; };
 		3FD88F591B4D9AC2008DA5AA /* PresetZoomSetingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD88F581B4D9AC2008DA5AA /* PresetZoomSetingsViewController.m */; };
 		3FD88F5C1B4DA240008DA5AA /* PresetZoomItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD88F5B1B4DA240008DA5AA /* PresetZoomItem.m */; };
 		3FE160681B618C490074456F /* IS098Z75U.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FE1605E1B618C490074456F /* IS098Z75U.jpg */; };
@@ -86,6 +89,8 @@
 		3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandScapeCalcNotes.m; sourceTree = "<group>"; };
 		3F195EE31B3079BF007232AF /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		3F195EE41B3079BF007232AF /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
+		3F3028811B7299310022DAA5 /* Add-Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Add-Image.jpg"; sourceTree = "<group>"; };
+		3F3028831B72AD880022DAA5 /* AddImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AddImage.png; sourceTree = "<group>"; };
 		3F35B3441B3ADF8C0007606C /* DefinitionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefinitionsViewController.h; sourceTree = "<group>"; };
 		3F35B3451B3ADF8C0007606C /* DefinitionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinitionsViewController.m; sourceTree = "<group>"; };
 		3F35B3471B3AE63F0007606C /* FormulasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FormulasViewController.h; sourceTree = "<group>"; };
@@ -94,6 +99,8 @@
 		3F35B34B1B3AE7AF0007606C /* weeksNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = weeksNotesViewController.m; sourceTree = "<group>"; };
 		3F74DF201B3B452300D5F320 /* AssignmentItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentItem.h; sourceTree = "<group>"; };
 		3F74DF211B3B452300D5F320 /* AssignmentItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentItem.m; sourceTree = "<group>"; };
+		3F8E6CAF1B74F16300822EE8 /* AddAssignmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAssignmentsViewController.h; sourceTree = "<group>"; };
+		3F8E6CB01B74F16300822EE8 /* AddAssignmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAssignmentsViewController.m; sourceTree = "<group>"; };
 		3FD88F571B4D9AC2008DA5AA /* PresetZoomSetingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetZoomSetingsViewController.h; sourceTree = "<group>"; };
 		3FD88F581B4D9AC2008DA5AA /* PresetZoomSetingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PresetZoomSetingsViewController.m; sourceTree = "<group>"; };
 		3FD88F5A1B4DA240008DA5AA /* PresetZoomItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PresetZoomItem.h; sourceTree = "<group>"; };
@@ -196,6 +203,8 @@
 		3F0C17F11B6FA0510095256F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				3F3028831B72AD880022DAA5 /* AddImage.png */,
+				3F3028811B7299310022DAA5 /* Add-Image.jpg */,
 				3F0C17FC1B6FAE350095256F /* Book-Open-32.png */,
 				3F0C17FA1B6FAA490095256F /* Stationery-Pen-32.png */,
 				3F0C17F81B6FA8270095256F /* Square Root-32.png */,
@@ -215,19 +224,29 @@
 			name = NewNotesViewController;
 			sourceTree = "<group>";
 		};
+		3F8E6CAE1B74F13200822EE8 /* AddAssignmentsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F8E6CAF1B74F16300822EE8 /* AddAssignmentsViewController.h */,
+				3F8E6CB01B74F16300822EE8 /* AddAssignmentsViewController.m */,
+			);
+			name = AddAssignmentsViewController;
+			sourceTree = "<group>";
+		};
 		3FB19E201B667C1E00F4D16E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3F0D80621B6BC13C00300D6C /* NewNotesViewController */,
-				3FB19E2A1B66804D00F4D16E /* SettingsViewController */,
-				3FB19E281B667F1400F4D16E /* FormulasViewController */,
-				3FB19E271B667EF900F4D16E /* DefinitionsViewController */,
-				3FB19E261B667EC800F4D16E /* NotesViewController */,
-				3FB19E251B667E5A00F4D16E /* ExampleViewController */,
-				3FB19E241B667D8300F4D16E /* ZoomController */,
-				3FB19E231B667D1100F4D16E /* NoteCardViewController */,
-				3FB19E221B667CE200F4D16E /* ExampleViewController */,
+				3F8E6CAE1B74F13200822EE8 /* AddAssignmentsViewController */,
 				3FB19E211B667CB400F4D16E /* AssignmentViewController */,
+				3FB19E271B667EF900F4D16E /* DefinitionsViewController */,
+				3FB19E251B667E5A00F4D16E /* ExampleViewController */,
+				3FB19E221B667CE200F4D16E /* ExampleViewController */,
+				3FB19E281B667F1400F4D16E /* FormulasViewController */,
+				3F0D80621B6BC13C00300D6C /* NewNotesViewController */,
+				3FB19E231B667D1100F4D16E /* NoteCardViewController */,
+				3FB19E261B667EC800F4D16E /* NotesViewController */,
+				3FB19E2A1B66804D00F4D16E /* SettingsViewController */,
+				3FB19E241B667D8300F4D16E /* ZoomController */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -439,6 +458,7 @@
 			files = (
 				3FE160691B618C490074456F /* IS787-189.jpg in Resources */,
 				3FE160681B618C490074456F /* IS098Z75U.jpg in Resources */,
+				3F3028821B7299310022DAA5 /* Add-Image.jpg in Resources */,
 				2693DF681B2F1C2F00D2FBB9 /* Main.storyboard in Resources */,
 				2693DF6D1B2F1C3000D2FBB9 /* LaunchScreen.xib in Resources */,
 				3F0C17FB1B6FAA490095256F /* Stationery-Pen-32.png in Resources */,
@@ -447,6 +467,7 @@
 				3FE1606C1B618C490074456F /* notebook-page.jpg in Resources */,
 				3FE1606A1B618C490074456F /* IS787-191.jpg in Resources */,
 				3F0C17FD1B6FAE350095256F /* Book-Open-32.png in Resources */,
+				3F3028841B72AD880022DAA5 /* AddImage.png in Resources */,
 				3FE1606E1B618C490074456F /* transparent-arrow-th.png in Resources */,
 				3F0C17F71B6FA0950095256F /* Stationery-Pen-128 (1).png in Resources */,
 				2693DF6A1B2F1C3000D2FBB9 /* Images.xcassets in Resources */,
@@ -473,6 +494,7 @@
 				3FD88F591B4D9AC2008DA5AA /* PresetZoomSetingsViewController.m in Sources */,
 				3FE5D20D1B3882EA00192CA5 /* MediaFormulaViewController.m in Sources */,
 				3F35B3491B3AE63F0007606C /* FormulasViewController.m in Sources */,
+				3F8E6CB11B74F16300822EE8 /* AddAssignmentsViewController.m in Sources */,
 				3F35B34C1B3AE7AF0007606C /* weeksNotesViewController.m in Sources */,
 				2693DF651B2F1C2F00D2FBB9 /* ViewController.m in Sources */,
 				3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */,

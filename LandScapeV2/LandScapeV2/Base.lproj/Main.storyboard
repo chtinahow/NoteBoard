@@ -722,6 +722,13 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                                 <segue destination="e5y-5u-ix5" kind="unwind" unwindAction="unwindToList:" id="PJI-bu-Vpg"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7m0-Xz-bG6">
+                            <connections>
+                                <segue destination="tOd-cb-Ihp" kind="popoverPresentation" popoverAnchorBarButtonItem="7m0-Xz-bG6" id="pbX-Pr-u1U">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -733,6 +740,53 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                 <exit id="e5y-5u-ix5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1050" y="1371"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="vX7-sE-y8J">
+            <objects>
+                <viewController id="QjE-aN-viZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QiD-mt-bzQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="U1F-Sq-bem"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Oa-3D-gNm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JDH-87-qW4">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Assignment name and Due date..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jph-FI-XM5">
+                                        <rect key="frame" x="17" y="285" width="287" height="30"/>
+                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85882352939999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.001330525038" green="0.043233208439999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="nUe-fe-DKd">
+                                        <rect key="frame" x="0.0" y="89" width="304" height="162"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="460650374.54333001">
+                                            <!--2015-08-07 14:26:14 +0000-->
+                                        </date>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mll-LG-ffE">
+                                        <rect key="frame" x="89" y="360" width="143" height="30"/>
+                                        <color key="backgroundColor" red="0.0" green="0.32894736842105265" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="y30-pl-WgY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Izp-t6-SgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1727" y="2079"/>
         </scene>
         <!--Media Formula View Controller-->
         <scene sceneID="DEa-N6-DOX">
@@ -1652,6 +1706,24 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YfW-Ah-608" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3357" y="1361.25"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="zTi-m6-92q">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tOd-cb-Ihp" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hD2-mD-CUd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QjE-aN-viZ" kind="relationship" relationship="rootViewController" id="cR8-rd-J5P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sVW-FH-tFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1050" y="2079"/>
         </scene>
     </scenes>
     <resources>

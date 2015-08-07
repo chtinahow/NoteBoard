@@ -60,15 +60,10 @@
     //changes color of text
     SKSpriteNode *changeText;
     
-    //Save Button
-    UIButton *save;
-    
     //stack button
     UIButton *stackButton;
-    
     //generate new node
     UIButton *newPaper;
-    
     //reset button
     UIButton *reset;
     
@@ -89,38 +84,57 @@ static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
 
-//instantiates save button
-- (id)initWithSize:(CGSize)size
-{
-    if (self = [super initWithSize:size]) {
-        stackButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        stackButton.backgroundColor = [UIColor darkGrayColor];
-        stackButton.frame = CGRectMake(890, 655, 100, 20);
-        [stackButton setTitle:@"Stack Papers" forState:UIControlStateNormal];
-        [stackButton addTarget:self action:@selector(stackPapers:) forControlEvents:UIControlEventTouchUpInside];
-        
-        newPaper = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        newPaper.backgroundColor = [UIColor darkGrayColor];
-        newPaper.frame = CGRectMake(890, 740, 100, 20);
-        [newPaper setTitle:@"Make More" forState:UIControlStateNormal];
-        [newPaper addTarget:self action:@selector(newPaper) forControlEvents:UIControlEventTouchUpInside];
-        
-        reset = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        reset.backgroundColor = [UIColor darkGrayColor];
-        reset.frame = CGRectMake(750, 740, 100, 20);
-        [reset setTitle:@"Reset" forState:UIControlStateNormal];
-        [reset addTarget:self action:@selector(resetButton) forControlEvents:UIControlEventTouchUpInside];
-    }
-    
-    return self;
-}
-
 - (void)didMoveToView: (SKView *) view
 {
     if (!self.created) {
         [self createScene];
         self.created = YES;
     }
+    
+    //detects device orientation specifically for UIButtons
+    if([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        
+        stackButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        stackButton.backgroundColor = [UIColor darkGrayColor];
+        [stackButton setTitle:@"Stack Papers" forState:UIControlStateNormal];
+        [stackButton addTarget:self action:@selector(stackPapers:) forControlEvents:UIControlEventTouchUpInside];
+        
+        newPaper = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        newPaper.backgroundColor = [UIColor darkGrayColor];
+        [newPaper setTitle:@"Make More" forState:UIControlStateNormal];
+        [newPaper addTarget:self action:@selector(newPaper) forControlEvents:UIControlEventTouchUpInside];
+        
+        reset = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        reset.backgroundColor = [UIColor darkGrayColor];
+        [reset setTitle:@"Reset" forState:UIControlStateNormal];
+        [reset addTarget:self action:@selector(resetButton) forControlEvents:UIControlEventTouchUpInside];
+        
+        stackButton.frame = CGRectMake(640, 940, 100, 20);
+        newPaper.frame = CGRectMake(640, 995, 100, 20);
+        reset.frame = CGRectMake(500, 995, 100, 20);
+    }
+    
+    if( [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight){
+        stackButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        stackButton.backgroundColor = [UIColor darkGrayColor];
+        [stackButton setTitle:@"Stack Papers" forState:UIControlStateNormal];
+        [stackButton addTarget:self action:@selector(stackPapers:) forControlEvents:UIControlEventTouchUpInside];
+        
+        newPaper = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        newPaper.backgroundColor = [UIColor darkGrayColor];
+        [newPaper setTitle:@"Make More" forState:UIControlStateNormal];
+        [newPaper addTarget:self action:@selector(newPaper) forControlEvents:UIControlEventTouchUpInside];
+        
+        reset = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        reset.backgroundColor = [UIColor darkGrayColor];
+        [reset setTitle:@"Reset" forState:UIControlStateNormal];
+        [reset addTarget:self action:@selector(resetButton) forControlEvents:UIControlEventTouchUpInside];
+        
+        stackButton.frame = CGRectMake(890, 690, 100, 20);
+        newPaper.frame = CGRectMake(890, 740, 100, 20);
+        reset.frame = CGRectMake(750, 740, 100, 20);
+    }
+    
     [view addSubview:newPaper];
     [view addSubview:reset];
     [view addSubview:stackButton];
@@ -138,6 +152,8 @@ static const int outline3Category = 3;
     [panRecognizer setMinimumNumberOfTouches:1];
     [panRecognizer setMaximumNumberOfTouches:1];
     [view addGestureRecognizer:panRecognizer];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(orientationChanged:)    name:UIDeviceOrientationDidChangeNotification  object:nil];
 }
 
 - (void)willMoveFromView:(SKView *)view
@@ -154,7 +170,41 @@ static const int outline3Category = 3;
     [view removeGestureRecognizer:panRecognizer];
     [view removeGestureRecognizer:zoomIn];
     [self removeAllChildren];
+    
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
 }
+
+//updates view based on changes
+- (void)orientationChanged:(NSNotification *)notification{
+    [self adjustViewsForOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
+}
+
+//actual code for updating in this method
+- (void) adjustViewsForOrientation:(UIInterfaceOrientation) orientation {
+    
+    switch (orientation)
+    {
+        case UIInterfaceOrientationPortrait:
+        case UIInterfaceOrientationPortraitUpsideDown:
+        {
+            stackButton.frame = CGRectMake(640, 940, 100, 20);
+            newPaper.frame = CGRectMake(640, 995, 100, 20);
+            reset.frame = CGRectMake(500, 995, 100, 20);
+        }
+            
+            break;
+        case UIInterfaceOrientationLandscapeLeft:
+        case UIInterfaceOrientationLandscapeRight:
+        {
+            stackButton.frame = CGRectMake(890, 690, 100, 20);
+            newPaper.frame = CGRectMake(890, 740, 100, 20);
+            reset.frame = CGRectMake(750, 740, 100, 20);
+        }
+            break;
+        case UIInterfaceOrientationUnknown:break;
+    }
+}
+
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)panGesture
 {
