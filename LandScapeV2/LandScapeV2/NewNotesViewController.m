@@ -2,7 +2,7 @@
 //  NewNotesViewController.m
 //  LandScapeV2
 //
-//  A few updates have been made; camera roll to be added
+//  A few updates have been made; camera roll to be fixed as it only works with portrait view
 //  Created by Student on 7/31/15.
 //  Copyright (c) 2015 Student. All rights reserved.
 //
@@ -16,14 +16,21 @@
 @end
 
 @implementation NewNotesViewController{
+    //open side view
     UISwipeGestureRecognizer *leftSwipe;
     
+    //close side view
+    UISwipeGestureRecognizer *rightSwipe;
+    
+    //portrait and landscape views of side view
     UIView *portraitView;
     UIView *landscapeView;
     
+    //determines if device is in portrait or landscape orientation
     BOOL portrait;
     BOOL landscape;
     
+    //user options to add image, text, or video
     UIButton *addImage;
     UIButton *addText;
     UIButton *addVideo;
@@ -47,6 +54,11 @@
     [leftSwipe setNumberOfTouchesRequired:2];
     [self.view addGestureRecognizer:leftSwipe];
     
+    //rightSwipe
+    rightSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(sideViewRemoved:)];
+    [rightSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
+    [rightSwipe setNumberOfTouchesRequired:2];
+    
     addImage = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     addImage.backgroundColor = [UIColor grayColor];
     [addImage setTitle:@"Add Image" forState:UIControlStateNormal];
@@ -64,6 +76,8 @@
 //sends out notification that orientation has been changed
 -(void)viewWillAppear:(BOOL)animated{
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(orientationChanged:)    name:UIDeviceOrientationDidChangeNotification  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(sideViewRemoved:)    name:UIDeviceOrientationDidChangeNotification  object:nil];
 }
 
 //removes notification
@@ -76,8 +90,17 @@
     [self adjustViewsForOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
 }
 
+//removes side view
+- (void)sideViewRemoved:(NSNotification *)notification{
+    [self removeSideView:[[UIApplication sharedApplication] statusBarOrientation]];
+}
+
+
 //actual code for updating in this method
 - (void) adjustViewsForOrientation:(UIInterfaceOrientation) orientation {
+    
+    [self.view addGestureRecognizer:rightSwipe];
+    [self.view removeGestureRecognizer:leftSwipe];
     
     switch (orientation)
     {
@@ -101,6 +124,7 @@
             [portraitView addSubview:addText];
             [portraitView addSubview:addVideo];
             portrait = YES;
+
         }
             
             break;
@@ -124,10 +148,45 @@
             [landscapeView addSubview:addText];
             [landscapeView addSubview:addVideo];
             landscape = YES;
+            
         }
             break;
         case UIInterfaceOrientationUnknown:break;
     }
+}
+
+- (void) removeSideView:(UIInterfaceOrientation) orientation {
+    
+    [self.view removeGestureRecognizer:rightSwipe];
+    [self.view addGestureRecognizer:leftSwipe];
+    
+    switch (orientation)
+    {
+        case UIInterfaceOrientationPortrait:
+        case UIInterfaceOrientationPortraitUpsideDown:
+        {
+            [portraitView removeFromSuperview];
+            [addImage removeFromSuperview];
+            [addText removeFromSuperview];
+            [addVideo removeFromSuperview];
+            
+        }
+            
+            break;
+        case UIInterfaceOrientationLandscapeLeft:
+        case UIInterfaceOrientationLandscapeRight:
+        {
+            
+            [landscapeView removeFromSuperview];
+            [addImage removeFromSuperview];
+            [addText removeFromSuperview];
+            [addVideo removeFromSuperview];
+            
+        }
+            break;
+        case UIInterfaceOrientationUnknown:break;
+    }
+
 }
 
 - (IBAction)addImage:(UIButton *)sender {
@@ -156,6 +215,19 @@
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }
+
+/*
+-(BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown ;
+}
+ */
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

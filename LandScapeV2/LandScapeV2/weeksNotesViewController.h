@@ -15,8 +15,5 @@
 -(IBAction)handleZoom:(UITapGestureRecognizer *) recognizer;
 @property (weak, nonatomic) IBOutlet UITextView *text;
 
-@property (weak, nonatomic) IBOutlet UIView *view;
--(IBAction)bigViewPinch:(UIPinchGestureRecognizer *)recognizer;
-
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer * textZoom;
 @end

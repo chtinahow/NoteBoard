@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MO6-Rq-aUg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MO6-Rq-aUg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -1110,7 +1110,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <viewControllerLayoutGuide type="bottom" id="G6k-B6-evY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tRB-b1-4Vc">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="700"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUK-ne-IwO">
@@ -1138,7 +1138,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                 </variation>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9i2-up-g5d">
-                                <rect key="frame" x="5" y="144" width="589" height="515"/>
+                                <rect key="frame" x="5" y="144" width="757" height="515"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -1216,7 +1216,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                 </connections>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z02-gc-lpM">
-                                <rect key="frame" x="193" y="79" width="213" height="57"/>
+                                <rect key="frame" x="277" y="79" width="213" height="57"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="213" id="vAj-On-9Na"/>
@@ -1354,7 +1354,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                     </view>
                     <tabBarItem key="tabBarItem" title="Notes" image="Stationery-Pen-32.png" id="UOA-Q3-taM"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="700"/>
+                    <size key="freeformSize" width="768" height="1024"/>
                     <connections>
                         <outlet property="currDate" destination="jTf-9j-i2q" id="drm-P6-a4h"/>
                         <outlet property="text" destination="9i2-up-g5d" id="c4u-K3-MOV"/>
@@ -1638,17 +1638,17 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                             <mask key="constraints">
                                 <exclude reference="iiD-wL-I8Z"/>
                                 <exclude reference="xVw-qE-AMm"/>
+                                <exclude reference="2Gk-Dx-cyD"/>
+                                <exclude reference="aZK-Xj-HL7"/>
+                                <exclude reference="cs2-6d-cUg"/>
                                 <exclude reference="Hq1-YL-tv2"/>
                                 <exclude reference="ayq-4Q-fyK"/>
                                 <exclude reference="mH2-8s-y3g"/>
                                 <exclude reference="pDp-oF-Zhn"/>
                                 <exclude reference="qIt-1X-ted"/>
-                                <exclude reference="2Gk-Dx-cyD"/>
-                                <exclude reference="aZK-Xj-HL7"/>
                                 <exclude reference="73o-t1-KS2"/>
                                 <exclude reference="J0T-GQ-AdR"/>
                                 <exclude reference="S3P-JK-Zyy"/>
-                                <exclude reference="cs2-6d-cUg"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -1661,17 +1661,17 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                             <mask key="constraints">
                                 <include reference="iiD-wL-I8Z"/>
                                 <include reference="xVw-qE-AMm"/>
+                                <include reference="2Gk-Dx-cyD"/>
+                                <include reference="aZK-Xj-HL7"/>
+                                <include reference="cs2-6d-cUg"/>
                                 <include reference="Hq1-YL-tv2"/>
                                 <include reference="ayq-4Q-fyK"/>
                                 <include reference="mH2-8s-y3g"/>
                                 <include reference="pDp-oF-Zhn"/>
                                 <include reference="qIt-1X-ted"/>
-                                <include reference="2Gk-Dx-cyD"/>
-                                <include reference="aZK-Xj-HL7"/>
                                 <include reference="73o-t1-KS2"/>
                                 <include reference="J0T-GQ-AdR"/>
                                 <include reference="S3P-JK-Zyy"/>
-                                <include reference="cs2-6d-cUg"/>
                             </mask>
                         </variation>
                     </view>

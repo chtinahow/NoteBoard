@@ -165,7 +165,7 @@
 				3FB19E2B1B66807800F4D16E /* Frameworks */,
 				3FB19E291B66801C00F4D16E /* App Delegate */,
 				3FB19E201B667C1E00F4D16E /* Controllers */,
-				3FE1605B1B618C210074456F /* Shuffle */,
+				3FE1605B1B618C210074456F /* ShuffleNotesView */,
 				2693DF661B2F1C2F00D2FBB9 /* Main.storyboard */,
 				2693DF691B2F1C2F00D2FBB9 /* Images.xcassets */,
 				2693DF6B1B2F1C3000D2FBB9 /* LaunchScreen.xib */,
@@ -357,7 +357,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3FE1605B1B618C210074456F /* Shuffle */ = {
+		3FE1605B1B618C210074456F /* ShuffleNotesView */ = {
 			isa = PBXGroup;
 			children = (
 				3FE1605E1B618C490074456F /* IS098Z75U.jpg */,
@@ -372,7 +372,7 @@
 				3F0BFAC21B6278E80081A229 /* backgroundImages.h */,
 				3F0BFAC31B6278E80081A229 /* backgroundImages.m */,
 			);
-			name = Shuffle;
+			name = ShuffleNotesView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
