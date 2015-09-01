@@ -45,6 +45,7 @@
 		3FE5D20D1B3882EA00192CA5 /* MediaFormulaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5D20C1B3882EA00192CA5 /* MediaFormulaViewController.m */; };
 		3FEE1C661B4B0D0F001ADCC8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */; };
 		3FFBEC401B3B258800BB3025 /* AssignmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBEC3F1B3B258800BB3025 /* AssignmentsViewController.m */; };
+		C94591F81B96042D00CB6B74 /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +120,8 @@
 		3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		3FFBEC3E1B3B258800BB3025 /* AssignmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentsViewController.h; sourceTree = "<group>"; };
 		3FFBEC3F1B3B258800BB3025 /* AssignmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentsViewController.m; sourceTree = "<group>"; };
+		C94591F61B96042D00CB6B74 /* AssignmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentsTableViewController.h; sourceTree = "<group>"; };
+		C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +261,8 @@
 				3FFBEC3F1B3B258800BB3025 /* AssignmentsViewController.m */,
 				3F74DF201B3B452300D5F320 /* AssignmentItem.h */,
 				3F74DF211B3B452300D5F320 /* AssignmentItem.m */,
+				C94591F61B96042D00CB6B74 /* AssignmentsTableViewController.h */,
+				C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */,
 			);
 			name = AssignmentViewController;
 			sourceTree = "<group>";
@@ -502,6 +507,7 @@
 				3F0BFAC41B6278E80081A229 /* backgroundImages.m in Sources */,
 				3FFBEC401B3B258800BB3025 /* AssignmentsViewController.m in Sources */,
 				3FD88F5C1B4DA240008DA5AA /* PresetZoomItem.m in Sources */,
+				C94591F81B96042D00CB6B74 /* AssignmentsTableViewController.m in Sources */,
 				3FE5D2081B384A6600192CA5 /* ExampleViewController.m in Sources */,
 				3F0BFAC11B6278850081A229 /* MoreShuffle.m in Sources */,
 				2693DF621B2F1C2F00D2FBB9 /* AppDelegate.m in Sources */,

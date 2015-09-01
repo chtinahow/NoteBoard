@@ -15,5 +15,7 @@
 -(IBAction)handleZoom:(UITapGestureRecognizer *) recognizer;
 @property (weak, nonatomic) IBOutlet UITextView *text;
 
+@property (strong, nonatomic) IBOutlet UIButton *upcomingDD;
+
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer * textZoom;
 @end

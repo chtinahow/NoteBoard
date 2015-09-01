@@ -49,9 +49,6 @@
                                 <state key="normal" title="Upcoming Due Dates">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="O9v-mn-X8i" kind="presentation" id="13l-3X-30f"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rEb-4o-P5R">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -217,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSf-5d-WxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1096" y="696.75"/>
+            <point key="canvasLocation" x="1012" y="696"/>
         </scene>
         <!--Example View Controller-->
         <scene sceneID="DZj-7y-BM9">
@@ -390,9 +387,6 @@
                                 <state key="normal" title="Upcoming Due Dates">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <connections>
-                                    <segue destination="O9v-mn-X8i" kind="presentation" id="kwB-Gs-6SA"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Definitions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXZ-Wx-bc7">
                                 <rect key="frame" x="390" y="143" width="161" height="42"/>
@@ -545,202 +539,6 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
             </objects>
             <point key="canvasLocation" x="-311" y="1347"/>
         </scene>
-        <!--Upcoming Due Dates-->
-        <scene sceneID="bL9-Qx-vHT">
-            <objects>
-                <viewController id="UVc-iu-Bhb" customClass="AssignmentsViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="yNk-ol-LCz"/>
-                        <viewControllerLayoutGuide type="bottom" id="sEb-wh-7Qi"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8kJ-Kj-gvl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duH-IR-PtA">
-                                <rect key="frame" x="10" y="10" width="42" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHr-Ci-VaQ">
-                                <rect key="frame" x="8" y="20" width="41" height="21"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Assignment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbC-1n-9Pa">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uqe-Gs-9qU">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="9fn-Du-Pg1"/>
-                                    <constraint firstAttribute="height" constant="30" id="K4I-Sm-IVo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="9fn-Du-Pg1"/>
-                                        <exclude reference="K4I-Sm-IVo"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="9fn-Du-Pg1"/>
-                                        <include reference="K4I-Sm-IVo"/>
-                                    </mask>
-                                </variation>
-                            </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="C64-qX-Rp3">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="538" id="2WG-gg-OfS"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListPrototypeCell" id="1hT-oE-mnY">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1hT-oE-mnY" id="knc-SL-fYE">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="2WG-gg-OfS"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="2WG-gg-OfS"/>
-                                    </mask>
-                                </variation>
-                                <connections>
-                                    <outlet property="dataSource" destination="UVc-iu-Bhb" id="y9x-o7-x5m"/>
-                                    <outlet property="delegate" destination="UVc-iu-Bhb" id="MA2-Au-Avq"/>
-                                </connections>
-                            </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="thJ-Il-ZlU">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="85" id="Nmp-8V-SYY"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Nmp-8V-SYY"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="Nmp-8V-SYY"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="C64-qX-Rp3" secondAttribute="bottom" constant="20" symbolic="YES" id="DGw-4v-aPM"/>
-                            <constraint firstItem="yNk-ol-LCz" firstAttribute="top" secondItem="duH-IR-PtA" secondAttribute="bottom" constant="33" id="Gki-Ru-hPP"/>
-                            <constraint firstItem="Uqe-Gs-9qU" firstAttribute="leading" secondItem="QHr-Ci-VaQ" secondAttribute="trailing" constant="32" id="Hxn-6Z-hJZ"/>
-                            <constraint firstItem="duH-IR-PtA" firstAttribute="leading" secondItem="8kJ-Kj-gvl" secondAttribute="leadingMargin" constant="-6" id="I9G-Ci-3Sv"/>
-                            <constraint firstItem="C64-qX-Rp3" firstAttribute="leading" secondItem="8kJ-Kj-gvl" secondAttribute="leadingMargin" constant="6" id="Mqj-5f-uKc"/>
-                            <constraint firstItem="QHr-Ci-VaQ" firstAttribute="leading" secondItem="8kJ-Kj-gvl" secondAttribute="leadingMargin" id="Ozx-Dn-WMv"/>
-                            <constraint firstItem="C64-qX-Rp3" firstAttribute="trailing" secondItem="8kJ-Kj-gvl" secondAttribute="trailingMargin" id="PtH-Hf-f5C"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="thJ-Il-ZlU" secondAttribute="trailing" constant="60" id="c0k-66-bv0"/>
-                            <constraint firstItem="QHr-Ci-VaQ" firstAttribute="top" secondItem="yNk-ol-LCz" secondAttribute="bottom" constant="43" id="cuX-It-dIU"/>
-                            <constraint firstItem="Uqe-Gs-9qU" firstAttribute="leading" secondItem="tbC-1n-9Pa" secondAttribute="leading" id="dlg-gb-XyM"/>
-                            <constraint firstItem="thJ-Il-ZlU" firstAttribute="baseline" secondItem="tbC-1n-9Pa" secondAttribute="baseline" id="huA-oe-qAN"/>
-                            <constraint firstItem="C64-qX-Rp3" firstAttribute="top" secondItem="thJ-Il-ZlU" secondAttribute="bottom" constant="19" id="lVU-3j-DRd"/>
-                            <constraint firstItem="tbC-1n-9Pa" firstAttribute="top" secondItem="Uqe-Gs-9qU" secondAttribute="bottom" constant="59" id="qyt-Lc-her"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="QHr-Ci-VaQ"/>
-                                <exclude reference="tbC-1n-9Pa"/>
-                                <exclude reference="Uqe-Gs-9qU"/>
-                                <exclude reference="C64-qX-Rp3"/>
-                                <exclude reference="thJ-Il-ZlU"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="Hxn-6Z-hJZ"/>
-                                <exclude reference="dlg-gb-XyM"/>
-                                <exclude reference="qyt-Lc-her"/>
-                                <exclude reference="c0k-66-bv0"/>
-                                <exclude reference="huA-oe-qAN"/>
-                                <exclude reference="Ozx-Dn-WMv"/>
-                                <exclude reference="cuX-It-dIU"/>
-                                <exclude reference="DGw-4v-aPM"/>
-                                <exclude reference="Mqj-5f-uKc"/>
-                                <exclude reference="PtH-Hf-f5C"/>
-                                <exclude reference="lVU-3j-DRd"/>
-                                <exclude reference="I9G-Ci-3Sv"/>
-                                <exclude reference="Gki-Ru-hPP"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular">
-                            <mask key="subviews">
-                                <include reference="QHr-Ci-VaQ"/>
-                                <include reference="tbC-1n-9Pa"/>
-                                <include reference="Uqe-Gs-9qU"/>
-                                <include reference="C64-qX-Rp3"/>
-                                <include reference="thJ-Il-ZlU"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="Hxn-6Z-hJZ"/>
-                                <include reference="dlg-gb-XyM"/>
-                                <include reference="qyt-Lc-her"/>
-                                <include reference="c0k-66-bv0"/>
-                                <include reference="huA-oe-qAN"/>
-                                <include reference="Ozx-Dn-WMv"/>
-                                <include reference="cuX-It-dIU"/>
-                                <include reference="DGw-4v-aPM"/>
-                                <include reference="Mqj-5f-uKc"/>
-                                <include reference="PtH-Hf-f5C"/>
-                                <include reference="lVU-3j-DRd"/>
-                                <include reference="I9G-Ci-3Sv"/>
-                                <include reference="Gki-Ru-hPP"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Upcoming Due Dates" id="HFs-dy-lj0">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="bqg-Wr-JsL">
-                            <connections>
-                                <action selector="backAndSave:" destination="UVc-iu-Bhb" id="Mj4-rZ-n1V"/>
-                                <segue destination="e5y-5u-ix5" kind="unwind" unwindAction="unwindToList:" id="PJI-bu-Vpg"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="7m0-Xz-bG6">
-                            <connections>
-                                <segue destination="tOd-cb-Ihp" kind="popoverPresentation" popoverAnchorBarButtonItem="7m0-Xz-bG6" id="pbX-Pr-u1U">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="currDate" destination="Uqe-Gs-9qU" id="pNz-zd-7io"/>
-                        <outlet property="view" destination="C64-qX-Rp3" id="Q6D-P3-S0t"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wPl-Oo-6Aa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="e5y-5u-ix5" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="1050" y="1371"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="vX7-sE-y8J">
             <objects>
@@ -786,7 +584,7 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Izp-t6-SgW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1727" y="2079"/>
+            <point key="canvasLocation" x="2432" y="2223"/>
         </scene>
         <!--Media Formula View Controller-->
         <scene sceneID="DEa-N6-DOX">
@@ -911,7 +709,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8c-gP-aTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CiM-kX-bm7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2582" y="1334.25"/>
+            <point key="canvasLocation" x="5018" y="1334"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="rtw-ek-C9L">
@@ -1099,7 +897,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ca1-BM-awh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="xHk-gY-pWG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4169" y="1361.25"/>
+            <point key="canvasLocation" x="6605" y="1361"/>
         </scene>
         <!--Notes-->
         <scene sceneID="J0X-Ac-5uJ">
@@ -1113,28 +911,17 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TUK-ne-IwO">
-                                <rect key="frame" x="5" y="20" width="66" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z02-gc-lpM">
+                                <rect key="frame" x="277" y="79" width="213" height="57"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="66" id="Mnh-ap-5Qm"/>
-                                    <constraint firstAttribute="height" constant="21" id="ZNV-CM-5UY"/>
-                                    <constraint firstAttribute="width" constant="66" id="nfL-Vd-i68"/>
+                                    <constraint firstAttribute="width" constant="213" id="vAj-On-9Na"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Mnh-ap-5Qm"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="Mnh-ap-5Qm"/>
-                                        <exclude reference="ZNV-CM-5UY"/>
-                                        <exclude reference="nfL-Vd-i68"/>
-                                    </mask>
+                                <variation key="heightClass=regular" misplaced="YES">
+                                    <rect key="frame" x="194" y="91" width="213" height="57"/>
                                 </variation>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9i2-up-g5d">
@@ -1215,19 +1002,6 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                     <outletCollection property="gestureRecognizers" destination="iQD-1m-lNr" appends="YES" id="hHi-Li-bya"/>
                                 </connections>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z02-gc-lpM">
-                                <rect key="frame" x="277" y="79" width="213" height="57"/>
-                                <animations/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="213" id="vAj-On-9Na"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular" misplaced="YES">
-                                    <rect key="frame" x="194" y="91" width="213" height="57"/>
-                                </variation>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v7b-4R-ZYa">
                                 <rect key="frame" x="0.0" y="49" width="162" height="30"/>
                                 <animations/>
@@ -1253,7 +1027,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="O9v-mn-X8i" kind="presentation" id="dgE-HY-SDY"/>
+                                    <segue destination="oKi-oU-apc" kind="presentation" id="fdA-QE-EPj"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTf-9j-i2q">
@@ -1279,25 +1053,17 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="9i2-up-g5d" secondAttribute="trailing" constant="-10" id="5Vi-BC-QnF"/>
-                            <constraint firstItem="TUK-ne-IwO" firstAttribute="leading" secondItem="9i2-up-g5d" secondAttribute="leading" id="7he-f3-Q9t"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="top" secondItem="v7b-4R-ZYa" secondAttribute="bottom" constant="65" id="B53-p8-yYu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9i2-up-g5d" secondAttribute="trailing" constant="-10" id="BCV-gV-doF"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="centerX" secondItem="z02-gc-lpM" secondAttribute="centerX" id="D46-60-iuA"/>
-                            <constraint firstItem="jTf-9j-i2q" firstAttribute="baseline" secondItem="TUK-ne-IwO" secondAttribute="firstBaseline" id="ECe-a1-W4Q"/>
                             <constraint firstItem="v7b-4R-ZYa" firstAttribute="leading" secondItem="9i2-up-g5d" secondAttribute="leading" id="ElB-XM-kji"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="bottom" secondItem="G6k-B6-evY" secondAttribute="top" id="FKV-UU-ltt"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="leading" secondItem="tRB-b1-4Vc" secondAttribute="leadingMargin" constant="-11" id="G8B-8e-MRa"/>
-                            <constraint firstItem="v7b-4R-ZYa" firstAttribute="top" secondItem="TUK-ne-IwO" secondAttribute="bottom" constant="8" symbolic="YES" id="JdP-Pt-Rqf"/>
                             <constraint firstItem="z02-gc-lpM" firstAttribute="top" secondItem="wXe-3M-LaZ" secondAttribute="bottom" constant="59" id="Jnq-iZ-FxP"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="top" secondItem="v7b-4R-ZYa" secondAttribute="bottom" constant="49" id="Kqa-g5-VC9"/>
-                            <constraint firstItem="v7b-4R-ZYa" firstAttribute="top" secondItem="TUK-ne-IwO" secondAttribute="bottom" constant="8" symbolic="YES" id="Mg2-28-dgL"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="top" secondItem="wXe-3M-LaZ" secondAttribute="bottom" constant="124" id="NBS-Kk-ZIO"/>
-                            <constraint firstItem="jTf-9j-i2q" firstAttribute="leading" secondItem="TUK-ne-IwO" secondAttribute="trailing" constant="8" symbolic="YES" id="QFq-AB-Gtg"/>
-                            <constraint firstItem="TUK-ne-IwO" firstAttribute="leading" secondItem="tRB-b1-4Vc" secondAttribute="leadingMargin" constant="-5" id="arM-sD-Ijx"/>
-                            <constraint firstItem="jTf-9j-i2q" firstAttribute="centerY" secondItem="TUK-ne-IwO" secondAttribute="centerY" id="bWs-Ka-0AW"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="top" secondItem="z02-gc-lpM" secondAttribute="bottom" id="c51-71-pFY"/>
                             <constraint firstItem="v7b-4R-ZYa" firstAttribute="leading" secondItem="tRB-b1-4Vc" secondAttribute="leading" id="hKi-Qr-phe"/>
-                            <constraint firstItem="TUK-ne-IwO" firstAttribute="top" secondItem="wXe-3M-LaZ" secondAttribute="bottom" constant="8" symbolic="YES" id="m5q-83-Ep6"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="leading" secondItem="tRB-b1-4Vc" secondAttribute="leadingMargin" constant="-11" id="oTO-Me-9LH"/>
                             <constraint firstItem="z02-gc-lpM" firstAttribute="centerX" secondItem="9i2-up-g5d" secondAttribute="centerX" id="tTj-H3-BOk"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="top" secondItem="z02-gc-lpM" secondAttribute="bottom" constant="8" symbolic="YES" id="unn-lC-M0n"/>
@@ -1307,13 +1073,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                 <exclude reference="jTf-9j-i2q"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="ECe-a1-W4Q"/>
-                                <exclude reference="QFq-AB-Gtg"/>
-                                <exclude reference="bWs-Ka-0AW"/>
-                                <exclude reference="arM-sD-Ijx"/>
-                                <exclude reference="m5q-83-Ep6"/>
                                 <exclude reference="ElB-XM-kji"/>
-                                <exclude reference="Mg2-28-dgL"/>
                                 <exclude reference="BCV-gV-doF"/>
                                 <exclude reference="D46-60-iuA"/>
                                 <exclude reference="FKV-UU-ltt"/>
@@ -1327,15 +1087,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                 <include reference="jTf-9j-i2q"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="ECe-a1-W4Q"/>
-                                <include reference="QFq-AB-Gtg"/>
-                                <include reference="bWs-Ka-0AW"/>
-                                <exclude reference="7he-f3-Q9t"/>
-                                <include reference="arM-sD-Ijx"/>
-                                <include reference="m5q-83-Ep6"/>
                                 <include reference="ElB-XM-kji"/>
-                                <exclude reference="JdP-Pt-Rqf"/>
-                                <include reference="Mg2-28-dgL"/>
                                 <exclude reference="hKi-Qr-phe"/>
                                 <exclude reference="5Vi-BC-QnF"/>
                                 <exclude reference="B53-p8-yYu"/>
@@ -1359,6 +1111,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <outlet property="currDate" destination="jTf-9j-i2q" id="drm-P6-a4h"/>
                         <outlet property="text" destination="9i2-up-g5d" id="c4u-K3-MOV"/>
                         <outlet property="textZoom" destination="fGY-eP-zv8" id="Pz0-yW-TN9"/>
+                        <outlet property="upcomingDD" destination="v7b-4R-ZYa" id="d3r-nV-2nf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uk9-gC-6mp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1373,7 +1126,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                     </connections>
                 </pinchGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1870" y="-68.25"/>
+            <point key="canvasLocation" x="1862" y="150"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="I7E-Mh-5H1">
@@ -1725,25 +1478,6 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
             <point key="canvasLocation" x="-1169" y="382"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="AGh-lz-Cgu">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O9v-mn-X8i" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cFZ-y2-KRL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="UVc-iu-Bhb" kind="relationship" relationship="rootViewController" id="glo-Xg-q6T"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RqB-E4-PuP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="316" y="1338"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="rmF-hv-jTX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="BXd-Ge-YKg" sceneMemberID="viewController">
@@ -1777,7 +1511,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58M-Sl-b1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1770" y="1334.25"/>
+            <point key="canvasLocation" x="4206" y="1334"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oj5-bL-hWI">
@@ -1795,7 +1529,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YfW-Ah-608" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3357" y="1361.25"/>
+            <point key="canvasLocation" x="5793" y="1361"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zTi-m6-92q">
@@ -1813,7 +1547,66 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVW-FH-tFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1050" y="2079"/>
+            <point key="canvasLocation" x="1759" y="2223"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JcJ-W5-Heg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oKi-oU-apc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ljV-cF-let">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="W61-5g-s7Y" kind="relationship" relationship="rootViewController" id="IQz-OI-ijE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qdN-4a-7ZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1862" y="1513"/>
+        </scene>
+        <!--Upcoming Due Dates-->
+        <scene sceneID="tDj-49-y5g">
+            <objects>
+                <tableViewController id="W61-5g-s7Y" customClass="AssignmentsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Duy-kE-BJn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="FcB-Xw-LXJ">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FcB-Xw-LXJ" id="bC5-He-sR8">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="W61-5g-s7Y" id="SYg-CP-bba"/>
+                            <outlet property="delegate" destination="W61-5g-s7Y" id="o7d-V8-9fq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Upcoming Due Dates" id="b71-49-QyN">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="RTe-1S-WCA">
+                            <connections>
+                                <segue destination="5Oy-wt-f5I" kind="unwind" unwindAction="unwindToList:" id="I6x-QT-UEM"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Ebt-2c-VFU">
+                            <connections>
+                                <segue destination="tOd-cb-Ihp" kind="popoverPresentation" popoverAnchorBarButtonItem="Ebt-2c-VFU" id="r5I-WF-nTs">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xFL-1A-YxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5Oy-wt-f5I" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2547" y="1513"/>
         </scene>
     </scenes>
     <resources>
@@ -1823,6 +1616,5 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Yzb-7O-xbz"/>
-        <segue reference="dgE-HY-SDY"/>
     </inferredMetricsTieBreakers>
 </document>

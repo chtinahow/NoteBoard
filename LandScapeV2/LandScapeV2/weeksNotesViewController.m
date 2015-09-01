@@ -7,37 +7,46 @@
 //
 
 #import "weeksNotesViewController.h"
+#import "AssignmentsViewController.h"
 
 @interface weeksNotesViewController ()
 
-@property (weak, nonatomic) IBOutlet UITextField *currDate;
 
 @end
 
-@implementation weeksNotesViewController
+@implementation weeksNotesViewController{
+    UITextField *currDate;
+}
 
+@synthesize upcomingDD;
 @synthesize textZoom;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    currDate = [[UITextField alloc] initWithFrame:CGRectMake(20, 90, 166, 21)];
+    
     //date things
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc]init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     NSDate *now = [[NSDate alloc]init];
     NSString *theDate = [dateFormat stringFromDate:now];
-    _currDate.text = theDate;
-    _currDate.userInteractionEnabled = NO;
+    currDate.text = theDate;
+    currDate.userInteractionEnabled = NO;
+    [self.view addSubview:currDate];
     
     UITapGestureRecognizer * recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleZoom:)];
     recognizer.delegate = self;
     recognizer.numberOfTapsRequired = 2;
     recognizer.numberOfTouchesRequired = 1;
     [self.view addGestureRecognizer:recognizer];
- 
 
+}
 
+-(IBAction)upcomingAssignments{
+    AssignmentsViewController *aViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"UpcomingDueDates"];
+    [self.navigationController pushViewController:aViewController animated:YES];
 }
 
 /*- (IBAction)bigViewPinch:(UIPinchGestureRecognizer *)recognizer {
