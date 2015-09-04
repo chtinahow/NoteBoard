@@ -34,6 +34,11 @@
     //allots the needed space at the top to insert date and other labels
     self.tableView.contentInset = UIEdgeInsetsMake(250, 0, 0, 0);
     
+    //initialize the arrays here
+    self.toDoItems = [[NSMutableArray alloc] init];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    SelectedRows = [NSMutableArray arrayWithArray:[userDef objectForKey:@"SelectedRows"]];
+    
     [self loadInitialData];
 }
 
@@ -51,12 +56,12 @@
     [self.view addSubview:currDate];
     
     //assignments section
-    assignment = [[UILabel alloc] initWithFrame:CGRectMake(100, -75, 200, 30)];
+    assignment = [[UILabel alloc] initWithFrame:CGRectMake(50, -75, 200, 30)];
     assignment.text = @"Assignment";
     [self.view addSubview:assignment];
     
     //due date section
-    dueDate = [[UILabel alloc] initWithFrame:CGRectMake(600, -75, 200, 30)];
+    dueDate = [[UILabel alloc] initWithFrame:CGRectMake(825, -75, 200, 30)];
     dueDate.text = @"Due Date";
     [self.view addSubview:dueDate];
 }
@@ -95,43 +100,87 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    return [self.toDoItems count];
 }
 
 /*
+ The error only occurs when the assignment is being marked as complete, but not deleted.
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
-    // Configure the cell...
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ListPrototypeCell" forIndexPath:indexPath];
+    AssignmentItem *toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
+    cell.textLabel.text = toDoItem.itemName;
+    
+    NSNumber *obj = [NSNumber numberWithInteger:indexPath.row];
+    if ([SelectedRows containsObject:obj])
+    {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        NSDictionary* attributes = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]};
+        NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:toDoItem.itemName attributes:attributes];
+        
+        cell.textLabel.attributedText = attributedString;
+        
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        
+        NSDictionary* attributes = @{NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:0]};
+        NSAttributedString* attributedString = [[NSAttributedString alloc] initWithString:toDoItem.itemName attributes:attributes];
+        
+        cell.textLabel.attributedText = attributedString;
+    }
     
     return cell;
 }
-*/
 
-/*
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSNumber *obj = [NSNumber numberWithInteger:indexPath.row];
+    if ([SelectedRows containsObject:obj])
+    {
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        [SelectedRows removeObject:obj];
+        [tableView reloadData];
+        
+    } else {
+        [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        [SelectedRows addObject:obj];
+        [tableView reloadData];
+    }
+    
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    [userDef setObject:SelectedRows forKey:@"SelectedRows"];
+    [userDef synchronize];
+}
+
+
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+        //add code here for when you hit delete
+        [self.toDoItems removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
