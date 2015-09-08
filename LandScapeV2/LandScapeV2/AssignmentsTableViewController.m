@@ -109,7 +109,7 @@
 }
 
 /*
- The error only occurs when the assignment is being marked as complete, but not deleted.
+ This method handles the selection and strikethrough of cells.
  */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -141,7 +141,10 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+/*
+ Handles the saving of the cells.
+ */
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSNumber *obj = [NSNumber numberWithInteger:indexPath.row];
     if ([SelectedRows containsObject:obj])

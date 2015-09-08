@@ -16,9 +16,7 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *currDate;
-@property (nonatomic) int selectedRow;
 @property NSMutableArray *toDoItems;
-@property NSMutableArray *completedAssignments;
 
 @end
 
