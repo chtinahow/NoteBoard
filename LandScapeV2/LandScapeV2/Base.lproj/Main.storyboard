@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MO6-Rq-aUg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MO6-Rq-aUg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -1425,6 +1425,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                     <connections>
                         <outlet property="currDate" destination="YJx-Gh-lPJ" id="DNY-qU-F8c"/>
                         <outlet property="imageView" destination="3wN-tF-m66" id="SPS-5l-xsM"/>
+                        <outlet property="textView" destination="GHS-WT-fqQ" id="EMR-Rt-xiG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0vU-6p-DXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

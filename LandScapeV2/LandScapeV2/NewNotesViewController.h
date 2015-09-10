@@ -10,6 +10,9 @@
 
 @interface NewNotesViewController : ViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+
+
 -(IBAction)unwindToList:(UIStoryboardSegue *)segue;
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;

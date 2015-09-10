@@ -90,13 +90,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LandScapeV2/NewNotesViewController.m"
-            timestampString = "460671099.467039"
+            timestampString = "463598662.051926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-orientationChanged:"
-            landmarkType = "5">
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "@implementation NewNotesViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

@@ -35,6 +35,7 @@
     UIButton *addText;
     UIButton *addVideo;
 }
+@synthesize textView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,6 +72,10 @@
     addVideo = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     addVideo.backgroundColor = [UIColor grayColor];
     [addVideo setTitle:@"Add Video" forState:UIControlStateNormal];
+    
+    //creates the additional option to highlight the selected text
+    UIMenuItem *highlightText = [[UIMenuItem alloc] initWithTitle:@"Highlight" action:@selector(highlightText)];
+    [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObject:highlightText]];
 }
 
 //sends out notification that orientation has been changed
@@ -199,6 +204,18 @@
     [self presentViewController:picker animated:YES completion:NULL];
     
     
+}
+
+//Uses NSMutableAttributedString to highlight the text selected by the user.
+-(void) highlightText {
+    
+    NSRange selectedRange = textView.selectedRange;
+    
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:textView.attributedText];
+    
+    [attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor greenColor] range:selectedRange];
+    
+    textView.attributedText = attributedString;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
