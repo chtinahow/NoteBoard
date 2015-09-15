@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LandScapeV2/NewNotesViewController.m"
-            timestampString = "462387507.684996"
+            timestampString = "464035531.179994"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-sideViewRemoved:"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "-orientationChanged:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

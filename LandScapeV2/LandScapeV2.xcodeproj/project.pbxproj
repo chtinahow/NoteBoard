@@ -24,7 +24,6 @@
 		3F0C17FB1B6FAA490095256F /* Stationery-Pen-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0C17FA1B6FAA490095256F /* Stationery-Pen-32.png */; };
 		3F0C17FD1B6FAE350095256F /* Book-Open-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F0C17FC1B6FAE350095256F /* Book-Open-32.png */; };
 		3F0D80651B6BC16300300D6C /* NewNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0D80641B6BC16300300D6C /* NewNotesViewController.m */; };
-		3F195EDD1B306C65007232AF /* LandScapeCalcNotes.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */; };
 		3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F195EE41B3079BF007232AF /* NotesViewController.m */; };
 		3F3028821B7299310022DAA5 /* Add-Image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F3028811B7299310022DAA5 /* Add-Image.jpg */; };
 		3F3028841B72AD880022DAA5 /* AddImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F3028831B72AD880022DAA5 /* AddImage.png */; };
@@ -44,8 +43,8 @@
 		3FE5D20A1B385DBD00192CA5 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE5D2091B385DBD00192CA5 /* MediaPlayer.framework */; };
 		3FE5D20D1B3882EA00192CA5 /* MediaFormulaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5D20C1B3882EA00192CA5 /* MediaFormulaViewController.m */; };
 		3FEE1C661B4B0D0F001ADCC8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */; };
-		3FFBEC401B3B258800BB3025 /* AssignmentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBEC3F1B3B258800BB3025 /* AssignmentsViewController.m */; };
 		C94591F81B96042D00CB6B74 /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */; };
+		C9F2C7391BA88A500018D2FD /* NewNotesSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F2C7381BA88A500018D2FD /* NewNotesSettingsTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,8 +85,6 @@
 		3F0C17FC1B6FAE350095256F /* Book-Open-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Book-Open-32.png"; sourceTree = "<group>"; };
 		3F0D80631B6BC16300300D6C /* NewNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNotesViewController.h; sourceTree = "<group>"; };
 		3F0D80641B6BC16300300D6C /* NewNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNotesViewController.m; sourceTree = "<group>"; };
-		3F195EDB1B306C65007232AF /* LandScapeCalcNotes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LandScapeCalcNotes.h; sourceTree = "<group>"; };
-		3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LandScapeCalcNotes.m; sourceTree = "<group>"; };
 		3F195EE31B3079BF007232AF /* NotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesViewController.h; sourceTree = "<group>"; };
 		3F195EE41B3079BF007232AF /* NotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesViewController.m; sourceTree = "<group>"; };
 		3F3028811B7299310022DAA5 /* Add-Image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Add-Image.jpg"; sourceTree = "<group>"; };
@@ -118,10 +115,10 @@
 		3FE5D20C1B3882EA00192CA5 /* MediaFormulaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFormulaViewController.m; sourceTree = "<group>"; };
 		3FEE1C641B4B0D0F001ADCC8 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
-		3FFBEC3E1B3B258800BB3025 /* AssignmentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentsViewController.h; sourceTree = "<group>"; };
-		3FFBEC3F1B3B258800BB3025 /* AssignmentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentsViewController.m; sourceTree = "<group>"; };
 		C94591F61B96042D00CB6B74 /* AssignmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentsTableViewController.h; sourceTree = "<group>"; };
 		C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentsTableViewController.m; sourceTree = "<group>"; };
+		C9F2C7371BA88A500018D2FD /* NewNotesSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNotesSettingsTableViewController.h; sourceTree = "<group>"; };
+		C9F2C7381BA88A500018D2FD /* NewNotesSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNotesSettingsTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +220,7 @@
 			children = (
 				3F0D80631B6BC16300300D6C /* NewNotesViewController.h */,
 				3F0D80641B6BC16300300D6C /* NewNotesViewController.m */,
+				C9F2C73A1BA88A590018D2FD /* NewNotesSettingsTableViewController */,
 			);
 			name = NewNotesViewController;
 			sourceTree = "<group>";
@@ -257,8 +255,6 @@
 		3FB19E211B667CB400F4D16E /* AssignmentViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3FFBEC3E1B3B258800BB3025 /* AssignmentsViewController.h */,
-				3FFBEC3F1B3B258800BB3025 /* AssignmentsViewController.m */,
 				3F74DF201B3B452300D5F320 /* AssignmentItem.h */,
 				3F74DF211B3B452300D5F320 /* AssignmentItem.m */,
 				C94591F61B96042D00CB6B74 /* AssignmentsTableViewController.h */,
@@ -279,8 +275,6 @@
 		3FB19E231B667D1100F4D16E /* NoteCardViewController */ = {
 			isa = PBXGroup;
 			children = (
-				3F195EDB1B306C65007232AF /* LandScapeCalcNotes.h */,
-				3F195EDC1B306C65007232AF /* LandScapeCalcNotes.m */,
 				2693DF631B2F1C2F00D2FBB9 /* ViewController.h */,
 				2693DF641B2F1C2F00D2FBB9 /* ViewController.m */,
 				3F195EE31B3079BF007232AF /* NotesViewController.h */,
@@ -365,19 +359,60 @@
 		3FE1605B1B618C210074456F /* ShuffleNotesView */ = {
 			isa = PBXGroup;
 			children = (
+				C9F2C7331BA84F560018D2FD /* Images */,
+				C9F2C7341BA84F710018D2FD /* SaveData */,
+				C9F2C7351BA84F960018D2FD /* MoreShuffle */,
+				C9F2C7361BA84FA40018D2FD /* BackgroundImages */,
+			);
+			name = ShuffleNotesView;
+			sourceTree = "<group>";
+		};
+		C9F2C7331BA84F560018D2FD /* Images */ = {
+			isa = PBXGroup;
+			children = (
 				3FE1605E1B618C490074456F /* IS098Z75U.jpg */,
 				3FE1605F1B618C490074456F /* IS787-189.jpg */,
 				3FE160601B618C490074456F /* IS787-191.jpg */,
 				3FE160631B618C490074456F /* notebook-page.jpg */,
 				3FE160661B618C490074456F /* transparent-arrow-th.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		C9F2C7341BA84F710018D2FD /* SaveData */ = {
+			isa = PBXGroup;
+			children = (
 				3F0BFABC1B6278350081A229 /* saveData.h */,
 				3F0BFABD1B6278350081A229 /* saveData.m */,
+			);
+			name = SaveData;
+			sourceTree = "<group>";
+		};
+		C9F2C7351BA84F960018D2FD /* MoreShuffle */ = {
+			isa = PBXGroup;
+			children = (
 				3F0BFABF1B6278850081A229 /* MoreShuffle.h */,
 				3F0BFAC01B6278850081A229 /* MoreShuffle.m */,
+			);
+			name = MoreShuffle;
+			sourceTree = "<group>";
+		};
+		C9F2C7361BA84FA40018D2FD /* BackgroundImages */ = {
+			isa = PBXGroup;
+			children = (
 				3F0BFAC21B6278E80081A229 /* backgroundImages.h */,
 				3F0BFAC31B6278E80081A229 /* backgroundImages.m */,
 			);
-			name = ShuffleNotesView;
+			name = BackgroundImages;
+			sourceTree = "<group>";
+		};
+		C9F2C73A1BA88A590018D2FD /* NewNotesSettingsTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C9F2C7371BA88A500018D2FD /* NewNotesSettingsTableViewController.h */,
+				C9F2C7381BA88A500018D2FD /* NewNotesSettingsTableViewController.m */,
+			);
+			name = NewNotesSettingsTableViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,7 +529,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F195EDD1B306C65007232AF /* LandScapeCalcNotes.m in Sources */,
 				3F35B3461B3ADF8C0007606C /* DefinitionsViewController.m in Sources */,
 				3FD88F591B4D9AC2008DA5AA /* PresetZoomSetingsViewController.m in Sources */,
 				3FE5D20D1B3882EA00192CA5 /* MediaFormulaViewController.m in Sources */,
@@ -505,12 +539,12 @@
 				3F195EE51B3079BF007232AF /* NotesViewController.m in Sources */,
 				3F74DF221B3B452300D5F320 /* AssignmentItem.m in Sources */,
 				3F0BFAC41B6278E80081A229 /* backgroundImages.m in Sources */,
-				3FFBEC401B3B258800BB3025 /* AssignmentsViewController.m in Sources */,
 				3FD88F5C1B4DA240008DA5AA /* PresetZoomItem.m in Sources */,
 				C94591F81B96042D00CB6B74 /* AssignmentsTableViewController.m in Sources */,
 				3FE5D2081B384A6600192CA5 /* ExampleViewController.m in Sources */,
 				3F0BFAC11B6278850081A229 /* MoreShuffle.m in Sources */,
 				2693DF621B2F1C2F00D2FBB9 /* AppDelegate.m in Sources */,
+				C9F2C7391BA88A500018D2FD /* NewNotesSettingsTableViewController.m in Sources */,
 				3F0D80651B6BC16300300D6C /* NewNotesViewController.m in Sources */,
 				2693DF5F1B2F1C2F00D2FBB9 /* main.m in Sources */,
 				3F0BFABE1B6278350081A229 /* saveData.m in Sources */,

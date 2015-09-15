@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MO6-Rq-aUg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D2134" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="MO6-Rq-aUg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -214,7 +214,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FSf-5d-WxH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="696"/>
+            <point key="canvasLocation" x="2636" y="696"/>
         </scene>
         <!--Example View Controller-->
         <scene sceneID="DZj-7y-BM9">
@@ -274,7 +274,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D78-IM-7cm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="U1Z-IC-GeE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3376" y="711"/>
+            <point key="canvasLocation" x="5000" y="711"/>
         </scene>
         <!--Preset Zoom Setings View Controller-->
         <scene sceneID="Ym0-SC-QtL">
@@ -360,7 +360,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vms-wc-Nv4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4148" y="684.75"/>
+            <point key="canvasLocation" x="5772" y="684"/>
         </scene>
         <!--Definitions-->
         <scene sceneID="h2P-BN-ZDc">
@@ -374,23 +374,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Date: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGP-EF-c29">
-                                <rect key="frame" x="16" y="28" width="71" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGP-EF-c29">
+                                <rect key="frame" x="16" y="31" width="41" height="18"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHL-ab-V5H">
-                                <rect key="frame" x="16" y="57" width="153" height="30"/>
-                                <animations/>
-                                <state key="normal" title="Upcoming Due Dates">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Definitions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXZ-Wx-bc7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Definitions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXZ-Wx-bc7">
                                 <rect key="frame" x="390" y="143" width="161" height="42"/>
                                 <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="161" id="e8w-ck-Qyv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -454,26 +450,42 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHL-ab-V5H">
+                                <rect key="frame" x="16" y="57" width="153" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="153" id="UXF-qw-bnQ"/>
+                                </constraints>
+                                <state key="normal" title="Upcoming Due Dates">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SHL-ab-V5H" firstAttribute="leading" secondItem="IGP-EF-c29" secondAttribute="leading" id="9Ce-jD-rj7"/>
+                            <constraint firstItem="DXZ-Wx-bc7" firstAttribute="top" secondItem="80Y-5X-xsV" secondAttribute="bottom" constant="123" id="9Jk-jP-0nG"/>
                             <constraint firstItem="DXZ-Wx-bc7" firstAttribute="centerX" secondItem="6Vg-VN-7nF" secondAttribute="centerX" id="9eV-mI-zIM"/>
                             <constraint firstItem="Ylc-7R-ptJ" firstAttribute="top" secondItem="DXZ-Wx-bc7" secondAttribute="bottom" constant="40" id="Ahh-wn-XX2"/>
                             <constraint firstItem="U7O-Zk-YB1" firstAttribute="leading" secondItem="IGP-EF-c29" secondAttribute="trailing" constant="8" symbolic="YES" id="CA8-aX-jzi"/>
                             <constraint firstItem="U7O-Zk-YB1" firstAttribute="leading" secondItem="6Vg-VN-7nF" secondAttribute="leading" constant="95" id="Ce5-KI-q3R"/>
                             <constraint firstItem="Ylc-7R-ptJ" firstAttribute="leading" secondItem="6Vg-VN-7nF" secondAttribute="leadingMargin" id="DoY-1O-1lA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DXZ-Wx-bc7" secondAttribute="trailing" constant="33" id="Fin-vM-oWC"/>
                             <constraint firstItem="SHL-ab-V5H" firstAttribute="top" secondItem="IGP-EF-c29" secondAttribute="bottom" constant="8" symbolic="YES" id="G5h-pH-35N"/>
                             <constraint firstItem="amZ-1E-1iv" firstAttribute="top" secondItem="Ylc-7R-ptJ" secondAttribute="bottom" constant="18" id="Gp4-WC-RWl"/>
+                            <constraint firstItem="SHL-ab-V5H" firstAttribute="leading" secondItem="6Vg-VN-7nF" secondAttribute="leadingMargin" id="J1u-1E-upe"/>
                             <constraint firstItem="SHL-ab-V5H" firstAttribute="leading" secondItem="IGP-EF-c29" secondAttribute="leading" id="Nb9-Of-13q"/>
                             <constraint firstItem="amZ-1E-1iv" firstAttribute="leading" secondItem="Ylc-7R-ptJ" secondAttribute="leading" id="Xxb-qr-ccg"/>
                             <constraint firstItem="fWR-KU-6Sk" firstAttribute="top" secondItem="amZ-1E-1iv" secondAttribute="bottom" constant="78" id="YMT-PF-DdC"/>
                             <constraint firstItem="Ylc-7R-ptJ" firstAttribute="leading" secondItem="SHL-ab-V5H" secondAttribute="leading" id="ZYH-pb-Txy"/>
                             <constraint firstItem="U7O-Zk-YB1" firstAttribute="top" secondItem="80Y-5X-xsV" secondAttribute="bottom" constant="4" id="aQ0-G8-wnw"/>
+                            <constraint firstItem="fWR-KU-6Sk" firstAttribute="top" secondItem="SHL-ab-V5H" secondAttribute="bottom" constant="464" id="av6-M5-Kz2"/>
                             <constraint firstItem="IGP-EF-c29" firstAttribute="top" secondItem="80Y-5X-xsV" secondAttribute="bottom" constant="8" symbolic="YES" id="bxb-lr-wUG"/>
                             <constraint firstItem="SHL-ab-V5H" firstAttribute="top" secondItem="U7O-Zk-YB1" secondAttribute="bottom" constant="3" id="hR4-Vl-vkB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="amZ-1E-1iv" secondAttribute="trailing" constant="19" id="loI-Er-s4t"/>
                             <constraint firstItem="DXZ-Wx-bc7" firstAttribute="top" secondItem="U7O-Zk-YB1" secondAttribute="bottom" constant="68" id="nvq-8H-kDV"/>
+                            <constraint firstItem="SHL-ab-V5H" firstAttribute="top" secondItem="IGP-EF-c29" secondAttribute="bottom" constant="8" symbolic="YES" id="xw9-uu-kqB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ylc-7R-ptJ" secondAttribute="trailing" constant="5" id="z3f-KL-SB2"/>
                         </constraints>
                         <variation key="default">
@@ -537,7 +549,7 @@ In a proof by contradiction we assume, along with the hypotheses, the logical ne
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VQU-hp-INw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-311" y="1347"/>
+            <point key="canvasLocation" x="1313" y="1347"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="vX7-sE-y8J">
@@ -709,7 +721,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X8c-gP-aTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CiM-kX-bm7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5018" y="1334"/>
+            <point key="canvasLocation" x="6642" y="1334"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="rtw-ek-C9L">
@@ -897,7 +909,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ca1-BM-awh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="xHk-gY-pWG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6605" y="1361"/>
+            <point key="canvasLocation" x="8229" y="1361"/>
         </scene>
         <!--Notes-->
         <scene sceneID="J0X-Ac-5uJ">
@@ -924,7 +936,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                                     <rect key="frame" x="194" y="91" width="213" height="57"/>
                                 </variation>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9i2-up-g5d">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9i2-up-g5d">
                                 <rect key="frame" x="5" y="144" width="757" height="515"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1053,6 +1065,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="9i2-up-g5d" secondAttribute="trailing" constant="-10" id="5Vi-BC-QnF"/>
+                            <constraint firstItem="G6k-B6-evY" firstAttribute="top" secondItem="9i2-up-g5d" secondAttribute="bottom" constant="316" id="5qk-c6-zmY"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="top" secondItem="v7b-4R-ZYa" secondAttribute="bottom" constant="65" id="B53-p8-yYu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9i2-up-g5d" secondAttribute="trailing" constant="-10" id="BCV-gV-doF"/>
                             <constraint firstItem="9i2-up-g5d" firstAttribute="centerX" secondItem="z02-gc-lpM" secondAttribute="centerX" id="D46-60-iuA"/>
@@ -1131,7 +1144,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
         <!--View Controller-->
         <scene sceneID="I7E-Mh-5H1">
             <objects>
-                <viewController id="MO6-Rq-aUg" sceneMemberID="viewController">
+                <viewController id="MO6-Rq-aUg" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BEe-Sh-q5y"/>
                         <viewControllerLayoutGuide type="bottom" id="Mlx-Cm-J1h"/>
@@ -1274,13 +1287,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                         <animations/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="9lN-EO-yRN">
-                        <barButtonItem key="rightBarButtonItem" title="Notes" id="2ls-YH-pPD">
-                            <connections>
-                                <segue destination="Vdz-2O-7Qx" kind="presentation" id="YYp-0X-wyl"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="9lN-EO-yRN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XCR-1G-KpJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1422,6 +1429,18 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                             </mask>
                         </variation>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Vwv-aI-1lK">
+                        <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="Yvf-Ct-Rs9">
+                            <connections>
+                                <segue destination="60a-Ep-xsn" kind="popoverPresentation" identifier="popOver" popoverAnchorBarButtonItem="Yvf-Ct-Rs9" id="bs9-0Z-oy1">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="currDate" destination="YJx-Gh-lPJ" id="DNY-qU-F8c"/>
                         <outlet property="imageView" destination="3wN-tF-m66" id="SPS-5l-xsM"/>
@@ -1430,7 +1449,35 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0vU-6p-DXZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-954" y="1102.5"/>
+            <point key="canvasLocation" x="-454" y="1057"/>
+        </scene>
+        <!--New Notes Settings Table View Controller-->
+        <scene sceneID="FpZ-3E-8kg">
+            <objects>
+                <tableViewController storyboardIdentifier="newNotesTable" useStoryboardIdentifierAsRestorationIdentifier="YES" id="60a-Ep-xsn" customClass="NewNotesSettingsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nv1-mN-suO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-55" maxY="0.0"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsListCell" id="o7r-96-izD">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" tableViewCell="o7r-96-izD" id="SfJ-mo-vWW">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="60a-Ep-xsn" id="3pc-pF-78o"/>
+                            <outlet property="delegate" destination="60a-Ep-xsn" id="d7I-Bs-Tpy"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0c1-7g-eso" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-454" y="1769"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nZH-Bg-bGe">
@@ -1488,7 +1535,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L67-eX-vZj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2588" y="696.75"/>
+            <point key="canvasLocation" x="4212" y="696"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PbN-Fl-Kdf">
@@ -1506,7 +1553,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58M-Sl-b1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4206" y="1334"/>
+            <point key="canvasLocation" x="5830" y="1334"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oj5-bL-hWI">
@@ -1524,7 +1571,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YfW-Ah-608" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5793" y="1361"/>
+            <point key="canvasLocation" x="7417" y="1361"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zTi-m6-92q">
@@ -1560,7 +1607,7 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdN-4a-7ZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="1513"/>
+            <point key="canvasLocation" x="3486" y="1513"/>
         </scene>
         <!--Upcoming Due Dates-->
         <scene sceneID="tDj-49-y5g">
@@ -1601,7 +1648,25 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xFL-1A-YxU" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="5Oy-wt-f5I" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2547" y="1513"/>
+            <point key="canvasLocation" x="4171" y="1513"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rp0-QB-O1V">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qJH-H6-CLn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NZG-re-EAH">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="9zU-oF-p75" kind="relationship" relationship="rootViewController" id="KwP-U4-FaC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w4I-JS-ID4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1169" y="1057"/>
         </scene>
     </scenes>
     <resources>
@@ -1610,6 +1675,6 @@ Now when we run our app we will have a visible scrollview has a frame of 0,0,320
         <image name="Stationery-Pen-32.png" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Yzb-7O-xbz"/>
+        <segue reference="KuU-Ey-zeR"/>
     </inferredMetricsTieBreakers>
 </document>

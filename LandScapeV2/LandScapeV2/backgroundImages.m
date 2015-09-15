@@ -2,8 +2,11 @@
 //  backgroundImages.m
 //  LandScapeV2
 //
-//  Created by Student on 7/24/15.
-//  Copyright (c) 2015 Student. All rights reserved.
+//  Accessed via swiping left, has preview of images presented that the user
+//  can choose from to set the background of the shuffling note cards as.
+//
+//  Created by Kimberly Sookoo on 7/24/15.
+//  Copyright (c) 2015 Kimberly Sookoo. All rights reserved.
 //
 
 #import "backgroundImages.h"
@@ -61,6 +64,7 @@
     [view presentScene:backy];
 }
 
+//Pinch to zoom functionality.
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)pinchGesture
 {
     
@@ -95,7 +99,8 @@
         pinchGesture.scale = 1;
     }
 }
-//dummy text
+
+//Creates the scene and presents the images.
 -(void)createScene
 {
     self.backgroundColor = [SKColor grayColor];
@@ -156,6 +161,7 @@
 
 #pragma mark
 
+//Forms the basic outline of the node.
 - (SKSpriteNode *)outlineNode
 {
     SKSpriteNode* outline = [[SKSpriteNode alloc] initWithColor:[SKColor blackColor] size:CGSizeMake(325, 225)];

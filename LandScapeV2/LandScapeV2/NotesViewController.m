@@ -8,7 +8,6 @@
 
 #import "NotesViewController.h"
 #import <SpriteKit/SpriteKit.h>
-#import "LandScapeCalcNotes.h"
 #import "MoreShuffle.h"
 #import "weeksNotesViewController.h"
 #import "NewNotesViewController.h"

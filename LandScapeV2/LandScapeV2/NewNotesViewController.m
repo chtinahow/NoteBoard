@@ -76,6 +76,10 @@
     //creates the additional option to highlight the selected text
     UIMenuItem *highlightText = [[UIMenuItem alloc] initWithTitle:@"Highlight" action:@selector(highlightText)];
     [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObject:highlightText]];
+    
+    //option to change text size
+    UIMenuItem *changeSize = [[UIMenuItem alloc] initWithTitle:@"Change Text Size" action:@selector(changeTextSize)];
+    [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObject:changeSize]];
 }
 
 //sends out notification that orientation has been changed
@@ -213,7 +217,7 @@
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:textView.attributedText];
     
-    [attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor greenColor] range:selectedRange];
+    [attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor blueColor] range:selectedRange];
     
     textView.attributedText = attributedString;
 }
@@ -224,6 +228,11 @@
     self.imageView.image = chosenImage;
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+//Allows for the user to change the text size; to be implemented
+-(void) changeTextSize{
     
 }
 
