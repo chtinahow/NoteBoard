@@ -44,7 +44,7 @@
 		3FE5D20D1B3882EA00192CA5 /* MediaFormulaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5D20C1B3882EA00192CA5 /* MediaFormulaViewController.m */; };
 		3FEE1C661B4B0D0F001ADCC8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */; };
 		C94591F81B96042D00CB6B74 /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */; };
-		C9F2C7391BA88A500018D2FD /* NewNotesSettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F2C7381BA88A500018D2FD /* NewNotesSettingsTableViewController.m */; };
+		C9E726C71BBAEEB9000F5F71 /* temporaryImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E726C61BBAEEB9000F5F71 /* temporaryImage.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,8 +117,7 @@
 		3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		C94591F61B96042D00CB6B74 /* AssignmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentsTableViewController.h; sourceTree = "<group>"; };
 		C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentsTableViewController.m; sourceTree = "<group>"; };
-		C9F2C7371BA88A500018D2FD /* NewNotesSettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewNotesSettingsTableViewController.h; sourceTree = "<group>"; };
-		C9F2C7381BA88A500018D2FD /* NewNotesSettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewNotesSettingsTableViewController.m; sourceTree = "<group>"; };
+		C9E726C61BBAEEB9000F5F71 /* temporaryImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temporaryImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +202,7 @@
 		3F0C17F11B6FA0510095256F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C9E726C61BBAEEB9000F5F71 /* temporaryImage.png */,
 				3F3028831B72AD880022DAA5 /* AddImage.png */,
 				3F3028811B7299310022DAA5 /* Add-Image.jpg */,
 				3F0C17FC1B6FAE350095256F /* Book-Open-32.png */,
@@ -220,7 +220,6 @@
 			children = (
 				3F0D80631B6BC16300300D6C /* NewNotesViewController.h */,
 				3F0D80641B6BC16300300D6C /* NewNotesViewController.m */,
-				C9F2C73A1BA88A590018D2FD /* NewNotesSettingsTableViewController */,
 			);
 			name = NewNotesViewController;
 			sourceTree = "<group>";
@@ -406,15 +405,6 @@
 			name = BackgroundImages;
 			sourceTree = "<group>";
 		};
-		C9F2C73A1BA88A590018D2FD /* NewNotesSettingsTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				C9F2C7371BA88A500018D2FD /* NewNotesSettingsTableViewController.h */,
-				C9F2C7381BA88A500018D2FD /* NewNotesSettingsTableViewController.m */,
-			);
-			name = NewNotesSettingsTableViewController;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -502,6 +492,7 @@
 				2693DF681B2F1C2F00D2FBB9 /* Main.storyboard in Resources */,
 				2693DF6D1B2F1C3000D2FBB9 /* LaunchScreen.xib in Resources */,
 				3F0C17FB1B6FAA490095256F /* Stationery-Pen-32.png in Resources */,
+				C9E726C71BBAEEB9000F5F71 /* temporaryImage.png in Resources */,
 				3F0C17F91B6FA8270095256F /* Square Root-32.png in Resources */,
 				3F0C17F51B6FA07D0095256F /* Book-Open-128.png in Resources */,
 				3FE1606C1B618C490074456F /* notebook-page.jpg in Resources */,
@@ -544,7 +535,6 @@
 				3FE5D2081B384A6600192CA5 /* ExampleViewController.m in Sources */,
 				3F0BFAC11B6278850081A229 /* MoreShuffle.m in Sources */,
 				2693DF621B2F1C2F00D2FBB9 /* AppDelegate.m in Sources */,
-				C9F2C7391BA88A500018D2FD /* NewNotesSettingsTableViewController.m in Sources */,
 				3F0D80651B6BC16300300D6C /* NewNotesViewController.m in Sources */,
 				2693DF5F1B2F1C2F00D2FBB9 /* main.m in Sources */,
 				3F0BFABE1B6278350081A229 /* saveData.m in Sources */,

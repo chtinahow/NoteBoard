@@ -49,6 +49,8 @@
     _currDate.text = theDate;
     _currDate.userInteractionEnabled = NO;
     
+    [textView sizeThatFits:CGSizeMake(self.view.frame.size.width, self.view.frame.size.height)];
+    
     //leftSwipe
     leftSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action: @selector(orientationChanged:)];
     [leftSwipe setDirection:UISwipeGestureRecognizerDirectionLeft];
@@ -75,11 +77,8 @@
     
     //creates the additional option to highlight the selected text
     UIMenuItem *highlightText = [[UIMenuItem alloc] initWithTitle:@"Highlight" action:@selector(highlightText)];
-    [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObject:highlightText]];
     
-    //option to change text size
-    UIMenuItem *changeSize = [[UIMenuItem alloc] initWithTitle:@"Change Text Size" action:@selector(changeTextSize)];
-    [[UIMenuController sharedMenuController] setMenuItems:[NSArray arrayWithObject:changeSize]];
+    [[UIMenuController sharedMenuController] setMenuItems:@[highlightText]];
 }
 
 //sends out notification that orientation has been changed
@@ -87,6 +86,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(orientationChanged:)    name:UIDeviceOrientationDidChangeNotification  object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(sideViewRemoved:)    name:UIDeviceOrientationDidChangeNotification  object:nil];
+    
+    [self.navigationController setToolbarHidden:NO animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 //removes notification
@@ -198,6 +204,7 @@
 
 }
 
+//allows the user to add images to their notes
 - (IBAction)addImage:(UIButton *)sender {
     
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
@@ -217,7 +224,7 @@
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:textView.attributedText];
     
-    [attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor blueColor] range:selectedRange];
+    [attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor colorWithRed:150.0f/255.0f green:189.0f/255.0f blue:28.0f/255.0f alpha:1.0] range:selectedRange];
     
     textView.attributedText = attributedString;
 }
@@ -231,16 +238,78 @@
     
 }
 
-//Allows for the user to change the text size; to be implemented
--(void) changeTextSize{
-    
-}
-
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }
+
+//decreases overall text size
+- (IBAction)decreaseTextSize:(UIBarButtonItem*)sender {
+    
+    CGFloat value = textView.font.pointSize;
+    
+    if (sender == self.decreaseTextSize) {
+        value -= 1;
+        [textView setFont:[UIFont systemFontOfSize:value]];
+        [textView sizeToFit];
+    }
+}
+
+//increases overall text size
+- (IBAction)increaseTextSize:(UIBarButtonItem*)sender {
+    
+    CGFloat value = textView.font.pointSize;
+    
+    if (sender == self.increaseTextSize) {
+        value += 1;
+        [textView setFont:[UIFont systemFontOfSize:value]];
+        [textView sizeToFit];
+    }
+}
+
+//To-Do: 1) I need to make my own colors for this one.
+// 2) Sync the slider with the colors.
+// 3) Allow UIView to display selected color.
+// 4) Change highlight to suit.
+- (IBAction)highlightColor:(UIBarButtonItem *)sender {
+    
+    NewNotesViewController *newNote = [[NewNotesViewController alloc] init];
+    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:newNote];
+    popover.delegate = self;
+    
+    popover.popoverContentSize = CGSizeMake(575, 275); //your custom size.
+    
+    UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(200, 10, 150, 100)];
+    
+    colorView.backgroundColor = [UIColor grayColor];
+    
+    UIImage *colors = [UIImage imageNamed:@"temporaryImage.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 120, 560, 40)];
+    [imageView setImage:colors];
+    
+    //instantiate the slider
+    UISlider *redSlide = [[UISlider alloc] initWithFrame:CGRectMake(5, 180, 560, 31)];
+    
+    redSlide.minimumValue = 0.5;
+    redSlide.value = 7.5;
+    redSlide.maximumValue = 13.5;
+    
+    //make array of colors via hexidecimals
+    CGFloat colorArray[] = {000000, 0xfe0000, 0xff7900, 0xffb900, 0xffde00, 0xfcff00, 0xd2ff00, 0x05c000, 0x00c0a7, 0x0600ff, 0x6700bf, 0x9500c0, 0xbf0199, 0xffffff};
+    
+    [popover.contentViewController.view addSubview:colorView];
+    [popover.contentViewController.view addSubview:imageView];
+    [popover.contentViewController.view addSubview:redSlide];
+    
+    self.popOverController = popover;
+    
+    
+    [self.popOverController presentPopoverFromBarButtonItem:sender
+                                   permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+}
+
 
 /*
 -(BOOL)shouldAutorotate
