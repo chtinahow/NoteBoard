@@ -84,6 +84,14 @@ static const int outline1Category = 1;
 static const int outline2Category = 2;
 static const int outline3Category = 3;
 
+/*
+ Creates the SpriteKity scene
+ Determines what the current orientation of the device is and what the appropriate placement for the UIButtons will be
+ Adds the left swipe functionality to display the background options for the papers/nodes.
+ Adds the zoom in/zoom out functionality.
+ Adds the panning ability.
+ Checks to see if the device orientation is changed at any point to determine the appropriate view change via NSNotificationCenter.
+ */
 - (void)didMoveToView: (SKView *) view
 {
     if (!self.created) {
@@ -179,7 +187,7 @@ static const int outline3Category = 3;
     [self adjustViewsForOrientation:[[UIApplication sharedApplication] statusBarOrientation]];
 }
 
-//actual code for updating in this method
+//The button placement depends on what case the current orientation falls under
 - (void) adjustViewsForOrientation:(UIInterfaceOrientation) orientation {
     
     switch (orientation)
@@ -205,7 +213,7 @@ static const int outline3Category = 3;
     }
 }
 
-
+//Allows for user to be able to pan around scence
 - (void)handlePanGesture:(UIPanGestureRecognizer *)panGesture
 {
     CGPoint translation = [panGesture translationInView:panGesture.view.superview];
@@ -235,6 +243,7 @@ static const int outline3Category = 3;
     // Don't need any logic for ended/failed/canceled states
 }
 
+//Pinch zoom functionality
 - (void)handlePinchGesture:(UIPinchGestureRecognizer *)pinchGesture
 {
     
@@ -350,6 +359,7 @@ static const int outline3Category = 3;
     
     [self addChild:newPap];
 }
+
 
 - (IBAction)resetButton
 {
@@ -703,6 +713,11 @@ static const int outline3Category = 3;
     [[saveData sharedData] save];
 }
 
+/*
+ Creates the dragging motion.
+ Saves the new location of the papers.
+ Papers are not stacked, therefore the boolean is set to 'NO'.
+ */
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
@@ -736,6 +751,9 @@ static const int outline3Category = 3;
     }
 }
 
+/*
+ Detects when the "touches" has ended and re-instantiates the swipe and pan gestures.
+ */
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [[saveData sharedData] save];

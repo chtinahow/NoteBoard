@@ -11,11 +11,19 @@
 
 @interface saveData : NSObject <NSCoding>
 
+//array that stores SKSpriteNodes
 @property NSMutableArray* array;
+
 @property SKSpriteNode *node;
+
+//saves the background image as a texture
 @property SKTexture *current;
+
+//saves the label to be added
 @property SKLabelNode *date;
 
+//saves the positions of the SKSpriteNodes not created by the user
+//booleans helps decide if data is stacked or not
 @property CGPoint pos1;
 @property BOOL isSet;
 @property CGPoint pos2;
@@ -23,10 +31,12 @@
 @property CGPoint pos3;
 @property BOOL isSet3;
 
+//the location of the SKSpriteNodes when stacked
 @property CGPoint statPos;
 @property CGPoint statPos2;
 @property CGPoint statPos3;
 
+//determines if they're stacked
 @property BOOL isStacked;
 
 

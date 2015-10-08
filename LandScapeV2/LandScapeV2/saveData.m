@@ -29,6 +29,9 @@ static NSString* const statPos3 = @"statPos3";
 
 static NSString* const isStacked = @"isStacked";
 
+/*
+ "Deserializes" the data
+ */
 - (instancetype)initWithCoder:(NSCoder *)decoder
 {
     self = [self init];
@@ -57,6 +60,9 @@ static NSString* const isStacked = @"isStacked";
     return self;
 }
 
+/*
+ "Serializes" the data.
+ */
 - (void)encodeWithCoder:(NSCoder *)encoder
 {
     if(!self.array){
@@ -81,6 +87,9 @@ static NSString* const isStacked = @"isStacked";
     [encoder encodeBool:self.isStacked forKey:isStacked];
 }
 
+/*
+ Creates the file path to store data
+ */
 +(NSString*)filePath
 {
     static NSString* filePath = nil;
@@ -92,6 +101,9 @@ static NSString* const isStacked = @"isStacked";
     return filePath;
 }
 
+/*
+ Accesses the information stored
+ */
 +(instancetype)loadInstance
 {
     NSData* decodedData = [NSData dataWithContentsOfFile: [saveData filePath]];
@@ -103,6 +115,9 @@ static NSString* const isStacked = @"isStacked";
     return [[saveData alloc] init];
 }
 
+/*
+ Creates an instance of the saved information
+ */
 + (instancetype)sharedData
 {
     static id sharedInstance = nil;
@@ -115,12 +130,18 @@ static NSString* const isStacked = @"isStacked";
     return sharedInstance;
 }
 
+/*
+ Saves the information to the file path
+ */
 -(void)save
 {
     NSData* encodedData = [NSKeyedArchiver archivedDataWithRootObject: self];
     [encodedData writeToFile:[saveData filePath] atomically:YES];
 }
 
+/*
+ Resets the scene
+ */
 -(void)reset
 {
     self.current = nil;

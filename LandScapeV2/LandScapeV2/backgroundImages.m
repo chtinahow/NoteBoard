@@ -30,9 +30,11 @@
     SKSpriteNode *image6;
     SKSpriteNode *image7;
     SKSpriteNode *image8;
+    
     //arrow to traverse pages
     SKSpriteNode *arrow;
     
+    //returns to "Shuffle Notes" screen
     UISwipeGestureRecognizer *closeSwipe;
     //zoom
     UIPinchGestureRecognizer *zoomIn;
@@ -170,6 +172,7 @@
     return outline;
 }
 
+//Selected image becomes the new background of the SKSpriteNodes
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];

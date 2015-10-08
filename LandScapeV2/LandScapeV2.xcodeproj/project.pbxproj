@@ -44,6 +44,7 @@
 		3FE5D20D1B3882EA00192CA5 /* MediaFormulaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5D20C1B3882EA00192CA5 /* MediaFormulaViewController.m */; };
 		3FEE1C661B4B0D0F001ADCC8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */; };
 		C94591F81B96042D00CB6B74 /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */; };
+		C9A42E391BC4194D009FFD29 /* saveColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A42E381BC4194D009FFD29 /* saveColor.m */; };
 		C9E726C71BBAEEB9000F5F71 /* temporaryImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E726C61BBAEEB9000F5F71 /* temporaryImage.png */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,8 @@
 		3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		C94591F61B96042D00CB6B74 /* AssignmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentsTableViewController.h; sourceTree = "<group>"; };
 		C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentsTableViewController.m; sourceTree = "<group>"; };
+		C9A42E371BC4194D009FFD29 /* saveColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saveColor.h; sourceTree = "<group>"; };
+		C9A42E381BC4194D009FFD29 /* saveColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = saveColor.m; sourceTree = "<group>"; };
 		C9E726C61BBAEEB9000F5F71 /* temporaryImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temporaryImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,6 +223,8 @@
 			children = (
 				3F0D80631B6BC16300300D6C /* NewNotesViewController.h */,
 				3F0D80641B6BC16300300D6C /* NewNotesViewController.m */,
+				C9A42E371BC4194D009FFD29 /* saveColor.h */,
+				C9A42E381BC4194D009FFD29 /* saveColor.m */,
 			);
 			name = NewNotesViewController;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9A42E391BC4194D009FFD29 /* saveColor.m in Sources */,
 				3F35B3461B3ADF8C0007606C /* DefinitionsViewController.m in Sources */,
 				3FD88F591B4D9AC2008DA5AA /* PresetZoomSetingsViewController.m in Sources */,
 				3FE5D20D1B3882EA00192CA5 /* MediaFormulaViewController.m in Sources */,

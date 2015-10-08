@@ -8,6 +8,7 @@
 //
 
 #import "NewNotesViewController.h"
+#import "saveColor.h"
 
 @interface NewNotesViewController ()
 
@@ -34,6 +35,9 @@
     UIButton *addImage;
     UIButton *addText;
     UIButton *addVideo;
+    
+    //PopOverViewController for highlighter color
+    UIPopoverController *popover;
 }
 @synthesize textView;
 
@@ -109,7 +113,6 @@
 - (void)sideViewRemoved:(NSNotification *)notification{
     [self removeSideView:[[UIApplication sharedApplication] statusBarOrientation]];
 }
-
 
 //actual code for updating in this method
 - (void) adjustViewsForOrientation:(UIInterfaceOrientation) orientation {
@@ -204,29 +207,36 @@
 
 }
 
-//allows the user to add images to their notes
-- (IBAction)addImage:(UIButton *)sender {
-    
-    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
-    picker.delegate = self;
-    picker.allowsEditing = YES;
-    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    
-    [self presentViewController:picker animated:YES completion:NULL];
-    
-    
-}
-
 //Uses NSMutableAttributedString to highlight the text selected by the user.
--(void) highlightText {
+-(void) highlightText{
     
     NSRange selectedRange = textView.selectedRange;
     
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:textView.attributedText];
     
-    [attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor colorWithRed:150.0f/255.0f green:189.0f/255.0f blue:28.0f/255.0f alpha:1.0] range:selectedRange];
+    if ([saveColor sharedData].hightlightColor != nil) {
+        [attributedString addAttribute:NSBackgroundColorAttributeName value:[saveColor sharedData].hightlightColor range:selectedRange];
+    }
+    else{
+        [attributedString addAttribute:NSBackgroundColorAttributeName value:[UIColor yellowColor] range:selectedRange];
+    }
     
     textView.attributedText = attributedString;
+}
+
+//allows the user to add images to their notes
+- (IBAction)addImage:(UIButton *)sender {
+    
+    if ([[UIApplication sharedApplication] statusBarOrientation] != UIInterfaceOrientationPortrait) {
+        
+    }
+    
+    /*UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];*/
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
@@ -268,39 +278,96 @@
     }
 }
 
-//To-Do: 1) I need to make my own colors for this one.
-// 2) Sync the slider with the colors.
-// 3) Allow UIView to display selected color.
-// 4) Change highlight to suit.
+//Changes highlighter color to one of the choices listed below and saves the selection
 - (IBAction)highlightColor:(UIBarButtonItem *)sender {
     
     NewNotesViewController *newNote = [[NewNotesViewController alloc] init];
-    UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:newNote];
+    popover = [[UIPopoverController alloc] initWithContentViewController:newNote];
     popover.delegate = self;
     
-    popover.popoverContentSize = CGSizeMake(575, 275); //your custom size.
+    popover.popoverContentSize = CGSizeMake(285, 200);
     
-    UIView *colorView = [[UIView alloc] initWithFrame:CGRectMake(200, 10, 150, 100)];
+    //color choices
+    UIButton *color1 = [[UIButton alloc] initWithFrame:CGRectMake(5, 15, 50, 50)];
+    color1.backgroundColor = [UIColor colorWithRed:127.0f/255.0f green:226.0f/255.0f blue:255.0f/255.0f alpha:1.0];
+    color1.layer.borderColor = [UIColor blackColor].CGColor;
+    color1.layer.borderWidth = 1.0f;
+    color1.layer.cornerRadius = 10.0f;
+    [color1 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
     
-    colorView.backgroundColor = [UIColor grayColor];
+    UIButton *color2 = [[UIButton alloc] initWithFrame:CGRectMake(60, 15, 50, 50)];
+    color2.backgroundColor = [UIColor colorWithRed:245.0f/255.0f green:255.0f/255.0f blue:0.0f/255.0f alpha:1.0];
+    color2.layer.borderColor = [UIColor blackColor].CGColor;
+    color2.layer.borderWidth = 1.0f;
+    color2.layer.cornerRadius = 10.0f;
+    [color2 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
     
-    UIImage *colors = [UIImage imageNamed:@"temporaryImage.png"];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 120, 560, 40)];
-    [imageView setImage:colors];
+    UIButton *color3 = [[UIButton alloc] initWithFrame:CGRectMake(115, 15, 50, 50)];
+    color3.backgroundColor = [UIColor colorWithRed:208.0f/255.0f green:164.0f/255.0f blue:237.0f/255.0f alpha:1.0];
+    color3.layer.borderColor = [UIColor blackColor].CGColor;
+    color3.layer.borderWidth = 1.0f;
+    color3.layer.cornerRadius = 10.0f;
+    [color3 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
     
-    //instantiate the slider
-    UISlider *redSlide = [[UISlider alloc] initWithFrame:CGRectMake(5, 180, 560, 31)];
+    UIButton *color4 = [[UIButton alloc] initWithFrame:CGRectMake(170, 15, 50, 50)];
+    color4.backgroundColor = [UIColor colorWithRed:108.0f/255.0f green:255.0f/255.0f blue:95.0f/255.0f alpha:1.0];
+    color4.layer.borderColor = [UIColor blackColor].CGColor;
+    color4.layer.borderWidth = 1.0f;
+    color4.layer.cornerRadius = 10.0f;
+    [color4 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
     
-    redSlide.minimumValue = 0.5;
-    redSlide.value = 7.5;
-    redSlide.maximumValue = 13.5;
+    UIButton *color5 = [[UIButton alloc] initWithFrame:CGRectMake(225, 15, 50, 50)];
+    color5.backgroundColor = [UIColor colorWithRed:253.0f/255.0f green:153.0f/255.0f blue:176.0f/255.0f alpha:1.0];
+    color5.layer.borderColor = [UIColor blackColor].CGColor;
+    color5.layer.borderWidth = 1.0f;
+    color5.layer.cornerRadius = 10.0f;
+    [color5 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
     
-    //make array of colors via hexidecimals
-    CGFloat colorArray[] = {000000, 0xfe0000, 0xff7900, 0xffb900, 0xffde00, 0xfcff00, 0xd2ff00, 0x05c000, 0x00c0a7, 0x0600ff, 0x6700bf, 0x9500c0, 0xbf0199, 0xffffff};
+    UIButton *color6 = [[UIButton alloc] initWithFrame:CGRectMake(5, 70, 50, 50)];
+    color6.backgroundColor = [UIColor colorWithRed:233.0f/255.0f green:215.0f/255.0f blue:255.0f/255.0f alpha:1.0];
+    color6.layer.borderColor = [UIColor blackColor].CGColor;
+    color6.layer.borderWidth = 1.0f;
+    color6.layer.cornerRadius = 10.0f;
+    [color6 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
     
-    [popover.contentViewController.view addSubview:colorView];
-    [popover.contentViewController.view addSubview:imageView];
-    [popover.contentViewController.view addSubview:redSlide];
+    UIButton *color7 = [[UIButton alloc] initWithFrame:CGRectMake(60, 70, 50, 50)];
+    color7.backgroundColor = [UIColor colorWithRed:154.0f/255.0f green:159.0f/255.0f blue:91.0f/255.0f alpha:1.0];
+    color7.layer.borderColor = [UIColor blackColor].CGColor;
+    color7.layer.borderWidth = 1.0f;
+    color7.layer.cornerRadius = 10.0f;
+    [color7 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *color8 = [[UIButton alloc] initWithFrame:CGRectMake(115, 70, 50, 50)];
+    color8.backgroundColor = [UIColor colorWithRed:0.0f/255.0f green:255.0f/255.0f blue:226.0f/255.0f alpha:1.0];
+    color8.layer.borderColor = [UIColor blackColor].CGColor;
+    color8.layer.borderWidth = 1.0f;
+    color8.layer.cornerRadius = 10.0f;
+    [color8 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *color9 = [[UIButton alloc] initWithFrame:CGRectMake(170, 70, 50, 50)];
+    color9.backgroundColor = [UIColor colorWithRed:107.0f/255.0f green:191.0f/255.0f blue:211.0f/255.0f alpha:1.0];
+    color9.layer.borderColor = [UIColor blackColor].CGColor;
+    color9.layer.borderWidth = 1.0f;
+    color9.layer.cornerRadius = 10.0f;
+    [color9 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *color10 = [[UIButton alloc] initWithFrame:CGRectMake(225, 70, 50, 50)];
+    color10.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:0.0f/255.0f blue:236.0f/255.0f alpha:1.0];
+    color10.layer.borderColor = [UIColor blackColor].CGColor;
+    color10.layer.borderWidth = 1.0f;
+    color10.layer.cornerRadius = 10.0f;
+    [color10 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [popover.contentViewController.view addSubview:color1];
+    [popover.contentViewController.view addSubview:color2];
+    [popover.contentViewController.view addSubview:color3];
+    [popover.contentViewController.view addSubview:color4];
+    [popover.contentViewController.view addSubview:color5];
+    [popover.contentViewController.view addSubview:color6];
+    [popover.contentViewController.view addSubview:color7];
+    [popover.contentViewController.view addSubview:color8];
+    [popover.contentViewController.view addSubview:color9];
+    [popover.contentViewController.view addSubview:color10];
     
     self.popOverController = popover;
     
@@ -308,6 +375,12 @@
     [self.popOverController presentPopoverFromBarButtonItem:sender
                                    permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     
+}
+
+-(void)changeHighlightColor:(UIButton*)sender{
+    [saveColor sharedData].hightlightColor = sender.backgroundColor;
+    [self.popOverController dismissPopoverAnimated:true];
+    [[saveColor sharedData] save];
 }
 
 
