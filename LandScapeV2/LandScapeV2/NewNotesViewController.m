@@ -358,6 +358,41 @@
     color10.layer.cornerRadius = 10.0f;
     [color10 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
     
+    UIButton *color11 = [[UIButton alloc] initWithFrame:CGRectMake(5, 125, 50, 50)];
+    color11.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:62.0f/255.0f blue:62.0f/255.0f alpha:1.0];
+    color11.layer.borderColor = [UIColor blackColor].CGColor;
+    color11.layer.borderWidth = 1.0f;
+    color11.layer.cornerRadius = 10.0f;
+    [color11 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *color12 = [[UIButton alloc] initWithFrame:CGRectMake(60, 125, 50, 50)];
+    color12.backgroundColor = [UIColor colorWithRed:132.0f/255.0f green:100.0f/255.0f blue:174.0f/255.0f alpha:1.0];
+    color12.layer.borderColor = [UIColor blackColor].CGColor;
+    color12.layer.borderWidth = 1.0f;
+    color12.layer.cornerRadius = 10.0f;
+    [color12 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *color13 = [[UIButton alloc] initWithFrame:CGRectMake(115, 125, 50, 50)];
+    color13.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:170.0f/255.0f blue:170.0f/255.0f alpha:1.0];
+    color13.layer.borderColor = [UIColor blackColor].CGColor;
+    color13.layer.borderWidth = 1.0f;
+    color13.layer.cornerRadius = 10.0f;
+    [color13 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *color14 = [[UIButton alloc] initWithFrame:CGRectMake(170, 125, 50, 50)];
+    color14.backgroundColor = [UIColor colorWithRed:212.0f/255.0f green:255.0f/255.0f blue:170.0f/255.0f alpha:1.0];
+    color14.layer.borderColor = [UIColor blackColor].CGColor;
+    color14.layer.borderWidth = 1.0f;
+    color14.layer.cornerRadius = 10.0f;
+    [color14 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIButton *color15 = [[UIButton alloc] initWithFrame:CGRectMake(225, 125, 50, 50)];
+    color15.backgroundColor = [UIColor colorWithRed:101.0f/255.0f green:188.0f/255.0f blue:255.0f/255.0f alpha:1.0];
+    color15.layer.borderColor = [UIColor blackColor].CGColor;
+    color15.layer.borderWidth = 1.0f;
+    color15.layer.cornerRadius = 10.0f;
+    [color15 addTarget:self action:@selector(changeHighlightColor:) forControlEvents:UIControlEventTouchUpInside];
+    
     [popover.contentViewController.view addSubview:color1];
     [popover.contentViewController.view addSubview:color2];
     [popover.contentViewController.view addSubview:color3];
@@ -368,6 +403,11 @@
     [popover.contentViewController.view addSubview:color8];
     [popover.contentViewController.view addSubview:color9];
     [popover.contentViewController.view addSubview:color10];
+    [popover.contentViewController.view addSubview:color11];
+    [popover.contentViewController.view addSubview:color12];
+    [popover.contentViewController.view addSubview:color13];
+    [popover.contentViewController.view addSubview:color14];
+    [popover.contentViewController.view addSubview:color15];
     
     self.popOverController = popover;
     
@@ -382,19 +422,6 @@
     [self.popOverController dismissPopoverAnimated:true];
     [[saveColor sharedData] save];
 }
-
-
-/*
--(BOOL)shouldAutorotate
-{
-    return YES;
-}
-
--(NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown ;
-}
- */
 
 
 - (void)didReceiveMemoryWarning {

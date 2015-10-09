@@ -45,6 +45,13 @@
 		3FEE1C661B4B0D0F001ADCC8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEE1C651B4B0D0F001ADCC8 /* SettingsViewController.m */; };
 		C94591F81B96042D00CB6B74 /* AssignmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */; };
 		C9A42E391BC4194D009FFD29 /* saveColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C9A42E381BC4194D009FFD29 /* saveColor.m */; };
+		C9CFFE8F1BC6EE6700A0887C /* sky-183869_640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9CFFE8E1BC6EE6700A0887C /* sky-183869_640.jpg */; };
+		C9CFFE911BC6EEE600A0887C /* background-68622_640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9CFFE901BC6EEE600A0887C /* background-68622_640.jpg */; };
+		C9CFFE941BC6F06000A0887C /* abstract-21851_640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9CFFE921BC6F06000A0887C /* abstract-21851_640.jpg */; };
+		C9CFFE951BC6F06000A0887C /* lines-593191_640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9CFFE931BC6F06000A0887C /* lines-593191_640.jpg */; };
+		C9CFFE991BC6F0BA00A0887C /* ball-443852_640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9CFFE961BC6F0BA00A0887C /* ball-443852_640.jpg */; };
+		C9CFFE9A1BC6F0BA00A0887C /* cosmea-583092_640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9CFFE971BC6F0BA00A0887C /* cosmea-583092_640.jpg */; };
+		C9CFFE9B1BC6F0BA00A0887C /* ellipse-784354_640.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C9CFFE981BC6F0BA00A0887C /* ellipse-784354_640.jpg */; };
 		C9E726C71BBAEEB9000F5F71 /* temporaryImage.png in Resources */ = {isa = PBXBuildFile; fileRef = C9E726C61BBAEEB9000F5F71 /* temporaryImage.png */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +127,13 @@
 		C94591F71B96042D00CB6B74 /* AssignmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentsTableViewController.m; sourceTree = "<group>"; };
 		C9A42E371BC4194D009FFD29 /* saveColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saveColor.h; sourceTree = "<group>"; };
 		C9A42E381BC4194D009FFD29 /* saveColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = saveColor.m; sourceTree = "<group>"; };
+		C9CFFE8E1BC6EE6700A0887C /* sky-183869_640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "sky-183869_640.jpg"; sourceTree = "<group>"; };
+		C9CFFE901BC6EEE600A0887C /* background-68622_640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "background-68622_640.jpg"; sourceTree = "<group>"; };
+		C9CFFE921BC6F06000A0887C /* abstract-21851_640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "abstract-21851_640.jpg"; sourceTree = "<group>"; };
+		C9CFFE931BC6F06000A0887C /* lines-593191_640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "lines-593191_640.jpg"; sourceTree = "<group>"; };
+		C9CFFE961BC6F0BA00A0887C /* ball-443852_640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ball-443852_640.jpg"; sourceTree = "<group>"; };
+		C9CFFE971BC6F0BA00A0887C /* cosmea-583092_640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cosmea-583092_640.jpg"; sourceTree = "<group>"; };
+		C9CFFE981BC6F0BA00A0887C /* ellipse-784354_640.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "ellipse-784354_640.jpg"; sourceTree = "<group>"; };
 		C9E726C61BBAEEB9000F5F71 /* temporaryImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temporaryImage.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -374,6 +388,13 @@
 		C9F2C7331BA84F560018D2FD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C9CFFE961BC6F0BA00A0887C /* ball-443852_640.jpg */,
+				C9CFFE971BC6F0BA00A0887C /* cosmea-583092_640.jpg */,
+				C9CFFE981BC6F0BA00A0887C /* ellipse-784354_640.jpg */,
+				C9CFFE921BC6F06000A0887C /* abstract-21851_640.jpg */,
+				C9CFFE931BC6F06000A0887C /* lines-593191_640.jpg */,
+				C9CFFE901BC6EEE600A0887C /* background-68622_640.jpg */,
+				C9CFFE8E1BC6EE6700A0887C /* sky-183869_640.jpg */,
 				3FE1605E1B618C490074456F /* IS098Z75U.jpg */,
 				3FE1605F1B618C490074456F /* IS787-189.jpg */,
 				3FE160601B618C490074456F /* IS787-191.jpg */,
@@ -491,17 +512,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9CFFE941BC6F06000A0887C /* abstract-21851_640.jpg in Resources */,
 				3FE160691B618C490074456F /* IS787-189.jpg in Resources */,
+				C9CFFE8F1BC6EE6700A0887C /* sky-183869_640.jpg in Resources */,
 				3FE160681B618C490074456F /* IS098Z75U.jpg in Resources */,
 				3F3028821B7299310022DAA5 /* Add-Image.jpg in Resources */,
 				2693DF681B2F1C2F00D2FBB9 /* Main.storyboard in Resources */,
 				2693DF6D1B2F1C3000D2FBB9 /* LaunchScreen.xib in Resources */,
 				3F0C17FB1B6FAA490095256F /* Stationery-Pen-32.png in Resources */,
+				C9CFFE9A1BC6F0BA00A0887C /* cosmea-583092_640.jpg in Resources */,
 				C9E726C71BBAEEB9000F5F71 /* temporaryImage.png in Resources */,
 				3F0C17F91B6FA8270095256F /* Square Root-32.png in Resources */,
 				3F0C17F51B6FA07D0095256F /* Book-Open-128.png in Resources */,
+				C9CFFE991BC6F0BA00A0887C /* ball-443852_640.jpg in Resources */,
 				3FE1606C1B618C490074456F /* notebook-page.jpg in Resources */,
 				3FE1606A1B618C490074456F /* IS787-191.jpg in Resources */,
+				C9CFFE911BC6EEE600A0887C /* background-68622_640.jpg in Resources */,
+				C9CFFE9B1BC6F0BA00A0887C /* ellipse-784354_640.jpg in Resources */,
+				C9CFFE951BC6F06000A0887C /* lines-593191_640.jpg in Resources */,
 				3F0C17FD1B6FAE350095256F /* Book-Open-32.png in Resources */,
 				3F3028841B72AD880022DAA5 /* AddImage.png in Resources */,
 				3FE1606E1B618C490074456F /* transparent-arrow-th.png in Resources */,
